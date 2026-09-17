@@ -4,7 +4,7 @@
 import assert from "node:assert/strict";
 import { createSession, getStation, saveNote, cancelNote } from "../../skills/art-director/references/examples/native-mobile/session-store.js";
 import { createDesk, selectRow, openNoteDialog, setDraft, commitNote, cancelNoteDialog, noteFor } from "../../skills/art-director/references/examples/component-system/notes-store.js";
-import { parseRoute, readFixture, filterLoads, validateHold, applyHold, createSaveGate, finishHoldCommit } from "../../skills/art-director/references/examples/themeless-react/kiln-store.js";
+import { parseRoute, readFixture, readHoldDelay, filterLoads, validateHold, applyHold, createSaveGate, finishHoldCommit } from "../../skills/art-director/references/examples/themeless-react/kiln-store.js";
 import { isDialogBackdropClick as kilnBackdrop } from "../../skills/art-director/references/examples/themeless-react/dialog-geometry.js";
 import { isDialogBackdropClick as deskBackdrop } from "../../skills/art-director/references/examples/component-system/dialog-geometry.js";
 import { LOADS } from "../../skills/art-director/references/examples/themeless-react/data.js";
@@ -130,6 +130,14 @@ test("kiln fixtures are opt-in via query, not random", () => {
   assert.equal(readFixture("?fixture=hold-reject"), "hold-reject");
   assert.equal(readFixture(""), null);
   assert.equal(filterLoads(LOADS, "zzz").length, 0);
+});
+
+test("holdDelay is opt-in and bounded", () => {
+  assert.equal(readHoldDelay(""), 400);
+  assert.equal(readHoldDelay("?holdDelay=2000"), 2000);
+  assert.equal(readHoldDelay("?holdDelay=1"), 400);
+  assert.equal(readHoldDelay("?holdDelay=9000"), 400);
+  assert.equal(readHoldDelay("?holdDelay=nope"), 400);
 });
 
 test("late hold commit is ignored after cancel", () => {

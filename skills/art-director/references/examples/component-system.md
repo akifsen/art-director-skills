@@ -14,10 +14,13 @@ After `npm ci`:
 npm run example:desk
 ```
 
-`http://127.0.0.1:5174/` — Vite, same path as CI and Playwright.
+`http://127.0.0.1:5174/` — Vite dev. CI and Playwright serve the
+production preview of `npm run test:examples:build`
+(`npm run example:desk:preview`).
 
 ```sh
-npx playwright test tests/e2e/nadir-desk.spec.js
+npm run test:examples:build
+npm run test:e2e
 ```
 
 The dialog is a real `<dialog>` with `showModal()` — not a `div` plus

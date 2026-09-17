@@ -5,16 +5,10 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { formatSpawnFailure, runNodeCli } from "../../tooling/npx.mjs";
+import { resolveViteBin, root } from "./vite-cli.mjs";
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const viteBin = path.join(root, "node_modules", "vite", "bin", "vite.js");
-if (!fs.existsSync(viteBin)) {
-  console.error("vite is not installed at", viteBin);
-  console.error("From the repo root run npm ci (maintainer lockfile).");
-  process.exit(1);
-}
+const viteBin = resolveViteBin();
 
 function build(configRel) {
   const result = runNodeCli(
@@ -44,8 +38,12 @@ assert.match(deskHtml, /main\.jsx|\/assets\//);
 
 const kilnAssets = fs.readdirSync(path.join(kilnDir, "assets"));
 const deskAssets = fs.readdirSync(path.join(deskDir, "assets"));
-const kilnJs = fs.readFileSync(path.join(kilnDir, "assets", kilnAssets.find((f) => f.endsWith(".js"))), "utf8");
-const deskJs = fs.readFileSync(path.join(deskDir, "assets", deskAssets.find((f) => f.endsWith(".js"))), "utf8");
+const kilnJsName = kilnAssets.find((f) => f.endsWith(".js"));
+const deskJsName = deskAssets.find((f) => f.endsWith(".js"));
+assert.ok(kilnJsName, "kiln production bundle missing");
+assert.ok(deskJsName, "desk production bundle missing");
+const kilnJs = fs.readFileSync(path.join(kilnDir, "assets", kilnJsName), "utf8");
+const deskJs = fs.readFileSync(path.join(deskDir, "assets", deskJsName), "utf8");
 assert.match(kilnJs, /Loads in fire/);
 assert.match(kilnJs, /Log a temperature hold/);
 assert.match(deskJs, /Morning list/);

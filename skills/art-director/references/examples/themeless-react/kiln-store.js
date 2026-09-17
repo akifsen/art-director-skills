@@ -22,6 +22,14 @@ export function readFixture(search) {
   return null;
 }
 
+/** Demo write latency in ms. Tests pass holdDelay so Cancel can beat the timer without mocking rAF. */
+export function readHoldDelay(search) {
+  const q = new URLSearchParams(String(search || "").replace(/^\?/, ""));
+  const n = Number(q.get("holdDelay"));
+  if (Number.isInteger(n) && n >= 200 && n <= 8000) return n;
+  return 400;
+}
+
 export function filterLoads(loads, query) {
   const q = String(query || "").trim().toLowerCase();
   if (!q) return loads;

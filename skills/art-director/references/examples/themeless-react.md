@@ -12,16 +12,20 @@ npm run example:kiln
 ```
 
 Open `http://127.0.0.1:5173/`. Vite compiles the skill’s React source.
-The same command is the Playwright webServer and the CI build path.
+
+CI and Playwright serve the **production preview** of that same build
+(`npm run test:examples:build`, then `npm run example:kiln:preview`), not a
+second HTML page and not `page.clock`.
 
 Fixtures: `?fixture=loading|error|empty|hold-reject`.
+Optional `?holdDelay=2000` stretches the demo write so Cancel can beat it.
 Holds are **session memory**. They are not a kiln controller and not disk.
 A delayed Save can still be cancelled; a late timer must not commit after
 Cancel, All loads, or a different record.
 
 ```sh
 npm run test:examples:build
-npx playwright test tests/e2e/kiln-flow.spec.js
+npm run test:e2e
 ```
 
 ## Scope matrix

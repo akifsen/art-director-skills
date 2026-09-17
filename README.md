@@ -102,8 +102,9 @@ docs/
 
 Skill users do not need `npm install`. `npm test` is for maintainers
 (structure, stores, spawn/JSON checks). Example **Vite** builds and
-Playwright flows need `npm ci` from the lockfile; they are not a skill
-runtime.
+Playwright flows need `npm ci` from the lockfile, then
+`npm run test:examples:build`; they serve that production preview. They
+are not a skill runtime.
 
 ## Status of checks
 

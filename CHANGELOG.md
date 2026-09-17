@@ -10,7 +10,14 @@ Reliability of the maintainer path and the tutorial product flows.
 - `package-lock.json` pins maintainer Vite/Playwright for `npm ci` in CI
 - Kiln delayed Save can be cancelled; a late timer cannot commit after Cancel, route change, or another load
 - Native `<dialog>` closes on a true backdrop click, not panel padding
-- Playwright uses the same `npm run example:*` servers, workers=1, traces on failure
+- Playwright uses bundled Chromium (not `channel: "chrome"`). v0.4.0 Ubuntu
+  installed Chromium then launched Desktop Chrome, which is not on the runner
+- E2E serves `vite preview` of the production build (`test:examples:build`),
+  not the Vite dev transformer
+- Save/Cancel races do not use `page.clock` (it patches `requestAnimationFrame`).
+  Tests pass `?holdDelay=` so Cancel can beat the timer
+- Playwright GitHub reporter + traces/screenshots on failure
+- Visual captures are a separate `--project=visual`, not the CI flow gate
 
 ## 0.4.0 — 2026-09-17
 

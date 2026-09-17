@@ -38,9 +38,9 @@ jobs:
         run: npm ci
       - name: Compile React examples with Vite
         run: npm run test:examples:build
-      - name: Install Chromium for Playwright
+      - name: Install bundled Chromium for Playwright
         run: npx playwright install --with-deps chromium
-      - name: Browser flows (not a native runtime)
+      - name: Browser flows on production preview (not a native runtime)
         run: npm run test:e2e
       - name: Upload Playwright traces on failure
         if: failure()

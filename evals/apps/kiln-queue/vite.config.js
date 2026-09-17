@@ -14,5 +14,5 @@ export default defineConfig({
     emptyOutDir: true
   },
   server: { port: 5173, strictPort: true, host: "127.0.0.1" },
-  preview: { port: 4173, strictPort: true }
+  preview: { port: 5173, strictPort: true, host: "127.0.0.1" }
 });

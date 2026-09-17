@@ -13,5 +13,6 @@ export default defineConfig({
     outDir: path.join(repoRoot, "evals/artifacts/nadir-desk"),
     emptyOutDir: true
   },
-  server: { port: 5174, strictPort: true, host: "127.0.0.1" }
+  server: { port: 5174, strictPort: true, host: "127.0.0.1" },
+  preview: { port: 5174, strictPort: true, host: "127.0.0.1" }
 });

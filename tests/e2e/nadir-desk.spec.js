@@ -1,13 +1,13 @@
 /**
- * Layer: real browser flow (Playwright + Vite React app).
+ * Layer: real browser flow (Playwright + Vite production preview).
  * Not a source-string search and not a native runtime.
  */
 import { test, expect } from "@playwright/test";
+import { DESK, clickDialogPadding, clickOutsideDialog, gotoApp } from "./helpers.js";
 
 test.describe("nadir desk — per-record notes", () => {
   test("save binds to the selected row and cancel does not clobber it", async ({ page }) => {
-    await page.goto("http://127.0.0.1:5174/", { waitUntil: "domcontentloaded" });
-    await expect(page.locator("#root")).not.toBeEmpty();
+    await gotoApp(page, DESK, "/");
     await expect(page.getByRole("heading", { name: "Morning list" })).toBeVisible();
     await page.getByRole("button", { name: "Add note" }).click();
     const dialog = page.getByRole("dialog");
@@ -28,7 +28,7 @@ test.describe("nadir desk — per-record notes", () => {
   });
 
   test("dialog focuses the field, traps tab, and restores the opener", async ({ page }) => {
-    await page.goto("http://127.0.0.1:5174/", { waitUntil: "domcontentloaded" });
+    await gotoApp(page, DESK, "/");
     const add = page.getByRole("button", { name: "Add note" });
     await add.click();
     const dialog = page.getByRole("dialog");
@@ -46,16 +46,15 @@ test.describe("nadir desk — per-record notes", () => {
   });
 
   test("inner panel click keeps the draft; backdrop cancel discards it", async ({ page }) => {
-    await page.goto("http://127.0.0.1:5174/", { waitUntil: "domcontentloaded" });
+    await gotoApp(page, DESK, "/");
     await page.getByRole("button", { name: "Add note" }).click();
     const dialog = page.getByRole("dialog");
     await expect(dialog).toBeVisible();
     await dialog.getByLabel("Note").fill("Keep drafting.");
-    const box = await dialog.boundingBox();
-    await page.mouse.click(box.x + 12, box.y + 12);
+    await clickDialogPadding(dialog);
     await expect(dialog).toBeVisible();
     await expect(dialog.getByLabel("Note")).toHaveValue("Keep drafting.");
-    await page.mouse.click(8, 8);
+    await clickOutsideDialog(dialog);
     await expect(page.locator("dialog[open]")).toHaveCount(0);
     await expect(page.getByText("No clinical note yet.")).toBeVisible();
   });

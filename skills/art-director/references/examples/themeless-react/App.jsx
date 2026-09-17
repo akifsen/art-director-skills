@@ -7,12 +7,15 @@ import {
   filterLoads,
   finishHoldCommit,
   parseRoute,
-  readFixture
+  readFixture,
+  readHoldDelay
 } from "./kiln-store.js";
 import { Badge, Button, Dialog, Empty, Field, PageHeader } from "./ui.jsx";
 
 export default function App() {
-  const fixture = readFixture(typeof window === "undefined" ? "" : window.location.search);
+  const search = typeof window === "undefined" ? "" : window.location.search;
+  const fixture = readFixture(search);
+  const holdDelay = readHoldDelay(search);
   const [tick, setTick] = useState(0);
   const [query, setQuery] = useState("");
   const [phase, setPhase] = useState(() => {
@@ -100,7 +103,7 @@ export default function App() {
       }
       setLoads(finished.loads);
       setSavedOpen(true);
-    }, 400);
+    }, holdDelay);
   }
 
   function onSubmitHold(event) {
