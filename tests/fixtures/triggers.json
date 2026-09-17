@@ -1,0 +1,44 @@
+[
+  {
+    "id": "design-new-ui",
+    "shouldTrigger": true,
+    "expectedMode": "DESIGN",
+    "prompt": "Design a homepage for this studio using the real copy in index.html. Do not invent testimonials."
+  },
+  {
+    "id": "redesign-explicit",
+    "shouldTrigger": true,
+    "expectedMode": "DESIGN",
+    "prompt": "Please redesign the landing page. I want a new visual direction that still keeps our routes and brand colors."
+  },
+  {
+    "id": "refine-mobile-menu",
+    "shouldTrigger": true,
+    "expectedMode": "REFINE",
+    "prompt": "The mobile menu is broken. Fix the navigation on small screens only."
+  },
+  {
+    "id": "review-readonly",
+    "shouldTrigger": true,
+    "expectedMode": "REVIEW",
+    "prompt": "Review this UI. Do not change any source files. Tell me what is wrong with the hierarchy."
+  },
+  {
+    "id": "backend-sql",
+    "shouldTrigger": false,
+    "expectedMode": null,
+    "prompt": "Write a SQL migration that adds an index on orders.created_at and fix the slow query in the API."
+  },
+  {
+    "id": "deploy-only",
+    "shouldTrigger": false,
+    "expectedMode": null,
+    "prompt": "Deploy the current branch to production and tag the release."
+  },
+  {
+    "id": "mixed-keeps-scope",
+    "shouldTrigger": true,
+    "expectedMode": "REFINE",
+    "prompt": "Fix the spacing on the pricing block. Do not touch the rest of the marketing site."
+  }
+]

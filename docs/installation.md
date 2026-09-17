@@ -1,0 +1,142 @@
+# Installation
+
+The skill is a directory. If `skills/art-director/` (with `SKILL.md`,
+`references/`, and `assets/`) is on disk, the design workflow can be used
+by copying that folder into a host discovery path. No MCP server, API key,
+or extra daemon is required for that.
+
+The commands below use Vercel Labs' third-party `skills` CLI. That CLI is
+not this product. It may use the network. See [Telemetry](#telemetry).
+
+Verified against the CLI docs at https://github.com/vercel-labs/skills and
+https://vercel-labs-skills.mintlify.app/commands/add (retrieved 2026-09-17).
+
+## Project vs user scope
+
+| Scope | Typical flag | Effect |
+|---|---|---|
+| Project (default) | none | Files land in the current repo (for Cursor via this CLI, `.agents/skills/`) and can be committed with the project |
+| User / global | `-g` / `--global` | Files land in a home-directory skills folder and apply across projects |
+
+Do not use `--global` unless you want the skill on every project on this
+machine. This repository's tests never write global skills.
+
+Installing the same skill into several discovery directories for one host
+can register it twice. Prefer one target agent per install, or one
+canonical copy plus the CLI's default symlink behavior.
+
+## Manual copy (offline)
+
+Copy the folder, keep the name `art-director`, and keep relative links
+intact:
+
+```text
+art-director/
+  SKILL.md
+  references/
+  assets/
+```
+
+Cursor discovers project skills from `.agents/skills/` and `.cursor/skills/`,
+and user skills from `~/.agents/skills/` and `~/.cursor/skills/` (also
+Claude/Codex-compatible trees). Codex scans `.agents/skills` from the
+working directory up to the repo root, and user skills from
+`$HOME/.agents/skills`. Cursor also loads `.codex/skills/` and
+`~/.codex/skills/` for compatibility. See [compatibility.md](compatibility.md).
+
+On Windows, copy rather than symlink if Developer Mode is off.
+`Copy-Item -LiteralPath` handles spaces and Turkish characters in the path.
+Node's `fs.cpSync` on this authoring machine silently failed to copy into a
+directory named `art-yönetmen kopya`; PowerShell succeeded. Prefer
+PowerShell or Explorer for manual Windows copies.
+
+PowerShell example (project, Cursor-style path):
+
+```powershell
+New-Item -ItemType Directory -Force .agents\skills | Out-Null
+Copy-Item -Recurse -Force path\to\art-director-skills\skills\art-director .agents\skills\art-director
+```
+
+## CLI from a local folder (test this first)
+
+From a **different** project directory, so this repo is only a source:
+
+```powershell
+$env:DISABLE_TELEMETRY = "1"
+npx skills add C:\path\to\art-director-skills --skill art-director --agent cursor --copy --yes
+```
+
+Local sources must be real paths (`./`, `..\`, or `C:\...`). `--copy` writes
+real files (important on Windows). `--yes` skips prompts. `--skill` limits
+the install to `art-director`. `--agent cursor` targets Cursor's project
+path used by this CLI (`.agents/skills/`).
+
+Paths with spaces or Turkish characters are valid. Quote them:
+
+```powershell
+npx skills add "C:\Users\lenovo\devel\art-director-skills" --skill art-director --agent cursor --copy --yes
+```
+
+Codex-only project install:
+
+```powershell
+$env:DISABLE_TELEMETRY = "1"
+npx skills add C:\path\to\art-director-skills --skill art-director --agent codex --copy --yes
+```
+
+Do not pass both `--agent cursor` and `--agent codex` if you are trying to
+avoid two copies. Cursor already reads `.agents/skills/` in many setups.
+
+## CLI from GitHub (after the repo is public)
+
+Planned form, **not** valid until `akifsen/art-director-skills` exists and
+you choose to install from the network:
+
+```sh
+npx skills add akifsen/art-director-skills --skill art-director --agent cursor --copy
+```
+
+That command must not be treated as a working public install before publish.
+
+### Pinning a release
+
+In this CLI, `owner/repo@skill-name` is a **skill filter**, not a version.
+Do not write `akifsen/art-director-skills@v0.1.0` expecting a tag.
+
+Documented pin: a GitHub tree URL whose path segment is the branch or tag.
+
+```sh
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.1.0 --skill art-director --agent cursor --copy
+```
+
+Use a real tag after it exists. Prefer the tag or commit published in
+[CHANGELOG.md](../CHANGELOG.md). A release archive of `skills/art-director/`
+can be copied manually the same way as the offline folder.
+
+## Update and remove
+
+These affect **this** skill when you name it. They can still remove other
+skills if you pass wildcards. Do not use `--all` or `--skill '*'` unless
+you intend to change every installed skill.
+
+```sh
+npx skills update art-director
+npx skills remove art-director --agent cursor
+```
+
+Add `-g` only for a previous global install.
+
+## Telemetry
+
+The `skills` CLI documents anonymous install telemetry, disabled in CI, with
+opt-out via `DISABLE_TELEMETRY=1` or `DO_NOT_TRACK=1`
+(https://vercel-labs-skills.mintlify.app/advanced/telemetry). That behavior
+belongs to the CLI, not to Art Director. Manual copy does not call it.
+
+## Native Cursor marketplace
+
+Cursor can load skills from a **plugin** with plugin metadata
+(`.cursor-plugin/plugin.json` or a root `plugin.json`, and optionally a
+marketplace manifest). That is a separate packaging path. This repository's
+primary distribution is the Agent Skills directory. An untested marketplace
+import is not claimed to work. See [compatibility.md](compatibility.md).

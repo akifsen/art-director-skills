@@ -1,0 +1,6 @@
+body { margin: 0; font-family: Impact, sans-serif; background: #050505; color: #39ff14; }
+.top { display: flex; justify-content: space-between; padding: 1rem; }
+.billboard { padding: 4rem 1rem; background: #111; color: #f0f; text-transform: uppercase; }
+article { padding: 1rem; max-width: none; }
+.dek { font-size: 2rem; }
+aside { padding: 1rem; border-top: 4px solid #f0f; }

@@ -1,0 +1,7 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; color: #222; }
+.hero { padding: 4rem 1.5rem; text-align: center; background: linear-gradient(135deg, #1a1a2e, #4a4e69); color: #fff; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 2rem; }
+.cards article { border: 1px solid #ddd; padding: 1.5rem; border-radius: 1rem; }
+.btn { display: inline-block; margin-top: 1rem; padding: 0.6rem 1rem; background: #7c5cfc; color: #fff; text-decoration: none; }
+@media (max-width: 700px) { .cards { grid-template-columns: 1fr; } }

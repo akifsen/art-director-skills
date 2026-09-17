@@ -1,0 +1,102 @@
+# Art Director
+
+A portable [Agent Skill](https://agentskills.io/specification) that teaches a
+coding agent how to design, refine, or review a frontend interface **in the
+project already open**.
+
+It does not pick a theme pack. It does not run an MCP server. It does not
+require Node, an API key, or a daemon to use. Copy `skills/art-director/`
+into a host skills directory and the workflow is available.
+
+[Türkçe](README.tr.md) · [Install](docs/installation.md) · [Compatibility](docs/compatibility.md) · [Evals](evals/README.md) · [Migration](docs/migration.md)
+
+## What it is for
+
+Use it when the work is a UI: a new page, a stated redesign, a bounded fix
+(for example a mobile menu), or a visual review.
+
+The skill tells the host to:
+
+1. Read the current stack, content, and what must not change
+2. Give the real content a hierarchy (lead, proof, support, action)
+3. Write a short visual thesis in concrete terms, not mood adjectives
+4. Decide composition, type, color, imagery, and interaction separately
+5. Edit real files when implementation was requested
+6. Separate visual inspection from technical checks, and say when a check
+   could not be done
+
+It should stay out of backend, SQL, migrations, and deploy work unless the
+user also asked for interface changes.
+
+## What it is not
+
+- Not `@akifsen/art-director-mcp` and not a new version of that package
+- Not a catalog of ready-made sites
+- Not a guarantee of taste; eval scores are subjective
+- Not a new browser, vision model, or permission set
+- Not tested as a Cursor Marketplace plugin in this release
+
+## Install
+
+Manual copy works offline. See [docs/installation.md](docs/installation.md).
+
+From a local clone, after you have this repository on disk:
+
+```powershell
+$env:DISABLE_TELEMETRY = "1"
+npx skills add C:\path\to\art-director-skills --skill art-director --agent cursor --copy --yes
+```
+
+Planned GitHub form, only after this repository is public:
+
+```sh
+npx skills add akifsen/art-director-skills --skill art-director --agent cursor --copy
+```
+
+Pin a tag with a tree URL, not `owner/repo@v0.1.0` (`@` is a skill filter in
+this CLI):
+
+```sh
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.1.0 --skill art-director --agent cursor --copy
+```
+
+Telemetry on `npx skills` belongs to that CLI. Opt out with
+`DISABLE_TELEMETRY=1` or `DO_NOT_TRACK=1`. This skill has no install
+scripts of its own.
+
+## Use
+
+In Cursor, `/art-director` or a natural UI-design request. In Codex,
+`$art-director` or `/skills`. Speak to the agent in your language; the
+skill follows that.
+
+Modes (same skill, not extra commands):
+
+| Mode | User intent | Agent default |
+|---|---|---|
+| DESIGN | New UI or explicit redesign | Thesis, then implementation |
+| REFINE | Named part of an existing UI | Change only that part |
+| REVIEW | Inspect / critique | Read-only unless asked to patch |
+
+## Repository layout
+
+```text
+skills/art-director/   # the only public skill (copy this folder)
+tooling/               # maintainer validation; not a skill runtime
+tests/
+evals/                 # tiny fixtures, not customer sites
+docs/
+```
+
+Skill users do not need `npm install`. `npm test` is for maintainers.
+
+## Status of checks
+
+See [docs/compatibility.md](docs/compatibility.md) and
+[evals/RESULTS.md](evals/RESULTS.md). File tests are not IDE discovery.
+Discovery is not a real-task run. Visual review that did not happen is
+reported as not done.
+
+## License
+
+[MIT](LICENSE). Sources: [docs/sources.md](docs/sources.md).

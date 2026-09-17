@@ -1,0 +1,15 @@
+{
+  "name": "art-director-skills",
+  "private": true,
+  "description": "Maintainer tooling for the art-director Agent Skill. Not a published npm package and not required to use the skill.",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/run.mjs",
+    "test:install": "node tests/install-cli.mjs",
+    "validate": "node tooling/validate-skill.mjs",
+    "pack-skill": "node tooling/pack-skill.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
