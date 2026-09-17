@@ -13,7 +13,7 @@ app. Blade, Vue, FreeMarker, Liquid, ERB, and similar systems stay.
 
 Reuse existing layout primitives, design tokens, and components when they
 can express the thesis. Add a new primitive when the current one cannot;
-do not add a second spacing scale "for the redesign".
+do not add a second spacing scale "for the redesign."
 
 ## Semantics and behavior
 
@@ -27,10 +27,11 @@ Preserve routing and SSR:
 - Do not flatten distinct routes into one scroll of fake sections.
 - Keep real URLs, form methods, and progressive enhancement when they exist.
 
-Preserve real content. Do not invent testimonials, logos, user counts, or
-quotes to fill a layout.
+Preserve real content. Do not invent testimonials, logos, user counts, quotes,
+calendar dates, or measurements the brief left unknown (unknown seats stay
+unknown; "two Saturdays" is not a license to pick days).
 
-## CSS and assets
+## CSS, fonts, and assets
 
 Prefer the project's existing approach: files, CSS modules, utility classes,
 styled-components, or whatever is already there. Mixing a new utility
@@ -39,9 +40,20 @@ framework into a tokenized stylesheet needs an explicit user request.
 Keep images and fonts loadable offline if the project already works that
 way. Record new asset licenses near the files.
 
+Before you treat the design as done, confirm:
+
+- The document actually loads the stylesheet you edited
+- Intended `font-family` is the computed face, not an un-loaded fallback
+- Image `src` values resolve (no silent 404)
+
+A missing `@import` or a wrong relative CSS path is a failed implementation,
+not a taste problem. See [polish-pass.md](polish-pass.md).
+
 ## What "implemented" means
 
-The user asked for a designed interface: the running UI should change.
+The user asked for a designed interface: the running UI should change, and
+the requested scope should look directed, not like a wireframe — unless they
+asked for a wireframe.
 
 Not sufficient on their own:
 

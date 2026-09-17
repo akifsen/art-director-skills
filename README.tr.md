@@ -14,10 +14,15 @@ host’un skill dizinine kopyalamak yeterlidir.
 Yeni bir sayfa, açık bir yeniden tasarım, sınırlı bir düzeltme (örneğin
 mobil menü) veya görsel inceleme istendiğinde.
 
-Skill, host ajana şunu öğretir: mevcut yığını ve korunacakları oku, içeriğe
-hiyerarşi ver, somut bir görsel tez yaz, kararları ayrı ayrı al, uygulama
-istendiyse gerçek dosyaları değiştir, görsel kontrol ile teknik kontrolü
-ayır.
+Skill, host ajana şunu öğretir: mevcut yığını ve gerçek markayı
+(başlangıç şablonu değil) oku, içeriğe hiyerarşi ver, geniş DESIGN işinde
+görülebilen güncel referanslara bak, somut bir görsel tez yaz, temsilî bir
+dilimi bitmiş işçilikle uygula, uygulama istendiyse gerçek dosyaları
+değiştir, işlevsel kontrol ile görsel işçiliği ayır.
+
+Yalnızca doğru palet yetmez. Kullanıcı wireframe istemediyse ilk iskelet
+teslim değildir. Bilinçli sadeleştirme kusur değildir; işlenmemiş boşluk
+ve varsayılan HTML kusurdur.
 
 Backend, SQL, migration veya yayın işlerinde kendiliğinden tasarım
 başlatmamalıdır.
@@ -40,11 +45,14 @@ $env:DISABLE_TELEMETRY = "1"
 npx skills add C:\path\to\art-director-skills --skill art-director --agent cursor --copy --yes
 ```
 
-Depo herkese açık olduktan sonra planlanan komut:
+Herkese açık depo:
 
 ```sh
 npx skills add akifsen/art-director-skills --skill art-director --agent cursor --copy
 ```
+
+Eski bir **v0.1.0** kopyanız varsa klasörü birleştirmeden değiştirin.
+[docs/installation.md](docs/installation.md#update-an-older-copy).
 
 `npx skills` telemetrisi o CLI’ye aittir; `DISABLE_TELEMETRY=1` veya
 `DO_NOT_TRACK=1` ile kapatılır.
@@ -56,8 +64,8 @@ Cursor’da `/art-director` veya doğal bir arayüz talebi. Codex’te
 
 | Mod | Ne zaman | Varsayılan |
 |---|---|---|
-| DESIGN | Yeni arayüz veya açık yeniden tasarım | Tez, sonra uygulama |
-| REFINE | Var olan arayüzün belirli parçası | Yalnızca o parça |
+| DESIGN | Yeni arayüz veya açık yeniden tasarım | Tez, sonra bitmiş uygulama |
+| REFINE | Var olan arayüzün belirli parçası | Yalnızca o parça, yine işlenmiş |
 | REVIEW | İnceleme | Salt okunur |
 
 ## Lisans

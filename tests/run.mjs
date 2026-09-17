@@ -28,7 +28,7 @@ const triggers = JSON.parse(
   fs.readFileSync(path.join(root, "tests", "fixtures", "triggers.json"), "utf8")
 );
 
-function classify(prompt) {
+function classifyFixturePrompt(prompt) {
   const p = prompt.toLowerCase();
   const negative = /\b(sql|migration|database|deploy|production and tag|backend)\b/.test(p)
     && !/\b(ui|interface|page|menu|layout|design|review|spacing|homepage|visual)\b/.test(p);
@@ -44,16 +44,21 @@ function classify(prompt) {
   return { trigger: false, mode: null };
 }
 
+console.log("fixture keyword heuristic (not host skill selection or model behavior)");
 for (const caseRow of triggers) {
-  const got = classify(caseRow.prompt);
-  assert(got.trigger === caseRow.shouldTrigger, `${caseRow.id} trigger ${got.trigger} === ${caseRow.shouldTrigger}`);
-  assert(got.mode === caseRow.expectedMode, `${caseRow.id} mode ${got.mode} === ${caseRow.expectedMode}`);
+  const got = classifyFixturePrompt(caseRow.prompt);
+  assert(got.trigger === caseRow.shouldTrigger, `${caseRow.id} fixture-heuristic trigger ${got.trigger} === ${caseRow.shouldTrigger}`);
+  assert(got.mode === caseRow.expectedMode, `${caseRow.id} fixture-heuristic mode ${got.mode} === ${caseRow.expectedMode}`);
 }
 
 const desc = data.description.toLowerCase();
 assert(desc.includes("mobile menu"), "description mentions mobile menu");
 assert(/do not use/.test(desc), "description includes do-not-use clause");
 assert(skillMd.includes("read-only") || skillMd.includes("Read-only"), "REVIEW stays read-only");
+assert(skillMd.includes("visual-research.md"), "SKILL.md points at visual-research.md");
+assert(skillMd.includes("polish-pass.md"), "SKILL.md points at polish-pass.md");
+assert(/visually\s+finished/.test(skillMd), "promise mentions finished craft");
+assert((data.metadata && data.metadata.version) === "0.2.0", `version 0.2.0 (got ${data.metadata && data.metadata.version})`);
 assert(!skillMd.includes("disable-model-invocation: true"), "implicit invocation allowed");
 assert(!/^allowed-tools:/m.test(skillMd), "no allowed-tools permission expansion");
 
@@ -64,7 +69,8 @@ const caseDirs = fs.readdirSync(path.join(root, "evals", "cases"), { withFileTyp
   .filter((e) => e.isDirectory())
   .map((e) => e.name)
   .sort();
-assert(caseDirs.length >= 6, `eval cases >= 6 (have ${caseDirs.length})`);
+assert(caseDirs.length >= 7, `eval cases >= 7 (have ${caseDirs.length})`);
+assert(caseDirs.includes("07-missing-css"), "eval fixture for missing stylesheet");
 for (const name of caseDirs) {
   const dir = path.join(root, "evals", "cases", name);
   assert(fs.existsSync(path.join(dir, "brief.md")), `${name} brief`);
@@ -90,6 +96,10 @@ if (process.platform === "win32") {
 assert(fs.existsSync(path.join(dest, "SKILL.md")), `copied SKILL.md into ${dest}`);
 const copied = validateSkill(dest);
 assert(copied.problems.length === 0, copied.problems.length ? copied.problems.join("; ") : "copy under Turkish/space parent path");
+assert(
+  fs.existsSync(path.join(dest, "references", "studies", "media-in-composition.html")),
+  "copied studies land in the portable skill folder"
+);
 console.log("copied skill to", dest);
 
 if (failed) {

@@ -1,80 +1,146 @@
 # Typography, color, and assets
 
 Read this when type, color, imagery, or licenses matter. Skip it for
-structure-only or copy-only edits.
+structure-only or copy-only edits. For materials, crops, and component
+finish see [visual-craft.md](visual-craft.md).
 
-## Type roles
+## Brand fonts vs leftovers
+
+**When.** You decide whether to keep type already in the files.
+
+**How.** Reuse faces that belong to a real system: tokens, a documented
+pair, a logo lockup, or a webfont the product already ships on purpose.
+Add a face only when a role is missing.
+
+Do not treat the following as sacred brand:
+
+- `system-ui`, Arial, Times, Impact, or the framework starter stack
+- A single Google font dropped by a template
+- A heading face that never loaded (computed style still falls back)
+
+On DESIGN / explicit redesign, choose roles first, then faces that can
+render the project's languages. Prefer the project's existing loading
+method. Do not introduce a new CDN because an example used one.
+
+**Failure.** "The file already said `font-family: system-ui`, so I kept it"
+on a blank marketing fixture.
+
+## Type roles and craft
 
 Assign roles before picking families:
 
 - **Display:** rare, for the lead. Not for every heading.
-- **Heading:** section structure. Keep a clear step down in size and weight.
-- **Body:** the reading text. Target a comfortable measure, often near 60–70
-  characters for articles; shorter for UI chrome.
-- **Meta:** dates, labels, captions, table headers. Smaller, not weaker in
-  contrast.
+- **Heading:** section structure. A clear step down in size and weight.
+- **Body:** reading text. A comfortable measure is often near `60–70`
+  characters for articles; shorter for UI chrome. Starting points only.
+- **Meta:** dates, labels, captions, table headers. Smaller, not weaker
+  in contrast.
 
-Do not ban a family. Serif, sans, mono, and display faces are all valid when
-the role is clear. Loading a display face for every label wastes weight and
-flattens hierarchy.
+Then actually art-direct the role:
 
-If the project already loads fonts, reuse them. Add a face only when a role
-is missing. Provide fallbacks that preserve script coverage.
+- **Character:** what the face is *doing* (grotesque claim, old-style
+  reading, mono for ids). Name the role, not only the file name.
+- **Weight / width:** one display weight is enough on most pages; condensed
+  display is a choice for a poster, not a default.
+- **Fluid size:** `clamp()` (e.g. `clamp(2.4rem, 6vw, 5.5rem)` as a
+  *starting* display range) so the lead scales without jumping. Recheck
+  line breaks at a small width.
+- **Line breaks:** break the display phrase for sense (`<br>` or a narrow
+  max-width in `ch`), not wherever the container wraps.
+- **Tracking:** display often wants slightly tighter tracking; meta labels
+  slightly more open. Body usually stays near `0`.
+- **Leading:** display can go tight (`~0.9–1.05`); body needs air
+  (`~1.45–1.65` as a starting range).
+- **Optical alignment:** hanging punctuation, optical left edge of a large
+  round letter, icon aligned to x-height.
+- **Language:** if the UI includes Turkish (`ğüşıöçĞÜŞİÖÇ`) or other marks,
+  verify the face contains them. A fallback that changes x-height mid-word
+  is a defect.
 
-## Language and fallbacks
+Serif, sans, mono, and display faces are all valid. Do not bind every
+project to condensed grotesques or to the same serif pairing.
 
-If the UI includes Turkish, or any language with letters beyond a basic
-Latin subset, verify the chosen face actually contains those glyphs
-(`ğüşıöçĞÜŞİÖÇ` and the project's other needed marks). A fallback that
-changes x-height or weight mid-word is a defect.
+If you load a display face, use it in the composition (the lead), not as
+a hidden `font-family` on `body`.
 
-Self-hosted and platform fonts are both acceptable. Prefer the project's
-existing loading method. Do not introduce a new CDN because an example used
-one.
+**Failure.** One size for `h1`–`h3`; `letter-spacing: 0.2em` on everything;
+Impact on a long article.
 
-## Color roles
+**Applied fragment:**
 
-Name colors by job, not by hue:
+```css
+.display {
+  font-family: Palatino, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  max-width: 12ch;
+}
+.body { font-size: 1.05rem; line-height: 1.55; max-width: 66ch; }
+.meta { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+```
 
-- Surface and text for reading
-- Accent for action or highlight, not for large fields of text
-- Status (danger, warning, success) with a non-color cue
-- Borders and muted text that still meet contrast in context
+## Color and surfaces
 
-Do not equate dark canvases, neon accents, or glassmorphism with quality.
-Do not forbid a color. If a brand already defines a palette, map roles onto
-it instead of inventing a parallel system.
+**When.** You are choosing more than a single accent on white.
+
+**How.** Name colors by job, then relate them:
+
+- **Canvas** — page background
+- **Raised / secondary surface** — panels, header bar, table header
+- **Brand field** — a large area the brand actually owns (a clay field, a
+  sodium-yellow bay, a night ops canvas). Allowed when it fits. Not required.
+- **Text hierarchy** — primary, secondary, inverse on brand fields
+- **Separator** — hairline or tone step
+- **Interactive** — links, filled actions, selected rows
+- **Semantic status** — danger, warning, success, each with a non-color cue
+
+Do not stop at one accent. Do not equate dark canvases, neon, or glass
+with quality. Do not forbid a color.
+
+Justify saturation and light/dark from context: a warehouse installation
+may want a sodium field; a long article may want a stable paper; an
+overnight dispatch board may want a dim canvas with loud overdue rows.
+Check contrast on the actual pairing (text on brand field, meta on canvas).
+
+If a brand already defines a palette, map these roles onto it. If the
+"palette" is leftover `#222` on white plus a purple button, replace it
+on DESIGN.
 
 Accent-only status (red vs green with no text or icon) fails for many
 readers. Keep status in words.
 
-## Imagery
+**Failure.** `--accent: #7c5cfc` and nothing else; large paragraphs in
+accent color; a new purple careers page on a paper-and-iron site.
 
-Choose media that the product can actually supply:
+**Applied fragment:**
 
-- **Product screen:** software, dashboards, tools.
-- **Photograph:** places, people, objects the brand owns or licenses.
-- **Illustration:** when the subject is abstract or the photo would mislead.
-- **Type-as-image:** editorial or word-led brands, used sparingly.
-- **Diagram:** processes, relationships, and systems.
+```css
+:root {
+  --canvas: #0d1412;
+  --raised: #151e1b;
+  --text: #e6efe9;
+  --text-dim: #93a59a;
+  --hair: rgb(230 239 233 / 12%);
+  --action: #d7f25a;
+  --action-ink: #12160f;
+  --danger: #f3b4a8;
+}
+```
 
-Do not cover missing assets with random gradients or decorative 3D objects.
-If there is no image, design a strong typographic or data-led composition
-and label any placeholder as a placeholder.
+## Imagery and licenses
 
-Do not invent screenshots, customer faces, logos, or metrics.
-
-If the host has no image-generation tool, do not pretend assets were
-produced. Describe what is needed and proceed with licensed existing files
-or honest placeholders.
-
-## Licenses
+Choose media the product can actually supply. See
+[visual-craft.md](visual-craft.md) for crop, diagrams, and captions.
 
 Prefer assets already in the project with a known right to use. When adding
 a new external file, prefer CC0 or another license the project can keep, and
-record the license next to the file (comment, README note, or design notes).
-Do not copy a competitor's layout, brand, or images. Pull abstract
-principles from references, then apply them to this content.
+record the license next to the file. Do not copy a competitor's layout,
+brand, or images.
+
+Do not invent screenshots, customer faces, logos, or metrics. If the host
+has no image-generation tool, do not pretend assets were produced.
 
 ## Decision examples
 
@@ -92,3 +158,9 @@ actions. A new Careers section should reuse those roles. Introducing a
 separate "modern" purple and a geometric display face would look like a
 second product. Hierarchy can still change: job posts as a list with
 location and type, not a marketing grid of perks.
+
+### Blank fixture, DESIGN
+
+Ada's start files use Arial and a navy hero. That is a leftover, not a
+brand. You may choose a reading serif for the memoir and a mono for tool
+ids, as long as `Kılıç` stays correctly spelled and glyphs exist.

@@ -6,9 +6,10 @@ package.
 
 The previous product gave agents packs, palettes, fonts, and layout recipes.
 That process could run, but brands often collapsed onto the same few looks.
-This skill instead teaches a workflow: extract context, set hierarchy, form
-a concrete thesis, decide axes independently, implement in the current
-stack, and review honestly.
+This skill instead teaches a workflow: extract context, set hierarchy, look
+at a few visible references when tools allow, form a concrete thesis,
+finish a real slice of craft, implement in the current stack, and review
+honestly on two ledgers (function vs visual craft).
 
 ## What we inspected
 

@@ -87,31 +87,60 @@ npx skills add C:\path\to\art-director-skills --skill art-director --agent codex
 Do not pass both `--agent cursor` and `--agent codex` if you are trying to
 avoid two copies. Cursor already reads `.agents/skills/` in many setups.
 
-## CLI from GitHub (after the repo is public)
+## CLI from GitHub
 
-Planned form, **not** valid until `akifsen/art-director-skills` exists and
-you choose to install from the network:
+This repository is public at `akifsen/art-director-skills`. Network install
+is optional; manual copy still works offline.
 
 ```sh
 npx skills add akifsen/art-director-skills --skill art-director --agent cursor --copy
 ```
 
-That command must not be treated as a working public install before publish.
+Whether a given machine can reach GitHub is an environment fact, not a
+skill runtime requirement.
 
 ### Pinning a release
 
 In this CLI, `owner/repo@skill-name` is a **skill filter**, not a version.
-Do not write `akifsen/art-director-skills@v0.1.0` expecting a tag.
+Do not write `akifsen/art-director-skills@v0.2.0` expecting a tag.
 
 Documented pin: a GitHub tree URL whose path segment is the branch or tag.
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.1.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.2.0 --skill art-director --agent cursor --copy
 ```
 
 Use a real tag after it exists. Prefer the tag or commit published in
 [CHANGELOG.md](../CHANGELOG.md). A release archive of `skills/art-director/`
 can be copied manually the same way as the offline folder.
+
+## Update an older copy
+
+v0.2.0 adds files under `references/` (including `studies/`). Merging by
+hand and leaving the old `SKILL.md` is how a host keeps producing skeleton
+pages while you think you upgraded.
+
+Replace the whole `art-director` directory. Keep the folder name
+`art-director`. On Windows prefer `Copy-Item -LiteralPath` (see above).
+
+Project copy:
+
+```powershell
+Copy-Item -Recurse -Force path\to\art-director-skills\skills\art-director .agents\skills\art-director
+```
+
+If you installed with the CLI:
+
+```sh
+npx skills add akifsen/art-director-skills --skill art-director --agent cursor --copy --yes
+```
+
+or, from a local clone of the new tag, the same `npx skills add <path>`
+form as install. Then confirm the copied `SKILL.md` metadata version is
+`0.2.0` and that `references/studies/` exists.
+
+Do not keep a second copy in `.cursor/skills/` if `.agents/skills/` already
+has it — duplicate discovery is confusing, not "more updated."
 
 ## Update and remove
 

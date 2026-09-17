@@ -2,91 +2,140 @@
 
 This file records runs that actually happened. Missing hosts are listed as
 not run. No screenshots or transcripts are fabricated. Screenshots were
-inspected in the authoring browser; they are not stored in this repository.
+inspected in the authoring tools; they are not stored in this repository.
 
-## Environment (authoring session)
+Historical **v0.1.0** rows below are copied from the first public release
+record. They are not re-labeled as v0.2.0 DESIGN evidence.
+
+---
+
+## Historical — skill v0.1.0 (authoring of first public release)
 
 - Date: 2026-09-17
-- Workspace: `C:\Users\lenovo\devel\art-director-skills` (new project; MCP
-  repo was not modified)
-- Host: Cursor agent (Cursor Grok 4.6) applying the skill text from
+- Workspace then: `C:\Users\lenovo\devel\art-director-skills`
+- Host: Cursor agent (Cursor Grok 4.6) applying skill text from
   `skills/art-director/`
-- Skill files loaded: `SKILL.md`; `responsive-interaction.md` for case 06;
-  `implementation.md` and `typography-color-assets.md` for case 05;
-  `visual-review.md` and `content-and-composition.md` for case 01 REVIEW
-- Skill git commit: see the first tagged commit on `v0.1.0` after publish
+- Skill git commit: `e1e59710fb842c2dd20b185c9695186cd8693119` (`v0.1.0`)
 - Repeats: none (n = 1)
-- Maintainer Node: v24.13.0 (not a skill runtime requirement)
-- Isolated work: `evals/runs/` (gitignored)
+- Full DESIGN cases 01–04: **not run** in that session
+- Without-skill arm: **not run**
+- Ran: 05-branded-section (scoped), 06-mobile-nav (REFINE), 01 as REVIEW
+  (source only)
 
-`SKILL.md` size in this session: **183 lines**, 7709 characters, description
-550 characters (under 1024). Rough body size is well under the 5000-token
-guidance.
+See the v0.1.0 table in git history if you need the original wording. Do
+not treat those scoped jobs as full-page craft proof.
 
-## Layer A — structure
+---
 
-`node tests/run.mjs` passed:
+## This session — 2026-09-17 (v0.2.0 working tree)
 
-- Frontmatter `name`/`description`, directory match, relative links
-- Skill copy under `art-yönetmen kopya\art-director` via PowerShell
-  (`fs.cpSync` on this Windows Node build did not copy into that Unicode
-  path and did not throw; documented in `docs/installation.md`)
-- Trigger fixtures in `tests/fixtures/triggers.json`
+- Workspace: `C:\Users\akifsen\devel_ext\art-director-skills`
+- Host: Cursor agent (Cursor Grok 4.6)
+- Baseline pin: tag `v0.1.0` / commit `e1e59710fb842c2dd20b185c9695186cd8693119`
+  copied to `evals/runs/snapshots/v0.1.0/` (gitignored)
+- New skill: working tree `skills/art-director/` metadata **0.2.0** (commit
+  recorded when this change is tagged)
+- Maintainer Node: v22.20.0 (not a skill runtime)
+- Isolated work: `%TEMP%\ad-eval-v010` (old skill) and `%TEMP%\ad-eval-v020`
+  (new skill). Parent “improve the skill” prompt was not given to those
+  subagents.
+- Visual inspection: author looked at Chrome headless PNGs at ~1440×900 and
+  ~390×844. Not blind. n = 1 per arm. Not a generalization.
 
-## Layer B — trigger fixtures
+`SKILL.md` this session: **~248–251 lines**, description 627 characters
+(under 1024). Body is over the 5000-token *guidance* if a host counts
+loosely; it is under the 500-line spec cap. Detail lives in references.
 
-Deterministic classifier in `tests/run.mjs` matched all seven prompts
-(DESIGN, redesign, mobile menu REFINE, read-only REVIEW, SQL negative,
-deploy negative, scoped pricing REFINE).
+### Layer A — structure
 
-This is **not** a Cursor or Codex invocation log.
+`node tests/run.mjs` passed after the v0.2.0 edits:
 
-## Layer C — outcome fixtures
+- Frontmatter, portable links, studies present
+- PowerShell copy into `art-yönetmen kopya\art-director`
+- Fixture keyword heuristic (renamed; **not** host invocation)
+- Case `07-missing-css` present
+- `node tooling/pack-skill.mjs` produced `dist/art-director-skill.zip`
+  including `references/studies/*`
 
-| Case | Mode | Run? | Files changed | Visual inspection | Notes |
-|---|---|---|---|---|---|
-| 01-creative-studio | DESIGN | **not run** | — | — | Fixture only |
-| 02-dev-portfolio | DESIGN | **not run** | — | — | Fixture only |
-| 03-dashboard | DESIGN | **not run** | — | — | Fixture only |
-| 04-publication | DESIGN | **not run** | — | — | Fixture only |
-| 05-branded-section | scoped DESIGN | **yes** (n=1) | `careers.html`, `styles.css` (job list + wordmark color) | Browser at `http://127.0.0.1:5188/05-branded-section/careers.html` | Paper/iron/action red kept; two jobs from `jobs.json`; no invented perks. First paint showed a browser-default blue wordmark; color was set to iron and re-checked |
-| 06-mobile-nav | REFINE | **yes** (n=1) | `index.html`, `styles.css`, `nav.js` | Viewport ~390px; menu click + Escape | Brand copy/type kept. Menu is a real button, `aria-expanded` toggles, links appear above the hero, Escape collapses and leaves focus on the button |
-| 01 as REVIEW | REVIEW | **yes** (source only) | **none** in `evals/cases/01-creative-studio/start` | no browser pass | See findings below |
+### Layer B — fixture heuristic
 
-Without-skill comparison arm: **not run**. Do not generalize from these
-with-skill passes.
+Same seven prompts as v0.1.0. Keyword classifier matched. This is still
+**not** a Cursor/Codex selection log.
 
-### Subjective rubric (n=1, author is not blind)
+### Layer C — DESIGN comparison (01, 02, 03)
 
-**06-mobile-nav:** hierarchy n/a (nav-only); context fit 2; distinctiveness
-n/a; content fidelity 2; small-screen usability 2 after browser check;
-brand consistency 2. Process: REFINE respected. Technical: button/expanded/
-Escape observed. Visual: menu stacks above the hero; last link sits at the
-hero edge (acceptable, not a polish pass).
+Matching conditions: same model family (Cursor Grok 4.6), same briefs and
+start files, Chrome available, isolated workdirs. Old arm loaded **only**
+the v0.1.0 snapshot directory. New arm loaded **only**
+`skills/art-director/` (v0.2.0 tree). Natural IDE discovery was **not**
+tested (skill text was handed to subagents).
 
-**05-branded-section:** hierarchy 2 for a jobs list; context fit 2;
-distinctiveness 1 (plain list, appropriate); content fidelity 2; mobile
-usability unverified at a dedicated phone width after the wordmark fix
-(page was viewed in the same 390px session); brand consistency 2 after the
-wordmark color fix.
+| Case | Old skill (v0.1.0 snapshot) | New skill (v0.2.0 tree) |
+|---|---|---|
+| 01-creative-studio | Isolated subagent. Installation-first poster: Palatino “Sodium Vault” on near-black, gold rail, metadata column. Hierarchy **pass**. Proof object **missing**. Author inspected desktop+mobile PNGs. | Isolated subagent. Same hierarchy plus a labeled **section diagram** of hanging sodium lamps (caption: not a photograph). Mobile stacks title then diagram. **Invented workshop dates** (3 / 31 October) — Gate A content miss; skill text was tightened after this. Desktop lede clipped in 1440×900. |
+| 02-dev-portfolio | Isolated subagent. Memoir-first paper page, tools as a flat list, `Kılıç` intact. Author inspected. | Isolated subagent. Memoir title with designed line breaks; tools **grouped by problem** (inspection / maps / spreadsheets). Still paper/serif, but not the same object as 01. |
+| 03-dashboard | Isolated subagent. Working dispatch board: overdue words, berth chips, mobile row cards, `board.js`. Author inspected. | Isolated subagent. Still a board, not a landing: radio berth list, selected row, overdue flags. Craft similar in kind to the old arm; not a night-and-day win. |
 
-**01 REVIEW findings (read-only):** the first viewport restates the studio
-name with generic “premium modern” copy. Three equal cards treat unlike
-offerings as SKUs. Brief facts (Sodium Vault, dates, appointment, workshop
-seats unknown) are absent from the HTML. Recommendation: lead with the
-installation as proof. No files in the case `start/` tree were edited.
+**Same-session demo (not isolated):** `%TEMP%\ad-eval-v020-demo\01-creative-studio`
+was designed in the parent session after seeing the v0.1.0 poster. Concrete
+canvas + Unit B plan. Labeled **demo**. First mobile pass clipped the nav
+and said “on the right”; one polish pass fixed that. Used to revise
+`responsive-interaction.md`.
 
-## Client discovery
+**Cross-brief signal (eval set only, names/accents stripped):** 01 is a
+spatial stage, 02 is a reading column + index, 03 is a filter+table. They
+did not collapse to one section recipe. Structural similarity of 03 old vs
+new is expected (same task).
+
+Without-skill arm: **not run**. Do not generalize.
+
+### Gate notes (author, not blind)
+
+**01 old — Gate A** pass (CSS loaded, facts present, unknown seats honest).
+**Gate B** hierarchy 2; finished composition 1 (poster without a stage);
+assets 0 (no diagram/photo); reference-justified 0 (no research pass in
+v0.1.0 skill).
+
+**01 new isolated — Gate A** fail on invented dates; CSS loaded. **Gate B**
+finished composition 2 (diagram is the vault); still a dark field (justified
+as sodium night, not a second SaaS kit by itself); mobile caption clips
+“SODI…”.
+
+**02 new — Gate A** pass (`Kılıç`, memoir route). **Gate B** type craft 2
+relative to the old arm’s flatter title.
+
+**03** both arms: Gate A overdue-without-color-alone pass. Gate B context
+fit 2. Distinctiveness vs a landing page 2. Old vs new craft delta is
+small.
+
+### 07-missing-css (REVIEW)
+
+Author REVIEW, read-only, Chrome 1440×900: `brand.css` missing; page renders
+as default HTML (blue link, bullets). `unused.css` not applied. Visual
+craft of unused.css **not scored**. This is the load-failure check the
+v0.1.0 evals did not have.
+
+### Regression fixtures 04, 05, 06
+
+**Not re-run** in this session. Expected files now include Gate A/B notes.
+Do not claim brand/mobile REFINE still pass until those arms run.
+
+### Client discovery
 
 | Check | Result |
 |---|---|
 | Cursor listed `/art-director` from this repo in Customize | **not tested** |
-| Cursor implicit select on a natural UI prompt | **not tested** |
+| Cursor implicit select | **not tested** |
 | Codex `$art-director` | **not tested** |
-| `npx skills add <local-path> --skill art-director --agent cursor --copy --yes` | **passed** into a temp project `.agents/skills/art-director` (telemetry opted out; `CI=true`; no `--global`) |
-| Duplicate `.cursor/skills` copy | **not created** by that CLI run |
-| GitHub install | filled after publish, if publish succeeds |
+| Isolated `npx skills add` (v0.1.0 session) | passed then; **not re-run** here |
+| GitHub install from the public repo | **not re-run** this session |
 
-## Old product
+### Old product
 
 No files in `art-director-mcp` were modified. npm dist-tags were not changed.
+
+### Publish
+
+`gh` was not on PATH on this machine. Git tag `v0.2.0` should be created
+from the commit that lands these files. Do not treat this RESULTS file as
+a release.

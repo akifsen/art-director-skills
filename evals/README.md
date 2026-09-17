@@ -1,20 +1,26 @@
 # Eval method
 
 Evals here follow the pattern in
+https://agentskills.io/skill-creation/evaluating-skills and
 https://developers.openai.com/blog/eval-skills: a prompt, a captured run,
 a small set of checks, and a score you can compare. They are not a quality
-guarantee.
+guarantee. One run is a first signal, not a generalization.
 
 ## Layers
 
 1. **Structure** — `npm test` in this repo (frontmatter, links, portable
-   paths, skill self-containment). No host model required.
-2. **Trigger / scope** — prompts in `tests/fixtures/triggers.json`. These
-   check that SKILL.md encodes the documented mode rules. They are not a
-   Cursor or Codex invocation log.
+   paths, skill self-containment, studies copied). No host model required.
+2. **Fixture heuristic** — prompts in `tests/fixtures/triggers.json`. These
+   check that SKILL.md still encodes the documented mode words. They are
+   **not** a Cursor or Codex invocation log and not proof the host selected
+   the skill.
 3. **Outcome** — cases under `evals/cases/`. Copy a case into an isolated
    work directory. Do not edit customer sites. Do not commit screenshots or
    run logs.
+
+Pin the previous skill with git (`v0.1.0`) or a copied snapshot under
+`evals/runs/snapshots/` (gitignored). Do not load new reference files into
+an old-skill arm.
 
 ## Cases
 
@@ -26,31 +32,30 @@ guarantee.
 | `04-publication` | Long-form reading | DESIGN |
 | `05-branded-section` | Strong existing brand, new section | REFINE / DESIGN of one route |
 | `06-mobile-nav` | Navigation only | REFINE |
+| `07-missing-css` | Stylesheet 404 | REVIEW |
 
-Each case has a `brief.md`, a `start/` tree, and `expected.md` (scope, not
-a pixel template).
+Each case has a `brief.md`, a `start/` tree, and `expected.md` (scope plus
+Gate A / Gate B, not a pixel template).
 
-## Rubric (subjective, scored separately)
+Primary comparison: 01, 02, and 03 on the **same** model, brief, start
+files, tools, and budget — old snapshot vs current skill, clean sessions.
+05 and 06 stay as regression for brand and mobile REFINE. 07 checks that
+missing CSS is not scored as finished design.
 
-Score 0–2 on each axis. Do not average them into a fake overall quality
-percent. See [rubric.md](rubric.md).
+## Rubric (subjective, two gates)
 
-- Visual hierarchy
-- Context fit
-- Distinctiveness
-- Content fidelity
-- Small-screen task usability
-- Existing-brand consistency (especially case 05 and 06)
+See [rubric.md](rubric.md). Gate A is functional/accessible/semantic
+(including CSS/font load). Gate B is visual craft. Do not average them
+into a fake overall quality percent.
 
-Technical checks (overflow, lint, automated a11y) are recorded on another
-line. They do not prove better design.
+## With vs without / old vs new
 
-## With vs without the skill
+Use the **same** model, brief, starting files, and tool access. Isolate
+from the parent "improve this skill" prompt. Record the skill path and
+commit. If you cannot run an arm, say so — do not backfill.
 
-Use the **same** model, brief, starting files, and tool access. Run once
-without attaching this skill, once with `$art-director` / `/art-director`.
-Compare with the rubric. One successful with-skill run is not a general
-result. If you cannot run the without-skill arm, say so.
+Natural IDE discovery and "here is the skill text" are different tests;
+label which one you ran.
 
 ## How to run a case
 
@@ -63,17 +68,29 @@ Copy-Item evals\cases\06-mobile-nav\brief.md $work
 # Attach art-director explicitly. Record model, skill commit, files read.
 ```
 
+Optional headless screenshot (Chrome on this authoring machine) after the
+agent finishes:
+
+```powershell
+$chrome = "C:\Program Files\Google\Chrome\Application\chrome.exe"
+$html = (Resolve-Path "$work\index.html").Path
+$uri = ([Uri]$html).AbsoluteUri
+$png = "$work\desktop.png" -replace '\\','/'
+& $chrome --headless=new --allow-file-access-from-files --window-size=1440,900 "--screenshot=$png" $uri
+```
+
 Record in `evals/runs/` (gitignored):
 
 - Date, host, model name/version if known
-- Skill git commit
+- Skill git commit and the real directory that was loaded
 - Which skill files were loaded
 - Mode the agent chose
 - Files changed (or none, for REVIEW)
-- Browser/visual inspection: done / not done / unavailable
-- Rubric notes
+- Browser/visual inspection: done / not done / unavailable; who looked
+- Rubric notes for Gate A and Gate B
 
 ## What we actually ran
 
-See [RESULTS.md](RESULTS.md). Unrun hosts are listed as unrun. Do not
-backfill transcripts or screenshots.
+See [RESULTS.md](RESULTS.md) and [BASELINE.md](BASELINE.md). Unrun hosts
+are listed as unrun. Do not backfill transcripts or screenshots. Do not
+rewrite v0.1.0 rows as if they were v0.2.0 DESIGN runs.

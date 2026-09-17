@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mira Chen — archive reading (study)</title>
+  <style>
+    :root {
+      --paper: #f6f1e8;
+      --ink: #1c1917;
+      --rule: #d9d0c3;
+      --play: #9b2d1f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-monospace, Consolas, "Cascadia Mono", monospace;
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+    a { color: var(--ink); }
+    a:focus-visible { outline: 2px solid var(--play); outline-offset: 2px; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .name {
+      font-family: Georgia, serif;
+      font-size: 1.15rem;
+      letter-spacing: 0;
+    }
+    main { padding: 1.25rem; }
+    h1 {
+      margin: 0 0 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th, td {
+      text-align: left;
+      padding: 0.65rem 0.4rem;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: baseline;
+    }
+    th {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #5c564e;
+      font-weight: 600;
+    }
+    .title { font-family: Georgia, serif; font-size: 1.05rem; }
+    .now td { background: #efe6d8; }
+    .dot {
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.5rem;
+      margin-right: 0.45rem;
+      background: var(--play);
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+    footer {
+      padding: 1.25rem;
+      font-size: 0.85rem;
+      color: #5c564e;
+    }
+    @media (max-width: 640px) {
+      .hide-sm { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="name">Mira Chen</span>
+    <a href="mailto:mira@fieldcut.example">mira@fieldcut.example</a>
+  </header>
+  <main>
+    <h1>Field catalog</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Cat</th>
+          <th>Title</th>
+          <th>Dur</th>
+          <th class="hide-sm">Place / date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="now">
+          <td><span class="dot" aria-hidden="true"></span>FC-19</td>
+          <td class="title">Yard at 04:10</td>
+          <td>18:00</td>
+          <td class="hide-sm">Under the overpass · 2 Aug 2026</td>
+        </tr>
+        <tr>
+          <td>FC-18</td>
+          <td class="title">Ferry wake</td>
+          <td>11:00</td>
+          <td class="hide-sm">Pier ladder · 14 Jun 2026</td>
+        </tr>
+        <tr>
+          <td>FC-17</td>
+          <td class="title">Boiler room</td>
+          <td>23:00</td>
+          <td class="hide-sm">Plant B · 9 Mar 2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <footer>
+    Lathe-cut 7-inch of “Yard at 04:10”: 14 copies remain. Email for a copy.
+    Playing mark denotes the current tape, not a streaming widget.
+  </footer>
+</body>
+</html>

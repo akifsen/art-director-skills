@@ -9,7 +9,7 @@ List, briefly:
 
 - Primary visitor task
 - Real content you must keep, including awkward or uneven items
-- Brand materials, tokens, and components already in force
+- Brand materials that are *in force* (see Preserve vs replace)
 - Technical limits: framework, styling system, routing, SSR, i18n, assets
 
 The distinctive fact is usually in the content, not in a mood word. A studio
@@ -23,13 +23,21 @@ reopen a bake-off.
 
 Write four answers in the project's language, short enough to scan:
 
-1. First look: what occupies the opening viewport, and why.
+1. First look: what occupies the opening viewport, in what material
+   (type, crop, surface)—and why that is finished, not a box to fill later.
 2. Distinctive material: the actual artifact, data, voice, or proof.
-3. Support: how type, grouping, imagery, and rhythm carry that material.
-4. Small screen: what is reordered, deferred, or disclosed.
+3. Support: how type, grouping, imagery, surfaces, and rhythm carry it.
+4. Small screen: what is reordered, deferred, cropped, or disclosed.
 
 Reject a thesis that would still fit any other product after swapping the
 name. "Clean layout, strong type, plenty of whitespace" is not a thesis.
+"Navy accent, Inter, three cards" is a kit, not a thesis.
+
+**Gotcha:** the installation name can dominate the first viewport while the
+*space* is missing. A gold rail and a Palatino lockup on near-black is a
+poster. Finish the vault: a sodium field, a warehouse plan, a crop, a
+caption — something a visitor could point at. Do not "fix" this by adding
+01/02/03 under the poster.
 
 ## Two directions, not a catalog
 
@@ -41,18 +49,32 @@ Useful contrasts are structural, not decorative:
 - Proof-first vs narrative-first
 - Index of work vs one featured piece plus a list
 - Tool density vs guided explanation
+- Typographic poster vs object/media stage
 
 Do not generate three page mockups, six palettes, or a pack matrix. Do not
-force asymmetry, a split hero, or a three-card row because they are common.
+force asymmetry, a split hero, a giant display word, a gradient, or a
+three-card row because they are common — including as *anti*-patterns you
+then invert the same way every time.
 
 ## Preserve vs replace
 
-Keep unless the user replaces them:
+**Keep** unless the user replaces them:
 
 - Real copy, prices, names, dates, and claims
 - Existing routes and information architecture
-- Established brand color, type, and logo usage
+- A real brand system: documented tokens, logo usage, chosen faces, a
+  palette the product already ships
 - Components that already encode the product
+
+**Not a brand system** (safe to replace on DESIGN / explicit redesign):
+
+- Starter-kit or framework demo look
+- Default `system-ui`, Arial, Times, or Impact left behind because "fonts
+  were already there"
+- Temporary gray boxes, "lorem" bands, or a theme the user already rejected
+- Equal dummy cards that only exist to look like a landing page
+
+On redesign: keep function and content; you may change visual decisions.
 
 Replace when they block the thesis: generic stock sections, invented social
 proof, decorative assets with no license, and layout that gives every block
@@ -67,8 +89,10 @@ equipment. Two directions: (1) three equal service cards under a mood hero;
 (2) one current installation as the opening proof, with photography and
 rental as secondary paths.
 
-Choose (2). The offerings are not interchangeable products. Equal cards hide
-the strongest artifact and imply a sameness the studio does not have.
+Choose (2) when the live installation is the distinctive artifact. Finish
+it as a composed stage (crop, caption, type), not as a taller card. Do not
+turn every unlike-offering brief into a numbered list — a media-led stage
+and a compact timetable can sit in the same page with different jobs.
 
 ### Ops tool used daily
 
@@ -76,5 +100,17 @@ A dispatch board shows open jobs, SLA risk, and assignee load. Two
 directions: (1) a marketing landing with a product screenshot in the hero;
 (2) a working surface that leads with filters, risk, and the job table.
 
-Choose (2). The primary task is retrieval and action, not persuasion. A hero
-that restates the product name costs a viewport the operator needs.
+Choose (2). The primary task is retrieval and action. Finish the table:
+row density, overdue without color alone, a filter that actually narrows,
+focus on the active row. A restyled marketing shell around the same `<table>`
+is still the wrong object.
+
+### Personal site with one long text
+
+A developer has three small tools and a 4,000-word memoir. Two directions:
+(1) a photo-less "hi I'm a developer" hero and a tile grid; (2) the memoir's
+opening argument as the first read, tools as a compact index grouped by
+problem.
+
+Choose (2) when the memoir is the distinctive work. Type and measure do the
+craft; do not invent a headshot box to look complete.

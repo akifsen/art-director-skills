@@ -54,7 +54,7 @@ https://cursor.com/docs/reference/plugins describes plugins that bundle
 skills via `.cursor-plugin/plugin.json` or Agent Plugins `plugin.json`, and
 multi-plugin repos via `.cursor-plugin/marketplace.json`. Public listing
 goes through Cursor review (`cursor.com/marketplace/publish`). This repo
-does not ship those manifests in v0.1.0 and does not claim marketplace
+does not ship those manifests in v0.2.0 and does not claim marketplace
 visibility.
 
 ## Codex / ChatGPT skills

@@ -9,7 +9,8 @@ Replace every section with project facts. Do not keep these sample words.
 ## Keep
 
 - Existing routes, real copy, and current framework
-- Brand colors and type already in use (list them)
+- Brand in force (tokens, faces, logo). Note leftovers you refused to treat
+  as brand (starter fonts, gray boxes)
 
 ## Content priority
 
@@ -20,24 +21,37 @@ Replace every section with project facts. Do not keep these sample words.
 
 ## Visual thesis
 
-- First look:
+- First look (finished material, not a box to fill):
 - Distinctive material:
-- How type, grouping, and media support it:
+- How type, grouping, surfaces, and media support it:
 - Small screen:
+
+## Visual research
+
+Live web looked at? yes / no / tools missing
+
+For each source you actually saw:
+
+- URL:
+- Observation date:
+- Screen:
+- Transferable principle:
+- Do not copy:
 
 ## Type and color roles
 
-- Display / heading / body / meta:
-- Surface, text, accent, status:
+- Display / heading / body / meta (character, not only family names):
+- Canvas, raised, brand field, text, hairline, interactive, status:
 
 ## Mobile
 
 - First content:
 - Navigation behavior:
-- What is disclosed or deferred:
+- Crop / disclosure:
 
 ## Verification
 
+- Stylesheet and font load:
 - Technical checks run:
-- Visual inspection (viewport, states, tool used):
+- Visual inspection (who, viewport, states, tool):
 - Not verified:

@@ -34,7 +34,12 @@ export function parseFrontmatter(text) {
     }
     const kv = line.match(/^([A-Za-z0-9_-]+):\s*(.*)$/);
     if (!kv) {
-      if (line.startsWith("  ") && key === "metadata") continue;
+      const nested = line.match(/^\s+([A-Za-z0-9_-]+):\s*(.*)$/);
+      if (nested && (key === "metadata" || data.metadata)) {
+        data.metadata = data.metadata || {};
+        data.metadata[nested[1]] = nested[2].replace(/^"|"$/g, "");
+        continue;
+      }
       if (!line.trim()) continue;
       fail(`Unsupported frontmatter line: ${line}`);
     }
@@ -125,11 +130,25 @@ export function validateSkill(root = skillRoot) {
 
   const required = [
     "references/design-method.md",
+    "references/visual-research.md",
     "references/content-and-composition.md",
     "references/typography-color-assets.md",
+    "references/visual-craft.md",
     "references/responsive-interaction.md",
+    "references/polish-pass.md",
     "references/implementation.md",
     "references/visual-review.md",
+    "references/studies/wireframe-to-finish.md",
+    "references/studies/wireframe-to-finish.skeleton.html",
+    "references/studies/wireframe-to-finish.finished.html",
+    "references/studies/two-readings.md",
+    "references/studies/two-readings.archive.html",
+    "references/studies/two-readings.object.html",
+    "references/studies/minimal-vs-unfinished.md",
+    "references/studies/minimal-vs-unfinished.quiet.html",
+    "references/studies/minimal-vs-unfinished.unfinished.html",
+    "references/studies/media-in-composition.md",
+    "references/studies/media-in-composition.html",
     "assets/design-notes.example.md"
   ];
   for (const rel of required) {

@@ -17,22 +17,30 @@ Use it when the work is a UI: a new page, a stated redesign, a bounded fix
 
 The skill tells the host to:
 
-1. Read the current stack, content, and what must not change
+1. Read the current stack, content, and what must not change — including
+   the difference between a real brand system and starter defaults
 2. Give the real content a hierarchy (lead, proof, support, action)
-3. Write a short visual thesis in concrete terms, not mood adjectives
-4. Decide composition, type, color, imagery, and interaction separately
-5. Edit real files when implementation was requested
-6. Separate visual inspection from technical checks, and say when a check
-   could not be done
+3. On broad DESIGN, look at a few current references *if the host can see
+   pages*; otherwise use the studies in the skill
+4. Write a short visual thesis in concrete terms, not mood adjectives
+5. Finish a representative slice (type, surfaces, imagery, interaction),
+   then extend that language through the requested scope
+6. Edit real files when implementation was requested
+7. Keep functional/accessible checks separate from visual craft, and say
+   when a check could not be done
 
 It should stay out of backend, SQL, migrations, and deploy work unless the
 user also asked for interface changes.
+
+Color choice is not the whole design. A first skeleton is not the delivery
+unless the user asked for a wireframe. Intentional minimalism is allowed;
+unstyled leftovers are not.
 
 ## What it is not
 
 - Not `@akifsen/art-director-mcp` and not a new version of that package
 - Not a catalog of ready-made sites
-- Not a guarantee of taste; eval scores are subjective
+- Not a guarantee of taste; eval scores are subjective and n=1 unless said
 - Not a new browser, vision model, or permission set
 - Not tested as a Cursor Marketplace plugin in this release
 
@@ -47,7 +55,7 @@ $env:DISABLE_TELEMETRY = "1"
 npx skills add C:\path\to\art-director-skills --skill art-director --agent cursor --copy --yes
 ```
 
-Planned GitHub form, only after this repository is public:
+From GitHub (this repository is public):
 
 ```sh
 npx skills add akifsen/art-director-skills --skill art-director --agent cursor --copy
@@ -57,8 +65,11 @@ Pin a tag with a tree URL, not `owner/repo@v0.1.0` (`@` is a skill filter in
 this CLI):
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.1.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.2.0 --skill art-director --agent cursor --copy
 ```
+
+If you already installed **v0.1.0**, replace the `art-director` folder rather
+than mixing files. See [docs/installation.md](docs/installation.md#update-an-older-copy).
 
 Telemetry on `npx skills` belongs to that CLI. Opt out with
 `DISABLE_TELEMETRY=1` or `DO_NOT_TRACK=1`. This skill has no install
@@ -74,8 +85,8 @@ Modes (same skill, not extra commands):
 
 | Mode | User intent | Agent default |
 |---|---|---|
-| DESIGN | New UI or explicit redesign | Thesis, then implementation |
-| REFINE | Named part of an existing UI | Change only that part |
+| DESIGN | New UI or explicit redesign | Thesis, then finished implementation |
+| REFINE | Named part of an existing UI | Change only that part; still finish it |
 | REVIEW | Inspect / critique | Read-only unless asked to patch |
 
 ## Repository layout
@@ -95,7 +106,8 @@ Skill users do not need `npm install`. `npm test` is for maintainers.
 See [docs/compatibility.md](docs/compatibility.md) and
 [evals/RESULTS.md](evals/RESULTS.md). File tests are not IDE discovery.
 Discovery is not a real-task run. Visual review that did not happen is
-reported as not done.
+reported as not done. Keyword fixtures in `tests/run.mjs` are not proof
+that a host selected this skill.
 
 ## License
 
