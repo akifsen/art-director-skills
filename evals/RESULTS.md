@@ -37,8 +37,8 @@ not treat those scoped jobs as full-page craft proof.
 - Maintainer Node: v22.20.0 (not a skill runtime)
 - Isolated work: `%TEMP%\ad-eval-v010` (old skill) and `%TEMP%\ad-eval-v020`
   (new skill). Parent “improve the skill” prompt was not given to those
-  subagents. Case 02 new arm later wrote `RUN.md`; cases 01 and 03 new
-  arms had HTML/CSS inspected here before their `RUN.md` files existed.
+  subagents. Cases 02 and 03 new arms later wrote `RUN.md`; case 01 new
+  arm had HTML/CSS inspected here before a `RUN.md` existed.
 - Visual inspection: author looked at Chrome headless PNGs at ~1440×900 and
   ~390×844. Not blind. n = 1 per arm. Not a generalization.
 
@@ -74,7 +74,7 @@ tested (skill text was handed to subagents).
 |---|---|---|
 | 01-creative-studio | Isolated subagent. Installation-first poster: Palatino “Sodium Vault” on near-black, gold rail, metadata column. Hierarchy **pass**. Proof object **missing**. Author inspected desktop+mobile PNGs. | Isolated subagent. Same hierarchy plus a labeled **section diagram** of hanging sodium lamps (caption: not a photograph). Mobile stacks title then diagram. **Invented workshop dates** (3 / 31 October) — Gate A content miss; skill text was tightened after this. Desktop lede clipped in 1440×900. |
 | 02-dev-portfolio | Isolated subagent. Memoir-first paper page, tools as a flat list, `Kılıç` intact. Author inspected. | Isolated subagent **completed with `RUN.md`**. Memoir title as a two-line Palatino lockup; tools grouped by problem. Live web research **not claimed** (studies fallback). Load check: `styles.css` `cssRules.length` 34; computed face Palatino Linotype; canvas `#efe9dc`. `--headless=new` 390 crop was a tooling miss; device-metrics recapture used. |
-| 03-dashboard | Isolated subagent. Working dispatch board: overdue words, berth chips, mobile row cards, `board.js`. Author inspected. | Isolated subagent. Still a board, not a landing: radio berth list, selected row, overdue flags. Craft similar in kind to the old arm; not a night-and-day win. |
+| 03-dashboard | Isolated subagent. Working dispatch board: overdue words, berth chips, mobile row cards, `board.js`. Author inspected. | Isolated subagent **completed with `RUN.md`**. Still a board, not a landing: enamel chrome, berth radios, overdue as word + docket + left rule. CSS load checked via screenshot pixels (`#1C241F`). No live research. Craft similar in kind to the old arm; not a night-and-day win. Headless `100vh` left a canvas strip in the 1440 PNG (capture quirk). |
 
 **Same-session demo (not isolated):** `%TEMP%\ad-eval-v020-demo\01-creative-studio`
 was designed in the parent session after seeing the v0.1.0 poster. Concrete
@@ -105,9 +105,10 @@ as sodium night, not a second SaaS kit by itself); mobile caption clips
 loaded). **Gate B** type craft 2 relative to the old arm’s flatter title;
 reference axis is studies-fallback, not a live site pass.
 
-**03** both arms: Gate A overdue-without-color-alone pass. Gate B context
-fit 2. Distinctiveness vs a landing page 2. Old vs new craft delta is
-small.
+**03** both arms: Gate A overdue-without-color-alone pass; new arm also
+logged a pixel load check (`#1C241F` enamel, not unstyled white). Gate B
+context fit 2. Distinctiveness vs a landing page 2. Old vs new craft delta
+is small.
 
 ### 07-missing-css (REVIEW)
 
