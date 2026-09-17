@@ -1,25 +1,27 @@
 # Example — native list / detail / edit (Closeout)
 
-**When:** React Native or Expo, a small ops flow, keyboard + safe area +
-sheet. **Not:** a web CSS page, and not Expo-web-as-iOS.
+**When:** React Native or Expo. **Not:** Expo web as iOS/Android.
 
-Kitchen Closeout uses a high-contrast yellow field and condensed labels.
-Do not carry that onto a ceramics queue or a clinic desk.
+Notes live in **session state** (`session-store.js`). Restarting the app
+clears them. The success copy says that.
 
-These modules expect:
+## Run
 
-- `react-native`
-- `react-native-safe-area-context` (`SafeAreaProvider` at the root)
+This folder is source for a host React Native/Expo app. It is not a skill
+runtime.
 
-They use state-based stack navigation so the example does not invent a
-router import. In a real app, keep Expo Router or React Navigation if
-they are already there.
+Required peer packages (host project): `react`, `react-native`,
+`react-native-safe-area-context`.
 
-Device/simulator run is required before calling Gate D passed. This folder
-is source, not a device log.
+Device/simulator is required for Gate D. If none is available, leave native
+run-verification **pending**. Do not treat Expo web as the proof.
+
+Layer that always runs in this repository: Node tests on `session-store.js`
+(`npm test` / `npm run test:examples`).
 
 ## Files
 
+- [native-mobile/session-store.js](native-mobile/session-store.js)
 - [native-mobile/theme.js](native-mobile/theme.js)
 - [native-mobile/screens.js](native-mobile/screens.js)
 - [native-mobile/App.jsx](native-mobile/App.jsx)

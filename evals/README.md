@@ -41,11 +41,10 @@ an old-skill arm.
 Each case has a `brief.md`, a `start/` tree, and `expected.md` (scope plus
 gates, not a pixel template).
 
-Primary comparison for v0.3.0: 08 (themeless React) and 11 (native source)
-first, then 09 and 10. 01–03 stay as marketing/ops regressions vs the
-v0.2.0 snapshot. 05 and 06 stay as brand and web-mobile REFINE. 07 checks
-that missing CSS is not scored as finished design. Case 08 is a holdout
-brief not derived from 01–03.
+Primary comparison for v0.4.0: case **08 Tide Bindery** (holdout, not the
+Kiln Queue tutorial), then 09 and 11. Tutorial example quality is recorded
+separately from host-agent output. Do not treat a prettier Kiln Queue as
+proof that 08 improved.
 
 ## Rubric (subjective, four gates)
 

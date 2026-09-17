@@ -1,28 +1,56 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 
-export function Dialog({ title, open, onClose, children }) {
+export function Dialog({ title, description, open, onClose, children }) {
   const panel = useRef(null);
+  const titleId = useId();
+  const descId = useId();
+  const previous = useRef(null);
+
   useEffect(() => {
-    if (!open) return undefined;
-    const previously = document.activeElement;
-    panel.current?.querySelector("button, input, select, textarea")?.focus();
-    const onKey = (event) => {
-      if (event.key === "Escape") onClose();
+    const node = panel.current;
+    if (!node) return;
+    if (open) {
+      previous.current = document.activeElement;
+      if (!node.open) node.showModal();
+    } else if (node.open) {
+      node.close();
+    }
+  }, [open]);
+
+  useEffect(() => {
+    const node = panel.current;
+    if (!node) return undefined;
+    const onCancel = (event) => {
+      event.preventDefault();
+      onClose();
     };
-    document.addEventListener("keydown", onKey);
+    const onBackdrop = (event) => {
+      if (event.target === node) onClose();
+    };
+    node.addEventListener("cancel", onCancel);
+    node.addEventListener("click", onBackdrop);
     return () => {
-      document.removeEventListener("keydown", onKey);
-      previously?.focus?.();
+      node.removeEventListener("cancel", onCancel);
+      node.removeEventListener("click", onBackdrop);
     };
-  }, [open, onClose]);
-  if (!open) return null;
+  }, [onClose]);
+
+  useEffect(() => {
+    if (!open && previous.current && typeof previous.current.focus === "function") {
+      previous.current.focus();
+    }
+  }, [open]);
+
   return (
-    <div className="nd-dialog-root">
-      <div className="nd-backdrop" onClick={onClose} />
-      <div ref={panel} className="nd-dialog" role="dialog" aria-modal="true" aria-labelledby="nd-dialog-title">
-        <h2 id="nd-dialog-title">{title}</h2>
-        {children}
-      </div>
-    </div>
+    <dialog
+      ref={panel}
+      className="nd-dialog"
+      aria-labelledby={titleId}
+      aria-describedby={description ? descId : undefined}
+    >
+      <h2 id={titleId}>{title}</h2>
+      {description ? <p id={descId}>{description}</p> : null}
+      {children}
+    </dialog>
   );
 }

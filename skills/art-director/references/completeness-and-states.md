@@ -38,6 +38,17 @@ Visible actions work, or they are honestly disabled with a reason.
 Do not ship empty callbacks, decorative filters, inert tabs, fake success,
 or every link as `#` when those controls were in scope.
 
+If Save is on screen, the named record must change, then the next screen
+must show that change. “Saved on this device” is a lie for in-memory demo
+state — say “this session” (or actually persist and re-open the app).
+
+Unknown record ids are in-scope states: labeled, with a way back. Do not
+leave a blank shell or a form bound to a missing row.
+
+Complex overlays (web dialog, native sheet): use the platform primitive
+(`<dialog showModal()>`, the project’s dialog component, RN `Modal`).
+`aria-modal` on a `div` is not a focus trap.
+
 ## Data honesty
 
 If backend work is out of scope, local or mock state is allowed. Label it

@@ -8,3 +8,6 @@ Thumbs.db
 .art-director/
 .agents/
 .cursor/
+playwright-report/
+test-results/
+

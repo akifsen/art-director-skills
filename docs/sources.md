@@ -34,7 +34,11 @@ skill as a theme or a dump of vendor CSS.
 - shadcn/ui theming (semantic CSS variables, token pairs, radius scale):
   https://ui.shadcn.com/docs/theming
 - shadcn/ui docs index: https://ui.shadcn.com/docs
-- React Native Accessibility: https://reactnative.dev/docs/accessibility
+- React Native AccessibilityInfo.announceForAccessibility:
+  https://reactnative.dev/docs/accessibilityinfo
+  (re-checked 2026-09-17; there is no `accessibilityAnnounce…` view prop)
+- HTML `<dialog>` / `showModal()` (MDN, source reading 2026-09-17):
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
 - KeyboardAvoidingView: https://reactnative.dev/docs/keyboardavoidingview
 - FlatList: https://reactnative.dev/docs/flatlist
 - Expo safe areas: https://docs.expo.dev/develop/user-interface/safe-areas/

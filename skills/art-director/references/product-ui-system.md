@@ -82,7 +82,8 @@ not markup stuffed through `dangerouslySetInnerHTML`.
 1. Inventory primitives already in the repo or lockfile. Use them.
 2. If a dependency is missing and the project allows it, add **one**
    justified library (for example a focus-complete dialog), not a new
-   design system.
+   design system. Prefer the platform primitive (`<dialog showModal()>`)
+   over a `div` with `aria-modal`.
 3. Tokens → family → shell → screens.
 4. Change a token once and confirm related in-scope screens follow.
 
@@ -93,6 +94,7 @@ not markup stuffed through `dangerouslySetInnerHTML`.
 - A pretty first screen; settings/forms still browser-default
 - Skeleton “cards” with no shared type roles
 - Rewriting dialog/select/calendar as unmarked `<div>`s
+- A success toast when the record in state did not change
 
 Worked files: [examples/themeless-react.md](examples/themeless-react.md)
 (method only — do not copy that product’s look onto a different brief).

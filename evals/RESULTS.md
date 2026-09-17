@@ -4,8 +4,82 @@ This file records runs that actually happened. Missing hosts are listed as
 not run. No screenshots or transcripts are fabricated. Screenshots were
 inspected in the authoring tools; they are not stored in this repository.
 
-Historical **v0.1.0** and **v0.2.0** rows below stay as written. They are
-not re-labeled as v0.3.0 evidence.
+Historical **v0.1.0**, **v0.2.0**, and **v0.3.0** rows below stay as written.
+They are not re-labeled as v0.4.0 evidence.
+
+---
+
+## This session — 2026-09-17 (v0.4.0 working tree)
+
+- Workspace: `C:\Users\akifsen\devel_ext\art-director-skills`
+- Host: Cursor agent (Cursor Grok 4.6)
+- Baseline pin: tag `v0.3.0` / HEAD at start `b1ad5f7475d3189e3971ca6350c35b9d3d2161d1`
+- New skill metadata: **0.4.0**
+- Maintainer Node: v22.20.0 (not a skill runtime)
+- Repeats: n = 1. Author not blind.
+
+`SKILL.md` this session: **226 lines**, description **778** characters.
+
+### Finding re-check (v0.3.0 tree, then fixed)
+
+| Finding | Class |
+|---|---|
+| Closeout `save()` opened a sheet and did not write the note | **Reproduced**, then fixed (`session-store.js` + `onSave`) |
+| Nadir `save()` closed the dialog without per-row notes | **Reproduced**, then fixed (`notes-store.js`) |
+| Web dialogs were `div` + `aria-modal` without trap/inert | **Reproduced**, then fixed (`<dialog showModal()>`) |
+| Kiln `loading` started false and was unreachable | **Reproduced**, then fixed (boot loading + `?fixture=`) |
+| Unknown `#/loads/:id/hold` could render nothing | **Reproduced**, then fixed (explicit unknown states) |
+| `accessibilityAnnounceForAccessibility` as a view prop | **Reproduced** in v0.3.0 `native-mobile.md`, then rewritten to `AccessibilityInfo.announceForAccessibility` (https://reactnative.dev/docs/accessibilityinfo, 2026-09-17) |
+
+### Layer A — structure
+
+`node tests/run.mjs` passed (structure, store behavior, JSX compile).
+PowerShell copy into `art-yönetmen kopya\art-director` still includes
+`kiln-store.js`. `node tooling/pack-skill.mjs` wrote
+`dist/art-director-skill.zip`.
+
+### Tutorial apps (not host-agent proof)
+
+Kiln Queue and Nadir Desk were compiled from the skill JSX (JS-only
+transform; Vite `npm install` failed in this agent sandbox because optional
+esbuild/rollup native binaries were rolled back) and run in Chrome 1440 via
+CDP (`node evals/apps/chrome-flow.mjs`):
+
+- Kiln: empty/loading fixtures, unknown id/route, hold save onto K-214,
+  empty-reason does not open a success dialog, dialog Tab stays on the
+  single action, Escape returns to detail
+- Nadir: note binds to N-441, cancel on N-442 does not commit, return to
+  N-441 still shows the first note
+
+Author inspected PNGs of kiln list/hold/unknown and nadir list/dialog
+(1440×900). Native Closeout: store tests run-verified; device/simulator
+**pending** (`adb`/`emulator`/`expo` not on PATH). Expo web not used.
+
+### Isolated host eval (case 08 Tide Bindery)
+
+Holdout brief is independent of Kiln/Nadir/Closeout. Workdir
+`%TEMP%\ad-eval-v040-08` with a copied `art-director` skill **0.4.0**.
+Subagent [Tide Bindery DESIGN](4c60bb4c-b677-4ec8-b7b3-b599d558224e)
+received only that workdir + skill path (no parent quality brief).
+
+Observed in the TEMP tree (author read the files; did not run Vite):
+
+- New `src/ticket-store.js` + `src/ui.jsx`; `App.jsx` list/detail/hold
+- `Save hold` calls `applyHold` onto `activeId`; other tickets left alone
+- Dialog uses `<dialog showModal()>`
+- Visual tokens are flax/cloth/Literata (`--tb-*`), not Kiln oxide or Nadir navy
+- `npm install` failed (`Yallist is not a constructor`); **no browser run**
+- Structure of routes/fixtures closely follows the skill’s Kiln Queue *method*
+  (same `?fixture=` and hash-route shape). That is transferable procedure, not
+  a second kiln look — and it is a remaining risk that examples become a
+  skeleton to clone.
+
+v0.3.0 isolated 08 also had React source and a failed `npm install`. This
+arm is stronger on **named-record save and a real dialog primitive in
+source**. It is **not** proof of a prettier running UI. n=1, author not
+blind, no A/B.
+
+Cases 09/11 and 01–07: **not re-run** this session.
 
 ---
 

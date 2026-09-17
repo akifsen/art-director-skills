@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.0 — 2026-09-17
+
+Make the shipped examples tell the truth and prove it.
+
+- Save writes onto the named record (Kiln hold, Nadir note, Closeout session)
+- Success copy matches session state, not fake device storage
+- Web dialogs use `<dialog showModal()>` for focus trap and inert backdrop
+- Kiln loading/error/empty are opt-in fixtures; unknown routes have a way back
+- Node store tests plus Playwright flows on the real React apps
+- `AccessibilityInfo.announceForAccessibility` is the documented RN API
+
 ## 0.3.0 — 2026-09-17
 
 Product-complete web and native UI, without a purchased theme.

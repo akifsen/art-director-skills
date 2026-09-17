@@ -1,34 +1,43 @@
 # Example — theme-less React (Kiln Queue)
 
 **When:** a React web app with no theme pack and a list/detail/form job.
-**Not:** a look to reuse on unrelated products. Oxide, paper, and stencil
-IDs belong to *this* queue. A legal desk or a harbor board should not
-come out looking like a kiln.
+**Not:** a look to reuse on unrelated products.
 
-These files are complete enough to drop into a Vite + React app that
-already mounts `App`. They are not a skill runtime.
+## Run (this repository, maintainer)
 
-## What to copy as method
+Not a skill runtime. From the repo root after `npm install`:
 
-1. Tokens in one CSS file (`tokens.css`).
-2. A small family (`ui.jsx`) that is the only way screens draw controls.
-3. A shell + three routes: queue, load detail, log-a-hold form.
-4. States: loading, empty filter, field errors, busy submit, dialog.
+```sh
+npm run example:kiln
+```
 
-Do not paste this into a project that already has shadcn/ui or a vendor
-theme — enhance that system instead.
+Open `http://127.0.0.1:5173/`. The maintainer harness compiles the React
+source with a JS-only transform (no Vite native binaries). `npm run
+example:kiln:vite` is the Vite path used in CI after `npm install`.
 
-## Scope matrix (this example)
+Fixtures: `?fixture=loading|error|empty`.
+Holds are **session memory**. They are not a kiln controller and not disk.
+
+```sh
+npm run test:examples:compile
+npm run test:e2e:chrome
+npx playwright test tests/e2e/kiln-flow.spec.js
+```
+
+## Scope matrix
 
 | Screen | Task | Pieces | States | After | Check |
 |---|---|---|---|---|---|
-| `/` | Find a load | Shell, search, list | loading, empty | open detail | filter "cone 6", then "zzz" |
-| `/loads/:id` | Read status | Summary, action bar | missing id | Log hold / back | long title wraps |
-| `/loads/:id/hold` | Record a hold | Form, dialog | validation, busy | back to detail | submit with empty reason |
+| `#/` | Find a load | Shell, search, schedule, list | loading, empty, error+retry | open detail | `?fixture=`, filter `zzz` |
+| `#/loads/:id` | Read status | Summary, actions | unknown id | hold / list | K-999 |
+| `#/loads/:id/hold` | Record a hold | Form, native `dialog` | validation, busy, unknown id | detail shows new note | empty reason; then save |
 
 ## Files
 
+- [themeless-react/kiln-store.js](themeless-react/kiln-store.js)
 - [themeless-react/tokens.css](themeless-react/tokens.css)
 - [themeless-react/ui.jsx](themeless-react/ui.jsx)
 - [themeless-react/data.js](themeless-react/data.js)
 - [themeless-react/App.jsx](themeless-react/App.jsx)
+- [themeless-react/main.jsx](themeless-react/main.jsx)
+- [themeless-react/index.html](themeless-react/index.html)

@@ -54,8 +54,8 @@ Herkese açık depo:
 npx skills add akifsen/art-director-skills --skill art-director --agent cursor --copy
 ```
 
-Eski bir **v0.1.0** veya **v0.2.0** kopyanız varsa klasörü birleştirmeden
-değiştirin. [docs/installation.md](docs/installation.md#update-an-older-copy).
+Eski bir **v0.1.0**, **v0.2.0** veya **v0.3.0** kopyanız varsa klasörü
+birleştirmeden değiştirin. [docs/installation.md](docs/installation.md#update-an-older-copy).
 
 `npx skills` telemetrisi o CLI’ye aittir; `DISABLE_TELEMETRY=1` veya
 `DO_NOT_TRACK=1` ile kapatılır.

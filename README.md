@@ -66,11 +66,11 @@ Pin a tag with a tree URL, not `owner/repo@v0.1.0` (`@` is a skill filter in
 this CLI):
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.3.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.4.0 --skill art-director --agent cursor --copy
 ```
 
-If you already installed **v0.1.0** or **v0.2.0**, replace the `art-director`
-folder rather than mixing files. See [docs/installation.md](docs/installation.md#update-an-older-copy).
+If you already installed **v0.1.0**, **v0.2.0**, or **v0.3.0**, replace the
+`art-director` folder rather than mixing files. See [docs/installation.md](docs/installation.md#update-an-older-copy).
 
 Telemetry on `npx skills` belongs to that CLI. Opt out with
 `DISABLE_TELEMETRY=1` or `DO_NOT_TRACK=1`. This skill has no install

@@ -64,7 +64,11 @@ body.kq {
 
 .kq-main {
   padding: var(--kq-space-5);
-  max-width: 52rem;
+  max-width: 56rem;
+}
+
+.kq-main form {
+  max-width: 28rem;
 }
 
 .kq-header {
@@ -98,15 +102,25 @@ body.kq {
 
 .kq-row {
   display: grid;
-  grid-template-columns: 7rem 1fr auto;
+  grid-template-columns: 6.5rem minmax(0, 1fr) 6.5rem auto;
   gap: var(--kq-space-3);
   align-items: center;
   padding: var(--kq-space-3);
   background: var(--kq-surface);
   border: 1px solid var(--kq-line);
+  border-left: 3px solid var(--kq-steel);
   border-radius: var(--kq-radius);
   color: inherit;
   text-decoration: none;
+}
+
+.kq-cone {
+  font-family: var(--kq-mark);
+  font-size: var(--kq-meta);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--kq-muted);
+  white-space: nowrap;
 }
 
 .kq-row:hover { background: var(--kq-raised); }
@@ -178,6 +192,23 @@ body.kq {
 .field[data-invalid="true"] .field-control { border-color: var(--kq-danger); }
 .field-error { color: var(--kq-danger); font-size: var(--kq-meta); }
 
+.kq-meta { display: block; color: var(--kq-muted); font-size: var(--kq-meta); font-weight: 400; }
+
+.kq-schedule {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kq-space-2);
+  list-style: none;
+  margin: 0 0 var(--kq-space-5);
+  padding: 0;
+  font-size: var(--kq-meta);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--kq-muted);
+}
+.kq-schedule li { padding: var(--kq-space-2) var(--kq-space-3); border: 1px solid var(--kq-line); }
+.kq-schedule .is-now { background: var(--kq-steel); color: #f3efe6; border-color: var(--kq-steel); }
+
 .summary {
   background: var(--kq-surface);
   border: 1px solid var(--kq-line);
@@ -191,17 +222,21 @@ body.kq {
   gap: var(--kq-space-2);
 }
 
-.dialog-root { position: fixed; inset: 0; display: grid; place-items: center; }
-.dialog-backdrop { position: absolute; inset: 0; background: rgb(36 25 16 / 0.45); }
-.dialog {
-  position: relative;
+dialog.dialog {
   width: min(28rem, calc(100vw - 2rem));
+  max-height: min(32rem, calc(100vh - 2rem));
+  overflow: auto;
   background: var(--kq-raised);
+  color: var(--kq-ink);
   border: 4px solid var(--kq-steel);
   padding: var(--kq-space-5);
 }
+dialog.dialog::backdrop { background: rgb(36 25 16 / 0.45); }
+dialog.dialog h2 { margin-top: 0; }
 
 @media (max-width: 40rem) {
-  .kq-row { grid-template-columns: 1fr; }
+  .kq-row { grid-template-columns: 1fr auto; }
+  .kq-cone { display: none; }
   .kq-topbar { padding-inline: var(--kq-space-3); }
+  .kq-main { padding: var(--kq-space-4); }
 }

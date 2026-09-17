@@ -54,7 +54,7 @@ https://cursor.com/docs/reference/plugins describes plugins that bundle
 skills via `.cursor-plugin/plugin.json` or Agent Plugins `plugin.json`, and
 multi-plugin repos via `.cursor-plugin/marketplace.json`. Public listing
 goes through Cursor review (`cursor.com/marketplace/publish`). This repo
-does not ship those manifests in v0.3.0 and does not claim marketplace
+does not ship those manifests in v0.4.0 and does not claim marketplace
 visibility.
 
 ## Codex / ChatGPT skills
@@ -85,14 +85,14 @@ folder is universal.
 
 Host tools vary. Missing tools are reported, not simulated.
 
-## Platforms claimed in v0.3.0
+## Platforms claimed in v0.4.0
 
 | Surface | Status |
 |---|---|
 | Portable skill structure, Windows/PowerShell copy, relative links | Structure verified + install tested (repo tests) |
-| Web DESIGN/REFINE/REVIEW guidance | Used on tasks in prior evals; v0.3.0 adds product-system routing |
-| Theme-less React / shadcn-like / original template evals | Cases 08–10 exist; outcome rows only after a real run |
-| React Native / Expo **source** example + case 11 | Structure verified; **device/simulator pending** unless RESULTS says otherwise |
+| Web DESIGN/REFINE/REVIEW guidance | Used on tasks in prior evals; v0.4.0 adds honest save/dialog/state examples |
+| Theme-less React / shadcn-like / original template evals | Cases 08–10 exist; tutorial Kiln/Nadir apps compile in CI; outcome rows only after a real run |
+| React Native / Expo **source** example + case 11 | Structure + session-store tests; **device/simulator pending** unless RESULTS says otherwise |
 | Expo web as iOS/Android | Not accepted as native verification |
 | Flutter, SwiftUI, Jetpack Compose | Guide: keep the current framework; **not tested** |
 | Licensed Ecme | Not bundled; eval 10 is an original fixture labeled not Ecme |

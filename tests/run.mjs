@@ -68,7 +68,7 @@ assert(skillMd.includes("native-mobile.md"), "SKILL.md routes native work to nat
 assert(skillMd.includes("completeness-and-states.md"), "SKILL.md routes scope to completeness-and-states.md");
 assert(/finished product interface|visually finished|finished craft/.test(skillMd), "promise mentions finished craft");
 assert(!/sodium/i.test(skillMd), "main skill is not tied to a sodium/eval example");
-assert((data.metadata && data.metadata.version) === "0.3.0", `version 0.3.0 (got ${data.metadata && data.metadata.version})`);
+assert((data.metadata && data.metadata.version) === "0.4.0", `version 0.4.0 (got ${data.metadata && data.metadata.version})`);
 assert(!skillMd.includes("disable-model-invocation: true"), "implicit invocation allowed");
 assert(!/^allowed-tools:/m.test(skillMd), "no allowed-tools permission expansion");
 
@@ -87,9 +87,11 @@ assert(nativeRef.includes("accessibilityLabel"), "native guide uses RN a11y prop
 assert(nativeRef.includes("Do not sprinkle") && nativeRef.includes("aria-"), "native guide does not copy ARIA as the recipe");
 
 const nativeExample = fs.readFileSync(path.join(root, "skills", "art-director", "references", "examples", "native-mobile", "screens.js"), "utf8");
+const nativeApp = fs.readFileSync(path.join(root, "skills", "art-director", "references", "examples", "native-mobile", "App.jsx"), "utf8");
 assert(nativeExample.includes("KeyboardAvoidingView"), "native example uses KeyboardAvoidingView");
 assert(nativeExample.includes("accessibilityRole"), "native example sets accessibilityRole");
-assert(!nativeExample.includes("aria-expanded"), "native example does not use ARIA");
+assert(nativeExample.includes("AccessibilityInfo.announceForAccessibility"), "native example announces via AccessibilityInfo");
+assert(nativeApp.includes("saveNote"), "native app persists through saveNote");
 
 const themelessApp = fs.readFileSync(path.join(root, "skills", "art-director", "references", "examples", "themeless-react", "App.jsx"), "utf8");
 assert(themelessApp.includes("Log a hold") || themelessApp.includes("hold"), "themeless example has a form flow");
@@ -136,14 +138,30 @@ assert(fs.existsSync(path.join(dest, "SKILL.md")), `copied SKILL.md into ${dest}
 const copied = validateSkill(dest);
 assert(copied.problems.length === 0, copied.problems.length ? copied.problems.join("; ") : "copy under Turkish/space parent path");
 assert(
-  fs.existsSync(path.join(dest, "references", "examples", "themeless-react", "App.jsx")),
-  "copied themeless example lands in the portable skill folder"
+  fs.existsSync(path.join(dest, "references", "examples", "themeless-react", "kiln-store.js")),
+  "copied kiln-store lands in the portable skill folder"
 );
 assert(
   fs.existsSync(path.join(dest, "references", "native-mobile.md")),
   "copied native guide lands in the portable skill folder"
 );
 console.log("copied skill to", dest);
+
+const exampleTests = spawnSync(process.execPath, [path.join(root, "tests", "examples", "run.mjs")], {
+  encoding: "utf8",
+  cwd: root
+});
+process.stdout.write(exampleTests.stdout || "");
+process.stderr.write(exampleTests.stderr || "");
+assert(exampleTests.status === 0, "example behavior tests");
+
+const compileTests = spawnSync(process.execPath, [path.join(root, "tests", "examples", "compile-jsx.mjs")], {
+  encoding: "utf8",
+  cwd: root
+});
+process.stdout.write(compileTests.stdout || "");
+process.stderr.write(compileTests.stderr || "");
+assert(compileTests.status === 0, "example JSX compile checks");
 
 if (failed) {
   console.error(`\n${failed} failure(s)`);

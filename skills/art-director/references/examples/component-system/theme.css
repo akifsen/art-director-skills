@@ -38,7 +38,29 @@ body.nadir {
   padding: calc(var(--space) * 3);
   font-family: var(--font-ui);
 }
-.nd-side a { color: inherit; }
+.nd-side p:first-child {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+.nd-nav-current {
+  margin: 1.25rem 0 0;
+  padding: 0.35rem 0.5rem;
+  background: var(--sidebar-accent);
+  font-family: var(--font-ctrl);
+  font-size: 0.875rem;
+}
+.nd-toolbar h1 {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 1.85rem;
+  letter-spacing: -0.02em;
+}
+.nd-table tbody tr { cursor: pointer; }
+.nd-table tbody tr:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: -3px;
+}
 .nd-main { padding: calc(var(--space) * 4); }
 .nd-toolbar {
   display: flex;
@@ -82,17 +104,31 @@ body.nadir {
 .nd-table tbody tr[data-selected="true"] { background: var(--accent); }
 .nd-table tbody tr:hover { background: var(--muted); }
 
-.nd-dialog-root { position: fixed; inset: 0; display: grid; place-items: center; }
-.nd-backdrop { position: absolute; inset: 0; background: rgb(20 32 51 / 0.4); }
-.nd-dialog {
-  position: relative;
+.nd-kicker { margin: 0; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-foreground); }
+.nd-side-meta { font-family: var(--font-ctrl); font-size: 0.8rem; letter-spacing: 0; color: var(--sidebar-foreground); opacity: 0.75; }
+.nd-selected {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+.nd-selected p { margin: 0.35rem 0 0; color: var(--muted-foreground); }
+.nd-table-wrap { overflow: auto; }
+.nd-dialog-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+
+dialog.nd-dialog {
   width: min(26rem, calc(100vw - 1.5rem));
+  max-height: min(32rem, calc(100vh - 2rem));
+  overflow: auto;
   background: var(--card);
   color: var(--card-foreground);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.1rem;
 }
+dialog.nd-dialog::backdrop { background: rgb(20 32 51 / 0.45); }
+dialog.nd-dialog h2 { font-family: var(--font-ui); margin-top: 0; }
 
 @media (max-width: 48rem) {
   .nd-shell { grid-template-columns: 1fr; }

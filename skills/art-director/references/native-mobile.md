@@ -23,7 +23,8 @@ platform run-verification **pending**.
 Use the project’s navigator (Expo Router, React Navigation, or existing).
 
 - Stack: titles, back, and the gesture/hardware back the platform already
-  provides. Do not invent a web-style “home link” that drops history.
+  provides. On Android, `BackHandler` (or the navigator’s default) must pop
+  the in-app stack. Do not invent a web-style “home link” that drops history.
 - Tabs: selected state, labels, and a reachable first screen per tab.
 - Deep links / state restore: preserve them if they already exist; do not
   add new schemes without a request.
@@ -76,8 +77,13 @@ Follow React Native accessibility props, not ARIA:
 - `accessibilityState` (`disabled`, `selected`, `busy`, `expanded`,
   `checked`)
 - `accessibilityLabelledBy` / `nativeID` for fields
-- `accessibilityLiveRegion` (Android) / `accessibilityAnnounceForAccessibility`
-  for status that appears after an action
+- `accessibilityLiveRegion` (Android) for status that appears after an action
+- `AccessibilityInfo.announceForAccessibility(message)` after a save or
+  error the user cannot see on the focused control
+  (https://reactnative.dev/docs/accessibilityinfo)
+
+There is no announcement *prop* on the view. Call the `AccessibilityInfo`
+module method above.
 
 VoiceOver and TalkBack read native semantics. Do not sprinkle
 `aria-*` on RN components and call that done.

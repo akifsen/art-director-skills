@@ -46,7 +46,9 @@ Do:
 - Carry the same decisions through shell, header, toolbar, tables,
   forms, menus, dialogs, and in-scope charts.
 - Keep keyboard path, focus, open/close/selected, and form errors that
-  the primitives already implement.
+  the primitives already implement. If the local Dialog is a `div` plus
+  `aria-modal`, restore a real primitive (`<dialog showModal()>`, Radix,
+  Base UI) rather than polishing the broken overlay.
 
 Do not:
 

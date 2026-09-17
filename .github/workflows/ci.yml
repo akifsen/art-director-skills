@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Structure and trigger tests
+      - name: Structure and example-store tests
         run: npm test
       - name: Isolated skills CLI install
         env:
@@ -25,3 +25,31 @@ jobs:
         run: npm run test:install
       - name: Pack skill directory
         run: npm run pack-skill
+
+  examples-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install maintainer deps
+        run: npm install
+      - name: Compile React examples
+        run: npm run build:examples
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+      - name: Browser flows (not a native runtime)
+        run: npm run test:e2e
+
+  native-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Native source/store checks only
+        run: npm test
+      - name: Device/simulator not claimed
+        run: echo "Gate D native runtime is pending. Expo web is not a substitute."

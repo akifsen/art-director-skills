@@ -1,18 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 import "./tokens.css";
 import { LOADS } from "./data.js";
+import { applyHold, filterLoads, parseRoute, readFixture } from "./kiln-store.js";
 import { Badge, Button, Dialog, Empty, Field, PageHeader } from "./ui.jsx";
 
-function pathParts() {
-  const hash = window.location.hash.replace(/^#/, "") || "/";
-  return hash.split("/").filter(Boolean);
-}
-
 export default function App() {
+  const fixture = readFixture(typeof window === "undefined" ? "" : window.location.search);
   const [tick, setTick] = useState(0);
   const [query, setQuery] = useState("");
-  const [loading] = useState(false);
-  const [loads, setLoads] = useState(LOADS);
+  const [phase, setPhase] = useState(() => {
+    if (fixture === "loading") return "loading";
+    if (fixture === "error") return "error";
+    return fixture === "empty" ? "ready" : "loading";
+  });
+  const [loads, setLoads] = useState(() => (fixture === "empty" ? [] : LOADS.map((row) => ({ ...row }))));
   const [holdMinutes, setHoldMinutes] = useState("30");
   const [reason, setReason] = useState("");
   const [errors, setErrors] = useState({});
@@ -26,16 +27,21 @@ export default function App() {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  const parts = pathParts();
-  const screen = !parts.length ? "list" : parts[0] === "loads" && parts[2] === "hold" ? "hold" : parts[0] === "loads" ? "detail" : "list";
-  const activeId = parts[1];
-  const active = loads.find((row) => row.id === activeId);
+  useEffect(() => {
+    if (fixture === "loading" || fixture === "error" || fixture === "empty") return undefined;
+    const timer = window.setTimeout(() => setPhase("ready"), 280);
+    return () => window.clearTimeout(timer);
+  }, [fixture]);
 
-  const visible = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return loads;
-    return loads.filter((row) => `${row.id} ${row.clay} ${row.cone} ${row.status}`.toLowerCase().includes(q));
-  }, [loads, query]);
+  const { screen, id: activeId } = parseRoute(typeof window === "undefined" ? "" : window.location.hash);
+  const active = loads.find((row) => row.id === activeId) ?? null;
+  const visible = useMemo(() => filterLoads(loads, query), [loads, query]);
+
+  useEffect(() => {
+    setHoldMinutes("30");
+    setReason(active?.status === "hold" ? "" : "");
+    setErrors({});
+  }, [activeId]);
 
   function go(hash) {
     window.location.hash = hash;
@@ -44,18 +50,26 @@ export default function App() {
 
   function onSubmitHold(event) {
     event.preventDefault();
-    const next = {};
-    const minutes = Number(holdMinutes);
-    if (!reason.trim()) next.reason = "Say why the hold exists. Empty notes are not a hold.";
-    if (!Number.isFinite(minutes) || minutes < 15 || minutes > 240) next.minutes = "Use 15–240 minutes.";
-    setErrors(next);
-    if (Object.keys(next).length) return;
+    const result = applyHold(loads, activeId, { minutes: holdMinutes, reason });
+    if (!result.ok) {
+      setErrors(result.errors);
+      return;
+    }
+    setErrors({});
     setBusy(true);
     window.setTimeout(() => {
-      setLoads((rows) => rows.map((row) => (row.id === activeId ? { ...row, status: "hold", note: `${reason.trim()} (${minutes} min). Demo data; nothing was saved to a server.` } : row)));
+      setLoads(result.loads);
       setBusy(false);
       setSavedOpen(true);
     }, 400);
+  }
+
+  function retry() {
+    setPhase("loading");
+    window.setTimeout(() => {
+      setLoads(LOADS.map((row) => ({ ...row })));
+      setPhase("ready");
+    }, 280);
   }
 
   return (
@@ -65,10 +79,20 @@ export default function App() {
         <Button variant="ghost" size="sm" onClick={() => go("/")}>All loads</Button>
       </div>
       <main className="kq-main">
-        {screen === "list" ? (
+        {phase === "error" ? (
+          <Empty title="Kiln log unavailable" action={<Button onClick={retry}>Retry</Button>}>
+            Demo error fixture. Nothing was sent to a controller.
+          </Empty>
+        ) : null}
+
+        {phase === "loading" && screen === "list" ? (
+          <Empty title="Reading the kiln log">Deterministic wait. Not a random timeout.</Empty>
+        ) : null}
+
+        {phase === "ready" && screen === "list" ? (
           <>
             <PageHeader
-              kicker="Front load A · demo"
+              kicker="Front load A · session demo"
               title="Loads in fire"
               actions={
                 <input
@@ -80,16 +104,28 @@ export default function App() {
                 />
               }
             />
-            {loading ? <Empty title="Reading the kiln log">This is a short wait state.</Empty> : null}
-            {!loading && visible.length === 0 ? (
-              <Empty title="No loads match">Try a cone number or clear the filter. This empty state is intentional.</Empty>
+            <ol className="kq-schedule" aria-label="Firing schedule">
+              <li>Bisque in A is cool</li>
+              <li className="is-now">Cone 6 glaze — this queue</li>
+              <li>Gas 2 reduction after lunch</li>
+            </ol>
+            {visible.length === 0 ? (
+              <Empty title={query.trim() ? "No loads match" : "No loads in this log"}>
+                {query.trim()
+                  ? "Try a cone number or clear the filter."
+                  : "The empty fixture has no rows. This is not a crash."}
+              </Empty>
             ) : (
               <ul className="kq-list">
                 {visible.map((row) => (
                   <li key={row.id}>
                     <a className="kq-row" href={`#/loads/${row.id}`} onClick={() => setTick((n) => n + 1)}>
                       <span className="kq-id">{row.id}</span>
-                      <span>{row.clay} · cone {row.cone}</span>
+                      <span>
+                        <strong>{row.clay}</strong>
+                        <span className="kq-meta">{row.kiln}</span>
+                      </span>
+                      <span className="kq-cone">Cone {row.cone}</span>
                       <Badge tone={row.status}>{row.status}</Badge>
                     </a>
                   </li>
@@ -99,7 +135,18 @@ export default function App() {
           </>
         ) : null}
 
-        {screen === "detail" && !active ? <Empty title="Unknown load">That id is not in the demo set.</Empty> : null}
+        {screen === "unknown" ? (
+          <Empty title="Unknown place in the queue" action={<Button variant="secondary" onClick={() => go("/")}>Back to loads</Button>}>
+            That path is not a load or a hold form.
+          </Empty>
+        ) : null}
+
+        {screen === "detail" && !active ? (
+          <Empty title="Unknown load" action={<Button variant="secondary" onClick={() => go("/")}>Back to loads</Button>}>
+            {activeId} is not in this demo set. No form was opened.
+          </Empty>
+        ) : null}
+
         {screen === "detail" && active ? (
           <>
             <PageHeader kicker={active.kiln} title={active.id} actions={<Badge tone={active.status}>{active.status}</Badge>} />
@@ -112,6 +159,12 @@ export default function App() {
               <Button variant="secondary" onClick={() => go("/")}>Back to queue</Button>
             </div>
           </>
+        ) : null}
+
+        {screen === "hold" && !active ? (
+          <Empty title="Unknown load" action={<Button variant="secondary" onClick={() => go("/")}>Back to loads</Button>}>
+            Cannot log a hold for {activeId || "a missing id"}.
+          </Empty>
         ) : null}
 
         {screen === "hold" && active ? (
@@ -133,9 +186,13 @@ export default function App() {
                 <Button variant="secondary" onClick={() => go(`/loads/${active.id}`)}>Cancel</Button>
               </div>
             </form>
-            <Dialog title="Hold recorded (demo)" open={savedOpen} onClose={() => { setSavedOpen(false); go(`/loads/${active.id}`); }}>
-              <p>Local state only. No kiln controller was updated.</p>
-              <Button onClick={() => { setSavedOpen(false); go(`/loads/${active.id}`); }}>Back to {active.id}</Button>
+            <Dialog
+              title="Hold recorded in this session"
+              description="The queue row now shows the hold. Nothing was sent to a kiln controller."
+              open={savedOpen}
+              onClose={() => { setSavedOpen(false); go(`/loads/${active.id}`); }}
+            >
+              <Button autoFocus onClick={() => { setSavedOpen(false); go(`/loads/${active.id}`); }}>Back to {active.id}</Button>
             </Dialog>
           </>
         ) : null}

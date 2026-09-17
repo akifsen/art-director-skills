@@ -15,7 +15,7 @@ description: >-
 license: MIT
 metadata:
   author: akifsen
-  version: "0.3.0"
+  version: "0.4.0"
 ---
 
 # Art Director
@@ -195,6 +195,10 @@ New assets: prefer CC0; record licenses next to files.
 Do not ship decorative filters, inert tabs, fake successful saves, or `#`
 links for actions that were requested to work. If the backend is out of
 scope, use honest local/demo state and say so.
+
+A success message is allowed only after the record in memory (or the real
+store) actually changed. Session state is not device storage. Capturing a
+screenshot is not inspecting it.
 
 ## Four acceptance gates
 

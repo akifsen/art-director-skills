@@ -41,10 +41,13 @@ while the home view is styled.
 
 ## Forms and overlays
 
-Prefer the project’s Form library and dialog primitive. Implement visible
-actions: submit, cancel, validation errors, busy, success that returns to
-the list (or the path the brief named). Empty `onClick` is not a complete
-screen.
+Prefer the project’s Form library and dialog primitive. If the overlay is
+a `div` with `aria-modal`, switch to `<dialog showModal()>`, Radix/Base UI
+Dialog, or the kit already in the repo — do not teach a homemade trap.
+Implement visible actions: submit, cancel, validation errors, busy, success
+that returns to the list (or the path the brief named). Empty `onClick` is
+not a complete screen. A success message is only honest after the named
+record in state (or the real store) changed.
 
 ## Web small screens
 

@@ -5,11 +5,30 @@
   "type": "module",
   "scripts": {
     "test": "node tests/run.mjs",
+    "test:examples": "node tests/examples/run.mjs",
+    "test:examples:compile": "node tests/examples/compile-jsx.mjs",
+    "test:e2e": "playwright test",
+    "test:e2e:chrome": "node evals/apps/chrome-flow.mjs",
+    "example:kiln": "node evals/apps/serve-react.mjs kiln",
+    "example:desk": "node evals/apps/serve-react.mjs desk",
+    "example:kiln:vite": "vite --config evals/apps/kiln-queue/vite.config.js",
+    "example:desk:vite": "vite --config evals/apps/nadir-desk/vite.config.js",
     "test:install": "node tests/install-cli.mjs",
+    "test:e2e": "playwright test",
+    "example:kiln": "vite --config evals/apps/kiln-queue/vite.config.js",
+    "example:desk": "vite --config evals/apps/nadir-desk/vite.config.js",
+    "build:examples": "vite build --config evals/apps/kiln-queue/vite.config.js && vite build --config evals/apps/nadir-desk/vite.config.js",
     "validate": "node tooling/validate-skill.mjs",
     "pack-skill": "node tooling/pack-skill.mjs"
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vite": "^5.4.14"
   }
 }
