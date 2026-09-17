@@ -91,7 +91,7 @@ Host tools vary. Missing tools are reported, not simulated.
 |---|---|
 | Portable skill structure, Windows/PowerShell copy, relative links | Structure verified + install tested (repo tests) |
 | Web DESIGN/REFINE/REVIEW guidance | Used on tasks in prior evals; v0.4.0 adds honest save/dialog/state examples |
-| Theme-less React / shadcn-like / original template evals | Cases 08–10 exist; tutorial Kiln/Nadir apps compile in CI; outcome rows only after a real run |
+| Theme-less React / shadcn-like / original template evals | Cases 08–10 exist; tutorial Kiln/Nadir apps **Vite-build** in the `examples-web` job after `npm ci`; outcome rows only after a real run |
 | React Native / Expo **source** example + case 11 | Structure + session-store tests; **device/simulator pending** unless RESULTS says otherwise |
 | Expo web as iOS/Android | Not accepted as native verification |
 | Flutter, SwiftUI, Jetpack Compose | Guide: keep the current framework; **not tested** |

@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef } from "react";
+import { isDialogBackdropClick } from "./dialog-geometry.js";
 
 export function Button({
   variant = "primary",
@@ -86,7 +87,7 @@ export function Dialog({ title, description, open, onClose, children }) {
       onClose();
     };
     const onBackdrop = (event) => {
-      if (event.target === node) onClose();
+      if (isDialogBackdropClick(event)) onClose();
     };
     node.addEventListener("cancel", onCancel);
     node.addEventListener("click", onBackdrop);

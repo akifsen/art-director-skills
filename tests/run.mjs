@@ -142,6 +142,10 @@ assert(
   "copied kiln-store lands in the portable skill folder"
 );
 assert(
+  fs.existsSync(path.join(dest, "references", "examples", "themeless-react", "dialog-geometry.js")),
+  "copied dialog geometry lands in the portable skill folder"
+);
+assert(
   fs.existsSync(path.join(dest, "references", "native-mobile.md")),
   "copied native guide lands in the portable skill folder"
 );
@@ -155,13 +159,13 @@ process.stdout.write(exampleTests.stdout || "");
 process.stderr.write(exampleTests.stderr || "");
 assert(exampleTests.status === 0, "example behavior tests");
 
-const compileTests = spawnSync(process.execPath, [path.join(root, "tests", "examples", "compile-jsx.mjs")], {
+const helperTests = spawnSync(process.execPath, [path.join(root, "tests", "npx-spawn.mjs")], {
   encoding: "utf8",
   cwd: root
 });
-process.stdout.write(compileTests.stdout || "");
-process.stderr.write(compileTests.stderr || "");
-assert(compileTests.status === 0, "example JSX compile checks");
+process.stdout.write(helperTests.stdout || "");
+process.stderr.write(helperTests.stderr || "");
+assert(helperTests.status === 0, "npx spawn and unique JSON key checks");
 
 if (failed) {
   console.error(`\n${failed} failure(s)`);

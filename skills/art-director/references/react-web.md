@@ -49,6 +49,14 @@ that returns to the list (or the path the brief named). Empty `onClick` is
 not a complete screen. A success message is only honest after the named
 record in state (or the real store) changed.
 
+If the write is asynchronous, abort it on Cancel, unmount, and record
+change when the request is still pending. Do not navigate away and let a
+late callback mutate the previous row.
+
+Backdrop close belongs to clicks outside the panel’s box, not to padding
+or inner empty area. Prefer `showModal()` plus a geometry check (or the
+library’s overlay primitive); do not homegrow a focus trap.
+
 ## Web small screens
 
 This is viewport work: source order, disclosure, focus, a website mobile

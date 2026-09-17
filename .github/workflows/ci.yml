@@ -12,8 +12,8 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
       - name: Structure and example-store tests
@@ -29,24 +29,34 @@ jobs:
   examples-web:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
-      - name: Install maintainer deps
-        run: npm install
-      - name: Compile React examples
-        run: npm run build:examples
+          cache: npm
+      - name: Install maintainer deps from lockfile
+        run: npm ci
+      - name: Compile React examples with Vite
+        run: npm run test:examples:build
       - name: Install Chromium for Playwright
         run: npx playwright install --with-deps chromium
       - name: Browser flows (not a native runtime)
         run: npm run test:e2e
+      - name: Upload Playwright traces on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-web
+          path: |
+            playwright-report
+            test-results
+          if-no-files-found: ignore
 
   native-runtime:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
       - name: Native source/store checks only

@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+Reliability of the maintainer path and the tutorial product flows.
+
+- Windows isolated `skills` install no longer spawns `npx.cmd` with `shell: false` (Node `EINVAL`). It runs `npx-cli.js` through `node`, argv intact
+- `package.json` script keys are unique; a walker fails on duplicate JSON keys (`JSON.parse` would hide them)
+- Examples compile and serve only through Vite. The custom JSX transformer is gone
+- `package-lock.json` pins maintainer Vite/Playwright for `npm ci` in CI
+- Kiln delayed Save can be cancelled; a late timer cannot commit after Cancel, route change, or another load
+- Native `<dialog>` closes on a true backdrop click, not panel padding
+- Playwright uses the same `npm run example:*` servers, workers=1, traces on failure
+
 ## 0.4.0 — 2026-09-17
 
 Make the shipped examples tell the truth and prove it.

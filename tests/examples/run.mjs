@@ -4,7 +4,9 @@
 import assert from "node:assert/strict";
 import { createSession, getStation, saveNote, cancelNote } from "../../skills/art-director/references/examples/native-mobile/session-store.js";
 import { createDesk, selectRow, openNoteDialog, setDraft, commitNote, cancelNoteDialog, noteFor } from "../../skills/art-director/references/examples/component-system/notes-store.js";
-import { parseRoute, readFixture, filterLoads, validateHold, applyHold } from "../../skills/art-director/references/examples/themeless-react/kiln-store.js";
+import { parseRoute, readFixture, filterLoads, validateHold, applyHold, createSaveGate, finishHoldCommit } from "../../skills/art-director/references/examples/themeless-react/kiln-store.js";
+import { isDialogBackdropClick as kilnBackdrop } from "../../skills/art-director/references/examples/themeless-react/dialog-geometry.js";
+import { isDialogBackdropClick as deskBackdrop } from "../../skills/art-director/references/examples/component-system/dialog-geometry.js";
 import { LOADS } from "../../skills/art-director/references/examples/themeless-react/data.js";
 import fs from "node:fs";
 import path from "node:path";
@@ -125,8 +127,62 @@ test("kiln fixtures are opt-in via query, not random", () => {
   assert.equal(readFixture("?fixture=loading"), "loading");
   assert.equal(readFixture("?fixture=error"), "error");
   assert.equal(readFixture("?fixture=empty"), "empty");
+  assert.equal(readFixture("?fixture=hold-reject"), "hold-reject");
   assert.equal(readFixture(""), null);
   assert.equal(filterLoads(LOADS, "zzz").length, 0);
+});
+
+test("late hold commit is ignored after cancel", () => {
+  const gate = createSaveGate();
+  const prepared = applyHold(LOADS, "K-214", { minutes: "30", reason: "Glaze crawl." });
+  const token = gate.begin();
+  gate.cancel();
+  const finished = finishHoldCommit(gate, token, prepared);
+  assert.equal(finished.aborted, true);
+  assert.equal(finished.applied, false);
+  assert.equal(LOADS.find((row) => row.id === "K-214").status, "hold");
+});
+
+test("hold commit applies only for the current token", () => {
+  const gate = createSaveGate();
+  const prepared = applyHold(LOADS, "K-214", { minutes: "30", reason: "Glaze crawl." });
+  const token = gate.begin();
+  const finished = finishHoldCommit(gate, token, prepared);
+  assert.equal(finished.applied, true);
+  assert.equal(finished.loads.find((row) => row.id === "K-214").status, "hold");
+  assert.equal(finished.loads.find((row) => row.id === "K-208").note, LOADS.find((row) => row.id === "K-208").note);
+});
+
+test("hold-reject does not mutate loads", () => {
+  const gate = createSaveGate();
+  const prepared = applyHold(LOADS, "K-214", { minutes: "30", reason: "Glaze crawl." });
+  const token = gate.begin();
+  const finished = finishHoldCommit(gate, token, prepared, { reject: true });
+  assert.equal(finished.rejected, true);
+  assert.equal(finished.applied, false);
+  assert.match(finished.message, /Nothing was recorded/);
+});
+
+test("a newer save invalidates the older token", () => {
+  const gate = createSaveGate();
+  const first = applyHold(LOADS, "K-214", { minutes: "30", reason: "First." });
+  const t1 = gate.begin();
+  const second = applyHold(LOADS, "K-201", { minutes: "20", reason: "Second." });
+  const t2 = gate.begin();
+  assert.equal(finishHoldCommit(gate, t1, first).aborted, true);
+  const done = finishHoldCommit(gate, t2, second);
+  assert.equal(done.applied, true);
+  assert.equal(done.loads.find((row) => row.id === "K-201").status, "hold");
+});
+
+test("dialog padding and inner clicks are not backdrop closes", () => {
+  const node = {
+    getBoundingClientRect: () => ({ left: 100, right: 400, top: 80, bottom: 320 })
+  };
+  assert.equal(kilnBackdrop({ currentTarget: node, target: node, clientX: 108, clientY: 88 }), false);
+  assert.equal(deskBackdrop({ currentTarget: node, target: node, clientX: 108, clientY: 88 }), false);
+  assert.equal(kilnBackdrop({ currentTarget: node, target: node, clientX: 10, clientY: 10 }), true);
+  assert.equal(kilnBackdrop({ currentTarget: node, target: {}, clientX: 10, clientY: 10 }), false);
 });
 
 test("native guide names AccessibilityInfo.announceForAccessibility", () => {

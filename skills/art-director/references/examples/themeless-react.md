@@ -5,22 +5,22 @@
 
 ## Run (this repository, maintainer)
 
-Not a skill runtime. From the repo root after `npm install`:
+Not a skill runtime. From the repo root after `npm ci`:
 
 ```sh
 npm run example:kiln
 ```
 
-Open `http://127.0.0.1:5173/`. The maintainer harness compiles the React
-source with a JS-only transform (no Vite native binaries). `npm run
-example:kiln:vite` is the Vite path used in CI after `npm install`.
+Open `http://127.0.0.1:5173/`. Vite compiles the skill’s React source.
+The same command is the Playwright webServer and the CI build path.
 
-Fixtures: `?fixture=loading|error|empty`.
+Fixtures: `?fixture=loading|error|empty|hold-reject`.
 Holds are **session memory**. They are not a kiln controller and not disk.
+A delayed Save can still be cancelled; a late timer must not commit after
+Cancel, All loads, or a different record.
 
 ```sh
-npm run test:examples:compile
-npm run test:e2e:chrome
+npm run test:examples:build
 npx playwright test tests/e2e/kiln-flow.spec.js
 ```
 
@@ -30,11 +30,12 @@ npx playwright test tests/e2e/kiln-flow.spec.js
 |---|---|---|---|---|---|
 | `#/` | Find a load | Shell, search, schedule, list | loading, empty, error+retry | open detail | `?fixture=`, filter `zzz` |
 | `#/loads/:id` | Read status | Summary, actions | unknown id | hold / list | K-999 |
-| `#/loads/:id/hold` | Record a hold | Form, native `dialog` | validation, busy, unknown id | detail shows new note | empty reason; then save |
+| `#/loads/:id/hold` | Record a hold | Form, native `dialog` | validation, busy, abortable write, reject+retry, unknown id | detail shows new note | empty reason; Save then Cancel; `hold-reject` |
 
 ## Files
 
 - [themeless-react/kiln-store.js](themeless-react/kiln-store.js)
+- [themeless-react/dialog-geometry.js](themeless-react/dialog-geometry.js)
 - [themeless-react/tokens.css](themeless-react/tokens.css)
 - [themeless-react/ui.jsx](themeless-react/ui.jsx)
 - [themeless-react/data.js](themeless-react/data.js)
