@@ -56,7 +56,9 @@ Complex overlays (web dialog, native sheet): use the platform primitive
 `aria-modal` on a `div` is not a focus trap. Close on a true backdrop
 click (outside the panel box). Do not treat padding or empty space inside
 the panel as cancel. `event.target === dialog` is not enough when the
-element has padding.
+element has padding. Tab from the last control must stay inside the
+open dialog (cycle to the first). Playwright Chromium can drop focus to
+inactive if that cycle is left to the engine alone.
 
 ## Data honesty
 

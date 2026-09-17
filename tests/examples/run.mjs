@@ -5,8 +5,8 @@ import assert from "node:assert/strict";
 import { createSession, getStation, saveNote, cancelNote } from "../../skills/art-director/references/examples/native-mobile/session-store.js";
 import { createDesk, selectRow, openNoteDialog, setDraft, commitNote, cancelNoteDialog, noteFor } from "../../skills/art-director/references/examples/component-system/notes-store.js";
 import { parseRoute, readFixture, readHoldDelay, filterLoads, validateHold, applyHold, createSaveGate, finishHoldCommit } from "../../skills/art-director/references/examples/themeless-react/kiln-store.js";
-import { isDialogBackdropClick as kilnBackdrop } from "../../skills/art-director/references/examples/themeless-react/dialog-geometry.js";
-import { isDialogBackdropClick as deskBackdrop } from "../../skills/art-director/references/examples/component-system/dialog-geometry.js";
+import { isDialogBackdropClick as kilnBackdrop, cycleDialogTab as kilnTab } from "../../skills/art-director/references/examples/themeless-react/dialog-geometry.js";
+import { isDialogBackdropClick as deskBackdrop, cycleDialogTab as deskTab } from "../../skills/art-director/references/examples/component-system/dialog-geometry.js";
 import { LOADS } from "../../skills/art-director/references/examples/themeless-react/data.js";
 import fs from "node:fs";
 import path from "node:path";
@@ -191,6 +191,24 @@ test("dialog padding and inner clicks are not backdrop closes", () => {
   assert.equal(deskBackdrop({ currentTarget: node, target: node, clientX: 108, clientY: 88 }), false);
   assert.equal(kilnBackdrop({ currentTarget: node, target: node, clientX: 10, clientY: 10 }), true);
   assert.equal(kilnBackdrop({ currentTarget: node, target: {}, clientX: 10, clientY: 10 }), false);
+});
+
+test("dialog Tab on the last control cycles to the first", () => {
+  const first = { disabled: false, hidden: false, getAttribute: () => null, focus() { this.focused = true; } };
+  const last = { disabled: false, hidden: false, getAttribute: () => null, focus() { this.focused = true; } };
+  const node = {
+    open: true,
+    querySelectorAll: () => [first, last],
+    focus() {}
+  };
+  const event = { key: "Tab", shiftKey: false, currentTarget: node, target: last, preventDefault() { this.prevented = true; } };
+  kilnTab(event);
+  assert.equal(event.prevented, true);
+  assert.equal(first.focused, true);
+  const shift = { key: "Tab", shiftKey: true, currentTarget: node, target: first, preventDefault() { this.prevented = true; } };
+  deskTab(shift);
+  assert.equal(shift.prevented, true);
+  assert.equal(last.focused, true);
 });
 
 test("native guide names AccessibilityInfo.announceForAccessibility", () => {

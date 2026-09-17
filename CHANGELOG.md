@@ -18,6 +18,9 @@ Reliability of the maintainer path and the tutorial product flows.
   Tests pass `?holdDelay=` so Cancel can beat the timer
 - Playwright GitHub reporter + traces/screenshots on failure
 - Visual captures are a separate `--project=visual`, not the CI flow gate
+- Open dialogs cycle Tab at the last control; Playwright Chromium otherwise
+  leaves focus inactive. Double Save uses an in-flight guard, not a force
+  click on the disabled button (that click was cancelling the write)
 
 ## 0.4.0 — 2026-09-17
 

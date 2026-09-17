@@ -115,10 +115,11 @@ test.describe("kiln queue — browser flow", () => {
   test("double save keeps a single commit", async ({ page }) => {
     await gotoApp(page, KILN, `/?holdDelay=${HOLD_MS}#/loads/K-208/hold`);
     await page.getByLabel("Reason").fill("One write");
-    const save = page.getByRole("button", { name: "Save hold" });
-    await save.click();
-    await expect(page.getByRole("button", { name: "Working…" })).toBeDisabled();
-    await save.click({ force: true }).catch(() => {});
+    await page.evaluate(() => {
+      const btn = document.querySelector("form button[type=submit]");
+      btn.click();
+      btn.click();
+    });
     await expect(page.getByRole("dialog")).toBeVisible();
     await expect(page.getByRole("dialog")).toHaveCount(1);
   });

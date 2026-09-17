@@ -33,8 +33,10 @@ export default function App() {
   const saveGate = useRef(createSaveGate());
   const saveTimer = useRef(0);
   const holdRejectUsed = useRef(false);
+  const inflight = useRef(false);
 
   function cancelPendingSave() {
+    inflight.current = false;
     saveGate.current.cancel();
     if (saveTimer.current) {
       window.clearTimeout(saveTimer.current);
@@ -78,7 +80,7 @@ export default function App() {
   }
 
   function submitHold() {
-    if (busy) return;
+    if (inflight.current) return;
     const result = applyHold(loads, activeId, { minutes: holdMinutes, reason });
     if (!result.ok) {
       setErrors(result.errors);
@@ -87,6 +89,7 @@ export default function App() {
     }
     setErrors({});
     setSaveError("");
+    inflight.current = true;
     const token = saveGate.current.begin();
     setBusy(true);
     saveTimer.current = window.setTimeout(() => {
@@ -94,6 +97,7 @@ export default function App() {
         reject: fixture === "hold-reject" && !holdRejectUsed.current
       });
       if (finished.aborted) return;
+      inflight.current = false;
       setBusy(false);
       saveTimer.current = 0;
       if (finished.rejected) {
