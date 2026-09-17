@@ -35,29 +35,32 @@ fail in the agent sandbox). Native Closeout: store tests only; device
 
 ### Isolated holdout — case 12 Lumen Cart
 
-Workdirs (gitignored): `%TEMP%\ad-eval-v040-12` and `%TEMP%\ad-eval-cand-12`.
+Workdirs (gitignored): `%TEMP%\ad-eval-v040-12`, `%TEMP%\ad-eval-cand-12`,
+`%TEMP%\ad-eval-cand-12b`.
 Agents: [Lumen Cart DESIGN v0.4.0](2ae2cc9d-19df-4ee8-b123-1ac43786ab13),
-[Lumen Cart DESIGN candidate](f7962e21-7e72-4453-8672-480fc532ae28).
-Parent author read the source trees. Both arms now have `RUN.md`. Parent did
-**not** inspect either arm’s screenshots.
+[Lumen Cart DESIGN candidate](f7962e21-7e72-4453-8672-480fc532ae28),
+[Lumen Cart DESIGN retry](a0c79a82-f4b8-40e1-91a5-d9e2a524cf14).
+Parent author read the source trees. All three arms now have `RUN.md`. Parent
+did **not** inspect those screenshots.
 
 | Arm | Routing | Named-record save | Overlay | Visual notes |
 |---|---|---|---|---|
 | v0.4.0 snapshot `21c2fe1` | History API `/stops/:id/log` — **not** hash, **not** `?fixture=` | `applyLog` updates that id; 280ms `setTimeout` **does not abort** on Cancel (source still) | `<dialog showModal()>` | Circuit SVG + cloth rail. Isolated agent: Yarn build; preview `127.0.0.1:4174`; Chrome list/detail/log/unknown ~1440 and list ~390; CDP complete 12 min on LC-04. Skip UI not CDP’d |
 | Candidate `f2a1bc2` | History API `/stops/:id/complete` and `/skip` | `applyComplete` / `applySkip` bind the named stop; already-recorded guard | same primitive + **verbatim** Kiln `dialog-geometry.js` | Enamel-teal mast. Isolated agent: Yarn build; preview `127.0.0.1:4173`; Chrome list/detail/forms/empty/unknown/dialog ~1280 and ~390. Preview later killed |
+| Retry (post file-kit line) | History API complete/skip routes; `?q=` seeds the find field only | `session-log.js` named-row mutate; already-closed sheets refuse complete/skip | no `dialog-geometry.js`; no modal save | Literata / Atkinson / Plex Mono WOFF2 (OFL, eval-only). Isolated agent: `vite build` after `npm pack`+tar (npm install Yallist); screenshots of list/detail/forms/empty/unknown ~1440 and ~390. **Save click not run-verified.** Preview `4179` then `4180` later exited 1 |
 
-Both arms: `npm install` failed (`Yallist is not a constructor`); Yarn 1.22.22 built.
+All arms: `npm install` failed (`Yallist is not a constructor`) on this host.
 
 **Gates (not averaged):**
 
-- **A.** Both kept the three LC ids and honest session copy. Candidate: complete/skip validation + already-recorded; isolated agent ran complete and skip on preview. Baseline: isolated agent ran complete + empty filter + LC-99; Cancel during the 280ms write can still commit — Gate A miss in source.
-- **B.** Distinct from kiln cream/oxide in both token sheets. Baseline circuit diagram is more product-specific. Candidate cloned the tutorial helper file. Each isolated agent inspected its own screens; no matched A/B; parent not blind. No pixel winner.
-- **C.** Both have list, detail, form, empty filter, unknown id/path. Candidate splits complete vs skip routes. Baseline combines them on `/log` (skip not exercised in the live CDP pass).
-- **D.** Native `<dialog>` on both. Candidate Tab helper in source, not keyboard-exercised. Both agents saw ~390 list wrap.
+- **A.** All kept the three LC ids and honest session copy. First candidate: isolated agent ran complete and skip on preview. Baseline: CDP complete + empty filter + LC-99; Cancel during the 280ms write can still commit — Gate A miss in source. Retry: store validation run-verified; live Save **not** clicked.
+- **B.** Distinct from kiln cream/oxide in all token sheets. Baseline circuit diagram is more product-specific. First candidate cloned the tutorial helper. Retry used its own `src/ui/` and screens, plus bundled OFL faces. No matched A/B; parent not blind. No pixel winner.
+- **C.** All have list, detail, form, empty filter, unknown id. Candidate/retry split complete vs skip. Baseline combines them on `/log`.
+- **D.** Native `<dialog>` on baseline and first candidate. Retry uses full-page forms. Keyboard cycle **not** exercised.
 
-**Weak result kept:** candidate listed `src/dialog-geometry.js` as created after opening the Kiln example file. Skill text was tightened (example files are not a kit). Retry: [Lumen Cart DESIGN retry](a0c79a82-f4b8-40e1-91a5-d9e2a524cf14) in `%TEMP%\ad-eval-cand-12b` — `src/session-log.js` present, no `dialog-geometry.js` under `src/`, `RUN.md` not yet written.
+**Weak result kept:** first candidate listed `src/dialog-geometry.js` as created after opening the Kiln example file. Skill text was tightened (example files are not a kit). Retry did **not** add that file. Remaining retry gap: Save complete/skip never clicked in the browser.
 
-**Does the new skill better guide independent briefs?** Routing/`?fixture=` clone did **not** recur on either arm. Named-record complete/skip and abortable save are stronger in the candidate **source** (baseline still has the late-write race). Visual superiority vs v0.4.0 is **not** shown (separate agents, unmatched viewports, parent did not see the PNGs). File-level example cloning remained on the first candidate arm.
+**Does the new skill better guide independent briefs?** Routing/`?fixture=` clone did **not** recur. Named-record complete/skip is stronger in candidate/retry **source** (baseline still has the late-write race). File-kit warning stopped the helper-file clone on retry. Visual superiority vs v0.4.0 is **not** shown (separate agents, unmatched viewports, parent did not see the PNGs).
 
 Cases 09 (shadcn-*pattern*, not shadcn source) and 11 (native): **not re-run**
 as isolated hosts this session. Case 09 is not evidence of real shadcn/ui.
