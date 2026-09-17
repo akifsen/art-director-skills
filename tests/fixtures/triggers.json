@@ -54,9 +54,9 @@
     "prompt": "Design a product UI for this React app. There is no theme pack. Build list, detail, and the edit form with empty and error states."
   },
   {
-    "id": "design-shadcn-desk",
+    "id": "design-existing-system-desk",
     "shouldTrigger": true,
     "expectedMode": "DESIGN",
-    "prompt": "Redesign this shadcn/ui dashboard using the existing components. Keep the table behavior."
+    "prompt": "Redesign this dashboard using the existing components. Keep the table behavior."
   }
 ]

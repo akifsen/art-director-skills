@@ -17,11 +17,11 @@ that kind of page.
 ## Foundation split
 
 - No product system: [product-ui-system.md](product-ui-system.md)
-- shadcn/ui or other local primitives / vendor theme:
-  [theme-enhancement.md](theme-enhancement.md)
+- Existing design system, local primitives, or application UI:
+  [existing-ui-system.md](existing-ui-system.md)
 
 Use existing primitives first. Check the lockfile before adding a package.
-Do not add MUI beside shadcn, or Chakra beside a house DS.
+Do not add a second UI kit beside a working one.
 
 ## Routes are the product
 

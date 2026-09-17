@@ -62,8 +62,8 @@ All arms: `npm install` failed (`Yallist is not a constructor`) on this host.
 
 **Does the new skill better guide independent briefs?** Routing/`?fixture=` clone did **not** recur. Named-record complete/skip is stronger in candidate/retry **source** (baseline still has the late-write race). File-kit warning stopped the helper-file clone on retry. Visual superiority vs v0.4.0 is **not** shown (separate agents, unmatched viewports, parent did not see the PNGs).
 
-Cases 09 (shadcn-*pattern*, not shadcn source) and 11 (native): **not re-run**
-as isolated hosts this session. Case 09 is not evidence of real shadcn/ui.
+Cases 09 (local primitives fixture) and 11 (native): **not re-run**
+as isolated hosts this session. Case 09 is not evidence of a vendor kit.
 
 ### Publish
 
@@ -179,7 +179,7 @@ Cases 09/11 and 01–07: **not re-run** this session.
 
 ### Layer B — fixture heuristic
 
-Prior seven prompts plus native app, themeless product, shadcn desk.
+Prior seven prompts plus native app, themeless product, existing-system desk.
 Keyword classifier matched. Still **not** a Cursor/Codex selection log.
 
 ### Layer C — product evals (08–11)
@@ -193,7 +193,7 @@ the new guides (files absent).
 | **08 Tide Bindery** (holdout) | Isolated subagent implemented React source: `tokens.css`, `ui.jsx`, `App.jsx`, scope matrix in `.art-director/design-notes.md`. Tickets B-19/B-12/B-07 kept. Cloth/vellum identity, not Kiln oxide. `npm install` in that workdir **failed** (sandbox/native optional binaries), so Vite **not run-verified**. Isolated `RUN.md` not present at RESULTS write. | A implemented, run **pending**. B visually unread in Chrome (no bundle). C source has list/detail/hold. D web keyboard **pending**. |
 | **Kiln Queue example** | Skill JSX + CSS. Vanilla harness using the **same** `tokens.css` (not a substitute for Vite). Chrome 1440 and ~390: list, empty filter (`zzz`), detail K-214, hold form. Author inspected PNGs. | A CSS loaded in the harness. B oxide/steel queue, not a marketing home. C empty state + three screens **visually inspected**. Form validation click **not** in the PNG set (form screen shown empty). Vite compile **pending** (npm reify failed here too). |
 | **09 Plica** | Author token/variant CSS pass in a gitignored work copy: oxblood/ivory/sidebar, not only `--primary`. Dialog JS unchanged. Vite **not run**. | A behavior **implemented** in start (preserved in CSS-only pass). B **not** run-verified in the React app. |
-| **10 Sable Ledger** (not Ecme) | Author `theme.css` + settings grouping. Chrome A/B 1440: teal/Arial start vs iron/cream ledger; settings follows the shell. ~390 list captured. Filter JS not re-clicked in headless. | A CSS loads (inspected). B concrete delta vs start (sidebar, paper, type). C settings in the same language. D narrow viewport visually inspected. **Not Ecme.** |
+| **10 Sable Ledger** (original fixture) | Author `theme.css` + settings grouping. Chrome A/B 1440: teal/Arial start vs iron/cream ledger; settings follows the shell. ~390 list captured. Filter JS not re-clicked in headless. | A CSS loads (inspected). B concrete delta vs start (sidebar, paper, type). C settings in the same language. D narrow viewport visually inspected. Original fixture. |
 | **11 Railbag** | Author RN `App.js` in a work copy: SafeAreaProvider, KeyboardAvoidingView, sheet Modal, `accessibilityRole`/`Label`. `adb`/`emulator`/`expo` **not on PATH**. | A–C **implemented** in source. D device **pending**. Not passed via Expo web. |
 
 Cases **01–07**: **not re-run** this session. Historical v0.2.0 clipping,
@@ -208,7 +208,7 @@ invented dates, and dashboard-delta notes stay historical.
 ### Native / licensed template
 
 - Flutter, SwiftUI, Compose: **not tested**
-- Ecme: **not used**; case 10 is an original fixture
+- Commercial third-party themes: **not used**; case 10 is an original fixture
 - iOS/Android simulator: **pending**
 
 ### Publish

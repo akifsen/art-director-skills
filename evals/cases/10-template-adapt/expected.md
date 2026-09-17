@@ -2,7 +2,7 @@
 
 ## Scope
 
-- Original template fixture; **label is not Ecme**
+- Original evaluation fixture
 - Keep three invoices and filter JS
 - Shared theme entry; list, detail, settings stay related
 - Isolated eval only

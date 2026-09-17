@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { MATTERS } from "./data.js";
-import { Button } from "./components/ui/button.jsx";
-import { Input } from "./components/ui/input.jsx";
-import { Dialog } from "./components/ui/dialog.jsx";
+import { Button } from "./ui/button.jsx";
+import { Input } from "./ui/input.jsx";
+import { Dialog } from "./ui/dialog.jsx";
 
 export default function App() {
   const [selected, setSelected] = useState("P-301");

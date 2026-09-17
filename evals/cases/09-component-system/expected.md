@@ -5,7 +5,7 @@
 - DESIGN on an existing primitive kit
 - Preserve P-301, P-304, P-311 and dialog validation
 - Token + variant + composite screen all move
-- Isolated original fixture; **not** shadcn source; **not** Ecme
+- Isolated original evaluation fixture
 
 ## Gate A
 

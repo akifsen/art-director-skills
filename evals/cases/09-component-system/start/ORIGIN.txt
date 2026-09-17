@@ -1,0 +1,2 @@
+Plica Intake is an original evaluation fixture in this repository.
+It is a small local primitive kit, not a commercial theme dump.

@@ -139,7 +139,7 @@ export function validateSkill(root = skillRoot) {
     "references/implementation.md",
     "references/visual-review.md",
     "references/product-ui-system.md",
-    "references/theme-enhancement.md",
+    "references/existing-ui-system.md",
     "references/react-web.md",
     "references/native-mobile.md",
     "references/completeness-and-states.md",

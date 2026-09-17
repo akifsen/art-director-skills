@@ -34,8 +34,8 @@ an old-skill arm.
 | `06-mobile-nav` | Navigation only (website menu) | REFINE |
 | `07-missing-css` | Stylesheet 404 | REVIEW |
 | `08-themeless-react` | Starter React product UI (holdout) | DESIGN |
-| `09-component-system` | Local primitives / shadcn-like pattern | DESIGN |
-| `10-template-adapt` | Original admin template (**not Ecme**) | DESIGN |
+| `09-component-system` | Local primitives (original fixture) | DESIGN |
+| `10-template-adapt` | Original admin template | DESIGN |
 | `11-native-expo` | React Native / Expo list-detail-edit | DESIGN |
 | `12-holdout-lumen-cart` | Bookmobile stop log (holdout, not Kiln/Tide) | DESIGN |
 

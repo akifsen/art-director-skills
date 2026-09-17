@@ -23,6 +23,9 @@ Reliability of the maintainer path and the tutorial product flows.
   click on the disabled button (that click was cancelling the write)
 - Worked examples are methods, not a file kit: do not copy hash routers,
   `?fixture=`, palettes, or `dialog-geometry.js` / `ui.jsx` into another product
+- Vendor-specific guidance removed from skill instructions, docs, eval
+  briefs, and fixture labels. Existing-system work discovers the repo’s
+  real UI; it does not assume a named kit
 - Holdout eval case 12 (Lumen Cart). Isolated DESIGN vs v0.4.0 is recorded in
   `evals/RESULTS.md` (source; no browser run in that session)
 
@@ -42,7 +45,7 @@ Make the shipped examples tell the truth and prove it.
 Product-complete web and native UI, without a purchased theme.
 
 - DESIGN still uses one skill and three modes; adds **platform** (web vs
-  native) and **UI foundation** (existing theme, shadcn-like primitives,
+  native) and **UI foundation** (existing theme, local primitives,
   or starter) so the right references load
 - Theme-less React work builds a small shared system, then screens — not
   page-local CSS or a static HTML mock
@@ -53,7 +56,7 @@ Product-complete web and native UI, without a purchased theme.
 - Completeness is the requested flow and states; polish is four gates
   (A–D), not a tour count
 - Original implementation examples (Kiln Queue, Nadir Desk, Closeout)
-  plus evals 08–11; template fixture is labeled **not Ecme**
+  plus evals 08–11; template fixture is an original eval template
 - Flutter / SwiftUI / Compose: not claimed as tested
 
 ## 0.2.0 — 2026-09-17
