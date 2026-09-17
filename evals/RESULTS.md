@@ -37,8 +37,7 @@ not treat those scoped jobs as full-page craft proof.
 - Maintainer Node: v22.20.0 (not a skill runtime)
 - Isolated work: `%TEMP%\ad-eval-v010` (old skill) and `%TEMP%\ad-eval-v020`
   (new skill). Parent “improve the skill” prompt was not given to those
-  subagents. Cases 02 and 03 new arms later wrote `RUN.md`; case 01 new
-  arm had HTML/CSS inspected here before a `RUN.md` existed.
+  subagents. Cases 01, 02, and 03 new arms later wrote `RUN.md`.
 - Visual inspection: author looked at Chrome headless PNGs at ~1440×900 and
   ~390×844. Not blind. n = 1 per arm. Not a generalization.
 
@@ -72,7 +71,7 @@ tested (skill text was handed to subagents).
 
 | Case | Old skill (v0.1.0 snapshot) | New skill (v0.2.0 tree) |
 |---|---|---|
-| 01-creative-studio | Isolated subagent. Installation-first poster: Palatino “Sodium Vault” on near-black, gold rail, metadata column. Hierarchy **pass**. Proof object **missing**. Author inspected desktop+mobile PNGs. | Isolated subagent. Same hierarchy plus a labeled **section diagram** of hanging sodium lamps (caption: not a photograph). Mobile stacks title then diagram. **Invented workshop dates** (3 / 31 October) — Gate A content miss; skill text was tightened after this. Desktop lede clipped in 1440×900. |
+| 01-creative-studio | Isolated subagent. Installation-first poster: Palatino “Sodium Vault” on near-black, gold rail, metadata column. Hierarchy **pass**. Proof object **missing**. Author inspected desktop+mobile PNGs. | Isolated subagent **completed with `RUN.md`**. Installation-as-stage plus captioned sodium-lamp **section diagram**. Live web not seen; Kiln Rest study used (method only). Load check: computed `h1` Bahnschrift 75% stretch, body Segoe UI. First shot had CTA off-fold / caption on drawing; those were fixed. **Invented workshop dates** (3 / 31 October) admitted in `RUN.md` — Gate A miss; skill text was tightened after this. |
 | 02-dev-portfolio | Isolated subagent. Memoir-first paper page, tools as a flat list, `Kılıç` intact. Author inspected. | Isolated subagent **completed with `RUN.md`**. Memoir title as a two-line Palatino lockup; tools grouped by problem. Live web research **not claimed** (studies fallback). Load check: `styles.css` `cssRules.length` 34; computed face Palatino Linotype; canvas `#efe9dc`. `--headless=new` 390 crop was a tooling miss; device-metrics recapture used. |
 | 03-dashboard | Isolated subagent. Working dispatch board: overdue words, berth chips, mobile row cards, `board.js`. Author inspected. | Isolated subagent **completed with `RUN.md`**. Still a board, not a landing: enamel chrome, berth radios, overdue as word + docket + left rule. CSS load checked via screenshot pixels (`#1C241F`). No live research. Craft similar in kind to the old arm; not a night-and-day win. Headless `100vh` left a canvas strip in the 1440 PNG (capture quirk). |
 
@@ -96,10 +95,11 @@ Without-skill arm: **not run**. Do not generalize.
 assets 0 (no diagram/photo); reference-justified 0 (no research pass in
 v0.1.0 skill).
 
-**01 new isolated — Gate A** fail on invented dates; CSS loaded. **Gate B**
-finished composition 2 (diagram is the vault); still a dark field (justified
-as sodium night, not a second SaaS kit by itself); mobile caption clips
-“SODI…”.
+**01 new isolated — Gate A** fail on invented dates (agent stated the
+brief asked for dated Saturdays, so days were supplied). CSS and faces
+loaded. **Gate B** finished composition 2 (diagram is the vault); still a
+dark field (justified as sodium night); first visual pass needed a polish
+for fold/caption.
 
 **02 new — Gate A** pass (`Kılıç`, memoir route, stylesheet actually
 loaded). **Gate B** type craft 2 relative to the old arm’s flatter title;
