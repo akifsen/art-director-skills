@@ -27,7 +27,9 @@ Do not add MUI beside shadcn, or Chakra beside a house DS.
 
 If the brief asks for list, detail, and edit, those are routes (or
 equivalent URL states), linked with real navigation, not in-page theater
-that forgets the back path.
+that forgets the back path. Use this project’s router. Do not paste a
+tutorial hash scheme or `?fixture=` API unless this app’s own tests need
+them.
 
 Next.js / Remix: keep server rendering and loaders where they exist. Do
 not flatten distinct routes into one client scroll of fake sections.

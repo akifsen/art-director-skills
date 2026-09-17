@@ -37,14 +37,15 @@ an old-skill arm.
 | `09-component-system` | Local primitives / shadcn-like pattern | DESIGN |
 | `10-template-adapt` | Original admin template (**not Ecme**) | DESIGN |
 | `11-native-expo` | React Native / Expo list-detail-edit | DESIGN |
+| `12-holdout-lumen-cart` | Bookmobile stop log (holdout, not Kiln/Tide) | DESIGN |
 
 Each case has a `brief.md`, a `start/` tree, and `expected.md` (scope plus
 gates, not a pixel template).
 
-Primary comparison for v0.4.0: case **08 Tide Bindery** (holdout, not the
-Kiln Queue tutorial), then 09 and 11. Tutorial example quality is recorded
-separately from host-agent output. Do not treat a prettier Kiln Queue as
-proof that 08 improved.
+Primary comparison after v0.4.0: case **12 Lumen Cart** (holdout, not the
+Kiln Queue or Tide Bindery tutorials), plus 08/09/11 as needed. Tutorial
+example quality is recorded separately from host-agent output. Do not treat
+a prettier Kiln Queue as proof that an independent brief improved.
 
 ## Rubric (subjective, four gates)
 

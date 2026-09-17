@@ -1,7 +1,8 @@
 # Example — theme-less React (Kiln Queue)
 
 **When:** a React web app with no theme pack and a list/detail/form job.
-**Not:** a look to reuse on unrelated products.
+**Not:** a look, hash router, or `?fixture=` API to reuse on unrelated
+products. Those exist so *this* demo can be tested.
 
 ## Run (this repository, maintainer)
 

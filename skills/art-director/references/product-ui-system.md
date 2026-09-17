@@ -95,6 +95,8 @@ not markup stuffed through `dangerouslySetInnerHTML`.
 - Skeleton “cards” with no shared type roles
 - Rewriting dialog/select/calendar as unmarked `<div>`s
 - A success toast when the record in state did not change
+- Reusing Kiln / Nadir / Closeout color, type, or URL shape on an unrelated product
 
 Worked files: [examples/themeless-react.md](examples/themeless-react.md)
-(method only — do not copy that product’s look onto a different brief).
+(method only — do not copy that product’s look, hash routes, or
+`?fixture=` helper onto a different brief).

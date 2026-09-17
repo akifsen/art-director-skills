@@ -105,12 +105,13 @@ const caseDirs = fs.readdirSync(path.join(root, "evals", "cases"), { withFileTyp
   .filter((e) => e.isDirectory())
   .map((e) => e.name)
   .sort();
-assert(caseDirs.length >= 11, `eval cases >= 11 (have ${caseDirs.length})`);
+assert(caseDirs.length >= 12, `eval cases >= 12 (have ${caseDirs.length})`);
 assert(caseDirs.includes("07-missing-css"), "eval fixture for missing stylesheet");
 assert(caseDirs.includes("08-themeless-react"), "eval 08 themeless React");
 assert(caseDirs.includes("09-component-system"), "eval 09 component system");
 assert(caseDirs.includes("10-template-adapt"), "eval 10 template adapt (not Ecme)");
 assert(caseDirs.includes("11-native-expo"), "eval 11 native Expo");
+assert(caseDirs.includes("12-holdout-lumen-cart"), "eval 12 Lumen Cart holdout");
 assert(fs.existsSync(path.join(root, "evals", "cases", "10-template-adapt", "start", "NOT-ECME.txt")), "template fixture labeled not Ecme");
 for (const name of caseDirs) {
   const dir = path.join(root, "evals", "cases", name);

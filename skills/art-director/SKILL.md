@@ -171,13 +171,13 @@ Studies (web composition). Open the pair that matches the failure mode:
 - Media as structure: [media-in-composition.md](references/studies/media-in-composition.md)
 
 Worked **methods** (not a theme pack; identities differ). Copy the *approach*,
-not the look:
+not the look: named-record saves, real overlays, reachable states, shared
+tokens. Do **not** copy an example’s palette, serif-on-cream default, hash
+router, or `?fixture=` query API onto another product.
 
 - Theme-less React list/detail/form: [themeless-react.md](references/examples/themeless-react.md)
 - Token + variant + composite screen: [component-system.md](references/examples/component-system.md)
 - Native list/detail/edit, safe area, keyboard, sheet: [native-mobile-example.md](references/examples/native-mobile-example.md)
-
-Do not restyle unrelated products to match those examples.
 
 ## Implementation constraints
 
