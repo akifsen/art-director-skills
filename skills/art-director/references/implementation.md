@@ -16,7 +16,7 @@ can express the thesis. Add a new primitive when the current one cannot;
 do not add a second spacing scale "for the redesign."
 
 Name **platform** (web vs native) and **UI foundation** (existing theme,
-local primitives such as shadcn/ui, or starter) before you write styles.
+local primitives, or starter) before you write styles.
 Then open the matching guides from `SKILL.md`. A native task does not
 follow web CSS recipes. A React product app does not ship as one static
 HTML file or as `dangerouslySetInnerHTML` mockups.
@@ -61,8 +61,8 @@ not a taste problem. See [polish-pass.md](polish-pass.md).
 
 For a starter React app, build a small shared system first
 ([product-ui-system.md](product-ui-system.md),
-[react-web.md](react-web.md)). For shadcn/ui or a vendor theme, enhance
-that system ([theme-enhancement.md](theme-enhancement.md)). For React
+[react-web.md](react-web.md)). For an existing theme or local primitives,
+enhance that system ([existing-ui-system.md](existing-ui-system.md)). For React
 Native / Expo, use native layout and a11y
 ([native-mobile.md](native-mobile.md)).
 

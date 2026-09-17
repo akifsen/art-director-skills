@@ -1,51 +1,51 @@
 :root {
-  --background: #fafafa;
-  --foreground: #18181b;
-  --card: #ffffff;
-  --card-foreground: #18181b;
-  --primary: #18181b;
-  --primary-foreground: #fafafa;
-  --secondary: #f4f4f5;
-  --secondary-foreground: #18181b;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --accent: #f4f4f5;
-  --accent-foreground: #18181b;
-  --destructive: #dc2626;
-  --border: #e4e4e7;
-  --input: #e4e4e7;
-  --ring: #a1a1aa;
-  --sidebar: #f4f4f5;
-  --sidebar-foreground: #18181b;
-  --radius: 0.5rem;
-  --font-ui: system-ui, sans-serif;
+  --canvas: #fafafa;
+  --ink: #18181b;
+  --sheet: #ffffff;
+  --sheet-ink: #18181b;
+  --action: #18181b;
+  --action-ink: #fafafa;
+  --quiet: #f4f4f5;
+  --quiet-ink: #18181b;
+  --recessed: #f4f4f5;
+  --meta: #71717a;
+  --highlight: #f4f4f5;
+  --highlight-ink: #18181b;
+  --danger: #dc2626;
+  --hairline: #e4e4e7;
+  --field-line: #e4e4e7;
+  --focus: #a1a1aa;
+  --rail: #f4f4f5;
+  --rail-ink: #18181b;
+  --corner: 0.5rem;
+  --type-ui: system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-ui); }
+body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--type-ui); }
 
 .shell { display: grid; grid-template-columns: 12rem 1fr; min-height: 100vh; }
-.side { background: var(--sidebar); color: var(--sidebar-foreground); padding: 1rem; border-right: 1px solid var(--border); }
+.side { background: var(--rail); color: var(--rail-ink); padding: 1rem; border-right: 1px solid var(--hairline); }
 .main { padding: 1rem; }
 .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-.table { width: 100%; border-collapse: collapse; background: var(--card); color: var(--card-foreground); }
-.table th, .table td { border-bottom: 1px solid var(--border); padding: 0.65rem; text-align: left; }
-.table tr[data-selected="true"] { background: var(--accent); }
+.table { width: 100%; border-collapse: collapse; background: var(--sheet); color: var(--sheet-ink); }
+.table th, .table td { border-bottom: 1px solid var(--hairline); padding: 0.65rem; text-align: left; }
+.table tr[data-selected="true"] { background: var(--highlight); color: var(--highlight-ink); }
 
-.btn { min-height: 2.25rem; padding: 0 0.85rem; border-radius: var(--radius); border: 1px solid transparent; font: inherit; cursor: pointer; }
-.btn:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
-.btn-primary { background: var(--primary); color: var(--primary-foreground); }
-.btn-secondary { background: var(--secondary); color: var(--secondary-foreground); border-color: var(--border); }
+.btn { min-height: 2.25rem; padding: 0 0.85rem; border-radius: var(--corner); border: 1px solid transparent; font: inherit; cursor: pointer; }
+.btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.btn-primary { background: var(--action); color: var(--action-ink); }
+.btn-secondary { background: var(--quiet); color: var(--quiet-ink); border-color: var(--hairline); }
 .btn:disabled { opacity: 0.5; }
 
-.input { min-height: 2.25rem; width: 100%; border: 1px solid var(--input); border-radius: var(--radius); padding: 0 0.5rem; font: inherit; }
+.input { min-height: 2.25rem; width: 100%; border: 1px solid var(--field-line); border-radius: var(--corner); padding: 0 0.5rem; font: inherit; }
 .field { display: grid; gap: 0.25rem; margin: 0.75rem 0; }
-.field[data-invalid="true"] .input { border-color: var(--destructive); }
-.err { color: var(--destructive); font-size: 0.85rem; }
+.field[data-invalid="true"] .input { border-color: var(--danger); }
+.err { color: var(--danger); font-size: 0.85rem; }
 
 .dialog-root { position: fixed; inset: 0; display: grid; place-items: center; }
 .backdrop { position: absolute; inset: 0; background: rgb(24 24 27 / 0.4); }
-.dialog { position: relative; width: min(24rem, calc(100vw - 1.5rem)); background: var(--card); padding: 1rem; border-radius: var(--radius); border: 1px solid var(--border); }
+.dialog { position: relative; width: min(24rem, calc(100vw - 1.5rem)); background: var(--sheet); padding: 1rem; border-radius: var(--corner); border: 1px solid var(--hairline); }
 
 @media (max-width: 40rem) {
   .shell { grid-template-columns: 1fr; }

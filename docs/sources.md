@@ -26,14 +26,12 @@ Those documents remain under their publishers' terms. This repo quotes
 command shapes needed to install correctly. They are not copied in as
 skill rules.
 
-## Platform and component-system docs (retrieved 2026-09-17)
+## Platform and UI docs (retrieved 2026-09-17)
 
-Used to check current behavior while writing v0.3.0. Not copied into the
-skill as a theme or a dump of vendor CSS.
+Used to check current behavior while writing. Not copied into the skill
+as a theme or a dump of vendor CSS.
 
-- shadcn/ui theming (semantic CSS variables, token pairs, radius scale):
-  https://ui.shadcn.com/docs/theming
-- shadcn/ui docs index: https://ui.shadcn.com/docs
+- CSS custom properties: https://developer.mozilla.org/en-US/docs/Web/CSS/--*
 - React Native AccessibilityInfo.announceForAccessibility:
   https://reactnative.dev/docs/accessibilityinfo
   (re-checked 2026-09-17; there is no `accessibilityAnnounce…` view prop)
@@ -44,8 +42,6 @@ skill as a theme or a dump of vendor CSS.
 - Expo safe areas: https://docs.expo.dev/develop/user-interface/safe-areas/
 - Apple HIG (platform norms, not copied): https://developer.apple.com/design/human-interface-guidelines
 - Android design (platform norms, not copied): https://developer.android.com/design/ui
-- Ecme-lite exists as a public ThemeNate repo; this skill does **not**
-  vendor it. Eval template work uses an original fixture.
 
 ## Interface observations (2026-09-17)
 

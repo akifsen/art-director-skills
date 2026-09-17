@@ -6,7 +6,7 @@ folder of unrelated page CSS.
 
 This is a design method, not a kit to paste. Do not install a commercial
 theme. Do not add a second component library if the project already has
-one (then use [theme-enhancement.md](theme-enhancement.md)).
+one (then use [existing-ui-system.md](existing-ui-system.md)).
 
 The goal: a small system that this product can actually run on, then
 screens built from it. “Does not need a purchased theme” does not mean

@@ -19,7 +19,7 @@ The skill tells the host to:
 
 1. Read the current stack, content, and what must not change — including
    platform (web vs native) and UI foundation (existing theme, local
-   primitives such as shadcn/ui, or a starter)
+   primitives, or a starter)
 2. Give the real content a hierarchy (lead, proof, support, action)
 3. On broad DESIGN, look at a few current references *if the host can see
    pages*; otherwise use the studies in the skill

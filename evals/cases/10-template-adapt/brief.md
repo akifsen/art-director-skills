@@ -1,10 +1,7 @@
 # Brief — Sable Ledger (template adaptation fixture)
 
-This is an **original** small admin template in the repo. It is **not
-Ecme**, not a ThemeNate product, and not a licensed vendor dump.
-
-Do **not** report a result as “tested on Ecme.” There is no authorized
-Ecme checkout in this eval.
+This is an **original** small admin template in the repo. Original
+evaluation fixture, not a licensed vendor dump.
 
 Mode: **DESIGN**. Platform: **web**. Foundation: **existing template**.
 
@@ -18,6 +15,3 @@ and shell. Keep:
 
 Do not invent revenue charts or customer logos. Do not copy vendor files
 into a parallel tree. Do not restyle as a marketing studio.
-
-If a later session has authorized Ecme access, that is a different run
-and must be labeled as Ecme.

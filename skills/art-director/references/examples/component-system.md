@@ -1,7 +1,7 @@
 # Example — existing component system (Nadir Desk)
 
-**When:** local primitives with semantic tokens (shadcn/ui-like).
-**Not:** shadcn source, Kiln Queue, or Closeout.
+**When:** local primitives with semantic tokens already in the repo.
+**Not:** Kiln Queue or Closeout. Original example in this skill.
 
 Notes are stored **per row in this tab**. Cancel drops the draft. Clicks
 on the dialog panel, including padding, do not cancel.

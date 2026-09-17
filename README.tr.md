@@ -15,7 +15,7 @@ Yeni bir sayfa, açık bir yeniden tasarım, sınırlı bir düzeltme (örneğin
 mobil menü) veya görsel inceleme istendiğinde.
 
 Skill, host ajana şunu öğretir: mevcut yığını, platformu (web veya native)
-ve arayüz temelini (hazır tema, shadcn/ui benzeri primitives veya başlangıç
+ve arayüz temelini (mevcut tasarım sistemi, yerel primitives veya başlangıç
 projesi) oku; içeriğe hiyerarşi ver; geniş DESIGN işinde görülebilen güncel
 referanslara bak; somut bir görsel tez yaz; ortak bir bileşen/sayfa dili
 kur veya geliştir; istenen ekranları, akışları ve durumları bitir; uygulama
