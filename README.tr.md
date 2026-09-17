@@ -14,15 +14,18 @@ host’un skill dizinine kopyalamak yeterlidir.
 Yeni bir sayfa, açık bir yeniden tasarım, sınırlı bir düzeltme (örneğin
 mobil menü) veya görsel inceleme istendiğinde.
 
-Skill, host ajana şunu öğretir: mevcut yığını ve gerçek markayı
-(başlangıç şablonu değil) oku, içeriğe hiyerarşi ver, geniş DESIGN işinde
-görülebilen güncel referanslara bak, somut bir görsel tez yaz, temsilî bir
-dilimi bitmiş işçilikle uygula, uygulama istendiyse gerçek dosyaları
-değiştir, işlevsel kontrol ile görsel işçiliği ayır.
+Skill, host ajana şunu öğretir: mevcut yığını, platformu (web veya native)
+ve arayüz temelini (hazır tema, shadcn/ui benzeri primitives veya başlangıç
+projesi) oku; içeriğe hiyerarşi ver; geniş DESIGN işinde görülebilen güncel
+referanslara bak; somut bir görsel tez yaz; ortak bir bileşen/sayfa dili
+kur veya geliştir; istenen ekranları, akışları ve durumları bitir; uygulama
+istendiyse gerçek dosyaları değiştir; dört kabul kapısını (yükleme/işlev,
+işçilik, kapsam, platform/erişilebilirlik) ayır.
 
 Yalnızca doğru palet yetmez. Kullanıcı wireframe istemediyse ilk iskelet
 teslim değildir. Bilinçli sadeleştirme kusur değildir; işlenmemiş boşluk
-ve varsayılan HTML kusurdur.
+ve varsayılan HTML kusurdur. Native uygulama, web sitesinin mobil menüsü
+değildir.
 
 Backend, SQL, migration veya yayın işlerinde kendiliğinden tasarım
 başlatmamalıdır.
@@ -51,8 +54,8 @@ Herkese açık depo:
 npx skills add akifsen/art-director-skills --skill art-director --agent cursor --copy
 ```
 
-Eski bir **v0.1.0** kopyanız varsa klasörü birleştirmeden değiştirin.
-[docs/installation.md](docs/installation.md#update-an-older-copy).
+Eski bir **v0.1.0** veya **v0.2.0** kopyanız varsa klasörü birleştirmeden
+değiştirin. [docs/installation.md](docs/installation.md#update-an-older-copy).
 
 `npx skills` telemetrisi o CLI’ye aittir; `DISABLE_TELEMETRY=1` veya
 `DO_NOT_TRACK=1` ile kapatılır.

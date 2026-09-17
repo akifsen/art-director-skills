@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.0 — 2026-09-17
+
+Product-complete web and native UI, without a purchased theme.
+
+- DESIGN still uses one skill and three modes; adds **platform** (web vs
+  native) and **UI foundation** (existing theme, shadcn-like primitives,
+  or starter) so the right references load
+- Theme-less React work builds a small shared system, then screens — not
+  page-local CSS or a static HTML mock
+- Existing themes and local primitives are enhanced in place (tokens,
+  variants, composite screens) without a second UI kit
+- Native (React Native / Expo) is a separate recipe: navigation, safe
+  area, keyboard, sheets, native a11y — not a website mobile menu
+- Completeness is the requested flow and states; polish is four gates
+  (A–D), not a tour count
+- Original implementation examples (Kiln Queue, Nadir Desk, Closeout)
+  plus evals 08–11; template fixture is labeled **not Ecme**
+- Flutter / SwiftUI / Compose: not claimed as tested
+
 ## 0.2.0 — 2026-09-17
 
 Teach finished, context-specific craft — not only process and palettes.

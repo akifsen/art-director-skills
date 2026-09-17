@@ -15,6 +15,16 @@ Reuse existing layout primitives, design tokens, and components when they
 can express the thesis. Add a new primitive when the current one cannot;
 do not add a second spacing scale "for the redesign."
 
+Name **platform** (web vs native) and **UI foundation** (existing theme,
+local primitives such as shadcn/ui, or starter) before you write styles.
+Then open the matching guides from `SKILL.md`. A native task does not
+follow web CSS recipes. A React product app does not ship as one static
+HTML file or as `dangerouslySetInnerHTML` mockups.
+
+Do not add a second UI kit beside a working one. Read the lockfile; do not
+assume a primitive version. Complex overlays (dialog, select, calendar):
+use an accessible primitive already in the project.
+
 ## Semantics and behavior
 
 Keep heading order honest. Do not skip levels to get a visual size.
@@ -48,6 +58,13 @@ Before you treat the design as done, confirm:
 
 A missing `@import` or a wrong relative CSS path is a failed implementation,
 not a taste problem. See [polish-pass.md](polish-pass.md).
+
+For a starter React app, build a small shared system first
+([product-ui-system.md](product-ui-system.md),
+[react-web.md](react-web.md)). For shadcn/ui or a vendor theme, enhance
+that system ([theme-enhancement.md](theme-enhancement.md)). For React
+Native / Expo, use native layout and a11y
+([native-mobile.md](native-mobile.md)).
 
 ## What "implemented" means
 

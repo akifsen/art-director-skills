@@ -33,11 +33,11 @@ Reject a thesis that would still fit any other product after swapping the
 name. "Clean layout, strong type, plenty of whitespace" is not a thesis.
 "Navy accent, Inter, three cards" is a kit, not a thesis.
 
-**Gotcha:** the installation name can dominate the first viewport while the
-*space* is missing. A gold rail and a Palatino lockup on near-black is a
-poster. Finish the vault: a sodium field, a warehouse plan, a crop, a
+**Gotcha:** the product name can dominate the first viewport while the
+*object of the work* is missing. A lockup and a color rail on a dark field
+is a poster. Finish the artifact: a crop, a diagram, a working surface, a
 caption — something a visitor could point at. Do not "fix" this by adding
-01/02/03 under the poster.
+numbered filler cards under the poster.
 
 ## Two directions, not a catalog
 

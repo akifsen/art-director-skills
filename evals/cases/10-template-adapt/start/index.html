@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sable Ledger</title>
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="side">
+        <strong>Sable</strong>
+        <a href="index.html">Invoices</a>
+        <a href="settings.html">Settings</a>
+      </aside>
+      <div>
+        <div class="top">Invoices</div>
+        <main class="page">
+          <div class="card">
+            <label>Filter <input id="q" type="search" /></label>
+            <table>
+              <thead>
+                <tr><th>No</th><th>Who</th><th>For</th><th></th></tr>
+              </thead>
+              <tbody>
+                <tr data-inv>
+                  <td>S-880</td>
+                  <td>Moss Parish</td>
+                  <td>Q3 bookkeeping</td>
+                  <td><a href="invoice.html?id=S-880">Open</a></td>
+                </tr>
+                <tr data-inv>
+                  <td>S-881</td>
+                  <td>Pier Café</td>
+                  <td>Payroll August</td>
+                  <td><a href="invoice.html?id=S-881">Open</a></td>
+                </tr>
+                <tr data-inv>
+                  <td>S-884</td>
+                  <td>Northglass (materials only)</td>
+                  <td>One crate invoice</td>
+                  <td><a href="invoice.html?id=S-884">Open</a></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="muted">Original template fixture. Not Ecme.</p>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

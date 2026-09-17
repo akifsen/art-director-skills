@@ -12,6 +12,12 @@ Replace every section with project facts. Do not keep these sample words.
 - Brand in force (tokens, faces, logo). Note leftovers you refused to treat
   as brand (starter fonts, gray boxes)
 
+## Platform and foundation
+
+- Platform (web / native):
+- UI foundation (existing theme / local primitives / starter):
+- References opened:
+
 ## Content priority
 
 1. Lead:
@@ -43,15 +49,22 @@ For each source you actually saw:
 - Display / heading / body / meta (character, not only family names):
 - Canvas, raised, brand field, text, hairline, interactive, status:
 
-## Mobile
+## Mobile / native
 
-- First content:
-- Navigation behavior:
-- Crop / disclosure:
+- Web small viewport (first content, menu, crop):
+- Native (safe area, keyboard, back, sheet) if this is an app:
 
-## Verification
+## Scope matrix
 
-- Stylesheet and font load:
-- Technical checks run:
-- Visual inspection (who, viewport, states, tool):
+| Screen / route | Task | Components | States | After nav | Check |
+|---|---|---|---|---|---|
+| | | | | | |
+
+## Verification (gates, not tour counts)
+
+- A load / function / content:
+- B craft / consistency:
+- C in-scope flows and states:
+- D platform / accessibility:
+- Evidence: implemented / run-verified / visually inspected
 - Not verified:

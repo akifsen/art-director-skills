@@ -102,12 +102,12 @@ skill runtime requirement.
 ### Pinning a release
 
 In this CLI, `owner/repo@skill-name` is a **skill filter**, not a version.
-Do not write `akifsen/art-director-skills@v0.2.0` expecting a tag.
+Do not write `akifsen/art-director-skills@v0.3.0` expecting a tag.
 
 Documented pin: a GitHub tree URL whose path segment is the branch or tag.
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.2.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.3.0 --skill art-director --agent cursor --copy
 ```
 
 Use a real tag after it exists. Prefer the tag or commit published in
@@ -116,17 +116,20 @@ can be copied manually the same way as the offline folder.
 
 ## Update an older copy
 
-v0.2.0 adds files under `references/` (including `studies/`). Merging by
+v0.3.0 adds platform/foundation guides under `references/` and
+`references/examples/`. v0.2.0 added `references/studies/`. Merging by
 hand and leaving the old `SKILL.md` is how a host keeps producing skeleton
-pages while you think you upgraded.
+pages, or web-only recipes on a native brief, while you think you upgraded.
 
 Replace the whole `art-director` directory. Keep the folder name
 `art-director`. On Windows prefer `Copy-Item -LiteralPath` (see above).
+Turkish letters and spaces in the parent path are supported by that
+cmdlet; do not switch to `fs.cpSync` in a one-off script without testing.
 
 Project copy:
 
 ```powershell
-Copy-Item -Recurse -Force path\to\art-director-skills\skills\art-director .agents\skills\art-director
+Copy-Item -LiteralPath 'path\to\art-director-skills\skills\art-director' -Destination '.agents\skills\art-director' -Recurse -Force
 ```
 
 If you installed with the CLI:
@@ -137,7 +140,8 @@ npx skills add akifsen/art-director-skills --skill art-director --agent cursor -
 
 or, from a local clone of the new tag, the same `npx skills add <path>`
 form as install. Then confirm the copied `SKILL.md` metadata version is
-`0.2.0` and that `references/studies/` exists.
+`0.3.0`, that `references/native-mobile.md` exists, and that
+`references/examples/themeless-react/` exists.
 
 Do not keep a second copy in `.cursor/skills/` if `.agents/skills/` already
 has it — duplicate discovery is confusing, not "more updated."

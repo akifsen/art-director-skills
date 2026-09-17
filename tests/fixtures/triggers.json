@@ -40,5 +40,23 @@
     "shouldTrigger": true,
     "expectedMode": "REFINE",
     "prompt": "Fix the spacing on the pricing block. Do not touch the rest of the marketing site."
+  },
+  {
+    "id": "design-native-app",
+    "shouldTrigger": true,
+    "expectedMode": "DESIGN",
+    "prompt": "Design a React Native Expo app for station lost-and-found with list, detail, and edit. Safe area and keyboard must work."
+  },
+  {
+    "id": "design-themeless-product",
+    "shouldTrigger": true,
+    "expectedMode": "DESIGN",
+    "prompt": "Design a product UI for this React app. There is no theme pack. Build list, detail, and the edit form with empty and error states."
+  },
+  {
+    "id": "design-shadcn-desk",
+    "shouldTrigger": true,
+    "expectedMode": "DESIGN",
+    "prompt": "Redesign this shadcn/ui dashboard using the existing components. Keep the table behavior."
   }
 ]

@@ -1,8 +1,13 @@
-# Responsive behavior and interaction
+# Responsive behavior and interaction (web)
 
-Read this for small-screen layout, navigation, UI states, or motion. Skip it
-when the work is print-like and static. For component family and materials
-see [visual-craft.md](visual-craft.md).
+Read this for **web** small-screen layout, website navigation (including a
+mobile menu), UI states, or motion. Skip it when the work is print-like
+and static. For component family and materials see
+[visual-craft.md](visual-craft.md).
+
+A **native** mobile app is a different platform. Do not apply these CSS
+viewport recipes, `rem`/`vh` rules, or ARIA-first menus there. Use
+[native-mobile.md](native-mobile.md).
 
 ## Small screens are a different order
 

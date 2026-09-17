@@ -1,69 +1,77 @@
-# Polish pass
+# Acceptance gates (not tour counts)
 
-Read this on a **large DESIGN** task before you declare the page done, and
-whenever the first render looks like a skeleton. Skip it for a one-control
-REFINE; there, mature the named piece directly.
+Read this before you declare DESIGN done, and whenever the first render
+looks like a skeleton. Skip the full product matrix for a one-control
+REFINE; there, still pass the gates **on the named piece**.
 
-The goal is a finished slice, then the same language everywhere in scope.
-It is not a three-mockup review, and not an infinite self-critique loop.
+A representative slice is the first checkpoint. It is not permission to
+leave the rest of the requested product untouched.
+
+Pass count is a budget, not a success criterion. Do not start an endless
+aesthetic loop either. Prioritize evidenced defects; re-verify each fix.
+
+## Four gates (do not average)
+
+### Gate A — Load, function, content
+
+Styles, fonts, and images the thesis depends on actually load. Routes and
+controls that were asked for run. Copy, names, and figures are real.
+Unknown stays unknown. REVIEW did not edit sources.
+
+A missing stylesheet is an A fail even if the markup looks designed.
+Computed `font-family` still on the fallback means the face did not load —
+do not praise the intended pairing.
+
+### Gate B — Craft and consistency
+
+Hierarchy, distinctive material, type, surfaces, density, and interaction
+match the thesis **across in-scope screens**, not only the first view.
+Settings, forms, and dialogs that share the system are part of this gate.
+
+### Gate C — Scope, flows, and states
+
+The matrix (or the named REFINE control) is implemented: screens,
+navigation outcomes, empty/loading/error/success as required. Decorative
+or dead controls fail this gate even if they look finished.
+
+### Gate D — Platform and accessibility
+
+Web: keyboard path, focus visible, headings, small viewport, website menu
+if in scope. Native: safe area, keyboard, back/dismiss, touch, screen
+reader props for that OS. Do not grade native with ARIA checklists.
 
 ## Sequence
 
-1. **Thesis** — four concrete answers (first look, distinctive material,
-   support, small screen). See [design-method.md](design-method.md).
-2. **References** — if you can see pages, take 2–4 notes. See
-   [visual-research.md](visual-research.md). If you cannot, use a study
-   from this skill and say live research did not happen.
-3. **One slice in real files**
-   - Marketing / studio / portfolio: navigation + opening viewport + the
-     beginning of the next band (enough to prove the rhythm).
-   - Dashboard / tool: the primary working surface (filters + records, or
-     the canvas operators actually use).
-4. **Load check** — before you talk about the design, confirm the
-   stylesheet ran, the intended faces are in use, and images/fonts are not
-   404. A correct thesis with a missing CSS link is still an unstyled page.
-5. **Look** — if a browser or image tool exists, inspect a desktop width
-   and a small width (~390px is a useful starting point, not a law). Check
-   hover/focus/open states you shipped. If you cannot look, mark visual
-   verification **missing**. Do not write "it looks premium."
-6. **Extend** — copy the slice's type roles, surfaces, edge rhythm, and
-   component language through the rest of the requested scope. Do not
-   invent a second system for the footer.
-7. **Highest-impact fix** — one short pass: the worst hierarchy miss, the
-   broken crop, the unloaded font, the control with no focus. Then stop.
+1. Thesis, then references if you can see pages.
+2. Slice in real files (marketing: nav + opening + next band; tool: the
+   working surface).
+3. Gate A on that slice (load check below).
+4. Extend the language through the requested scope — do not invent a
+   second system for later screens.
+5. Walk a real flow and one stressing state (C).
+6. Platform check you can actually run (D).
+7. Highest-impact remaining defect; re-verify. Stop when gates pass or
+   when remaining work is blocked (name the block).
 
-Host decides and continues unless the user asked to see options.
+## Load check (Gate A)
 
-## Load check (do this)
+In the running UI, or by inspecting network/CSSOM / native font loading:
 
-In the running page or with a quick inspection of the network/CSSOM:
+- The stylesheet or theme you edited is the one that runs
+- Intended faces are the computed/native faces
+- Images resolve; reserved space for known dimensions
+- 404 `@import`s count as broken
 
-- The stylesheet you edited is the one the document loads (href, bundler
-  entry, or scoped block actually emitted).
-- Computed `font-family` on heading and body matches the thesis, including
-  fallbacks. If a webfont is still `system-ui` or Times, the face did not
-  apply — fix loading, do not praise the intended pairing.
-- Images have real dimensions or reserved space; broken `src` is a craft
-  failure, not a "placeholder vibe."
-- `@import` and extra font stylesheets that 404 count as broken, even when
-  the HTML structure is right.
-
-If you cannot run the page, say that the load check did not happen.
-
-## How much iteration
-
-Two reasoned passes after the first slice is enough for most DESIGN tasks
-(load/visual check, then one craft pass). A third pass only if a concrete
-defect remains (overlap, unreadable overdue state, missing jobs). Do not
-install a standing "improve until beautiful" loop.
+Cannot run it: write **load check not done**.
 
 ## Honest stopping
 
-Done: the slice and its extension match the thesis, content is real, both
-ledgers were considered, and missing tools are named.
+**Done:** gates A–D passed on the requested scope, or failed gates are
+explicitly blocked (no device, no rights, no network) and the delivered
+part is listed.
 
-Not done: "I did not see it but the CSS should feel expensive."
+**Not done:** “two tours finished.” **Not done:** beautiful hero, dead
+save. **Not done:** tests green, UI still a skeleton. **Not done:** known
+clipped content, keyboard covering submit, broken navigation, fake data.
 
-Not done: hierarchy is correct but the distinctive artifact is still only
-a word (installation without a stage, tool without a working surface,
-memoir without a reading composition).
+**Not done:** “I did not see it but it should feel expensive.”

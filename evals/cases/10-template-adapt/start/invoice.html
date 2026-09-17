@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoice — Sable Ledger</title>
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="side">
+        <strong>Sable</strong>
+        <a href="index.html">Invoices</a>
+        <a href="settings.html">Settings</a>
+      </aside>
+      <div>
+        <div class="top">Invoice</div>
+        <main class="page">
+          <div class="card">
+            <h1 id="who">Invoice</h1>
+            <p>Use the query string id. Amounts are in the table on the list; do not invent new fees here.</p>
+            <p><a href="index.html">Back to list</a></p>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script>
+      const id = new URLSearchParams(location.search).get("id") || "unknown";
+      document.getElementById("who").textContent = "Invoice " + id;
+    </script>
+  </body>
+</html>

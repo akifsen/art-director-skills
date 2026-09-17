@@ -31,22 +31,27 @@ an old-skill arm.
 | `03-dashboard` | Data-dense ops UI | DESIGN |
 | `04-publication` | Long-form reading | DESIGN |
 | `05-branded-section` | Strong existing brand, new section | REFINE / DESIGN of one route |
-| `06-mobile-nav` | Navigation only | REFINE |
+| `06-mobile-nav` | Navigation only (website menu) | REFINE |
 | `07-missing-css` | Stylesheet 404 | REVIEW |
+| `08-themeless-react` | Starter React product UI (holdout) | DESIGN |
+| `09-component-system` | Local primitives / shadcn-like pattern | DESIGN |
+| `10-template-adapt` | Original admin template (**not Ecme**) | DESIGN |
+| `11-native-expo` | React Native / Expo list-detail-edit | DESIGN |
 
 Each case has a `brief.md`, a `start/` tree, and `expected.md` (scope plus
-Gate A / Gate B, not a pixel template).
+gates, not a pixel template).
 
-Primary comparison: 01, 02, and 03 on the **same** model, brief, start
-files, tools, and budget — old snapshot vs current skill, clean sessions.
-05 and 06 stay as regression for brand and mobile REFINE. 07 checks that
-missing CSS is not scored as finished design.
+Primary comparison for v0.3.0: 08 (themeless React) and 11 (native source)
+first, then 09 and 10. 01–03 stay as marketing/ops regressions vs the
+v0.2.0 snapshot. 05 and 06 stay as brand and web-mobile REFINE. 07 checks
+that missing CSS is not scored as finished design. Case 08 is a holdout
+brief not derived from 01–03.
 
-## Rubric (subjective, two gates)
+## Rubric (subjective, four gates)
 
-See [rubric.md](rubric.md). Gate A is functional/accessible/semantic
-(including CSS/font load). Gate B is visual craft. Do not average them
-into a fake overall quality percent.
+See [rubric.md](rubric.md). Gates A–D stay separate. Do not average them
+into a fake overall quality percent. Historical RESULTS rows that used two
+gates are not rewritten.
 
 ## With vs without / old vs new
 
@@ -87,10 +92,12 @@ Record in `evals/runs/` (gitignored):
 - Mode the agent chose
 - Files changed (or none, for REVIEW)
 - Browser/visual inspection: done / not done / unavailable; who looked
-- Rubric notes for Gate A and Gate B
+- Rubric notes for Gates A–D
+- Evidence kind: implemented / run-verified / visually inspected
 
 ## What we actually ran
 
-See [RESULTS.md](RESULTS.md) and [BASELINE.md](BASELINE.md). Unrun hosts
-are listed as unrun. Do not backfill transcripts or screenshots. Do not
-rewrite v0.1.0 rows as if they were v0.2.0 DESIGN runs.
+See [RESULTS.md](RESULTS.md), [BASELINE.md](BASELINE.md), and
+[BASELINE-0.2.0.md](BASELINE-0.2.0.md). Unrun hosts are listed as unrun.
+Do not backfill transcripts or screenshots. Do not rewrite v0.1.0 or
+v0.2.0 rows as if they were later DESIGN runs.

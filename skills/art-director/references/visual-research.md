@@ -48,8 +48,8 @@ For each chosen source:
 - Principle you can reuse here without copying brand
 - Brand-specific trait to leave behind (palette, logo, mascot, distinctive UI chrome)
 
-Copy layout, assets, or brand. Especially do not reuse the same reference
-the same way on unrelated projects.
+Do not copy layout, assets, or brand. Especially do not reuse the same
+reference the same way on unrelated projects.
 
 ## What "principle" means
 

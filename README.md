@@ -18,16 +18,17 @@ Use it when the work is a UI: a new page, a stated redesign, a bounded fix
 The skill tells the host to:
 
 1. Read the current stack, content, and what must not change — including
-   the difference between a real brand system and starter defaults
+   platform (web vs native) and UI foundation (existing theme, local
+   primitives such as shadcn/ui, or a starter)
 2. Give the real content a hierarchy (lead, proof, support, action)
 3. On broad DESIGN, look at a few current references *if the host can see
    pages*; otherwise use the studies in the skill
 4. Write a short visual thesis in concrete terms, not mood adjectives
-5. Finish a representative slice (type, surfaces, imagery, interaction),
-   then extend that language through the requested scope
+5. Build or extend a reusable component/page language, then finish the
+   requested screens, flows, and states — not only the first viewport
 6. Edit real files when implementation was requested
-7. Keep functional/accessible checks separate from visual craft, and say
-   when a check could not be done
+7. Keep four acceptance gates separate (load/function, craft, completeness,
+   platform/a11y) and say when a check could not be done
 
 It should stay out of backend, SQL, migrations, and deploy work unless the
 user also asked for interface changes.
@@ -65,11 +66,11 @@ Pin a tag with a tree URL, not `owner/repo@v0.1.0` (`@` is a skill filter in
 this CLI):
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.2.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.3.0 --skill art-director --agent cursor --copy
 ```
 
-If you already installed **v0.1.0**, replace the `art-director` folder rather
-than mixing files. See [docs/installation.md](docs/installation.md#update-an-older-copy).
+If you already installed **v0.1.0** or **v0.2.0**, replace the `art-director`
+folder rather than mixing files. See [docs/installation.md](docs/installation.md#update-an-older-copy).
 
 Telemetry on `npx skills` belongs to that CLI. Opt out with
 `DISABLE_TELEMETRY=1` or `DO_NOT_TRACK=1`. This skill has no install

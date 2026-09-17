@@ -90,7 +90,8 @@ Impact on a long article.
 - **Canvas** — page background
 - **Raised / secondary surface** — panels, header bar, table header
 - **Brand field** — a large area the brand actually owns (a clay field, a
-  sodium-yellow bay, a night ops canvas). Allowed when it fits. Not required.
+  material field that belongs to the work, a night ops canvas). Allowed when
+  it fits. Not required.
 - **Text hierarchy** — primary, secondary, inverse on brand fields
 - **Separator** — hairline or tone step
 - **Interactive** — links, filled actions, selected rows
@@ -99,9 +100,15 @@ Impact on a long article.
 Do not stop at one accent. Do not equate dark canvases, neon, or glass
 with quality. Do not forbid a color.
 
+This skill's worked examples have their own faces (kiln oxide paper,
+clinic navy, kitchen yellow). Do not treat Palatino, gold tooling, or
+cream serif as the house "finished" look. Unrelated products should not
+inherit those pairings from the examples or from earlier evals.
+
 Justify saturation and light/dark from context: a warehouse installation
-may want a sodium field; a long article may want a stable paper; an
-overnight dispatch board may want a dim canvas with loud overdue rows.
+may want a field of the actual material; a long article may want a stable
+paper; an overnight dispatch board may want a dim canvas with loud overdue
+rows.
 Check contrast on the actual pairing (text on brand field, meta on canvas).
 
 If a brand already defines a palette, map these roles onto it. If the

@@ -4,8 +4,78 @@ This file records runs that actually happened. Missing hosts are listed as
 not run. No screenshots or transcripts are fabricated. Screenshots were
 inspected in the authoring tools; they are not stored in this repository.
 
-Historical **v0.1.0** rows below are copied from the first public release
-record. They are not re-labeled as v0.2.0 DESIGN evidence.
+Historical **v0.1.0** and **v0.2.0** rows below stay as written. They are
+not re-labeled as v0.3.0 evidence.
+
+---
+
+## This session — 2026-09-17 (v0.3.0 working tree)
+
+- Workspace: `C:\Users\akifsen\devel_ext\art-director-skills`
+- Host: Cursor agent (Cursor Grok 4.6)
+- Baseline pin: tag `v0.2.0` / HEAD at start `f2cee08432ac29c64c06eb5a0b7025d860e3df47`
+  (`v0.2.0-3-gf2cee08`). Skill metadata then **0.2.0**. Snapshot:
+  `evals/runs/snapshots/v0.2.0/` (gitignored). That tree has no
+  `native-mobile.md` or `product-ui-system.md`.
+- New skill metadata: **0.3.0**
+- Maintainer Node: v22.20.0 (not a skill runtime)
+- Repeats: n = 1. Author not blind. Model/skill versions as above.
+- Isolated DESIGN arm for case 08: workdir
+  `%TEMP%\ad-eval-v030-iso\08`. Subagent [Tide Bindery DESIGN](53272c12-92ab-4df1-bd55-6416d9b25541)
+  was given only the skill path + that workdir (no parent “improve the
+  skill” prompt).
+
+`SKILL.md` this session: **222 lines**, description **778** characters.
+
+### Layer A — structure
+
+`node tests/run.mjs` passed after the v0.3.0 edits:
+
+- Frontmatter 0.3.0; portable links; new refs + examples required
+- Native DESIGN fixture heuristic (not host invocation)
+- PowerShell copy into `art-yönetmen kopya\art-director` including examples
+- `node tooling/pack-skill.mjs` → `dist/art-director-skill.zip` (43 entries)
+  including `references/native-mobile.md` and
+  `references/examples/themeless-react/App.jsx`
+
+### Layer B — fixture heuristic
+
+Prior seven prompts plus native app, themeless product, shadcn desk.
+Keyword classifier matched. Still **not** a Cursor/Codex selection log.
+
+### Layer C — product evals (08–11)
+
+Matching conditions vs v0.2.0: same model family, clean workdirs, no
+master-prompt leak into the isolated 08 arm. v0.2.0 snapshot cannot load
+the new guides (files absent).
+
+| Case | What ran | Gate notes (author, not blind) |
+|---|---|---|
+| **08 Tide Bindery** (holdout) | Isolated subagent implemented React source: `tokens.css`, `ui.jsx`, `App.jsx`, scope matrix in `.art-director/design-notes.md`. Tickets B-19/B-12/B-07 kept. Cloth/vellum identity, not Kiln oxide. `npm install` in that workdir **failed** (sandbox/native optional binaries), so Vite **not run-verified**. Isolated `RUN.md` not present at RESULTS write. | A implemented, run **pending**. B visually unread in Chrome (no bundle). C source has list/detail/hold. D web keyboard **pending**. |
+| **Kiln Queue example** | Skill JSX + CSS. Vanilla harness using the **same** `tokens.css` (not a substitute for Vite). Chrome 1440 and ~390: list, empty filter (`zzz`), detail K-214, hold form. Author inspected PNGs. | A CSS loaded in the harness. B oxide/steel queue, not a marketing home. C empty state + three screens **visually inspected**. Form validation click **not** in the PNG set (form screen shown empty). Vite compile **pending** (npm reify failed here too). |
+| **09 Plica** | Author token/variant CSS pass in a gitignored work copy: oxblood/ivory/sidebar, not only `--primary`. Dialog JS unchanged. Vite **not run**. | A behavior **implemented** in start (preserved in CSS-only pass). B **not** run-verified in the React app. |
+| **10 Sable Ledger** (not Ecme) | Author `theme.css` + settings grouping. Chrome A/B 1440: teal/Arial start vs iron/cream ledger; settings follows the shell. ~390 list captured. Filter JS not re-clicked in headless. | A CSS loads (inspected). B concrete delta vs start (sidebar, paper, type). C settings in the same language. D narrow viewport visually inspected. **Not Ecme.** |
+| **11 Railbag** | Author RN `App.js` in a work copy: SafeAreaProvider, KeyboardAvoidingView, sheet Modal, `accessibilityRole`/`Label`. `adb`/`emulator`/`expo` **not on PATH**. | A–C **implemented** in source. D device **pending**. Not passed via Expo web. |
+
+Cases **01–07**: **not re-run** this session. Historical v0.2.0 clipping,
+invented dates, and dashboard-delta notes stay historical.
+
+### Evidence kinds
+
+- **Implemented:** skill 0.3.0 tree, examples, eval starts 08–11, isolated 08 React source, author 09 CSS / 10 theme / 11 RN source
+- **Run-verified:** structure tests; pack zip; Chrome file:// of Kiln harness and Sable A/B
+- **Visually inspected:** those PNGs (author). Isolated 08 React UI: not inspected (no bundle)
+
+### Native / licensed template
+
+- Flutter, SwiftUI, Compose: **not tested**
+- Ecme: **not used**; case 10 is an original fixture
+- iOS/Android simulator: **pending**
+
+### Publish
+
+Git tag `v0.3.0` only after the commit that lands these files. `gh` may
+still be missing. Do not treat this RESULTS file as a release.
 
 ---
 
