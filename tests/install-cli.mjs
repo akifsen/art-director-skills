@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
  * Isolated install via Vercel Labs `skills` CLI (network for npx).
- * Never uses --global.
+ * Never uses --global. Never spawns npx.cmd / shell:true.
  */
-import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { formatSpawnFailure, runNpx } from "../tooling/npx.mjs";
 import { repoRootPath, validateSkill } from "../tooling/validate-skill.mjs";
 
 const root = repoRootPath();
@@ -17,39 +17,33 @@ const env = {
   DO_NOT_TRACK: "1",
   CI: "true"
 };
-
-function run(args, cwd) {
-  const bin = process.platform === "win32" ? "npx.cmd" : "npx";
-  const result = spawnSync(bin, ["--yes", ...args], {
-    cwd,
-    env,
-    encoding: "utf8",
-    shell: false,
-    timeout: 180000
-  });
-  if (result.error) process.stderr.write(String(result.error) + "\n");
-  process.stdout.write(result.stdout || "");
-  process.stderr.write(result.stderr || "");
-  return result;
-}
+delete env.npm_config_cache;
+delete env.NPM_CONFIG_CACHE;
 
 console.log("work dir", work);
-const install = run([
-  "skills",
-  "add",
-  root,
-  "--skill",
-  "art-director",
-  "--agent",
-  "cursor",
-  "--copy",
-  "--yes"
-], work);
+const install = runNpx(
+  [
+    "--yes",
+    "skills",
+    "add",
+    root,
+    "--skill",
+    "art-director",
+    "--agent",
+    "cursor",
+    "--copy",
+    "--yes"
+  ],
+  { cwd: work, env, timeout: 180000 }
+);
 
-if (install.status !== 0) {
-  console.error("skills add --copy failed with status", install.status);
+if (install.status !== 0 || install.error) {
+  console.error(formatSpawnFailure("skills add --copy", install));
   process.exit(install.status || 1);
 }
+
+process.stdout.write(install.stdout || "");
+if (install.stderr) process.stderr.write(install.stderr);
 
 const candidates = [
   path.join(work, ".agents", "skills", "art-director"),

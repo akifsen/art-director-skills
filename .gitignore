@@ -8,6 +8,7 @@ Thumbs.db
 .art-director/
 .agents/
 .cursor/
+.npm-cache/
 playwright-report/
 test-results/
 

@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef } from "react";
+import { isDialogBackdropClick, cycleDialogTab } from "./dialog-geometry.js";
 
 export function Button({
   variant = "primary",
@@ -86,13 +87,15 @@ export function Dialog({ title, description, open, onClose, children }) {
       onClose();
     };
     const onBackdrop = (event) => {
-      if (event.target === node) onClose();
+      if (isDialogBackdropClick(event)) onClose();
     };
     node.addEventListener("cancel", onCancel);
     node.addEventListener("click", onBackdrop);
+    node.addEventListener("keydown", cycleDialogTab);
     return () => {
       node.removeEventListener("cancel", onCancel);
       node.removeEventListener("click", onBackdrop);
+      node.removeEventListener("keydown", cycleDialogTab);
     };
   }, [onClose]);
 
@@ -106,6 +109,7 @@ export function Dialog({ title, description, open, onClose, children }) {
     <dialog
       ref={ref}
       className="dialog"
+      tabIndex={-1}
       aria-labelledby={titleId}
       aria-describedby={description ? descId : undefined}
     >

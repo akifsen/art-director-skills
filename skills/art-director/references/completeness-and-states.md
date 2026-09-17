@@ -42,12 +42,23 @@ If Save is on screen, the named record must change, then the next screen
 must show that change. “Saved on this device” is a lie for in-memory demo
 state — say “this session” (or actually persist and re-open the app).
 
+If Save is delayed, Cancel must abort the pending write when that is still
+possible. After an unmount, a route change, or a different record, a late
+response must not commit. If the write can no longer be aborted, do not
+offer Cancel as if it would undo it. Double Save must not create a second
+commit. A failed Save needs an honest error and a Retry that tries again.
+
 Unknown record ids are in-scope states: labeled, with a way back. Do not
 leave a blank shell or a form bound to a missing row.
 
 Complex overlays (web dialog, native sheet): use the platform primitive
 (`<dialog showModal()>`, the project’s dialog component, RN `Modal`).
-`aria-modal` on a `div` is not a focus trap.
+`aria-modal` on a `div` is not a focus trap. Close on a true backdrop
+click (outside the panel box). Do not treat padding or empty space inside
+the panel as cancel. `event.target === dialog` is not enough when the
+element has padding. Tab from the last control must stay inside the
+open dialog (cycle to the first). Playwright Chromium can drop focus to
+inactive if that cycle is left to the engine alone.
 
 ## Data honesty
 

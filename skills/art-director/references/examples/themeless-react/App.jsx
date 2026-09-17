@@ -1,11 +1,21 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import "./tokens.css";
 import { LOADS } from "./data.js";
-import { applyHold, filterLoads, parseRoute, readFixture } from "./kiln-store.js";
+import {
+  applyHold,
+  createSaveGate,
+  filterLoads,
+  finishHoldCommit,
+  parseRoute,
+  readFixture,
+  readHoldDelay
+} from "./kiln-store.js";
 import { Badge, Button, Dialog, Empty, Field, PageHeader } from "./ui.jsx";
 
 export default function App() {
-  const fixture = readFixture(typeof window === "undefined" ? "" : window.location.search);
+  const search = typeof window === "undefined" ? "" : window.location.search;
+  const fixture = readFixture(search);
+  const holdDelay = readHoldDelay(search);
   const [tick, setTick] = useState(0);
   const [query, setQuery] = useState("");
   const [phase, setPhase] = useState(() => {
@@ -18,13 +28,31 @@ export default function App() {
   const [reason, setReason] = useState("");
   const [errors, setErrors] = useState({});
   const [busy, setBusy] = useState(false);
+  const [saveError, setSaveError] = useState("");
   const [savedOpen, setSavedOpen] = useState(false);
+  const saveGate = useRef(createSaveGate());
+  const saveTimer = useRef(0);
+  const holdRejectUsed = useRef(false);
+  const inflight = useRef(false);
+
+  function cancelPendingSave() {
+    inflight.current = false;
+    saveGate.current.cancel();
+    if (saveTimer.current) {
+      window.clearTimeout(saveTimer.current);
+      saveTimer.current = 0;
+    }
+    setBusy(false);
+  }
 
   useEffect(() => {
     document.body.classList.add("kq");
     const onHash = () => setTick((n) => n + 1);
     window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
+    return () => {
+      window.removeEventListener("hashchange", onHash);
+      cancelPendingSave();
+    };
   }, []);
 
   useEffect(() => {
@@ -38,30 +66,62 @@ export default function App() {
   const visible = useMemo(() => filterLoads(loads, query), [loads, query]);
 
   useEffect(() => {
+    cancelPendingSave();
     setHoldMinutes("30");
-    setReason(active?.status === "hold" ? "" : "");
+    setReason("");
     setErrors({});
-  }, [activeId]);
+    setSaveError("");
+    setSavedOpen(false);
+  }, [activeId, screen]);
 
   function go(hash) {
     window.location.hash = hash;
     setTick((n) => n + 1);
   }
 
-  function onSubmitHold(event) {
-    event.preventDefault();
+  function submitHold() {
+    if (inflight.current) return;
     const result = applyHold(loads, activeId, { minutes: holdMinutes, reason });
     if (!result.ok) {
       setErrors(result.errors);
+      setSaveError("");
       return;
     }
     setErrors({});
+    setSaveError("");
+    inflight.current = true;
+    const token = saveGate.current.begin();
     setBusy(true);
-    window.setTimeout(() => {
-      setLoads(result.loads);
+    saveTimer.current = window.setTimeout(() => {
+      const finished = finishHoldCommit(saveGate.current, token, result, {
+        reject: fixture === "hold-reject" && !holdRejectUsed.current
+      });
+      if (finished.aborted) return;
+      inflight.current = false;
       setBusy(false);
+      saveTimer.current = 0;
+      if (finished.rejected) {
+        holdRejectUsed.current = true;
+        setSaveError(finished.message);
+        return;
+      }
+      setLoads(finished.loads);
       setSavedOpen(true);
-    }, 400);
+    }, holdDelay);
+  }
+
+  function onSubmitHold(event) {
+    event.preventDefault();
+    submitHold();
+  }
+
+  function onCancelHold() {
+    cancelPendingSave();
+    setHoldMinutes("30");
+    setReason("");
+    setErrors({});
+    setSaveError("");
+    go(`/loads/${active.id}`);
   }
 
   function retry() {
@@ -70,6 +130,11 @@ export default function App() {
       setLoads(LOADS.map((row) => ({ ...row })));
       setPhase("ready");
     }, 280);
+  }
+
+  function retryHold() {
+    setSaveError("");
+    submitHold();
   }
 
   return (
@@ -181,10 +246,19 @@ export default function App() {
                   <input className="field-control" {...control} value={reason} onChange={(e) => setReason(e.target.value)} />
                 )}
               </Field>
+              {saveError ? (
+                <p className="field-error" role="alert">
+                  {saveError}{" "}
+                  <Button variant="secondary" size="sm" onClick={retryHold}>Retry</Button>
+                </p>
+              ) : null}
               <div className="action-bar">
-                <Button type="submit" busy={busy}>Save hold</Button>
-                <Button variant="secondary" onClick={() => go(`/loads/${active.id}`)}>Cancel</Button>
+                <Button type="submit" busy={busy}>{saveError ? "Save hold again" : "Save hold"}</Button>
+                <Button variant="secondary" onClick={onCancelHold}>
+                  {busy ? "Cancel write" : "Cancel"}
+                </Button>
               </div>
+              {busy ? <p role="status">Writing this session. Cancel stops the write because it has not committed yet.</p> : null}
             </form>
             <Dialog
               title="Hold recorded in this session"

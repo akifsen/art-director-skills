@@ -27,7 +27,9 @@ Do not add MUI beside shadcn, or Chakra beside a house DS.
 
 If the brief asks for list, detail, and edit, those are routes (or
 equivalent URL states), linked with real navigation, not in-page theater
-that forgets the back path.
+that forgets the back path. Use this project’s router. Do not paste a
+tutorial hash scheme or `?fixture=` API unless this app’s own tests need
+them.
 
 Next.js / Remix: keep server rendering and loaders where they exist. Do
 not flatten distinct routes into one client scroll of fake sections.
@@ -48,6 +50,14 @@ Implement visible actions: submit, cancel, validation errors, busy, success
 that returns to the list (or the path the brief named). Empty `onClick` is
 not a complete screen. A success message is only honest after the named
 record in state (or the real store) changed.
+
+If the write is asynchronous, abort it on Cancel, unmount, and record
+change when the request is still pending. Do not navigate away and let a
+late callback mutate the previous row.
+
+Backdrop close belongs to clicks outside the panel’s box, not to padding
+or inner empty area. Prefer `showModal()` plus a geometry check (or the
+library’s overlay primitive); do not homegrow a focus trap.
 
 ## Web small screens
 

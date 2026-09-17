@@ -171,13 +171,15 @@ Studies (web composition). Open the pair that matches the failure mode:
 - Media as structure: [media-in-composition.md](references/studies/media-in-composition.md)
 
 Worked **methods** (not a theme pack; identities differ). Copy the *approach*,
-not the look:
+not the look: named-record saves, real overlays, reachable states, shared
+tokens. Do **not** copy an example’s palette, serif-on-cream default, hash
+router, `?fixture=` query API, or source files (`dialog-geometry.js`,
+`ui.jsx`, token sheets) into another product. Re-implement the rule under
+this app’s names.
 
 - Theme-less React list/detail/form: [themeless-react.md](references/examples/themeless-react.md)
 - Token + variant + composite screen: [component-system.md](references/examples/component-system.md)
 - Native list/detail/edit, safe area, keyboard, sheet: [native-mobile-example.md](references/examples/native-mobile-example.md)
-
-Do not restyle unrelated products to match those examples.
 
 ## Implementation constraints
 
@@ -197,8 +199,7 @@ links for actions that were requested to work. If the backend is out of
 scope, use honest local/demo state and say so.
 
 A success message is allowed only after the record in memory (or the real
-store) actually changed. Session state is not device storage. Capturing a
-screenshot is not inspecting it.
+store) actually changed. Session state is not device storage.
 
 ## Four acceptance gates
 
@@ -210,7 +211,9 @@ Do not average these into one quality score.
 - **D.** Platform-appropriate behavior and accessibility
 
 Report three evidence kinds separately: **implemented**, **run-verified**,
-**visually inspected**. A screenshot is visual inspection, not run-verified
+**visually inspected**. Saving a screenshot file is not inspection. Looking
+at the rendered UI — in a browser, on a device, or in a screenshot you
+actually examined — is visual inspection. That is still not run-verified
 behavior. Font intent in CSS is not proof the face loaded.
 
 If a gate cannot be run (no browser, no device), say **not verified**.

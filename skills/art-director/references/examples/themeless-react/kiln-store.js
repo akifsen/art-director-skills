@@ -16,8 +16,18 @@ export function parseRoute(hash) {
 export function readFixture(search) {
   const q = new URLSearchParams(String(search || "").replace(/^\?/, ""));
   const value = q.get("fixture");
-  if (value === "loading" || value === "error" || value === "empty") return value;
+  if (value === "loading" || value === "error" || value === "empty" || value === "hold-reject") {
+    return value;
+  }
   return null;
+}
+
+/** Demo write latency in ms. Tests pass holdDelay so Cancel can beat the timer without mocking rAF. */
+export function readHoldDelay(search) {
+  const q = new URLSearchParams(String(search || "").replace(/^\?/, ""));
+  const n = Number(q.get("holdDelay"));
+  if (Number.isInteger(n) && n >= 200 && n <= 8000) return n;
+  return 400;
 }
 
 export function filterLoads(loads, query) {
@@ -47,4 +57,41 @@ export function applyHold(loads, id, { minutes, reason }) {
     errors: {},
     loads: loads.map((row) => (row.id === id ? { ...row, status: "hold", note } : row))
   };
+}
+
+/**
+ * Delayed session write. Cancel / leave / a newer request invalidates the token
+ * so a late timer cannot commit.
+ */
+export function createSaveGate() {
+  let token = 0;
+  return {
+    begin() {
+      token += 1;
+      return token;
+    },
+    isCurrent(id) {
+      return id === token;
+    },
+    cancel() {
+      token += 1;
+      return token;
+    }
+  };
+}
+
+export function finishHoldCommit(gate, token, prepared, { reject = false } = {}) {
+  if (!gate.isCurrent(token) || !prepared?.ok) {
+    return { applied: false, rejected: false, aborted: true, loads: null };
+  }
+  if (reject) {
+    return {
+      applied: false,
+      rejected: true,
+      aborted: false,
+      loads: prepared.loads,
+      message: "Kiln log rejected the hold. Nothing was recorded."
+    };
+  }
+  return { applied: true, rejected: false, aborted: false, loads: prepared.loads };
 }
