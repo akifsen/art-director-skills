@@ -33,8 +33,7 @@ not treat those scoped jobs as full-page craft proof.
 - Host: Cursor agent (Cursor Grok 4.6)
 - Baseline pin: tag `v0.1.0` / commit `e1e59710fb842c2dd20b185c9695186cd8693119`
   copied to `evals/runs/snapshots/v0.1.0/` (gitignored)
-- New skill: working tree `skills/art-director/` metadata **0.2.0** (commit
-  recorded when this change is tagged)
+- New skill: `f391b1a45d12a34bff794ac33502b121341c4ddd` metadata **0.2.0**
 - Maintainer Node: v22.20.0 (not a skill runtime)
 - Isolated work: `%TEMP%\ad-eval-v010` (old skill) and `%TEMP%\ad-eval-v020`
   (new skill). Parent “improve the skill” prompt was not given to those
