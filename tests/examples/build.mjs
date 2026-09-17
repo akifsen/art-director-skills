@@ -5,18 +5,14 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { formatSpawnFailure, runNodeCli } from "../../tooling/npx.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const require = createRequire(import.meta.url);
-
-let viteBin;
-try {
-  viteBin = require.resolve("vite/bin/vite.js");
-} catch {
-  console.error("vite is not installed. From the repo root run npm ci (maintainer lockfile).");
+const viteBin = path.join(root, "node_modules", "vite", "bin", "vite.js");
+if (!fs.existsSync(viteBin)) {
+  console.error("vite is not installed at", viteBin);
+  console.error("From the repo root run npm ci (maintainer lockfile).");
   process.exit(1);
 }
 
