@@ -38,38 +38,26 @@ fail in the agent sandbox). Native Closeout: store tests only; device
 Workdirs (gitignored): `%TEMP%\ad-eval-v040-12` and `%TEMP%\ad-eval-cand-12`.
 Agents: [Lumen Cart DESIGN v0.4.0](2ae2cc9d-19df-4ee8-b123-1ac43786ab13),
 [Lumen Cart DESIGN candidate](f7962e21-7e72-4453-8672-480fc532ae28).
-`RUN.md` was not present at RESULTS write. Author read the source trees.
+Parent author read the source trees. Candidate later wrote `RUN.md`.
+Baseline `RUN.md` still absent.
 
-| Arm | Routing | Named-record save | Overlay | Visual notes (source only) |
+| Arm | Routing | Named-record save | Overlay | Visual notes |
 |---|---|---|---|---|
-| v0.4.0 snapshot | History API `/stops/:id/log` — **not** hash, **not** `?fixture=` | `applyLog` updates that id; 280ms timer **does not abort** on Cancel | `<dialog showModal()>` | Circuit SVG + cloth rail; Georgia clocks; sage/park cloth — not kiln oxide |
-| Candidate `f2a1bc2` | History API `/stops/:id/complete` and `/skip` | `applyComplete` / `applySkip` bind the named stop; already-recorded guard | same primitive + **verbatim** Kiln `dialog-geometry.js` (incl. Tab cycle) | Enamel-teal mast, lantern-amber, wine skip; `PageHeader`/`Empty`/`Field` family shaped like Kiln Queue |
+| v0.4.0 snapshot | History API `/stops/:id/log` — **not** hash, **not** `?fixture=` | `applyLog` updates that id; 280ms timer **does not abort** on Cancel | `<dialog showModal()>` | Circuit SVG + cloth rail (source). Browser **pending** |
+| Candidate `f2a1bc2` | History API `/stops/:id/complete` and `/skip` | `applyComplete` / `applySkip` bind the named stop; already-recorded guard | same primitive + **verbatim** Kiln `dialog-geometry.js` | Enamel-teal mast (source). Isolated agent: `yarn build` + preview `127.0.0.1:4173`; Chrome list/detail/forms/empty/unknown/dialog ~1280 and ~390. Parent author did **not** look at those PNGs. Preview process was later killed (`exit 4294967295`) |
 
-Neither arm was **run-verified** in a browser here (npm/Vite sandbox). Neither
-was **visually inspected**.
+`npm install` in the candidate workdir failed (`Yallist is not a constructor`); Yarn 1.22.22 installed and built.
 
-**Gates (author, source, not averaged):**
+**Gates (not averaged):**
 
-- **A.** Candidate: three LC ids kept; skip/complete validation in store;
-  session copy honest. Baseline: same ids; Cancel during the 280ms write can
-  still commit — Gate A miss in source. CSS files exist in both; load
-  **pending**.
-- **B.** Distinct from kiln cream/oxide in both token sheets. Candidate
-  still cloned the tutorial helper file. Baseline’s circuit diagram is more
-  product-specific in source. No pixel winner claimed.
-- **C.** Both have list, detail, form, empty filter, unknown id. Candidate
-  splits complete vs skip. Baseline combines them on `/log`.
-- **D.** Web keyboard intended in source; not exercised.
+- **A.** Candidate: three LC ids kept; skip/complete validation; session copy honest; isolated agent run-verified complete/skip on preview. Baseline: same ids; Cancel during the 280ms write can still commit — Gate A miss in source. Parent did not re-run the preview.
+- **B.** Distinct from kiln cream/oxide in both token sheets. Candidate still cloned the tutorial helper file. Isolated agent inspected screens; parent did not. No pixel winner vs baseline (baseline UI not inspected).
+- **C.** Both have list, detail, form, empty filter, unknown id. Candidate splits complete vs skip. Isolated agent walked empty `zzz`, LC-99, validation, success dialog.
+- **D.** Native `<dialog>` + Tab helper in candidate source; keyboard cycle **not** exercised. Isolated agent saw ~390 wrap.
 
-**Weak result kept:** candidate copied `dialog-geometry.js` from the Kiln
-example instead of re-implementing the rule. Skill text was tightened
-(example files are not a kit). Retry arm `%TEMP%\ad-eval-cand-12b`.
+**Weak result kept:** candidate listed `src/dialog-geometry.js` as created after opening the Kiln example file. Skill text was tightened (example files are not a kit). Retry: [Lumen Cart DESIGN retry](a0c79a82-f4b8-40e1-91a5-d9e2a524cf14) in `%TEMP%\ad-eval-cand-12b` — `src/session-log.js` present, no `dialog-geometry.js` under `src/`, `RUN.md` not yet written.
 
-**Does the new skill better guide independent briefs?** Routing/`?fixture=`
-clone did **not** recur on either arm. Completeness of named-record
-complete/skip is stronger in the candidate source. Visual craft in a running
-UI is **not shown**. File-level example cloning remained on the first
-candidate arm.
+**Does the new skill better guide independent briefs?** Routing/`?fixture=` clone did **not** recur on either arm. Named-record complete/skip is stronger in the candidate source and that agent exercised it in Chrome. Visual superiority vs v0.4.0 is **not** shown (no matched screenshots, parent not blind). File-level example cloning remained on the first candidate arm.
 
 Cases 09 (shadcn-*pattern*, not shadcn source) and 11 (native): **not re-run**
 as isolated hosts this session. Case 09 is not evidence of real shadcn/ui.
