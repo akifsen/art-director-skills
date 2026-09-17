@@ -34,7 +34,8 @@ proof or separate a stage. Do not stack all of them on the first viewport.
 **Common failure.** Every card gets the same 16px radius, 1px `#ddd`, and
 a purple button — a kit default, not a material decision.
 
-**Applied fragment** (panel on warm paper, no shadow required):
+**Applied fragment** (panel on warm paper, no shadow required). This is
+one lighting story, not a house palette for every product:
 
 ```css
 .page { background: #efe7dc; color: #231e1a; }

@@ -1,8 +1,10 @@
 # Example — theme-less React (Kiln Queue)
 
 **When:** a React web app with no theme pack and a list/detail/form job.
-**Not:** a look, hash router, or `?fixture=` API to reuse on unrelated
-products. Those exist so *this* demo can be tested.
+**Not:** a look, hash router, `?fixture=` API, or file drop-in
+(`dialog-geometry.js`, `ui.jsx`) to reuse on unrelated products. Those exist
+so *this* demo can be tested. Re-implement backdrop, tab cycle, and fields
+under the product’s own names.
 
 ## Run (this repository, maintainer)
 

@@ -173,7 +173,9 @@ Studies (web composition). Open the pair that matches the failure mode:
 Worked **methods** (not a theme pack; identities differ). Copy the *approach*,
 not the look: named-record saves, real overlays, reachable states, shared
 tokens. Do **not** copy an example’s palette, serif-on-cream default, hash
-router, or `?fixture=` query API onto another product.
+router, `?fixture=` query API, or source files (`dialog-geometry.js`,
+`ui.jsx`, token sheets) into another product. Re-implement the rule under
+this app’s names.
 
 - Theme-less React list/detail/form: [themeless-react.md](references/examples/themeless-react.md)
 - Token + variant + composite screen: [component-system.md](references/examples/component-system.md)

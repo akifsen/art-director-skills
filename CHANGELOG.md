@@ -21,6 +21,10 @@ Reliability of the maintainer path and the tutorial product flows.
 - Open dialogs cycle Tab at the last control; Playwright Chromium otherwise
   leaves focus inactive. Double Save uses an in-flight guard, not a force
   click on the disabled button (that click was cancelling the write)
+- Worked examples are methods, not a file kit: do not copy hash routers,
+  `?fixture=`, palettes, or `dialog-geometry.js` / `ui.jsx` into another product
+- Holdout eval case 12 (Lumen Cart). Isolated DESIGN vs v0.4.0 is recorded in
+  `evals/RESULTS.md` (source; no browser run in that session)
 
 ## 0.4.0 — 2026-09-17
 

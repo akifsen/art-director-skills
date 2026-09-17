@@ -4,10 +4,84 @@ This file records runs that actually happened. Missing hosts are listed as
 not run. No screenshots or transcripts are fabricated. Screenshots were
 inspected in the authoring tools; they are not stored in this repository.
 
-Historical **v0.1.0**, **v0.2.0**, and **v0.3.0** rows below stay as written.
-They are not re-labeled as v0.4.0 evidence.
+Historical **v0.1.0**, **v0.2.0**, **v0.3.0**, and **v0.4.0** rows below stay
+as written. They are not re-labeled as later evidence.
 
 ---
+
+## This session — 2026-09-17 (reliability branch `fix/ci-vite-save-dialog`)
+
+- Workspace: `C:\Users\akifsen\devel_ext\art-director-skills`
+- Host: Cursor agent (Cursor Grok 4.6)
+- Published pin at start of the reliability work: tag `v0.4.0` /
+  `21c2fe1e0e109cf28fc9bd1e3fc01cd94cefedd6`
+- Candidate skill: git `f2a1bc2d481ea398c617e93298a8e7947f5ac6ef` then a
+  follow-up “do not copy example source files” line (retry arm)
+- Skill metadata still **0.4.0** (no public tag)
+- Maintainer Node: v22.20.0 (not a skill runtime)
+- Repeats: n = 1. Author not blind. No A/B of rendered pixels.
+- Isolated DESIGN: same brief/start, no parent quality brief in the agent
+  prompt. Model: same family as this host (inherit).
+
+### Tutorial apps (not host-agent proof)
+
+Kiln Queue and Nadir Desk compile and run through Vite production preview in
+GitHub Actions Ubuntu (`examples-web` success on `f2a1bc2`, run
+[35221451042](https://github.com/akifsen/art-director-skills/actions/runs/35221451042)).
+Save/Cancel, padding vs backdrop, Tab cycle, unknown routes: **run-verified**
+there. Author did not inspect new PNGs in this pass (local Vite native bins
+fail in the agent sandbox). Native Closeout: store tests only; device
+**pending**.
+
+### Isolated holdout — case 12 Lumen Cart
+
+Workdirs (gitignored): `%TEMP%\ad-eval-v040-12` and `%TEMP%\ad-eval-cand-12`.
+Agents: [Lumen Cart DESIGN v0.4.0](2ae2cc9d-19df-4ee8-b123-1ac43786ab13),
+[Lumen Cart DESIGN candidate](f7962e21-7e72-4453-8672-480fc532ae28).
+`RUN.md` was not present at RESULTS write. Author read the source trees.
+
+| Arm | Routing | Named-record save | Overlay | Visual notes (source only) |
+|---|---|---|---|---|
+| v0.4.0 snapshot | History API `/stops/:id/log` — **not** hash, **not** `?fixture=` | `applyLog` updates that id; 280ms timer **does not abort** on Cancel | `<dialog showModal()>` | Circuit SVG + cloth rail; Georgia clocks; sage/park cloth — not kiln oxide |
+| Candidate `f2a1bc2` | History API `/stops/:id/complete` and `/skip` | `applyComplete` / `applySkip` bind the named stop; already-recorded guard | same primitive + **verbatim** Kiln `dialog-geometry.js` (incl. Tab cycle) | Enamel-teal mast, lantern-amber, wine skip; `PageHeader`/`Empty`/`Field` family shaped like Kiln Queue |
+
+Neither arm was **run-verified** in a browser here (npm/Vite sandbox). Neither
+was **visually inspected**.
+
+**Gates (author, source, not averaged):**
+
+- **A.** Candidate: three LC ids kept; skip/complete validation in store;
+  session copy honest. Baseline: same ids; Cancel during the 280ms write can
+  still commit — Gate A miss in source. CSS files exist in both; load
+  **pending**.
+- **B.** Distinct from kiln cream/oxide in both token sheets. Candidate
+  still cloned the tutorial helper file. Baseline’s circuit diagram is more
+  product-specific in source. No pixel winner claimed.
+- **C.** Both have list, detail, form, empty filter, unknown id. Candidate
+  splits complete vs skip. Baseline combines them on `/log`.
+- **D.** Web keyboard intended in source; not exercised.
+
+**Weak result kept:** candidate copied `dialog-geometry.js` from the Kiln
+example instead of re-implementing the rule. Skill text was tightened
+(example files are not a kit). Retry arm `%TEMP%\ad-eval-cand-12b`.
+
+**Does the new skill better guide independent briefs?** Routing/`?fixture=`
+clone did **not** recur on either arm. Completeness of named-record
+complete/skip is stronger in the candidate source. Visual craft in a running
+UI is **not shown**. File-level example cloning remained on the first
+candidate arm.
+
+Cases 09 (shadcn-*pattern*, not shadcn source) and 11 (native): **not re-run**
+as isolated hosts this session. Case 09 is not evidence of real shadcn/ui.
+
+### Publish
+
+No public tag. Branch `fix/ci-vite-save-dialog`. `gh` / GitKraken PR create
+did not complete (CLI missing; GitKraken sign-in). Compare:
+https://github.com/akifsen/art-director-skills/compare/main...fix/ci-vite-save-dialog
+
+---
+
 
 ## This session — 2026-09-17 (v0.4.0 working tree)
 
