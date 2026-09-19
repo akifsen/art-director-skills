@@ -1,0 +1,34 @@
+{
+  "initialScreensHash": "88fdfad2332f9804c05659c5aea7c4562d16119ee59eb8cb2f635478ad9622e1",
+  "run": "native-2026-09-19",
+  "finalFileHashes": {
+    "skills/art-director/references/examples/native-mobile/App.jsx": "ad01c3353199af3bd40b9c11e64bcb4214f6ac1b169c8b65addaf68791c17fc1",
+    "skills/art-director/SKILL.md": "20708e0c98ce05aac3ee26cdc6083db726ad2be3202a2b357962f18990aea9b1",
+    "skills/art-director/references/examples/native-mobile/theme.js": "03e951a85f1c014583682ce38852feffb8667a434912c3f78d36c8d96b5a602a",
+    "skills/art-director/references/examples/native-mobile/session-store.js": "238c6ced028964d9f50fa2ef0ee03419cc3462800fcf25b2678e9ab68206d3f3",
+    "skills/art-director/references/examples/native-mobile/screens.js": "b38d1ca1d09801010b900ff277c3fb5b2b881ba3edfa67d9427bbc3ee902f8e1",
+    "skills/art-director/references/native-mobile.md": "561c57f597caa006ee9404214974a110ddad1e45dda36e09f9c46c7278743ecc"
+  },
+  "visualApproval": "incomplete",
+  "visuallyInspected": true,
+  "platform": "Android 17 / API 37 / Pixel_9",
+  "startingCommit": "9e2e4bcf5d266ef5bea5503f0bf4121257c348c8",
+  "date": "2026-09-19",
+  "fontScales": [
+    1.0,
+    1.5
+  ],
+  "model": "GPT-6 family; exact serving build unavailable",
+  "reviewer": "Codex image-capable agent",
+  "artifactProduced": true,
+  "iosVerified": false,
+  "sourceKind": "manually corrected tutorial",
+  "independentGeneration": false,
+  "initialAppHash": "456344afa5160dedb9e12f49d0c7b8dd3d1d3ec9378a3af60d9ec26ab16c885f",
+  "userFlowExercised": true,
+  "viewportPixels": [
+    1080,
+    2424
+  ],
+  "nativeRuntimeExecuted": true
+}

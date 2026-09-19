@@ -82,3 +82,10 @@ file is better than silently patching minified CSS.
 Show a concrete delta against the starting screen of **this** product:
 hierarchy, surfaces, density, craft, completed in-scope flows. Do not
 claim a percent win over an unrelated commercial theme.
+
+For a dense record view, compare a compact table plus persistent inspector
+with a roomier table opening full detail. The first supports repeated
+cross-record edits; the second gives long notes space and simpler narrow
+navigation. Both can use the existing Table, Button and Dialog variants.
+Review one representative record and its edit state before propagating new
+density/surface tokens; then inspect every affected in-scope consumer.

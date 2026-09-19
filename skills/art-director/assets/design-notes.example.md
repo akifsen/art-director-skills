@@ -68,3 +68,6 @@ For each source you actually saw:
 - D platform / accessibility:
 - Evidence: implemented / run-verified / visually inspected
 - Not verified:
+- First representative render: what was seen, weakest decision, correction
+- Final cross-screen review: screens/states actually inspected, reviewer
+- Delivery: complete / partial delivery / incomplete; reason

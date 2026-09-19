@@ -6,6 +6,8 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import crypto from "node:crypto";
+import assert from "node:assert/strict";
 import { formatSpawnFailure, runNpx } from "../tooling/npx.mjs";
 import { repoRootPath, validateSkill } from "../tooling/validate-skill.mjs";
 
@@ -60,6 +62,18 @@ if (result.problems.length) {
   for (const p of result.problems) console.error(p);
   process.exit(1);
 }
+
+// A version string and valid links alone cannot detect a stale mixed copy.
+function fileHashes(directory) {
+  return fs.readdirSync(directory, { recursive: true })
+    .filter((name) => fs.statSync(path.join(directory, name)).isFile())
+    .sort().map((name) => [name.replaceAll('\\', '/'), crypto.createHash('sha256')
+      .update(fs.readFileSync(path.join(directory, name))).digest('hex')]);
+}
+const sourceHashes = fileHashes(path.join(root, 'skills/art-director'));
+assert.deepEqual(fileHashes(installed), sourceHashes, 'installed content differs from source');
+console.log('installed tree sha256', crypto.createHash('sha256')
+  .update(JSON.stringify(sourceHashes)).digest('hex'));
 
 const extras = candidates.filter((p) => p !== installed && fs.existsSync(p));
 if (extras.length) {

@@ -27,6 +27,12 @@ function build(configRel) {
 build("evals/apps/kiln-queue/vite.config.js");
 build("evals/apps/nadir-desk/vite.config.js");
 
+if (process.env.ART_DIRECTOR_EVAL === '1') {
+  for (const app of ['library-baseline', 'library-candidate', 'library-candidate2', 'existing-desk']) {
+    build(`evals/apps/${app}/vite.config.js`);
+  }
+}
+
 const kilnDir = path.join(root, "evals/artifacts/kiln-queue");
 const deskDir = path.join(root, "evals/artifacts/nadir-desk");
 const kilnHtml = fs.readFileSync(path.join(kilnDir, "index.html"), "utf8");

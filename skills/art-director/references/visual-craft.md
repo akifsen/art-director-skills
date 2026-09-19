@@ -135,6 +135,19 @@ not invent a new one.
 
 ## Cross-project sameness
 
+At the representative render, compare visible task material with the space
+spent framing it. For a browsing collection, a larger tile can paradoxically
+make the actual object smaller if it adds a padded stage around a miniature.
+Choose between compact objects with immediate comparison and larger objects
+with more readable detail; avoid paying for a larger tile without gaining
+either. Inspect at viewport height as well as full page. State what the user
+can compare or act on before scrolling, not a target card count.
+
+For transactional forms, repeat the selected object's identity briefly and
+lead with the task. A second slogan or oversized cover may delay input
+without helping recognition. Compare a summary beside the form with a compact
+summary above it; choose from width, title length and amount of explanation.
+
 Within one project, consistency is required. Across eval fixtures or
 unrelated user projects, if removing the name and accent leaves the same
 section order, type ratio, image usage, and component shapes, treat that

@@ -20,9 +20,12 @@ const apps = {
   }
 };
 
+for (const [index, name] of ['library-baseline', 'library-candidate', 'library-candidate2', 'existing-desk'].entries()) {
+  apps[name] = { config: `evals/apps/${name}/vite.config.js`, out: `evals/artifacts/${name}`, port: String(5191 + index) };
+}
 const app = apps[process.argv[2]];
 if (!app) {
-  console.error("usage: node tests/examples/preview.mjs kiln|desk");
+  console.error(`usage: node tests/examples/preview.mjs ${Object.keys(apps).join('|')}`);
   process.exit(2);
 }
 

@@ -22,6 +22,11 @@ kur veya geliştir; istenen ekranları, akışları ve durumları bitir; uygulam
 istendiyse gerçek dosyaları değiştir; dört kabul kapısını (yükleme/işlev,
 işçilik, kapsam, platform/erişilebilirlik) ayır.
 
+Geniş DESIGN işinde ilk gerçek ekranı görsel olarak inceleyip gerekli
+düzeltmeyi yapmadan tasarımı bütün ekranlara yaymaz. Engellenmiş kontrol,
+geçmiş kontrol sayılmaz: tamamlandı / kısmi teslim / tamamlanmadı ayrılır.
+0.5.0 değişiklikleri ve gerçek kanıtlar: [2026-09-19 raporu](evals/evidence/2026-09-19/REPORT.md).
+
 Yalnızca doğru palet yetmez. Kullanıcı wireframe istemediyse ilk iskelet
 teslim değildir. Bilinçli sadeleştirme kusur değildir; işlenmemiş boşluk
 ve varsayılan HTML kusurdur. Native uygulama, web sitesinin mobil menüsü
@@ -54,7 +59,7 @@ Herkese açık depo:
 npx skills add akifsen/art-director-skills --skill art-director --agent cursor --copy
 ```
 
-Eski bir **v0.1.0**, **v0.2.0** veya **v0.3.0** kopyanız varsa klasörü
+Eski bir kopyanız varsa yerel değişiklikleri önce yedekleyin, sonra klasörü
 birleştirmeden değiştirin. [docs/installation.md](docs/installation.md#update-an-older-copy).
 
 `npx skills` telemetrisi o CLI’ye aittir; `DISABLE_TELEMETRY=1` veya
