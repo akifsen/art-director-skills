@@ -25,7 +25,9 @@ işçilik, kapsam, platform/erişilebilirlik) ayır.
 Geniş DESIGN işinde ilk gerçek ekranı görsel olarak inceleyip gerekli
 düzeltmeyi yapmadan tasarımı bütün ekranlara yaymaz. Engellenmiş kontrol,
 geçmiş kontrol sayılmaz: tamamlandı / kısmi teslim / tamamlanmadı ayrılır.
-0.5.0 değişiklikleri ve gerçek kanıtlar: [2026-09-19 raporu](evals/evidence/2026-09-19/REPORT.md).
+0.6.0 native işçilik ve normal brief denemeleri: [güncel kanıtlar](evals/evidence/native-craft-2026-09-19/REPORT.md).
+Dosya yoluyla açık skill kullanımı, Cursor'ın doğal keşfi olarak sunulmaz.
+Önceki [0.5.0 karşılaştırması](evals/evidence/2026-09-19/REPORT.md) ayrı tutulur.
 
 Yalnızca doğru palet yetmez. Kullanıcı wireframe istemediyse ilk iskelet
 teslim değildir. Bilinçli sadeleştirme kusur değildir; işlenmemiş boşluk

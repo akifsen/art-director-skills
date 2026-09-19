@@ -1,5 +1,9 @@
 # Eval method
 
+The [native craft and normal-brief run](evidence/native-craft-2026-09-19/REPORT.md)
+starts from 0.5.0, preserves same-device before/after evidence and distinguishes
+an unsuccessful Cursor input attempt from explicit-path independent fallback.
+
 The [2026-09-19 quality run](evidence/2026-09-19/REPORT.md) preserves independent baseline/candidate outputs, weak results, inspected renders, native device evidence and explicit scope limits. Reproduction uses the existing Vite/Playwright path with `ART_DIRECTOR_EVAL=1`.
 
 Evals here follow the pattern in

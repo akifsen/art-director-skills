@@ -36,6 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ART_DIRECTOR_EVAL: ${{ github.event_name == 'workflow_dispatch' && inputs.capture_visuals && '1' || '0' }}
+      ART_DIRECTOR_CRAFT: ${{ github.event_name == 'workflow_dispatch' && inputs.capture_visuals && '1' || '0' }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -56,6 +57,9 @@ jobs:
       - name: Saved evaluation output flows (no model invocation)
         if: github.event_name == 'workflow_dispatch' && inputs.capture_visuals
         run: npx playwright test --project=quality
+      - name: Normal-brief saved output flows (explicit attachment fallback)
+        if: github.event_name == 'workflow_dispatch' && inputs.capture_visuals
+        run: npx playwright test --project=craft
       - name: Preserve selected renders for review
         if: always() && github.event_name == 'workflow_dispatch' && inputs.capture_visuals
         uses: actions/upload-artifact@v4
