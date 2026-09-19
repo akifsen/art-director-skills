@@ -5,6 +5,12 @@
 Notes live in **session state** (`session-store.js`). Restarting the app
 clears them. The success copy says that.
 
+The filled commit action, quiet Cancel/back actions and shared status treatment
+demonstrate roles, not a required palette. The bounded native Modal keeps the
+saved station and note visible while preserving the original acknowledgement
+step; its content can scroll at large font sizes. A different task may be better
+served by inline feedback rather than a blocking confirmation.
+
 ## Run
 
 This folder is source for a host React Native/Expo app. It is not a skill

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BackHandler, Platform, StatusBar } from "react-native";
+import { BackHandler, StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { DetailScreen, EditScreen, ListScreen } from "./screens.js";
 import { createSession, saveNote } from "./session-store.js";
@@ -42,7 +42,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <StatusBar backgroundColor="#000000" barStyle={Platform.OS === "android" || top.name !== "edit" ? "light-content" : "dark-content"} />
+      <StatusBar backgroundColor="#000000" barStyle="light-content" />
       {top.name === "list" ? <ListScreen session={session} onOpen={(id) => push({ name: "detail", id })} /> : null}
       {top.name === "detail" ? (
         <DetailScreen session={session} id={top.id} onBack={pop} onEdit={() => push({ name: "edit", id: top.id })} />

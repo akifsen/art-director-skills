@@ -51,6 +51,14 @@ commit. A failed Save needs an honest error and a Retry that tries again.
 Unknown record ids are in-scope states: labeled, with a way back. Do not
 leave a blank shell or a form bound to a missing row.
 
+Match feedback to the transaction. A small local update can acknowledge the
+named record beside its changed content; a multi-step submission may need a
+summary with its outcome and next action. A toast suits a brief acknowledgement
+when the result remains visible, not essential details that disappear. A sheet
+can retain context while requesting a decision. A separate success screen needs
+enough consequence or information to justify leaving the task. Do not add fake
+loading or failure states to a synchronous local operation for visual variety.
+
 Complex overlays (web dialog, native sheet): use the platform primitive
 (`<dialog showModal()>`, the project’s dialog component, RN `Modal`).
 `aria-modal` on a `div` is not a focus trap. Close on a true backdrop
@@ -73,6 +81,13 @@ screen.
 After you style a Button, Table, or Dialog, open the other in-scope
 screens that use it. A finished home and a default settings form is not
 done.
+
+Recheck the affected flow after shared type or spacing changes too. For
+example, enlarging browse tiles can help comparison but make their repeated
+identity block dominate a narrow form. Preserve recognition with a compact
+summary there; compare action reach, useful information and scroll cost on
+both surfaces. Shortening a page by hiding needed details or shrinking targets
+is not a win. Record a regression and resolve the tradeoff before acceptance.
 
 ## Marketing vs product apps
 

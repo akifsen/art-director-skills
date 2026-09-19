@@ -56,8 +56,10 @@ reader props for that OS. Do not grade native with ARIA checklists.
    second system for later screens.
 6. Walk a real flow and one stressing state (C).
 7. Platform check you can actually run (D), including narrow forms/dialogs.
-8. Inspect B again across main, detail, form and feedback states. Match
-   typography, surfaces and control family without forcing identical layouts.
+8. Inspect B again across main, detail, form and feedback states, including
+   surfaces affected by shared type/spacing/control changes. Match the family
+   without forcing identical layouts; a local improvement does not pass while
+   it creates an unresolved regression elsewhere in the requested flow.
 9. Highest-impact remaining defect; re-verify. Stop when gates pass or
    when remaining work is blocked (name the block).
 
