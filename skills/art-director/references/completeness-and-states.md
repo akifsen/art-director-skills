@@ -34,6 +34,9 @@ Walk the path. Open the states that belong to it:
 - Website mobile menu when the web shell has one
 
 Visible actions work, or they are honestly disabled with a reason.
+The label should match the current state: incomplete work is still “finish
+the remaining items,” not “done.” A read-only confirmation must not look or
+read like an editor still waiting for a choice.
 
 Do not ship empty callbacks, decorative filters, inert tabs, fake success,
 or every link as `#` when those controls were in scope.

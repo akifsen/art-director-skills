@@ -85,8 +85,10 @@ not markup stuffed through `dangerouslySetInnerHTML`.
    design system. Prefer the platform primitive (`<dialog showModal()>`)
    over a `div` with `aria-modal`.
 3. Tokens → minimal family → representative working screen. Check loading,
-   visually inspect and correct the screen before extending the shell and
-   remaining screens. Do not build a complete component catalog first.
+   visually inspect hierarchy and the primary action, correct that screen,
+   then extend the shell and remaining screens. Do not build a complete
+   component catalog first, and do not copy the marketing intro onto every
+   operational view.
 4. Change a token once and confirm related in-scope screens follow.
 
 ## Failures

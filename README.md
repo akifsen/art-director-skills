@@ -67,11 +67,12 @@ Pin a tag with a tree URL, not `owner/repo@v0.1.0` (`@` is a skill filter in
 this CLI):
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.6.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.7.0 --skill art-director --agent cursor --copy
 ```
 
-The v0.6.0 command selects the native-craft release. The old v0.4.0 tag does
-not contain the cleaned main or later changes. See the [current evidence](evals/evidence/native-craft-2026-09-19/REPORT.md)
+The v0.7.0 command selects the see-and-correct release. The old v0.6.0 tag does
+not contain this working-method tightening. See the [current evidence](evals/evidence/see-and-fix-2026-09-20/REPORT.md),
+the [0.6.0 native-craft record](evals/evidence/native-craft-2026-09-19/REPORT.md),
 and [earlier 0.5.0 comparison](evals/evidence/2026-09-19/REPORT.md). Explicit-path
 agent use and CLI installation do not prove automatic Cursor selection.
 
@@ -120,7 +121,8 @@ Discovery is not a real-task run. Visual review that did not happen is
 reported as not done. Keyword fixtures in `tests/run.mjs` are not proof
 that a host selected this skill.
 
-Current work is recorded separately in [2026-09-19 evidence](evals/evidence/2026-09-19/REPORT.md).
+Current work is recorded separately in [2026-09-20 evidence](evals/evidence/see-and-fix-2026-09-20/REPORT.md).
+The previous native-craft run stays in [2026-09-19 evidence](evals/evidence/native-craft-2026-09-19/REPORT.md).
 Complete means required gates passed. A useful delivery with blocked checks
 is partial; a known significant defect is incomplete. More screenshots or
 longer guidance are not evidence of better design.

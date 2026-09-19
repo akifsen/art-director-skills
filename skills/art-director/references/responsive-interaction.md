@@ -25,6 +25,13 @@ explanation, the explanation usually precedes the stage on a phone — unless
 the product *is* the explanation, in which case show a tighter crop of the
 same object (see the Linear note in [visual-research.md](visual-research.md)).
 
+A browsing intro and a booking or edit form are different orders. On a
+narrow form, keep the selected record recognizable in a compact line and
+put the fields next; repeating the marketing headline, long lead and a
+second form title is not “stronger identity.” Scrolling to submit can be
+the right trade when the fields stay readable. Forcing the whole form into
+the first viewport is not automatic success.
+
 **Failure.** `transform: scale` of the desktop; type at `10px`; a table
 squeezed until SLA minutes wrap into noise; captions that say "on the
 right" after you stacked the diagram under the title.

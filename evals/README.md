@@ -44,6 +44,9 @@ an old-skill arm.
 | `10-template-adapt` | Original admin template | DESIGN |
 | `11-native-expo` | React Native / Expo list-detail-edit | DESIGN |
 | `12-holdout-lumen-cart` | Bookmobile stop log (holdout, not Kiln/Tide) | DESIGN |
+| `15-weekend-workshops` | Fold studio reservation (ordinary web brief) | DESIGN |
+| `16-daypack` | Outing packing list (ordinary native brief) | DESIGN |
+| `17-pier-kettle` | Harbor tea-steep board (frozen transfer brief) | DESIGN |
 
 Each case has a `brief.md`, a `start/` tree, and `expected.md` (scope plus
 gates, not a pixel template).

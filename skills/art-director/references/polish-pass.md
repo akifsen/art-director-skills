@@ -49,9 +49,11 @@ reader props for that OS. Do not grade native with ARIA checklists.
 3. Gate A on that slice (load check below).
 4. Actually view the slice (B): is the primary task immediately findable;
    do real titles, secondary text, controls and surfaces have deliberate
-   relationships? Inspect narrow layout too. Record the weakest visible
-   decision and correct it before propagating it. A CSS load check cannot
-   substitute for judgment. If viewing is blocked, mark B unverified.
+   relationships? Inspect narrow layout too. Record which image/state you
+   saw, the two task problems that matter most, and the correction you
+   rechecked on the updated render. A CSS load check cannot substitute for
+   judgment. A later reviewer opening a file path is not the producer’s
+   inspection. If viewing is blocked, mark B unverified.
 5. Extend the language through the requested scope — do not invent a
    second system for later screens.
 6. Walk a real flow and one stressing state (C).
