@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.7.0 — 2026-09-20
+
+- Make the DESIGN working method a short see-and-correct loop: context,
+  needed references, thesis, one working surface, inspect the real render,
+  focused correction, then related screens. A later validator is not the
+  producing agent.
+- Teach comparison density, pending action labels, and read-only summary
+  semantics in the existing native and completeness guides. Teach compact
+  selected-record forms without copying a Fold or Daypack layout into the
+  skill.
+- Keep the 0.6.0 Fold/Daypack candidate sources. Record hand-corrected
+  copies and a frozen Pier Kettle transfer brief separately.
+
+See [dated evidence](evals/evidence/see-and-fix-2026-09-20/REPORT.md).
+Cursor discovery remains a separate, currently pending host test.
+
 ## 0.6.0 — 2026-09-20
 
 - Refine the existing native tutorial with differentiated action roles,

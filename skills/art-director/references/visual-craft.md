@@ -153,6 +153,15 @@ For transactional forms, repeat the selected object's identity briefly and
 lead with the task. A second slogan or oversized cover may delay input
 without helping recognition. Compare a summary beside the form with a compact
 summary above it; choose from width, title length and amount of explanation.
+Keep demo or session labels honest and visible; do not let a warning band
+become the strongest surface on an operational screen.
+
+An intro that earns its scale on a catalogue should not be reused as the
+detail/form chrome. On the working surface, one compact record line plus
+the action is usually enough; long description, metadata and a second
+display title stacked above the first field fight the task. Do not crush
+every form into the first viewport by shrinking type or hiding required
+errors — keep the primary action, invalid fields and recovery related.
 
 Within one project, consistency is required. Across eval fixtures or
 unrelated user projects, if removing the name and accent leaves the same

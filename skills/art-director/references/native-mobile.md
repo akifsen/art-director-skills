@@ -81,6 +81,19 @@ Long Turkish strings, Dynamic Type / font scaling, and short vs tall
 screens are part of the design. Tablet layout only if the brief or the
 existing app includes it.
 
+Card height is not craft. On a choice screen, the user should be able to
+compare the offered options without losing titles, status, or a finger-sized
+target. Prefer tighter padding and a shorter supporting line over a taller
+tile that clips the third option. Do not shrink type or hit areas until
+they are unusable just to show more rows.
+
+Progress copy helps; it should not push the actual work below a decorative
+intro. Disabled or pending actions name the work still required
+(`Finish packing`), not a completed outcome (`Everything’s packed`) while
+items remain. After success, a read-only packed list is a summary: use text
+semantics, not checkbox chrome or `accessibilityRole="checkbox"`. Keep the
+role, the look, and whether the row still toggles aligned.
+
 For the same list/detail/edit task, a full-screen editor suits long notes,
 keyboard work and large text; a sheet suits a short contextual choice while
 retaining the parent record. Choose by content and dismissal semantics,

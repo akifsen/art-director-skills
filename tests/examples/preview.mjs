@@ -26,6 +26,11 @@ for (const [index, name] of ['library-baseline', 'library-candidate', 'library-c
 for (const [index, name] of ['fold-baseline', 'fold-candidate'].entries()) {
   apps[name] = { config: `evals/apps/${name}/vite.config.js`, out: `evals/artifacts/${name}`, port: String(5203 + index) };
 }
+apps['fold-corrected'] = {
+  config: 'evals/apps/fold-corrected/vite.config.js',
+  out: 'evals/artifacts/fold-corrected',
+  port: '5205'
+};
 const app = apps[process.argv[2]];
 if (!app) {
   console.error(`usage: node tests/examples/preview.mjs ${Object.keys(apps).join('|')}`);

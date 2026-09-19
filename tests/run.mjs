@@ -68,7 +68,10 @@ assert(skillMd.includes("native-mobile.md"), "SKILL.md routes native work to nat
 assert(skillMd.includes("completeness-and-states.md"), "SKILL.md routes scope to completeness-and-states.md");
 assert(/finished product interface|visually finished|finished craft/.test(skillMd), "promise mentions finished craft");
 assert(!/sodium/i.test(skillMd), "main skill is not tied to a sodium/eval example");
-assert((data.metadata && data.metadata.version) === "0.6.0", `version 0.6.0 (got ${data.metadata && data.metadata.version})`);
+assert((data.metadata && data.metadata.version) === "0.7.0", `version 0.7.0 (got ${data.metadata && data.metadata.version})`);
+assert(skillMd.includes("working surface"), "SKILL.md names a working surface, not only a hero");
+assert(skillMd.includes("Which real image and state"), "SKILL.md requires a see-and-correct checkpoint");
+assert(skillMd.includes("independent host use"), "SKILL.md separates independent host use from this chat");
 assert(!skillMd.includes("disable-model-invocation: true"), "implicit invocation allowed");
 assert(!/^allowed-tools:/m.test(skillMd), "no allowed-tools permission expansion");
 
@@ -112,6 +115,7 @@ assert(caseDirs.includes("09-component-system"), "eval 09 component system");
 assert(caseDirs.includes("10-template-adapt"), "eval 10 template adapt");
 assert(caseDirs.includes("11-native-expo"), "eval 11 native Expo");
 assert(caseDirs.includes("12-holdout-lumen-cart"), "eval 12 Lumen Cart holdout");
+assert(caseDirs.includes("17-pier-kettle"), "eval 17 Pier Kettle transfer brief");
 assert(fs.existsSync(path.join(root, "evals", "cases", "09-component-system", "start", "ORIGIN.txt")), "component-system fixture has provenance note");
 assert(fs.existsSync(path.join(root, "evals", "cases", "10-template-adapt", "start", "ORIGIN.txt")), "template fixture has provenance note");
 for (const name of caseDirs) {
@@ -152,6 +156,14 @@ assert(
   "copied native guide lands in the portable skill folder"
 );
 console.log("copied skill to", dest);
+
+const seeAndFixTests = spawnSync(process.execPath, [path.join(root, "tests", "see-and-fix.mjs")], {
+  encoding: "utf8",
+  cwd: root
+});
+process.stdout.write(seeAndFixTests.stdout || "");
+process.stderr.write(seeAndFixTests.stderr || "");
+assert(seeAndFixTests.status === 0, "see-and-fix source checks");
 
 const exampleTests = spawnSync(process.execPath, [path.join(root, "tests", "examples", "run.mjs")], {
   encoding: "utf8",

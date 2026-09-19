@@ -1,0 +1,66 @@
+:root {
+  --canvas: #1c2623;
+  --paper: #efe6d4;
+  --ink: #17211e;
+  --muted: #5c675f;
+  --brass: #c4a15a;
+  --enamel: #b4452c;
+  --glass: #7ea8a2;
+  --line: #d5cbb6;
+  font-family: "Palatino Linotype", Palatino, "Times New Roman", serif;
+  color: var(--ink);
+  background: var(--canvas);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+button { font: inherit; cursor: pointer; }
+.board { min-height: 100vh; background:
+  radial-gradient(1200px 400px at 10% -10%, #2c3c36, transparent),
+  var(--canvas); }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 6%;
+  color: var(--paper);
+  border-bottom: 1px solid rgb(239 230 212 / 18%);
+}
+.mark { margin: 0; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+.demo { margin: 0; font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: rgb(239 230 212 / 72%); text-align: right; }
+main { max-width: 720px; margin: 0 auto; padding: 20px 6% 64px; }
+h1 { margin: 0 0 16px; font-size: clamp(22px, 4vw, 32px); color: var(--paper); letter-spacing: -0.03em; }
+.cups { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.cup {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  background: var(--paper);
+  border-radius: 2px;
+  padding: 16px 18px;
+  border-left: 8px solid var(--brass);
+}
+.cup.glass { border-left-color: var(--glass); }
+.cup.enamel { border-left-color: var(--enamel); }
+.id { margin: 0; font-size: 28px; letter-spacing: -0.04em; }
+.meta, .state { margin: 4px 0 0; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: var(--muted); }
+.state { font-weight: 700; color: var(--ink); }
+.acts { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+button.primary { background: var(--enamel); border-color: var(--enamel); color: #fff; }
+button.quiet { background: transparent; color: var(--ink); }
+@media (max-width: 640px) {
+  .cup { flex-direction: column; align-items: stretch; }
+  .acts { justify-content: stretch; }
+  .acts button { flex: 1; }
+}

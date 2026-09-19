@@ -15,7 +15,7 @@ description: >-
 license: MIT
 metadata:
   author: akifsen
-  version: "0.6.0"
+  version: "0.7.0"
 ---
 
 # Art Director
@@ -88,33 +88,38 @@ versions. Do not add a competing UI library beside a working one.
 
 ## Working method
 
-1. **Read the project** — stack, routes, real copy, brand vs starter
-   leftovers, platform, foundation, what must not change.
-2. **DESIGN** — write a short visual thesis (four answers in
-   [design-method.md](references/design-method.md)). Reject a thesis that
-   still fits any other product after swapping the name.
-3. **Broad DESIGN, and you can see pages** — two to four visual notes
-   ([visual-research.md](references/visual-research.md)). Admin work needs
-   admin/app references, not only marketing heroes. Native work needs app
+Do not implement the whole product and inspect later.
+
+1. **Read the project** — stack, routes, real copy, leftovers, platform,
+   foundation, what must not change.
+2. **Open needed references** for this mode, platform, and foundation.
+3. **DESIGN** — short visual thesis ([design-method.md](references/design-method.md)).
+   Reject a thesis that still fits another product after swapping the name.
+4. **Broad DESIGN, and you can see pages** — two to four visual notes
+   ([visual-research.md](references/visual-research.md)). Native needs app
    UI, not only desktop landings. If you cannot see, say so and use a study.
-4. **Scope** — if more than one screen or state is requested, write a short
-   screen → task → components → states → navigation → check table
+5. **Scope** — more than one screen: short matrix
    ([completeness-and-states.md](references/completeness-and-states.md)).
-   Optional `.art-director/design-notes.md` from
-   [design-notes.example.md](assets/design-notes.example.md). No JSON engine.
-5. **Implement in this stack** —
-   [implementation.md](references/implementation.md), then the matching
-   platform/foundation guides below. On broad DESIGN, build one real
-   representative screen first. Check technical loading (A), then actually
-   inspect hierarchy, type, surfaces and component finish (B). Correct the
-   weakest consequential decision before extending to other screens. A
-   loaded stylesheet is not visual approval. If sight is blocked, extension
-   is provisional and visual acceptance remains unverified.
-6. **Extend and accept on four gates**, not on tour count. Carry reviewed
-   decisions through in-scope screens/states, walk the task, and inspect
-   affected main, detail, form and feedback states again; resolve regressions
-   caused by shared component, type or spacing changes
-   ([polish-pass.md](references/polish-pass.md)).
+   Optional notes from [design-notes.example.md](assets/design-notes.example.md).
+   No JSON engine.
+6. **One representative screen**
+   ([implementation.md](references/implementation.md), then matching
+   guides). That screen is the working surface for the main task and the
+   product’s component language. It is not always a hero.
+7. **See it, then correct it** — after Gate A, inspect hierarchy, density,
+   action visibility, and finish — not only CSS/font load. Checkpoint:
+   - Which real image and state did you inspect?
+   - What were the two most important task problems?
+   - What changed, and did you recheck the updated render?
+   A later validator reading a screenshot path is not this checkpoint.
+   The producing agent must open the image. If the host cannot, do not
+   claim visual inspection. Native: a web mock is not device proof.
+8. **Extend related screens**, walk the flow and states, and recheck
+   shared tokens/headers/cards/spacing ([polish-pass.md](references/polish-pass.md)).
+   A local win that regresses another in-scope screen is not done.
+
+If sight is blocked, mark visual acceptance **unverified**. Do not relabel
+partial delivery as complete.
 
 Host decides and continues unless the user asked to see options.
 
@@ -218,11 +223,10 @@ Do not average these into one quality score.
 - **C.** In-scope screens, interactions, and states
 - **D.** Platform-appropriate behavior and accessibility
 
-Report three evidence kinds separately: **implemented**, **run-verified**,
-**visually inspected**. Saving a screenshot file is not inspection. Looking
-at the rendered UI — in a browser, on a device, or in a screenshot you
-actually examined — is visual inspection. That is still not run-verified
-behavior. Font intent in CSS is not proof the face loaded.
+Report four evidence kinds separately: **implemented**, **run-verified**,
+**visually inspected**, **independent host use**. Saving a screenshot is
+not inspection; opening the render is. This authoring chat is not
+independent host use. A file-path subagent is not Cursor discovery.
 
 If a gate cannot be run (no browser, no device), say **not verified**.
 Deliver what you completed; name what is blocked.
@@ -238,6 +242,7 @@ limit deliver safe work with its actual status; do not automatically say done.
 - Mode, platform, UI foundation, and the thesis (DESIGN)
 - Files changed (REVIEW: none)
 - Scope matrix in brief, or “single control”
-- Gates A–D with evidence kind
+- Gates A–D with evidence kind (implemented / run-verified / visually
+  inspected / independent host use)
 - What you could not verify
 - Delivery status: complete / partial delivery / incomplete, with reason
