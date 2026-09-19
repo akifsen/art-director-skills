@@ -26,10 +26,18 @@ export default defineConfig({
     video: "off"
   },
   projects: [
-    { name: "flows", testMatch: /kiln-flow|nadir-desk/ },
+    { name: "flows", testMatch: /kiln-flow|nadir-desk|narrow-flow/ },
+    { name: "quality", testMatch: /library-flow|existing-flow/ },
     { name: "visual", testMatch: /visual-capture/ }
   ],
   webServer: [
+    ...(process.env.ART_DIRECTOR_EVAL === '1' ?
+      ['library-baseline', 'library-candidate', 'library-candidate2', 'existing-desk'].map((name, index) => ({
+        command: `node tests/examples/preview.mjs ${name}`,
+        url: `http://127.0.0.1:${5191 + index}`,
+        timeout: 60000,
+        reuseExistingServer: false
+      })) : []),
     {
       command: "node tests/examples/preview.mjs kiln",
       url: "http://127.0.0.1:5173",

@@ -1,0 +1,183 @@
+{
+  "run": "quality-2026-09-19",
+  "date": "2026-09-19",
+  "initialLocalCommit": "e1e59710fb842c2dd20b185c9695186cd8693119",
+  "initialGitSkillTree": "84afb5d99c63281abe441254bd38336a80675f45",
+  "baselineCommit": "9e2e4bcf5d266ef5bea5503f0bf4121257c348c8",
+  "baselineTreeSha256": "0b29a8c841e8d32f287f926cf4f27f3b6819a57fb7b410e7777f545c970c494c",
+  "model": "same inherited host model; GPT-6 family in agent context; exact serving revision unavailable",
+  "attachment": "explicit filesystem path; IDE discovery untested",
+  "budget": "each library arm: initial implementation + at most 2 correction passes; approximately 8000 output tokens instructed, not a metered hard cap",
+  "repeats": {
+    "baseline": 1,
+    "candidate": 1,
+    "candidate2": 1
+  },
+  "isolation": "fresh subagent context (fork_turns none), assigned snapshot and brief only; shared filesystem isolation by instructions, not OS sandbox",
+  "brief": {
+    "path": "evals/cases/13-library/brief.md",
+    "sha256": "9670ffc31c4f84f0cb824463b07118bc6f25ca2005ab46a420cb41bee8f33654"
+  },
+  "starter": [
+    [
+      "index.html",
+      "ded7a70d73af83f196998a9a877f7cf69b4f90ca938d00da0164f5e754f29f00"
+    ],
+    [
+      "src/App.jsx",
+      "360f75997ec464fa5aedc337cca42b6497f41a2039317b9739ac0cbb47ed7800"
+    ],
+    [
+      "src/books.js",
+      "549f512a67e0b2a5060810094f5b66cd4d391d2f8b170ef6fb1571d5a950eff2"
+    ],
+    [
+      "src/main.jsx",
+      "1f72c3f64a2b8ddd7e76262255a6beb45e0d59e80012066ac92e73cdd81f38c1"
+    ],
+    [
+      "src/styles.css",
+      "b7c2cbbe7197cbcb1bcd41d3e9fa132ee78b127783e34d9f1860901c49a24c7f"
+    ],
+    [
+      "vite.config.js",
+      "c5869b7b75709b65ece52fd5b1ed8a311ba94f21fde6ea0d344286933936b78a"
+    ]
+  ],
+  "setup": "root npm ci and Chromium installed centrally; sandbox/esbuild retries excluded from design iterations",
+  "snapshots": {
+    "baseline-skill": "0b29a8c841e8d32f287f926cf4f27f3b6819a57fb7b410e7777f545c970c494c",
+    "candidate-skill": "c496d18cb2d31b3a565517fb1e966f06a71f6143214a16f3b7be8d1bae53d5e1",
+    "candidate2-skill": "4f47ade5386d019c9158a8f32473eff6f7c04194fdd8c6731c45c5f4d946cc39",
+    "final-skill": "bb62a5ef9efcce21b2c17745943bf2d3a5ae781684e55cb9dead02fd390f7c37",
+    "release-skill": "4f47ade5386d019c9158a8f32473eff6f7c04194fdd8c6731c45c5f4d946cc39"
+  },
+  "sources": {
+    "library-baseline": [
+      [
+        "RUN.md",
+        "d0b8ef4975c5f65a4f2e32a1a37e50332b9988b8f42895bbfa2a470b04fb3229"
+      ],
+      [
+        "index.html",
+        "ded7a70d73af83f196998a9a877f7cf69b4f90ca938d00da0164f5e754f29f00"
+      ],
+      [
+        "src/App.jsx",
+        "5bbc9137b3b879cd5ada38218ed413464b2d3f47d00bb2932685f491dca99eee"
+      ],
+      [
+        "src/books.js",
+        "549f512a67e0b2a5060810094f5b66cd4d391d2f8b170ef6fb1571d5a950eff2"
+      ],
+      [
+        "src/main.jsx",
+        "1f72c3f64a2b8ddd7e76262255a6beb45e0d59e80012066ac92e73cdd81f38c1"
+      ],
+      [
+        "src/styles.css",
+        "06e3fdc5c6d318a34022b639fa216d4ab76e1c69eae6710f49323c7ce75d0e67"
+      ]
+    ],
+    "library-candidate": [
+      [
+        "RUN.md",
+        "fb8a840224c18be17b85d03aa7ffbb3603c95ead7cd185933a3d2ea07953684b"
+      ],
+      [
+        "index.html",
+        "ded7a70d73af83f196998a9a877f7cf69b4f90ca938d00da0164f5e754f29f00"
+      ],
+      [
+        "src/App.jsx",
+        "9b898598655a0e68981588445ff2f22b160032b38a82f29713eca2e1ef988c33"
+      ],
+      [
+        "src/books.js",
+        "549f512a67e0b2a5060810094f5b66cd4d391d2f8b170ef6fb1571d5a950eff2"
+      ],
+      [
+        "src/main.jsx",
+        "1f72c3f64a2b8ddd7e76262255a6beb45e0d59e80012066ac92e73cdd81f38c1"
+      ],
+      [
+        "src/styles.css",
+        "00f87ac0cad1dd28ac5a0d20712716f2cb49b3c94b885e420b8d5c0340366270"
+      ]
+    ],
+    "library-candidate2": [
+      [
+        "RUN.md",
+        "049f4955553aee9b0ccb285b676bb7ecf355a3c68c8249ba7651390fb4c78856"
+      ],
+      [
+        "index.html",
+        "ded7a70d73af83f196998a9a877f7cf69b4f90ca938d00da0164f5e754f29f00"
+      ],
+      [
+        "src/App.jsx",
+        "71382005190d137bb51786ec1984e18bc490cec322c6e9f525775085ef5f6911"
+      ],
+      [
+        "src/books.js",
+        "549f512a67e0b2a5060810094f5b66cd4d391d2f8b170ef6fb1571d5a950eff2"
+      ],
+      [
+        "src/main.jsx",
+        "1f72c3f64a2b8ddd7e76262255a6beb45e0d59e80012066ac92e73cdd81f38c1"
+      ],
+      [
+        "src/styles.css",
+        "8e1376cbcbeb2ff1d7623329484c7c9c4cb368949eecd0c9d373b470330009c1"
+      ],
+      [
+        "src/ui.jsx",
+        "fedf37f53aea5d98be205785d573033d036d2bc6faa6be488961c822da2e761d"
+      ]
+    ],
+    "existing-desk": [
+      [
+        "Button.jsx",
+        "da88f1bafe8b37471ead879be57bff0988a31fe23f7344eaaa78b1aff2aff844"
+      ],
+      [
+        "DeskScreen.jsx",
+        "e02fb33044b0e5da3b7e0eabb9ec393d1d85835c019c1dfeaa8d128500745077"
+      ],
+      [
+        "Dialog.jsx",
+        "485653dbc50fcd618a1ee22d63964fd3476cfe27695fd7356817c72cc86f8cee"
+      ],
+      [
+        "Field.jsx",
+        "7e0cd6ad4f42f89825c013b8a33aa964aabab1e5a315f69702d08cfc56cefc7c"
+      ],
+      [
+        "RUN.md",
+        "69b829d41779ab55b2dd47a64b7ffe27cc9b289abd6b81d332187daf299647d4"
+      ],
+      [
+        "dialog-geometry.js",
+        "da77572e7955c03b4a0aa97457494397f57feb641f393b3ba526ce14be8efa7b"
+      ],
+      [
+        "index.html",
+        "76a4deb99f3298188ac8a5bb534dfb6bd9cd4837344db54ebca0b01c3b220f94"
+      ],
+      [
+        "main.jsx",
+        "618f8bc58dee36a95cc45dd51226e082f1009069ba93e17c35bcd766a2ae2e9a"
+      ],
+      [
+        "notes-store.js",
+        "899d6aae204f87ce6666f99081bc973cb323ace569d80b1a8f1eaacb06018091"
+      ],
+      [
+        "theme.css",
+        "35a03354e967bcc3464e212d4b9f38a321d2a34b24f4fe4255dcdba890b3e071"
+      ]
+    ]
+  },
+  "platform": "Windows; Node 24.13.0; React 18.3.1; Vite 5.4.21; Chromium 153 / Playwright 1.63.0",
+  "noCustomerData": true
+}

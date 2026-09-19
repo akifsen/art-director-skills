@@ -2,7 +2,9 @@
 
 This file records runs that actually happened. Missing hosts are listed as
 not run. No screenshots or transcripts are fabricated. Screenshots were
-inspected in the authoring tools; they are not stored in this repository.
+inspected in the authoring tools; historical runs did not retain them here.
+
+New, separate evidence: [2026-09-19 quality validation](evidence/2026-09-19/REPORT.md), with retained screenshots and source hashes. Results are mixed; no general visual superiority is claimed.
 
 Historical **v0.1.0**, **v0.2.0**, **v0.3.0**, and **v0.4.0** rows below stay
 as written. They are not re-labeled as later evidence.

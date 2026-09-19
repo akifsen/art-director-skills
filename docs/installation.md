@@ -107,12 +107,15 @@ Do not write `akifsen/art-director-skills@v0.4.0` expecting a tag.
 Documented pin: a GitHub tree URL whose path segment is the branch or tag.
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.4.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.5.0 --skill art-director --agent cursor --copy
 ```
 
 Use a real tag after it exists. Prefer the tag or commit published in
 [CHANGELOG.md](../CHANGELOG.md). A release archive of `skills/art-director/`
 can be copied manually the same way as the offline folder.
+
+The v0.5.0 release includes the cleaned main and this dated quality work.
+Do not treat the old v0.4.0 tag as the current cleaned main.
 
 ## Update an older copy
 
@@ -124,6 +127,7 @@ under `references/` and `references/examples/`. v0.2.0 added
 how a host keeps producing skeleton pages, or web-only recipes on a native
 brief, while you think you upgraded.
 
+Back up the existing folder and compare any user edits before replacing it.
 Replace the whole `art-director` directory. Keep the folder name
 `art-director`. On Windows prefer `Copy-Item -LiteralPath` (see above).
 Turkish letters and spaces in the parent path are supported by that
@@ -132,7 +136,16 @@ cmdlet; do not switch to `fs.cpSync` in a one-off script without testing.
 Project copy:
 
 ```powershell
-Copy-Item -LiteralPath 'path\to\art-director-skills\skills\art-director' -Destination '.agents\skills\art-director' -Recurse -Force
+$skillSource = (Resolve-Path 'path\to\art-director-skills\skills\art-director').Path
+$skillTarget = Join-Path (Get-Location) '.agents\skills\art-director'
+if (Test-Path -LiteralPath $skillTarget) {
+  $skillBackup = Join-Path (Get-Location) ('skill-backups\art-director-' + (Get-Date -Format 'yyyyMMdd-HHmmss-fff'))
+  New-Item -ItemType Directory -Force (Split-Path $skillBackup) | Out-Null
+  Move-Item -LiteralPath $skillTarget -Destination $skillBackup
+  # Compare this backup and reapply intentional local edits to the new copy.
+}
+New-Item -ItemType Directory -Force (Split-Path $skillTarget) | Out-Null
+Copy-Item -LiteralPath $skillSource -Destination $skillTarget -Recurse
 ```
 
 If you installed with the CLI:
@@ -143,8 +156,13 @@ npx skills add akifsen/art-director-skills --skill art-director --agent cursor -
 
 or, from a local clone of the new tag, the same `npx skills add <path>`
 form as install. Then confirm the copied `SKILL.md` metadata version is
-`0.4.0`, that `references/native-mobile.md` exists, and that
+`0.5.0`, that `references/native-mobile.md` exists, and that
 `references/examples/themeless-react/kiln-store.js` exists.
+
+Compare file contents too: `Get-FileHash -Algorithm SHA256` on source and
+installed `SKILL.md` detects a stale entrypoint. Maintainer `npm run
+test:install` compares every relative file and SHA256, not just the version.
+If local edits are intentionally reapplied, document that the hash differs.
 
 Do not keep a second copy in `.cursor/skills/` if `.agents/skills/` already
 has it — duplicate discovery is confusing, not "more updated."

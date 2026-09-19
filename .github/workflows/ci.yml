@@ -3,6 +3,12 @@ name: ci
 on:
   push:
   pull_request:
+  workflow_dispatch:
+    inputs:
+      capture_visuals:
+        description: 'Capture review artifacts (not aesthetic approval)'
+        type: boolean
+        default: false
 
 jobs:
   test:
@@ -28,6 +34,8 @@ jobs:
 
   examples-web:
     runs-on: ubuntu-latest
+    env:
+      ART_DIRECTOR_EVAL: ${{ github.event_name == 'workflow_dispatch' && inputs.capture_visuals && '1' || '0' }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -42,6 +50,20 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Browser flows on production preview (not a native runtime)
         run: npm run test:e2e
+      - name: Selected successful visual capture
+        if: github.event_name == 'workflow_dispatch' && inputs.capture_visuals
+        run: npm run test:e2e:visual
+      - name: Saved evaluation output flows (no model invocation)
+        if: github.event_name == 'workflow_dispatch' && inputs.capture_visuals
+        run: npx playwright test --project=quality
+      - name: Preserve selected renders for review
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.capture_visuals
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-review-renders
+          path: evals/artifacts/*.png
+          retention-days: 30
+          if-no-files-found: error
       - name: Upload Playwright traces on failure
         if: failure()
         uses: actions/upload-artifact@v4

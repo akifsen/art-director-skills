@@ -1,6 +1,20 @@
 # Changelog
 
-## Unreleased
+## 0.5.0 — 2026-09-19
+
+- Inspect and correct the representative render before extending broad DESIGN;
+  inspect cross-screen consistency again at final acceptance.
+- Separate complete, partial delivery and incomplete. Blocked checks do not pass.
+- Compare viable alternatives for the same task; preserve deliberate native
+  system typography and distinguish CSS font intent from actual loaded faces.
+- Add dated first-party workspace/native visual observations, a fictional
+  library evaluation and narrow form/dialog flow and capture coverage.
+- Selected manual CI runs retain successful screenshots for review; capture
+  is never automatic aesthetic approval. See the dated evidence report for
+  actual independent-run, device, install and publication status.
+
+The following reliability changes were already on main at `9e2e4bc`; they
+were not present in the old v0.4.0 tag and are included in this release scope.
 
 Reliability of the maintainer path and the tutorial product flows.
 

@@ -1,5 +1,7 @@
 # Eval method
 
+The [2026-09-19 quality run](evidence/2026-09-19/REPORT.md) preserves independent baseline/candidate outputs, weak results, inspected renders, native device evidence and explicit scope limits. Reproduction uses the existing Vite/Playwright path with `ART_DIRECTOR_EVAL=1`.
+
 Evals here follow the pattern in
 https://agentskills.io/skill-creation/evaluating-skills and
 https://developers.openai.com/blog/eval-skills: a prompt, a captured run,

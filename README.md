@@ -24,7 +24,8 @@ The skill tells the host to:
 3. On broad DESIGN, look at a few current references *if the host can see
    pages*; otherwise use the studies in the skill
 4. Write a short visual thesis in concrete terms, not mood adjectives
-5. Build or extend a reusable component/page language, then finish the
+5. Build and visually inspect a representative real screen, correct its
+   weakest consequential decision, then extend the component/page language and finish the
    requested screens, flows, and states — not only the first viewport
 6. Edit real files when implementation was requested
 7. Keep four acceptance gates separate (load/function, craft, completeness,
@@ -66,10 +67,14 @@ Pin a tag with a tree URL, not `owner/repo@v0.1.0` (`@` is a skill filter in
 this CLI):
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.4.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.5.0 --skill art-director --agent cursor --copy
 ```
 
-If you already installed **v0.1.0**, **v0.2.0**, or **v0.3.0**, replace the
+The v0.5.0 command selects the new release. The old v0.4.0 tag does not contain the cleaned main or
+these changes. See the [dated evidence](evals/evidence/2026-09-19/REPORT.md)
+for publication and validation status.
+
+If you already installed an older version, back up local edits and replace the
 `art-director` folder rather than mixing files. See [docs/installation.md](docs/installation.md#update-an-older-copy).
 
 Telemetry on `npx skills` belongs to that CLI. Opt out with
@@ -113,6 +118,11 @@ See [docs/compatibility.md](docs/compatibility.md) and
 Discovery is not a real-task run. Visual review that did not happen is
 reported as not done. Keyword fixtures in `tests/run.mjs` are not proof
 that a host selected this skill.
+
+Current work is recorded separately in [2026-09-19 evidence](evals/evidence/2026-09-19/REPORT.md).
+Complete means required gates passed. A useful delivery with blocked checks
+is partial; a known significant defect is incomplete. More screenshots or
+longer guidance are not evidence of better design.
 
 ## License
 
