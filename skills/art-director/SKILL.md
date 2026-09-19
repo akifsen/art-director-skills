@@ -15,7 +15,7 @@ description: >-
 license: MIT
 metadata:
   author: akifsen
-  version: "0.5.0"
+  version: "0.6.0"
 ---
 
 # Art Director
@@ -112,7 +112,8 @@ versions. Do not add a competing UI library beside a working one.
    is provisional and visual acceptance remains unverified.
 6. **Extend and accept on four gates**, not on tour count. Carry reviewed
    decisions through in-scope screens/states, walk the task, and inspect
-   cross-screen consistency again
+   affected main, detail, form and feedback states again; resolve regressions
+   caused by shared component, type or spacing changes
    ([polish-pass.md](references/polish-pass.md)).
 
 Host decides and continues unless the user asked to see options.

@@ -33,6 +33,10 @@ if (process.env.ART_DIRECTOR_EVAL === '1') {
   }
 }
 
+if (process.env.ART_DIRECTOR_CRAFT === '1') {
+  for (const app of ['fold-baseline', 'fold-candidate']) build(`evals/apps/${app}/vite.config.js`);
+}
+
 const kilnDir = path.join(root, "evals/artifacts/kiln-queue");
 const deskDir = path.join(root, "evals/artifacts/nadir-desk");
 const kilnHtml = fs.readFileSync(path.join(kilnDir, "index.html"), "utf8");

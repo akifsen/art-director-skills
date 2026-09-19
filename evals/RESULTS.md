@@ -1,5 +1,8 @@
 # Eval results
 
+Latest separate record: [native craft / two normal briefs](evidence/native-craft-2026-09-19/REPORT.md),
+started 2026-09-19 and continued 2026-09-20. Historical rows below remain historical.
+
 This file records runs that actually happened. Missing hosts are listed as
 not run. No screenshots or transcripts are fabricated. Screenshots were
 inspected in the authoring tools; historical runs did not retain them here.

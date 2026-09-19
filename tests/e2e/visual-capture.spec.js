@@ -4,8 +4,19 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { DESK, KILN, gotoApp } from "./helpers.js";
 import { libraryArms, libraryFlow } from './library-support.js';
+import { foldArms, foldFlow } from './fold-support.js';
 
 const artifacts = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../evals/artifacts");
+
+test.describe('ordinary-brief saved outputs', () => {
+  test.skip(process.env.ART_DIRECTOR_CRAFT !== '1', 'Optional bounded ordinary-brief captures');
+  for (const arm of foldArms) for (const width of [1280, 390]) {
+    test(`fold ${arm.name} matching states at ${width}`, async ({ page }) => {
+      await page.setViewportSize({ width, height: width === 390 ? 844 : 900 });
+      await foldFlow(page, arm, true);
+    });
+  }
+});
 
 test.describe('saved independent library outputs', () => {
   test.skip(process.env.ART_DIRECTOR_EVAL !== '1', 'Optional bounded evaluation captures');

@@ -67,12 +67,13 @@ Pin a tag with a tree URL, not `owner/repo@v0.1.0` (`@` is a skill filter in
 this CLI):
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.5.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.6.0 --skill art-director --agent cursor --copy
 ```
 
-The v0.5.0 command selects the new release. The old v0.4.0 tag does not contain the cleaned main or
-these changes. See the [dated evidence](evals/evidence/2026-09-19/REPORT.md)
-for publication and validation status.
+The v0.6.0 command selects the native-craft release. The old v0.4.0 tag does
+not contain the cleaned main or later changes. See the [current evidence](evals/evidence/native-craft-2026-09-19/REPORT.md)
+and [earlier 0.5.0 comparison](evals/evidence/2026-09-19/REPORT.md). Explicit-path
+agent use and CLI installation do not prove automatic Cursor selection.
 
 If you already installed an older version, back up local edits and replace the
 `art-director` folder rather than mixing files. See [docs/installation.md](docs/installation.md#update-an-older-copy).

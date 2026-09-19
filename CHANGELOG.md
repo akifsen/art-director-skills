@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.6.0 — 2026-09-20
+
+- Refine the existing native tutorial with differentiated action roles,
+  readable status text, shared list/detail/editor surfaces and contextual,
+  bounded save feedback; retain the same data and session store.
+- Teach proportional feedback and rechecking affected screens after shared
+  type, spacing or control changes, without prescribing the example's look.
+- Preserve two new ordinary-language briefs and independent explicit-path
+  baseline/candidate runs. Cursor workspace opening is separate from skill
+  discovery: input failed before submission, so normal Cursor use is unverified.
+- Align compatibility claims with specific Android evidence and untested iOS/
+  IDE scope. Retain existing Vite/Playwright and packaging/install gates.
+
+See [dated evidence](evals/evidence/native-craft-2026-09-19/REPORT.md) for
+actual outcomes, weak results and the distinction between manual tutorial
+improvement and independent skill outputs.
+
 ## 0.5.0 — 2026-09-19
 
 - Inspect and correct the representative render before extending broad DESIGN;

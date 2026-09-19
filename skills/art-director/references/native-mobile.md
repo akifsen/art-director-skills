@@ -68,6 +68,13 @@ Check status-bar icon contrast on the actual system-bar surface in each state.
 - Sheets, modals, pickers: platform-typical presentation; Cancel / back
   must dismiss without trapping.
 
+Choose feedback by consequence using [completeness-and-states.md](completeness-and-states.md).
+On a device, inspect the actual presentation: a requested sheet may become a
+full-screen modal on another OS. For a small local save, retain the edited
+record's identity and readable result instead of expanding an accent surface
+to fill the screen. If keeping a modal, verify its return target, system bars
+and large-text scrolling as well as the editor beneath it.
+
 ## Copy and layout
 
 Long Turkish strings, Dynamic Type / font scaling, and short vs tall

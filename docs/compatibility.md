@@ -54,7 +54,7 @@ https://cursor.com/docs/reference/plugins describes plugins that bundle
 skills via `.cursor-plugin/plugin.json` or Agent Plugins `plugin.json`, and
 multi-plugin repos via `.cursor-plugin/marketplace.json`. Public listing
 goes through Cursor review (`cursor.com/marketplace/publish`). This repo
-does not ship those manifests in v0.4.0 and does not claim marketplace
+does not ship those manifests in v0.6.0 and does not claim marketplace
 visibility.
 
 ## Codex / ChatGPT skills
@@ -85,14 +85,22 @@ folder is universal.
 
 Host tools vary. Missing tools are reported, not simulated.
 
-## Platforms claimed in v0.4.0
+## Current evidence (0.6.0)
 
 | Surface | Status |
 |---|---|
 | Portable skill structure, Windows/PowerShell copy, relative links | Structure verified + install tested (repo tests) |
-| Web DESIGN/REFINE/REVIEW guidance | Used on tasks in prior evals; v0.4.0 adds honest save/dialog/state examples |
+| Web DESIGN/REFINE/REVIEW guidance | Used in explicit-path independent runs and bounded scope checks; these do not prove natural IDE selection |
 | Theme-less React / local primitives / original template evals | Cases 08–10 exist; tutorial Kiln/Nadir apps **Vite-build** in the `examples-web` job after `npm ci`; outcome rows only after a real run |
-| React Native / Expo **source** example + case 11 | Structure + session-store tests; **device/simulator pending** unless RESULTS says otherwise |
+| Closeout React Native / Expo example | Actual Android Pixel_9/API37 execution recorded in dated evidence; applies to this example and tested states, not all native projects |
+| Daypack ordinary-brief baseline/candidate | Separate explicit-path outputs exported Android bundles and passed the common Android packing flow; visual tradeoffs remain, and this is not natural Cursor invocation |
+| iOS, physical devices, VoiceOver/TalkBack | Not run; accessibility props are source evidence, not a screen-reader audit |
+| Cursor 3.20.17 isolated workspace | Skill copied and workspace opened; input failed with SendInput error87 before brief submission. Discovery, natural selection, explicit Cursor invocation and task use remain unverified |
+| Fresh Codex subagent fallback | Explicit installed skill path; loaded files/hashes recorded per run. Separate from Cursor discovery |
 | Expo web as iOS/Android | Not accepted as native verification |
 | Flutter, SwiftUI, Jetpack Compose | Guide: keep the current framework; **not tested** |
 | Commercial third-party themes | Not bundled; eval 10 is an original fixture |
+
+See [native craft / normal briefs](../evals/evidence/native-craft-2026-09-19/REPORT.md)
+for current outcomes and [0.5.0 evidence](../evals/evidence/2026-09-19/REPORT.md)
+for the earlier run. Historical results are not relabelled as new tests.

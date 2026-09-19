@@ -133,6 +133,12 @@ blue underlines; the nav hover is a browser default. Three products.
 Footer, tabs, and inputs should reuse the same radius and hairline story,
 not invent a new one.
 
+Shared shape does not mean equal emphasis. In an editor, distinguish the
+commit action from Cancel and back navigation through label, placement and
+surface weight, not hue alone. A quiet action still needs a readable label,
+pressed/focus feedback and a full touch target. Check the same roles on the
+detail and success surfaces; making every control prominent erases priority.
+
 ## Cross-project sameness
 
 At the representative render, compare visible task material with the space

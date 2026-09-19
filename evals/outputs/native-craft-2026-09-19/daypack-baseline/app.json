@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "Daypack",
+    "slug": "daypack-evaluation",
+    "version": "1.0.0",
+    "android": {
+      "package": "org.example.daypackevaluation"
+    },
+    "plugins": [
+      "expo-asset"
+    ]
+  }
+}

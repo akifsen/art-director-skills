@@ -28,9 +28,17 @@ export default defineConfig({
   projects: [
     { name: "flows", testMatch: /kiln-flow|nadir-desk|narrow-flow/ },
     { name: "quality", testMatch: /library-flow|existing-flow/ },
+    { name: "craft", testMatch: /fold-flow/ },
     { name: "visual", testMatch: /visual-capture/ }
   ],
   webServer: [
+    ...(process.env.ART_DIRECTOR_CRAFT === '1' ?
+      ['fold-baseline', 'fold-candidate'].map((name, index) => ({
+        command: `node tests/examples/preview.mjs ${name}`,
+        url: `http://127.0.0.1:${5203 + index}`,
+        timeout: 60000,
+        reuseExistingServer: false
+      })) : []),
     ...(process.env.ART_DIRECTOR_EVAL === '1' ?
       ['library-baseline', 'library-candidate', 'library-candidate2', 'existing-desk'].map((name, index) => ({
         command: `node tests/examples/preview.mjs ${name}`,
