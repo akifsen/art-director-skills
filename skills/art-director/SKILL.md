@@ -15,7 +15,7 @@ description: >-
 license: MIT
 metadata:
   author: akifsen
-  version: "0.4.0"
+  version: "0.5.0"
 ---
 
 # Art Director
@@ -104,8 +104,15 @@ versions. Do not add a competing UI library beside a working one.
    [design-notes.example.md](assets/design-notes.example.md). No JSON engine.
 5. **Implement in this stack** —
    [implementation.md](references/implementation.md), then the matching
-   platform/foundation guides below.
-6. **Accept on four gates**, not on tour count
+   platform/foundation guides below. On broad DESIGN, build one real
+   representative screen first. Check technical loading (A), then actually
+   inspect hierarchy, type, surfaces and component finish (B). Correct the
+   weakest consequential decision before extending to other screens. A
+   loaded stylesheet is not visual approval. If sight is blocked, extension
+   is provisional and visual acceptance remains unverified.
+6. **Extend and accept on four gates**, not on tour count. Carry reviewed
+   decisions through in-scope screens/states, walk the task, and inspect
+   cross-screen consistency again
    ([polish-pass.md](references/polish-pass.md)).
 
 Host decides and continues unless the user asked to see options.
@@ -157,7 +164,7 @@ Do not dump every file into context. Open what this task needs.
 **More than one screen, form, or data state:**
 [completeness-and-states.md](references/completeness-and-states.md)
 
-**Before you call DESIGN done:** [polish-pass.md](references/polish-pass.md)
+**At first DESIGN render and before completion:** [polish-pass.md](references/polish-pass.md)
 
 **REVIEW only:** [visual-review.md](references/visual-review.md)
 
@@ -219,6 +226,12 @@ behavior. Font intent in CSS is not proof the face loaded.
 If a gate cannot be run (no browser, no device), say **not verified**.
 Deliver what you completed; name what is blocked.
 
+**Complete:** requested scope implemented and all required gates passed.
+**Partial delivery:** useful changes delivered, but required work or checks
+are blocked. **Incomplete:** a known significant functional, scope or visual
+defect remains. Disclosing a blocked check does not pass it. At a resource
+limit deliver safe work with its actual status; do not automatically say done.
+
 ## Report
 
 - Mode, platform, UI foundation, and the thesis (DESIGN)
@@ -226,3 +239,4 @@ Deliver what you completed; name what is blocked.
 - Scope matrix in brief, or “single control”
 - Gates A–D with evidence kind
 - What you could not verify
+- Delivery status: complete / partial delivery / incomplete, with reason

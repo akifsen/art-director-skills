@@ -84,7 +84,9 @@ not markup stuffed through `dangerouslySetInnerHTML`.
    justified library (for example a focus-complete dialog), not a new
    design system. Prefer the platform primitive (`<dialog showModal()>`)
    over a `div` with `aria-modal`.
-3. Tokens → family → shell → screens.
+3. Tokens → minimal family → representative working screen. Check loading,
+   visually inspect and correct the screen before extending the shell and
+   remaining screens. Do not build a complete component catalog first.
 4. Change a token once and confirm related in-scope screens follow.
 
 ## Failures

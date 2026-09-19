@@ -1,7 +1,7 @@
 # Acceptance gates (not tour counts)
 
-Read this before you declare DESIGN done, and whenever the first render
-looks like a skeleton. Skip the full product matrix for a one-control
+Read this at the first representative DESIGN render, before extending its
+language, and again before completion. Skip the full product matrix for a one-control
 REFINE; there, still pass the gates **on the named piece**.
 
 A representative slice is the first checkpoint. It is not permission to
@@ -19,8 +19,9 @@ controls that were asked for run. Copy, names, and figures are real.
 Unknown stays unknown. REVIEW did not edit sources.
 
 A missing stylesheet is an A fail even if the markup looks designed.
-Computed `font-family` still on the fallback means the face did not load —
-do not praise the intended pairing.
+Computed `font-family` lists requested families; it does not prove which
+face rendered. Check custom-face loading and rendered-font information when
+available; inspect representative language glyphs too.
 
 ### Gate B — Craft and consistency
 
@@ -46,11 +47,18 @@ reader props for that OS. Do not grade native with ARIA checklists.
 2. Slice in real files (marketing: nav + opening + next band; tool: the
    working surface).
 3. Gate A on that slice (load check below).
-4. Extend the language through the requested scope — do not invent a
+4. Actually view the slice (B): is the primary task immediately findable;
+   do real titles, secondary text, controls and surfaces have deliberate
+   relationships? Inspect narrow layout too. Record the weakest visible
+   decision and correct it before propagating it. A CSS load check cannot
+   substitute for judgment. If viewing is blocked, mark B unverified.
+5. Extend the language through the requested scope — do not invent a
    second system for later screens.
-5. Walk a real flow and one stressing state (C).
-6. Platform check you can actually run (D).
-7. Highest-impact remaining defect; re-verify. Stop when gates pass or
+6. Walk a real flow and one stressing state (C).
+7. Platform check you can actually run (D), including narrow forms/dialogs.
+8. Inspect B again across main, detail, form and feedback states. Match
+   typography, surfaces and control family without forcing identical layouts.
+9. Highest-impact remaining defect; re-verify. Stop when gates pass or
    when remaining work is blocked (name the block).
 
 ## Load check (Gate A)
@@ -66,9 +74,15 @@ Cannot run it: write **load check not done**.
 
 ## Honest stopping
 
-**Done:** gates A–D passed on the requested scope, or failed gates are
-explicitly blocked (no device, no rights, no network) and the delivered
-part is listed.
+**Complete:** gates A–D passed on the requested scope.
+
+**Partial delivery:** useful implementation exists, but required work or a
+gate is blocked (no device, no rights, no network). List the delivered part,
+missing check and concrete environment/action needed. This is not full
+acceptance. A resource limit is not evidence that the work passed.
+
+**Incomplete:** a known significant functional, scope or visual defect
+remains. If also blocked, report the defect as well as the blocker.
 
 **Not done:** “two tours finished.” **Not done:** beautiful hero, dead
 save. **Not done:** tests green, UI still a skeleton. **Not done:** known

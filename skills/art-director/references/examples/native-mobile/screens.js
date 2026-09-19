@@ -146,11 +146,11 @@ export function EditScreen({ session, id, onSave, onClose }) {
         {error ? (
           <Text accessibilityLiveRegion="polite" style={{ color: t.danger, marginTop: 8 }}>{error}</Text>
         ) : null}
-      </ScrollView>
-      <View style={{ padding: t.space, paddingBottom: insets.bottom + t.space, backgroundColor: t.paper }}>
+      <View style={{ paddingTop: t.space, gap: 8, backgroundColor: t.paper }}>
         <Tap label="Save note" onPress={save} />
         <Tap label="Cancel" onPress={onClose} />
       </View>
+      </ScrollView>
       <Modal visible={sheet} animationType="slide" presentationStyle="pageSheet" onRequestClose={() => { setSheet(false); onClose(); }}>
         <View style={{ flex: 1, backgroundColor: t.field, paddingTop: insets.top, padding: t.space }}>
           <Text accessibilityRole="header">{saveMessage}</Text>

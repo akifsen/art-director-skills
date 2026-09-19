@@ -1,7 +1,7 @@
 # Design method
 
-Read this for DESIGN work, or when a REFINE request is actually a hidden
-redesign. Skip it for a one-control fix.
+Read this for DESIGN work. A named REFINE control remains bounded even when
+the surrounding product needs a redesign. Skip it for a one-control fix.
 
 ## Start from the current surface
 
@@ -69,8 +69,8 @@ then invert the same way every time.
 **Not a brand system** (safe to replace on DESIGN / explicit redesign):
 
 - Starter-kit or framework demo look
-- Default `system-ui`, Arial, Times, or Impact left behind because "fonts
-  were already there"
+- An unconsidered starter type hierarchy. A system font can be a deliberate
+  choice; native platform fonts are not web starter leftovers
 - Temporary gray boxes, "lorem" bands, or a theme the user already rejected
 - Equal dummy cards that only exist to look like a landing page
 
@@ -84,33 +84,30 @@ the same weight.
 
 ### Studio with unlike offerings
 
-A lighting studio sells still photography, spatial installations, and rented
-equipment. Two directions: (1) three equal service cards under a mood hero;
-(2) one current installation as the opening proof, with photography and
-rental as secondary paths.
-
-Choose (2) when the live installation is the distinctive artifact. Finish
-it as a composed stage (crop, caption, type), not as a taller card. Do not
-turn every unlike-offering brief into a numbered list — a media-led stage
-and a compact timetable can sit in the same page with different jobs.
+A lighting studio sells photography, installations and equipment rental.
+For visitors choosing a service, a compact service index with one real
+specimen and a direct inquiry path per service supports comparison. For
+visitors arriving from an exhibition announcement, a current-installation
+stage with date, access and secondary service paths supports that intent.
+Both retain all services and inquiries; choose from entry context and
+available proof, not a rule that grids are bad or stages are always better.
 
 ### Ops tool used daily
 
-A dispatch board shows open jobs, SLA risk, and assignee load. Two
-directions: (1) a marketing landing with a product screenshot in the hero;
-(2) a working surface that leads with filters, risk, and the job table.
-
-Choose (2). The primary task is retrieval and action. Finish the table:
-row density, overdue without color alone, a filter that actually narrows,
-focus on the active row. A restyled marketing shell around the same `<table>`
-is still the wrong object.
+A dispatch board shows jobs, SLA risk and assignee load. A sortable table
+with an adjacent inspector helps compare many records without losing place.
+A risk-grouped list with inline actions helps an operator clear a small
+urgent set in order. Both support retrieval, assignment and record detail.
+Choose the table when comparison across attributes dominates; choose groups
+when priority sequence dominates. On narrow screens preserve identity and
+the next action; move the inspector into a reachable detail view. Test that
+returning preserves the filter and position. Neither needs a marketing hero.
 
 ### Personal site with one long text
 
-A developer has three small tools and a 4,000-word memoir. Two directions:
-(1) a photo-less "hi I'm a developer" hero and a tile grid; (2) the memoir's
-opening argument as the first read, tools as a compact index grouped by
-problem.
-
-Choose (2) when the memoir is the distinctive work. Type and measure do the
-craft; do not invent a headshot box to look complete.
+A developer has three tools and a long memoir. An annotated work index gives
+recruiters a quick route to shipped evidence, with the memoir as a clear
+reading path. An opening excerpt with a contents rail suits readers arriving
+for the essay, while a compact tools index keeps the work discoverable.
+Choose from the intended visit; both must retain the same reading and tool
+destinations. Type, measure and spacing can finish either without a headshot.

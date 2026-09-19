@@ -108,6 +108,12 @@ content is a single statement plus an action.
 Keep source order meaningful. Visual reordering often breaks on small
 screens.
 
+For a workspace grid, let the content column shrink below its children's
+intrinsic width. On web that often means `min-width: 0` on the grid item
+and local overflow on the table wrapper. Check the viewport-sized capture,
+not only a full-page image whose width can silently grow beyond the phone.
+The narrow form/dialog deserves its own inspection, with long real content.
+
 ## Grouping several offerings
 
 Group by visitor job, not by the org chart.

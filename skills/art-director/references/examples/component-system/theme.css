@@ -61,7 +61,7 @@ body.nadir {
   outline: 3px solid var(--ring);
   outline-offset: -3px;
 }
-.nd-main { padding: calc(var(--space) * 4); }
+.nd-main { min-width: 0; padding: calc(var(--space) * 4); }
 .nd-toolbar {
   display: flex;
   justify-content: space-between;
@@ -118,6 +118,7 @@ body.nadir {
 .nd-dialog-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
 
 dialog.nd-dialog {
+  box-sizing: border-box;
   width: min(26rem, calc(100vw - 1.5rem));
   max-height: min(32rem, calc(100vh - 2rem));
   overflow: auto;

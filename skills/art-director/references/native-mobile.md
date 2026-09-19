@@ -54,6 +54,11 @@ can move into view.
 
 Do not copy CSS `100vh` tricks.
 
+Inspect both Save and Cancel with the keyboard open: a visible primary action
+does not prove the secondary action is reachable. Keep the action group in the
+scrollable form when a fixed footer cannot fit with large text and the keyboard.
+Check status-bar icon contrast on the actual system-bar surface in each state.
+
 ## Touch and state
 
 - Hit targets large enough for fingers (follow current platform HIG /
@@ -68,6 +73,18 @@ Do not copy CSS `100vh` tricks.
 Long Turkish strings, Dynamic Type / font scaling, and short vs tall
 screens are part of the design. Tablet layout only if the brief or the
 existing app includes it.
+
+For the same list/detail/edit task, a full-screen editor suits long notes,
+keyboard work and large text; a sheet suits a short contextual choice while
+retaining the parent record. Choose by content and dismissal semantics,
+not visual novelty. Keep existing navigator and sheet behavior. Review the
+first real device screen before extending and again with keyboard/sheet
+open. Reflow labels and actions under font scaling instead of shrinking text.
+
+Shared craft principles (hierarchy, density, surfaces, state clarity) apply;
+web font stacks, CSS grids and DOM focus recipes do not. Use restrained
+transition feedback only when it explains the action; honor reduced-motion
+settings through the project's native facilities. Animation is optional.
 
 ## Accessibility (native APIs)
 

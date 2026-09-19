@@ -68,7 +68,7 @@ assert(skillMd.includes("native-mobile.md"), "SKILL.md routes native work to nat
 assert(skillMd.includes("completeness-and-states.md"), "SKILL.md routes scope to completeness-and-states.md");
 assert(/finished product interface|visually finished|finished craft/.test(skillMd), "promise mentions finished craft");
 assert(!/sodium/i.test(skillMd), "main skill is not tied to a sodium/eval example");
-assert((data.metadata && data.metadata.version) === "0.4.0", `version 0.4.0 (got ${data.metadata && data.metadata.version})`);
+assert((data.metadata && data.metadata.version) === "0.5.0", `version 0.5.0 (got ${data.metadata && data.metadata.version})`);
 assert(!skillMd.includes("disable-model-invocation: true"), "implicit invocation allowed");
 assert(!/^allowed-tools:/m.test(skillMd), "no allowed-tools permission expansion");
 

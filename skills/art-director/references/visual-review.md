@@ -85,3 +85,5 @@ You fixed a mobile menu. Technical: the button now toggles `aria-expanded`,
 Escape closes, focus returns. Visual: you could not open a browser in this
 session, so stacking against the hero is unverified. Say that plainly.
 Do not mark the task as visually confirmed.
+For implementation delivery this is partial delivery if the required visual
+check is blocked, not complete. A known significant defect means incomplete.

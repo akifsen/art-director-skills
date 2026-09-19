@@ -14,13 +14,18 @@ Add a face only when a role is missing.
 
 Do not treat the following as sacred brand:
 
-- `system-ui`, Arial, Times, Impact, or the framework starter stack
+- An unconsidered framework type hierarchy (not a font name by itself)
 - A single Google font dropped by a template
-- A heading face that never loaded (computed style still falls back)
+- A heading face that never loaded (verify rendered faces, not only CSS intent)
 
 On DESIGN / explicit redesign, choose roles first, then faces that can
 render the project's languages. Prefer the project's existing loading
 method. Do not introduce a new CDN because an example used one.
+
+These CSS recipes are for web. Native work uses its platform type metrics,
+font scaling and controls; keeping the system face can be the intended design.
+For custom web fonts, computed family names alone do not establish loading.
+Check font requests/loading and rendered-face information when available.
 
 **Failure.** "The file already said `font-family: system-ui`, so I kept it"
 on a blank marketing fixture.
@@ -150,6 +155,19 @@ Do not invent screenshots, customer faces, logos, or metrics. If the host
 has no image-generation tool, do not pretend assets were produced.
 
 ## Decision examples
+
+### One form, two coherent surface treatments
+
+A long application form can use a continuous canvas with section headings
+and rules when reading order matters. Separately editable account settings
+can use grouped secondary surfaces, each with its own edit action. Both need
+the same legible labels, hint/error distinction and clear submission result.
+Choose grouping from the save boundaries; do not merely recolor the button.
+
+For either, compare a compact label/body scale with a more generous reading
+scale using the actual longest label and error. Prefer compact when users
+scan repeated known fields; give unfamiliar instructions more measure and
+leading. Font selection alone does not settle that tradeoff.
 
 ### Content-led publication
 

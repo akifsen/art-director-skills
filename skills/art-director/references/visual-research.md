@@ -65,6 +65,13 @@ If there is no web or browser, stop this pass. Use the studies linked from
 `SKILL.md`. Say that live visual research did not happen. The skill must
 still work.
 
+For product surfaces, inspect a working state with real selection, detail or
+editing context. For native, inspect a task with navigation, keyboard or a
+sheet. A first-party documentation screenshot can inform composition; label
+it as a pictured state, not an interaction you exercised. Multiple viewports
+of one marketing homepage are still one reference. Research informs a
+specific decision; it does not recommend a vendor or authorize copying code.
+
 ## Worked notes (original observation, 2026-09-17)
 
 These notes are from rendered screenshots taken in this skill's authoring
@@ -101,3 +108,36 @@ Do not restyle a ceramics studio, a memoir, or an ops board to match them.
 Further live screens (Vercel, Stripe, studio and reading sites) belong in
 the same template **only after you have seen them**. If a later pass cannot
 open those pages, do not backfill visual claims from memory of their copy.
+
+## Additional observations — 2026-09-19
+
+### Product workspace: selection beside the object
+
+- Source: https://help.penpot.app/user-guide/first-steps/the-interface/
+- Seen: the first-party Workspace illustration in the rendered guide,
+  showing layers, a selected type specimen and its properties. This was
+  visual inspection of documentation, not a live editing session; image
+  publication date unknown.
+- Task: locate an object and edit its attributes without losing context.
+- Decision: a broad central work area sits between a narrow hierarchy and
+  a compact inspector. Selection links these areas without another hero.
+- Transfer: for repeated record edits, keep identity and details connected;
+  collapse into a detail destination when width cannot support both.
+- Leave behind: brand colors, editor icons, canvas geometry and code.
+
+### Native: contextual formatting sheet
+
+- Source: https://developer.apple.com/design/human-interface-guidelines/sheets
+- Seen: paired iPhone Notes screenshots under Anatomy, regular/italic text
+  selection with a lower formatting sheet. Documentation images, not device
+  interaction; image publication date unknown.
+- Task: change formatting while retaining the selected passage above.
+- Decision: compact control groups occupy the sheet; the edited text remains
+  visible, and selected formatting has a distinct state.
+- Transfer: use contextual presentation for short adjustments; prefer a full
+  editor for prolonged text entry. Confirm dismissal/save meaning for the
+  actual platform and installed component, not from the image alone.
+- Leave behind: Notes branding, yellow selection, icons and exact styling.
+
+These observations are optional decision examples, not a default source list.
+No third-party screenshots or assets are redistributed with the skill.
