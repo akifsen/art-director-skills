@@ -71,12 +71,35 @@ a hidden `font-family` on `body`.
 **Failure.** One size for `h1`–`h3`; `letter-spacing: 0.2em` on everything;
 Impact on a long article.
 
+## Choice versus quality
+
+Voice is a choice. Readability and hierarchy are quality.
+
+| Choice | Quality that still has to hold |
+|---|---|
+| Serif or sans, or a mix | Loaded faces, a clear scale, language coverage |
+| Light or dark, warm or cool | Named roles, contrast on the actual pairing |
+| Round, mixed, or sharp corners | One family; related controls; visible focus |
+| Large media or type-led | The object serves the job and sits in the composition on purpose |
+
+Do not treat "16px cards became sharp photographs" as universal progress.
+That swap belongs to a catalog whose proof is the still. A photographer's
+delivery tracker is a product workspace: the job, the filter, the selected
+record, and the save path — not a portfolio landing.
+
+If the skeleton used gray boxes and the finished file uses real stills,
+score two improvements separately: better material, and better composition
+of that material. Do not credit CSS craft for a photograph the skeleton
+did not have.
+
 Do not treat Palatino, tracked small-caps metadata, or cream paper as the
 house finish. Those are valid when the *object* is editorial or ceramic and
 the user asked for that voice. See [kiln-rest.material.html](studies/kiln-rest.material.html).
-Unrelated products should not inherit that pairing from examples.
+Do not replace that voice with a second house look (cool gray, system sans,
+sharp corners) either. Unrelated products should not inherit pairings from
+examples.
 
-**Applied fragment (media / catalog display):**
+**Applied fragment (Rail Still catalog display — this product's voice):**
 
 ```css
 .display {
@@ -92,7 +115,7 @@ Unrelated products should not inherit that pairing from examples.
 .nav { font-size: 0.95rem; font-weight: 500; letter-spacing: 0; text-transform: none; }
 ```
 
-**Applied fragment (product workspace chrome):**
+**Applied fragment (Nadir-style product chrome — roles for a workspace; pick faces for the product in front of you):**
 
 ```css
 .title {
@@ -126,7 +149,8 @@ with quality. Do not forbid a color.
 
 This skill's worked examples have their own faces (cool catalog stone,
 clinic navy, kiln oxide paper, night closeout). Do not treat Palatino, gold
-tooling, or cream serif as the house "finished" look. Unrelated products
+tooling, or cream serif as the house "finished" look. Do not treat cool gray
+and sharp corners as the replacement house look either. Unrelated products
 should not inherit those pairings from the examples or from earlier evals.
 
 Justify saturation and light/dark from context: a warehouse installation
@@ -145,7 +169,7 @@ readers. Keep status in words.
 **Failure.** `--accent: #7c5cfc` and nothing else; large paragraphs in
 accent color; a new purple careers page on a paper-and-iron site.
 
-**Applied fragment (catalog surfaces):**
+**Applied fragment (Rail Still catalog surfaces — this product):**
 
 ```css
 :root {
@@ -160,7 +184,7 @@ accent color; a new purple careers page on a paper-and-iron site.
 }
 ```
 
-**Applied fragment (product workspace surfaces):**
+**Applied fragment (Nadir clinic surfaces — this product's jobs, not a paste palette):**
 
 ```css
 :root {

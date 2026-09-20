@@ -128,7 +128,8 @@ Discovery is not a real-task run. Visual review that did not happen is
 reported as not done. Keyword fixtures in `tests/run.mjs` are not proof
 that a host selected this skill.
 
-Current work is recorded in [0.9.0 evidence](evals/evidence/craft-finish-0.9.0/REPORT.md).
+Current work is recorded in [0.9.0 evidence](evals/evidence/craft-finish-0.9.0/REPORT.md)
+and the follow-up [action-quality record](evals/evidence/action-quality-0.9.0/REPORT.md).
 The previous CI seefix / skill-split run stays in [0.8.0 evidence](evals/evidence/ci-seefix-0.8.0/REPORT.md).
 The previous see-and-correct run stays in [2026-09-20 evidence](evals/evidence/see-and-fix-2026-09-20/REPORT.md).
 The previous native-craft run stays in [2026-09-19 evidence](evals/evidence/native-craft-2026-09-19/REPORT.md).

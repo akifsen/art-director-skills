@@ -69,6 +69,12 @@ If the product has more than one destination: navigation, sidebar or
 topbar, content width, breadcrumb or back affordance, page title, and
 small-screen behavior that match each other.
 
+On a list/detail/edit tool, the first viewport **is** that shell plus the
+working surface: the records, the selected object, and the next action.
+Do not leave a thin sheet on an empty canvas. Do not fill the gap with
+fake metrics, extra nav that goes nowhere, or stock photographs the
+brief did not supply. An empty state is for an empty list.
+
 ### 5. Pages and flows
 
 Real screens, real routes or native navigation, real interactions. Built
@@ -100,6 +106,8 @@ not markup stuffed through `dangerouslySetInnerHTML`.
 - Rewriting dialog/select/calendar as unmarked `<div>`s
 - A success toast when the record in state did not change
 - Reusing Kiln / Nadir / Closeout color, type, or URL shape on an unrelated product
+- A thin card on a large empty canvas for a list/detail tool; fake KPI tiles to hide that emptiness
+- A primary action stretched to fill leftover grid or flex space so it reads as a panel, not a button
 
 Worked files: list/detail method in
 [examples/themeless-react.md](examples/themeless-react.md) (kiln paper is

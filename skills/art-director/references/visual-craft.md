@@ -34,8 +34,8 @@ proof or separate a stage. Do not stack all of them on the first viewport.
 **Common failure.** Every card gets the same 16px radius, 1px `#ddd`, and
 a purple button — a kit default, not a material decision.
 
-**Applied fragment** (catalog: cool canvas, unrounded stills). One lighting
-story, not a house palette:
+**Applied fragment** (Rail Still catalog lighting). Copy the *one lighting
+story* rule, not the hexes or the square corners:
 
 ```css
 .page { background: #e7eaee; color: #121417; }
@@ -115,7 +115,9 @@ Finish the states you ship:
 **Common failure.** Hero button is a bright pill; footer links are raw
 blue underlines; the nav hover is a browser default. Three products.
 
-**Applied fragment** (one family, text button + filled action):
+**Applied fragment** (Rail Still's sharp family — text button + filled
+action). A clinic may share a `0.45rem` radius; a ceramic shed may use
+`2px`. Quality is that relatives match, not the number:
 
 ```css
 .btn {
@@ -131,6 +133,12 @@ blue underlines; the nav hover is a browser default. Three products.
 .btn:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 .btn--solid { background: #121417; color: #f6f7f9; border-color: transparent; }
 ```
+
+A filled action must keep type and focus visible on its fill. A `color:
+inherit` rule on `a` that is more specific than the action class paints
+the label in the same ink as the fill. Keep that reset at element
+specificity, or let the action class win. `toBeVisible` does not prove
+the label can be read.
 
 Footer, tabs, and inputs should reuse the same radius and hairline story,
 not invent a new one.

@@ -115,9 +115,10 @@ Use a real tag after it exists. Prefer the tag or commit published in
 can be copied manually the same way as the offline folder.
 
 The v0.9.0 skill teaches job vs domain and replaces Palatino-on-cream applied
-fragments. v0.8.0 still has those fragments and drops host-eval protocol from
-`SKILL.md`. v0.7.0 still contains that wording. Do not treat v0.6.0 as the
-current method, and do not treat the old v0.4.0 tag as the current cleaned main.
+fragments without making cool-gray sharp chrome the next house look. v0.8.0
+still has those fragments and drops host-eval protocol from `SKILL.md`.
+v0.7.0 still contains that wording. Do not treat v0.6.0 as the current
+method, and do not treat the old v0.4.0 tag as the current cleaned main.
 
 ## Update an older copy
 

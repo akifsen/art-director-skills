@@ -12,7 +12,6 @@
       --line: #c9ced6;
       --paper: #f6f7f9;
       --copper: #b85a32;
-      --focus: #1d4f7a;
     }
     * { box-sizing: border-box; }
     html { color-scheme: light; }
@@ -24,8 +23,9 @@
       font-size: 1.05rem;
       line-height: 1.5;
     }
+    /* Element-only reset so `.mail` can set inverse type on the filled action. */
     a { color: inherit; }
-    a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+    a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
     .bar {
       display: flex;
       justify-content: space-between;
