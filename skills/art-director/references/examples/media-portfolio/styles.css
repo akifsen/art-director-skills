@@ -5,7 +5,6 @@
   --rs-line: #c9ced6;
   --rs-paper: #f6f7f9;
   --rs-copper: #b85a32;
-  --rs-focus: #1d4f7a;
   --rs-space: 1.25rem;
   --rs-display: "Segoe UI Variable Display", "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif;
   --rs-body: "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif;
@@ -24,11 +23,12 @@ body.rs {
   line-height: 1.5;
 }
 
-.rs a { color: inherit; }
+/* Element-only reset. A classed action such as `.rs-mail` must win on color. */
+a { color: inherit; }
 
-.rs a:focus-visible,
-.rs button:focus-visible {
-  outline: 2px solid var(--rs-focus);
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid currentColor;
   outline-offset: 3px;
 }
 

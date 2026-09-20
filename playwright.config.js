@@ -27,7 +27,7 @@ export default defineConfig({
     video: "off"
   },
   projects: [
-    { name: "flows", testMatch: /kiln-flow|nadir-desk|narrow-flow/ },
+    { name: "flows", testMatch: /kiln-flow|nadir-desk|narrow-flow|rail-flow/ },
     { name: "quality", testMatch: /library-flow|existing-flow/ },
     { name: "craft", testMatch: /fold-flow/ },
     { name: "seefix", testMatch: /fold-corrected/ },
@@ -66,6 +66,14 @@ export default defineConfig({
     {
       command: "node tests/examples/preview.mjs desk",
       url: "http://127.0.0.1:5174",
+      timeout: 60000,
+      reuseExistingServer: !process.env.CI,
+      stdout: "pipe",
+      stderr: "pipe"
+    },
+    {
+      command: "node tests/examples/preview.mjs rail",
+      url: "http://127.0.0.1:5176",
       timeout: 60000,
       reuseExistingServer: !process.env.CI,
       stdout: "pipe",

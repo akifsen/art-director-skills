@@ -51,10 +51,34 @@ Capturing a screenshot is not the same as inspecting it. If no browser or
 image tool is available, report that visual verification did not happen.
 Do not write a visual score you did not earn by looking.
 
+Name the picture you opened: route or state, which source produced it, and
+the viewport. An older capture is not proof of the code in front of you.
+If you cannot open the image or the live page, mark visual acceptance
+unverified. Do not approve from a file path you never viewed.
+
 Do not claim a finding you cannot point to. "The hero feels weak" is only
 useful with the content role it fails: buried proof, equal-weight sections,
 a first screen that could belong to any product, or a skeleton with no
 material decisions.
+
+## In-scope actions and states
+
+The opening view is not the whole review. For every control and state in
+the requested scope, look at the current render:
+
+- Can heading, helper, link, and button labels actually be read on their
+  surface — not only found in the DOM or matched by `toBeVisible`?
+- If a control is visible, is it sized as a control — not stretched into
+  leftover grid or flex space so it reads as a panel?
+- If a control is visible, is its purpose and what happens next obvious?
+- Are form, detail, closing, dialog/sheet, and error states finished to
+  the same standard as the main view?
+- Did the intended faces and assets load, not only appear in CSS?
+- On a narrow screen, are text, focus, and the primary action unclipped?
+
+A contrast or accessibility pass on a flat pair is evidence for that pair.
+It is not approval of the whole design. Do not save a new snapshot that
+still shows the defect and call the defect expected.
 
 ## Scope
 

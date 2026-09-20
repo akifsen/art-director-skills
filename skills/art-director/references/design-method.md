@@ -27,8 +27,8 @@ before a look. The organization's field is a separate input.
 Do not produce an editorial ledger because the brief says photographer, or a
 neon terminal because it says technology. Do not treat archive, typewriter,
 or historical-form metaphors as the default brand unless the user asked for
-nostalgia. Do not "modernize" by applying dark glass or equal rounded cards
-to every product.
+nostalgia. Do not "modernize" by applying dark glass, equal rounded cards,
+or cool-gray sharp system chrome to every product.
 
 A REFINE of one control does not authorize a new identity for the whole app.
 

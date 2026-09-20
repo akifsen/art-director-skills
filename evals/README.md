@@ -1,7 +1,9 @@
 # Eval method
 
-The [craft-finish run](evidence/craft-finish-0.9.0/REPORT.md) is the 0.9.0
-record. Host-trial how-to lives in [HOST-TRIAL.md](HOST-TRIAL.md).
+The [action-quality run](evidence/action-quality-0.9.0/REPORT.md) is the
+follow-up 0.9.0 record (readable inquire action + photographer re-run).
+The [craft-finish run](evidence/craft-finish-0.9.0/REPORT.md) is the fragment
+rewrite. Host-trial how-to lives in [HOST-TRIAL.md](HOST-TRIAL.md).
 The frozen Cursor photographer trial remains [cursor-trial/](cursor-trial/USAGE.md).
 
 The [native craft and normal-brief run](evidence/native-craft-2026-09-19/REPORT.md)

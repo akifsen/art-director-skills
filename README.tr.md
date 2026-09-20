@@ -25,8 +25,11 @@ işçilik, kapsam, platform/erişilebilirlik) ayır.
 Geniş DESIGN işinde ilk gerçek ekranı görsel olarak inceleyip gerekli
 düzeltmeyi yapmadan tasarımı bütün ekranlara yaymaz. Engellenmiş kontrol,
 geçmiş kontrol sayılmaz: tamamlandı / kısmi teslim / tamamlanmadı ayrılır.
-0.9.0: iş türü ayrımı, Palatino/krem varsayılanının kırılması, Rail Still
-öğreticisi. [0.9.0 kanıt](evals/evidence/craft-finish-0.9.0/REPORT.md).
+0.9.0: iş türü ayrımı, Palatino/krem varsayılanının kırılması (yerine soğuk
+gri keskin reçete koymadan), Rail Still öğreticisi ve okunur inquire eylemi.
+[0.9.0 kanıt](evals/evidence/craft-finish-0.9.0/REPORT.md);
+eylem kontrastı ve fotoğrafçı yeniden koşusu:
+[action-quality](evals/evidence/action-quality-0.9.0/REPORT.md).
 0.8.0: seefix CI kapısı ve skill/eval ayrımı. Cursor keşfi ayrı bir host
 testidir: [0.8.0 kanıt](evals/evidence/ci-seefix-0.8.0/REPORT.md).
 0.7.0 see-and-correct kaydı: [2026-09-20](evals/evidence/see-and-fix-2026-09-20/REPORT.md).

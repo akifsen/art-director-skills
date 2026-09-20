@@ -24,21 +24,28 @@ that way.
 
 The skeleton already has the facts in the wrong materials: a welcome hero,
 three equal cards, default type, gray "image" boxes. The finished file keeps
-the facts and gives them jobs.
+the facts and gives them jobs. Cool stone, grotesque display, and square
+photos are **this catalog's voice**, not the quality law.
 
-| | Skeleton | Finished |
+| | Skeleton | Finished (this lighting catalog) |
 |---|---|---|
-| First look | Studio name + slogan | The current fixture still, title as display |
-| Proof | Empty gray rectangle | A cropped still of the channel, captioned as a demo |
+| First look | Studio name + slogan | Current fixture still leads; title is display |
+| Proof | Empty gray rectangle | Cropped still of the channel, captioned as a demo |
 | Support | Three identical cards | Uneven crops (yard / arm) plus a short studio line |
-| Surface | White + `#ddd` + purple button | Cool stone canvas, unrounded photos, one copper tick |
-| Type | `system-ui` everywhere | Grotesque display with a sense-break; sentence-case nav |
-| Radius | 16px cards | Photos square; the mail action is a sharp rectangle |
+| Surface | White + `#ddd` + purple button | Named canvas / paper / ink / action. Here: cool stone |
+| Type | `system-ui` everywhere | Display / body / meta / nav roles. Here: grotesque |
+| Radius | 16px on photos and cards alike | One family. Here: square stills, because they are hardware |
+| Action | Purple kit button (or missing) | Inverse filled mail; the label must be readable on the fill |
+
+The gray box → photograph change is a **material** improvement. Crop,
+caption, and uneven next-band density are **composition** of that material.
+Do not score them as one CSS win.
 
 Finishing is **not** Palatino-on-cream, tracked small-caps, or a 2px ledger.
-That pairing is a *material voice* when the object is clay or an archive the
-user asked for — see [kiln-rest.material.html](kiln-rest.material.html) — not
-the definition of done.
+It is also **not** cool-gray + system sans + radius `0` as a universal
+upgrade. Those pairings are *material voices* when they fit the object —
+see [kiln-rest.material.html](kiln-rest.material.html) for clay — not the
+definition of done.
 
 ## Open
 
@@ -54,6 +61,8 @@ the tables and source still carry the argument.
 ## Takeaway
 
 Finishing is deciding the still is the lead, cropping it so the fixture is
-in the frame, and letting the next band change density. Intentional quiet
-would also be valid — see [minimal-vs-unfinished.md](minimal-vs-unfinished.md)
-— but this content wanted a catalog stage, not a blank and not a shed ledger.
+in the frame, and letting the next band change density. A photographer's
+ops board would finish by making the job, filter, selected record, and save
+path unmistakable — not by pasting this catalog. Intentional quiet would
+also be valid — see [minimal-vs-unfinished.md](minimal-vs-unfinished.md) —
+but this content wanted a catalog stage, not a blank and not a shed ledger.

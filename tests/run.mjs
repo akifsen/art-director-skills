@@ -70,6 +70,7 @@ assert(/finished product interface|visually finished|finished craft/.test(skillM
 assert(!/sodium/i.test(skillMd), "main skill is not tied to a sodium/eval example");
 assert((data.metadata && data.metadata.version) === "0.9.0", `version 0.9.0 (got ${data.metadata && data.metadata.version})`);
 assert(skillMd.includes("Job of the screen"), "SKILL.md names job vs domain");
+assert(skillMd.includes("product workspace"), "SKILL.md names photographer tracker as product workspace, not a landing");
 assert(skillMd.includes("media-portfolio.md"), "SKILL.md routes media work to media-portfolio");
 assert(!skillMd.includes("serif-on-cream default"), "skill no longer treats serif-on-cream as the copyable default phrase");
 assert(skillMd.includes("working surface"), "SKILL.md names a working surface, not only a hero");
@@ -83,23 +84,45 @@ assert(!/^allowed-tools:/m.test(skillMd), "no allowed-tools permission expansion
 
 const typeRef = fs.readFileSync(path.join(root, "skills", "art-director", "references", "typography-color-assets.md"), "utf8");
 assert(!/font-family:\s*Palatino/.test(typeRef), "applied type fragments are not Palatino");
-assert(typeRef.includes("media / catalog display"), "type guide has a catalog display fragment");
-assert(typeRef.includes("product workspace chrome"), "type guide has a workspace fragment");
+assert(typeRef.includes("Rail Still catalog display"), "type guide has a catalog display fragment");
+assert(typeRef.includes("product chrome") || typeRef.includes("product workspace chrome"), "type guide has a workspace fragment");
+assert(typeRef.includes("Choice versus quality"), "type guide separates voice choice from quality");
+assert(typeRef.includes("Serif or sans"), "type guide names serif/sans as a choice");
 
 const craftRef = fs.readFileSync(path.join(root, "skills", "art-director", "references", "visual-craft.md"), "utf8");
 assert(!craftRef.includes("background: #efe7dc"), "visual-craft applied fragment is not warm paper");
+assert(craftRef.includes("more specific than the action class"), "visual-craft warns that a heavier link reset hides filled-action type");
 
 const method = fs.readFileSync(path.join(root, "skills", "art-director", "references", "design-method.md"), "utf8");
 assert(method.includes("Job vs domain"), "design-method separates job from domain");
 assert(method.includes("First look"), "design-method lists concrete art-direction decisions");
+assert(method.includes("cool-gray sharp"), "design-method does not treat cool-gray sharp chrome as universal finish");
 
 const research = fs.readFileSync(path.join(root, "skills", "art-director", "references", "visual-research.md"), "utf8");
 assert(/Do not copy layout, assets, or brand/i.test(research), "visual-research forbids copying layout/assets/brand");
 assert(!/^Copy layout, assets, or brand/m.test(research), "visual-research does not instruct copying layout");
 
+const productUi = fs.readFileSync(path.join(root, "skills", "art-director", "references", "product-ui-system.md"), "utf8");
+assert(productUi.includes("thin card on a large empty canvas"), "product-ui-system rejects a postage-stamp ops board");
+assert(productUi.includes("stretched to fill leftover"), "product-ui-system rejects a stretched primary action");
+
 const polish = fs.readFileSync(path.join(root, "skills", "art-director", "references", "polish-pass.md"), "utf8");
 assert(polish.includes("Gate A") && polish.includes("Gate C") && polish.includes("Gate D"), "polish-pass has four gates");
 assert(!/Two reasoned passes after the first slice is enough/i.test(polish), "polish-pass does not stop on tour count");
+
+const visualReview = fs.readFileSync(path.join(root, "skills", "art-director", "references", "visual-review.md"), "utf8");
+assert(visualReview.includes("In-scope actions and states"), "visual-review inspects actions and states, not only the opening view");
+assert(visualReview.includes("sized as a control"), "visual-review rejects a control stretched into leftover space");
+assert(visualReview.includes("toBeVisible"), "visual-review does not treat presence as readable type");
+
+const railCss = fs.readFileSync(path.join(root, "skills", "art-director", "references", "examples", "media-portfolio", "styles.css"), "utf8");
+assert(!/\.rs a\s*\{[^}]*color:\s*inherit/.test(railCss), "rail link reset is not more specific than .rs-mail");
+assert(/^a \{ color: inherit; \}$/m.test(railCss), "rail uses an element-only link color reset");
+assert(railCss.includes("currentColor"), "rail focus outline follows the control's type color");
+
+const finishStudy = fs.readFileSync(path.join(root, "skills", "art-director", "references", "studies", "wireframe-to-finish.md"), "utf8");
+assert(finishStudy.includes("this catalog's voice"), "finish study labels cool stone as this catalog, not universal quality");
+assert(finishStudy.includes("Material") || finishStudy.includes("material"), "finish study separates material change from composition");
 
 const nativeRef = fs.readFileSync(path.join(root, "skills", "art-director", "references", "native-mobile.md"), "utf8");
 assert(nativeRef.includes("KeyboardAvoidingView"), "native guide covers keyboard");

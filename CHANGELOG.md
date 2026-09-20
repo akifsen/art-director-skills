@@ -11,8 +11,17 @@
   material voice, not the definition of finished.
 - Restyle Nadir Desk chrome away from display serif; cool Closeout tokens
   and drop tracked all-caps eyebrows. Native device proof remains pending.
+- Keep filled-action type readable when a link reset is present: Rail Still
+  inquire uses an element-only `a` color reset, and focus outline follows
+  `currentColor`. Playwright checks contrast, hover, keyboard focus, and
+  clipping on the real Vite preview at 1280 and 390.
+- Separate voice choice (serif/sans, warm/cool, radius, large media) from
+  quality (hierarchy, contrast, family consistency, composition). Visual
+  review inspects in-scope actions and states, not only the opening view.
 
-See [dated evidence](evals/evidence/craft-finish-0.9.0/REPORT.md).
+See [dated evidence](evals/evidence/craft-finish-0.9.0/REPORT.md) for the
+fragment rewrite. Action contrast and photographer re-run:
+[action-quality-0.9.0](evals/evidence/action-quality-0.9.0/REPORT.md).
 
 ## 0.8.0 — 2026-09-20
 

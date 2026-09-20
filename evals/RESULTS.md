@@ -1,7 +1,9 @@
 # Eval results
 
-Latest separate record: [craft finish 0.9.0](evidence/craft-finish-0.9.0/REPORT.md),
-2026-09-20. Previous: [CI seefix / skill split 0.8.0](evidence/ci-seefix-0.8.0/REPORT.md).
+Latest separate record: [action quality 0.9.0](evidence/action-quality-0.9.0/REPORT.md),
+2026-09-20. Previous same-day fragment rewrite:
+[craft finish 0.9.0](evidence/craft-finish-0.9.0/REPORT.md). Previous:
+[CI seefix / skill split 0.8.0](evidence/ci-seefix-0.8.0/REPORT.md).
 The [native craft / two normal briefs](evidence/native-craft-2026-09-19/REPORT.md)
 stay as written.
 

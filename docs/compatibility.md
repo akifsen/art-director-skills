@@ -91,15 +91,16 @@ Host tools vary. Missing tools are reported, not simulated.
 |---|---|
 | Portable skill structure, Windows/PowerShell copy, relative links | Structure verified + install tested (repo tests, after 0.9.0 edits) |
 | Job vs domain + concrete art direction | Implemented in SKILL.md and design-method; independent host use is a separate test |
-| Rail Still media example | Vite-compiled; opening, work, and inquire inspected at 1280 and 390 in this authoring session |
+| Rail Still media example | Vite-compiled; opening, work, inquire, hover, and keyboard focus inspected at 1280 and 390. Contrast of “Email the desk” is gated in `tests/e2e/rail-flow.spec.js` |
 | Nadir Desk restyle | Source restyle of tokens/type; flows still the CI gate. Visual inspect of the restyle in this session if the desk server was opened |
 | Closeout native restyle | Source only. Device/simulator not opened for 0.9.0 |
 | ThemeForest catalog (user craft reference) | Not seen: Playwright received Cloudflare 403 ("Bir dakika lütfen..."). No demo pages inspected. No layout copied |
 | Independent skill trial on a new brief | File-path subagent on Willow Bay (clinic board), not Cursor discovery. Inspected 1280/390/dialog. Not Palatino-on-cream. No 0.8.0 same-brief arm |
 | Hand-corrected Fold Playwright (`--project=seefix`) | Unchanged 0.8.0 wiring |
-| Cursor isolated photographer trial | Historical 0.8.0; that Shoot board look is the problem this release addresses, and that site was not edited |
+| Cursor isolated photographer trial | File-path subagent on the frozen photographer brief with 0.9.0 skill copy, plus one focused revision and one author CSS patch. Not a new Cursor GUI chat. See [action-quality](../evals/evidence/action-quality-0.9.0/REPORT.md). Historical 0.8.0 cream ledger stays in [ci-seefix TRIAL](../evals/evidence/ci-seefix-0.8.0/TRIAL.md) and was not edited |
 
-See [0.9.0 evidence](../evals/evidence/craft-finish-0.9.0/REPORT.md). Historical
+See [0.9.0 evidence](../evals/evidence/craft-finish-0.9.0/REPORT.md) and
+[action-quality](../evals/evidence/action-quality-0.9.0/REPORT.md). Historical
 [0.8.0](../evals/evidence/ci-seefix-0.8.0/REPORT.md),
 [0.7.0](../evals/evidence/see-and-fix-2026-09-20/REPORT.md), and
 [0.6.0](../evals/evidence/native-craft-2026-09-19/REPORT.md) stay as written.

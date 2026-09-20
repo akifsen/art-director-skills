@@ -95,9 +95,13 @@ Name this before loading a look. The organization's field is not the job.
 | **Native mobile** | Same product identity; platform controls, navigation, keyboard, safe area, touch |
 
 "Photographer" does not mean an editorial ledger. "Technology" does not mean
-a neon terminal. Do not default to archive, typewriter, or historical-form
-metaphors unless the user asked for nostalgia. Do not swing every interface
-to dark glass or equal rounded cards.
+a neon terminal. A photographer's delivery tracker is a **product workspace**:
+the jobs, the filter, the selected record, and the delivery edit filling the
+first viewport — not a portfolio landing and not a cream ledger. Do not
+invent KPI tiles, extra destinations, or stock portraits to look finished.
+Do not default to archive, typewriter, or historical-form metaphors unless
+the user asked for nostalgia. Do not swing every interface to dark glass,
+equal rounded cards, or cool-gray sharp system chrome.
 
 Starter fonts, gray boxes, and a look the user already rejected are not a
 brand system to preserve.
@@ -126,11 +130,12 @@ Do not implement the whole product and inspect later.
    guides). That screen is the working surface for the main task and the
    product’s component language. It is not always a hero.
 7. **See it, then correct it** — after Gate A, inspect hierarchy, density,
-   action visibility, and finish — not only CSS/font load. Note the real
-   render you opened, the two task problems that mattered, and the change
-   you rechecked. Saving a screenshot file is not inspection. If the host
-   cannot open the image, do not claim visual inspection. Native: a web
-   mock is not device proof.
+   action visibility, and finish — not only CSS/font load. Open the current
+   render of in-scope actions and states, not only the hero ([visual-review.md](references/visual-review.md)).
+   Note the real render you opened, the two task problems that mattered, and
+   the change you rechecked. Saving a screenshot file is not inspection. If
+   the host cannot open the image, do not claim visual inspection. Native: a
+   web mock is not device proof.
 8. **Extend related screens**, walk the flow and states, and recheck
    shared tokens/headers/cards/spacing ([polish-pass.md](references/polish-pass.md)).
    A local win that regresses another in-scope screen is not done.

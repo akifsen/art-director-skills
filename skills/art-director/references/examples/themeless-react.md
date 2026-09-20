@@ -2,7 +2,9 @@
 
 **When:** a React web app with no theme pack and a list/detail/form job.
 **Not:** a look to paste. Oxide paper, 2px radius, and tracked labels belong
-to *this kiln*, not to every theme-less product. Do not copy
+to *this kiln*, not to every theme-less product. A photographer's shoot
+board uses this *method* (list, selected record, edit, session save) with
+its own chrome — not kiln paper, and not a catalog hero. Do not copy
 `dialog-geometry.js`, `ui.jsx`, the hash router, or `?fixture=` into another
 app. Re-implement backdrop, tab cycle, and fields under the product’s names.
 

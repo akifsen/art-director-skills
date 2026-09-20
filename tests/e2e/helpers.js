@@ -2,6 +2,31 @@ import { expect } from "@playwright/test";
 
 export const KILN = "http://127.0.0.1:5173";
 export const DESK = "http://127.0.0.1:5174";
+export const RAIL = "http://127.0.0.1:5176";
+
+/** Parse `rgb()` / `rgba()` from getComputedStyle. Flat-surface checks only. */
+export function parseRgb(color) {
+  const m = String(color).match(/rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)/i);
+  if (!m) throw new Error(`unparsed color: ${color}`);
+  return [Number(m[1]), Number(m[2]), Number(m[3])];
+}
+
+/** WCAG 2 relative luminance (sRGB). */
+export function relativeLuminance([r, g, b]) {
+  const toLin = (channel) => {
+    const c = channel / 255;
+    return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * toLin(r) + 0.7152 * toLin(g) + 0.0722 * toLin(b);
+}
+
+export function contrastRatio(a, b) {
+  const l1 = relativeLuminance(a);
+  const l2 = relativeLuminance(b);
+  const light = Math.max(l1, l2);
+  const dark = Math.min(l1, l2);
+  return (light + 0.05) / (dark + 0.05);
+}
 
 /** Product UI is up: React painted and fonts settled. Not a sleep. */
 export async function ready(page) {
