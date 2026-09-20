@@ -8,6 +8,7 @@
     "test:examples": "node tests/examples/run.mjs",
     "test:examples:build": "node tests/examples/build.mjs",
     "test:e2e": "playwright test --project=flows",
+    "test:e2e:seefix": "playwright test --project=seefix",
     "test:e2e:visual": "playwright test --project=visual",
     "test:install": "node tests/install-cli.mjs",
     "example:kiln": "vite --config evals/apps/kiln-queue/vite.config.js",

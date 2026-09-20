@@ -46,11 +46,17 @@ jobs:
       - name: Install maintainer deps from lockfile
         run: npm ci
       - name: Compile React examples with Vite
+        env:
+          ART_DIRECTOR_SEEFIX: "1"
         run: npm run test:examples:build
       - name: Install bundled Chromium for Playwright
         run: npx playwright install --with-deps chromium
       - name: Browser flows on production preview (not a native runtime)
         run: npm run test:e2e
+      - name: Hand-corrected Fold flows
+        env:
+          ART_DIRECTOR_SEEFIX: "1"
+        run: npm run test:e2e:seefix
       - name: Selected successful visual capture
         if: github.event_name == 'workflow_dispatch' && inputs.capture_visuals
         run: npm run test:e2e:visual

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.8.0 — 2026-09-20
+
+- Run the hand-corrected Fold Playwright project in CI. Build and test
+  both set `ART_DIRECTOR_SEEFIX=1`; missing env fails instead of skip-pass.
+- Keep see-and-correct in the distributed skill. Move independent-host,
+  authoring-chat, and IDE-trial how-to into maintainer eval docs.
+- Freeze an isolated Cursor trial (photographer brief + one skill copy).
+  Discovery and natural selection remain pending until a new Cursor chat
+  runs that workspace.
+
+See [dated evidence](evals/evidence/ci-seefix-0.8.0/REPORT.md).
+
 ## 0.7.0 — 2026-09-20
 
 - Make the DESIGN working method a short see-and-correct loop: context,

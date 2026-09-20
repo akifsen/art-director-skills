@@ -107,16 +107,16 @@ Do not write `akifsen/art-director-skills@v0.4.0` expecting a tag.
 Documented pin: a GitHub tree URL whose path segment is the branch or tag.
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.7.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.8.0 --skill art-director --agent cursor --copy
 ```
 
 Use a real tag after it exists. Prefer the tag or commit published in
 [CHANGELOG.md](../CHANGELOG.md). A release archive of `skills/art-director/`
 can be copied manually the same way as the offline folder.
 
-The v0.7.0 release tightens the see-and-correct working method. Do not treat
-v0.6.0 as this method, and do not treat the old v0.4.0 tag as the current
-cleaned main.
+The v0.8.0 skill drops host-eval protocol from `SKILL.md`. v0.7.0 still
+contains that wording. Do not treat v0.6.0 as the current method, and do
+not treat the old v0.4.0 tag as the current cleaned main.
 
 ## Update an older copy
 
@@ -157,7 +157,7 @@ npx skills add akifsen/art-director-skills --skill art-director --agent cursor -
 
 or, from a local clone of the new tag, the same `npx skills add <path>`
 form as install. Then confirm the copied `SKILL.md` metadata version is
-`0.7.0`, that `references/native-mobile.md` exists, and that
+`0.8.0`, that `references/native-mobile.md` exists, and that
 `references/examples/themeless-react/kiln-store.js` exists.
 
 Compare file contents too: `Get-FileHash -Algorithm SHA256` on source and

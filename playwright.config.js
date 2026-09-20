@@ -14,6 +14,7 @@ export default defineConfig({
   timeout: 30000,
   expect: { timeout: 10000 },
   retries: 0,
+  passWithNoTests: false,
   forbidOnly: Boolean(process.env.CI),
   reporter: process.env.CI
     ? [["github"], ["list"], ["html", { open: "never", outputFolder: "playwright-report" }]]

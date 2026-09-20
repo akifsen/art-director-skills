@@ -98,6 +98,14 @@ const brief = fs.readFileSync(path.join(root, "evals/cases/17-pier-kettle/brief.
 check(brief.includes("K-12") && brief.includes("K-19"), "Pier Kettle brief is frozen with supplied cups");
 check(!brief.includes("screenshot") && !brief.includes("art-director"), "Pier Kettle brief does not coach the skill method");
 
+const photoBrief = fs.readFileSync(path.join(root, "evals/cursor-trial/brief.md"), "utf8");
+check(photoBrief.includes("fotoğrafçının çekim projelerini"), "photographer Cursor-trial brief is frozen");
+check(!/art-director|screenshot|SKILL\.md|referans/i.test(photoBrief), "photographer brief does not coach the skill method");
+
+const hostTrial = fs.readFileSync(path.join(root, "evals/HOST-TRIAL.md"), "utf8");
+check(hostTrial.includes("independent host"), "host-trial method lives in evals");
+check(hostTrial.includes("/art-director"), "host-trial documents explicit Cursor invocation");
+
 const { remainingLabel, remainingMs, STEEP_MS } = await import("../evals/outputs/see-and-fix-2026-09-20/pier-kettle/src/timing.js");
 check(remainingMs(1000, 500) === STEEP_MS, "timer does not run backwards when now is stale");
 check(remainingLabel(1000, 1000) === "3:00", "fresh steep shows three minutes");

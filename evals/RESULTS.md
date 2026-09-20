@@ -1,7 +1,8 @@
 # Eval results
 
-Latest separate record: [see-and-correct 0.7.0](evidence/see-and-fix-2026-09-20/REPORT.md),
-2026-09-20. The previous [native craft / two normal briefs](evidence/native-craft-2026-09-19/REPORT.md)
+Latest separate record: [CI seefix / skill split 0.8.0](evidence/ci-seefix-0.8.0/REPORT.md),
+2026-09-20. Previous: [see-and-correct 0.7.0](evidence/see-and-fix-2026-09-20/REPORT.md).
+The [native craft / two normal briefs](evidence/native-craft-2026-09-19/REPORT.md)
 stay as written.
 
 This file records runs that actually happened. Missing hosts are listed as

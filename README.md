@@ -67,11 +67,18 @@ Pin a tag with a tree URL, not `owner/repo@v0.1.0` (`@` is a skill filter in
 this CLI):
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.7.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.8.0 --skill art-director --agent cursor --copy
 ```
 
-The v0.7.0 command selects the see-and-correct release. The old v0.6.0 tag does
-not contain this working-method tightening. See the [current evidence](evals/evidence/see-and-fix-2026-09-20/REPORT.md),
+Use v0.8.0 after that tag exists. Until then, install from the commit on
+`main` or from a local clone. The v0.7.0 tag still contains independent-host
+wording in `SKILL.md` and does not run the Fold seefix Playwright project in
+CI.
+
+File install and hashes are not Cursor discovery. Explicit `/art-director`
+is not natural selection. See [evals/HOST-TRIAL.md](evals/HOST-TRIAL.md)
+and the [0.8.0 evidence](evals/evidence/ci-seefix-0.8.0/REPORT.md).
+Previous records: [0.7.0 see-and-correct](evals/evidence/see-and-fix-2026-09-20/REPORT.md),
 the [0.6.0 native-craft record](evals/evidence/native-craft-2026-09-19/REPORT.md),
 and [earlier 0.5.0 comparison](evals/evidence/2026-09-19/REPORT.md). Explicit-path
 agent use and CLI installation do not prove automatic Cursor selection.
@@ -121,7 +128,8 @@ Discovery is not a real-task run. Visual review that did not happen is
 reported as not done. Keyword fixtures in `tests/run.mjs` are not proof
 that a host selected this skill.
 
-Current work is recorded separately in [2026-09-20 evidence](evals/evidence/see-and-fix-2026-09-20/REPORT.md).
+Current work is recorded in [0.8.0 evidence](evals/evidence/ci-seefix-0.8.0/REPORT.md).
+The previous see-and-correct run stays in [2026-09-20 evidence](evals/evidence/see-and-fix-2026-09-20/REPORT.md).
 The previous native-craft run stays in [2026-09-19 evidence](evals/evidence/native-craft-2026-09-19/REPORT.md).
 Complete means required gates passed. A useful delivery with blocked checks
 is partial; a known significant defect is incomplete. More screenshots or

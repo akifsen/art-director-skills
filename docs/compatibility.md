@@ -54,7 +54,7 @@ https://cursor.com/docs/reference/plugins describes plugins that bundle
 skills via `.cursor-plugin/plugin.json` or Agent Plugins `plugin.json`, and
 multi-plugin repos via `.cursor-plugin/marketplace.json`. Public listing
 goes through Cursor review (`cursor.com/marketplace/publish`). This repo
-does not ship those manifests in v0.7.0 and does not claim marketplace
+does not ship those manifests in v0.8.0 and does not claim marketplace
 visibility.
 
 ## Codex / ChatGPT skills
@@ -85,24 +85,27 @@ folder is universal.
 
 Host tools vary. Missing tools are reported, not simulated.
 
-## Current evidence (0.7.0)
+## Current evidence (0.8.0)
 
 | Surface | Status |
 |---|---|
 | Portable skill structure, Windows/PowerShell copy, relative links | Structure verified + install tested (repo tests) |
 | See-and-correct working method in SKILL.md | Implemented in the skill text; independent Cursor selection is a separate host test |
-| Hand-corrected Fold/Daypack copies | Source-checked; Fold also browser-run when `ART_DIRECTOR_SEEFIX=1`. Not independent skill output |
-| Web DESIGN/REFINE/REVIEW guidance | Used in earlier explicit-path runs; those rows are not relabelled as 0.7.0 host use |
+| Distributed skill vs eval method | Host-trial protocol lives in `evals/HOST-TRIAL.md`, not in `SKILL.md` |
+| Hand-corrected Fold Playwright (`--project=seefix`) | Wired into `examples-web` with `ART_DIRECTOR_SEEFIX=1` on build and test |
+| Hand-corrected Fold/Daypack copies | Source-checked; Fold is a CI browser gate. Not independent skill output |
+| Web DESIGN/REFINE/REVIEW guidance | Used in earlier explicit-path runs; those rows are not relabelled as 0.8.0 host use |
 | Closeout React Native / Expo example | Actual Android Pixel_9/API37 execution recorded in 0.5.0/0.6.0 evidence; not re-run for this release unless a new native regression appears |
-| Daypack ordinary-brief baseline/candidate | Historical 0.6.0 outputs preserved; this release adds a hand-corrected copy only |
+| Daypack ordinary-brief baseline/candidate | Historical 0.6.0 outputs preserved; the hand-corrected copy is source-checked. Device evidence for that copy is pending |
 | iOS, physical devices, VoiceOver/TalkBack | Not run; accessibility props are source evidence, not a screen-reader audit |
-| Cursor isolated workspace | 0.6.0 input failed with SendInput error 87 before brief submission. This release does not treat a later GUI retry as proof. Discovery, natural selection, explicit Cursor invocation and task use remain unverified until a new session records them |
+| Cursor isolated workspace | Files and hashes can be prepared (`evals/cursor-trial`). Discovery, natural selection, explicit `/art-director`, and task use remain unverified until a new session records them |
 | Fresh Codex/file-path fallback | Useful and must be labeled separately from Cursor discovery |
 | Expo web as iOS/Android | Not accepted as native verification |
 | Flutter, SwiftUI, Jetpack Compose | Guide: keep the current framework; **not tested** |
 | Commercial third-party themes | Not bundled; eval 10 is an original fixture |
 
-See [see-and-correct evidence](../evals/evidence/see-and-fix-2026-09-20/REPORT.md)
-for this release, [native craft / normal briefs](../evals/evidence/native-craft-2026-09-19/REPORT.md)
+See [0.8.0 evidence](../evals/evidence/ci-seefix-0.8.0/REPORT.md) for this
+release, [see-and-correct evidence](../evals/evidence/see-and-fix-2026-09-20/REPORT.md)
+for 0.7.0, [native craft / normal briefs](../evals/evidence/native-craft-2026-09-19/REPORT.md)
 for 0.6.0 outcomes, and [0.5.0 evidence](../evals/evidence/2026-09-19/REPORT.md)
 for the earlier run. Historical results are not relabelled as new tests.
