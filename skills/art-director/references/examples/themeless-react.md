@@ -1,10 +1,10 @@
 # Example — theme-less React (Kiln Queue)
 
 **When:** a React web app with no theme pack and a list/detail/form job.
-**Not:** a look, hash router, `?fixture=` API, or file drop-in
-(`dialog-geometry.js`, `ui.jsx`) to reuse on unrelated products. Those exist
-so *this* demo can be tested. Re-implement backdrop, tab cycle, and fields
-under the product’s own names.
+**Not:** a look to paste. Oxide paper, 2px radius, and tracked labels belong
+to *this kiln*, not to every theme-less product. Do not copy
+`dialog-geometry.js`, `ui.jsx`, the hash router, or `?fixture=` into another
+app. Re-implement backdrop, tab cycle, and fields under the product’s names.
 
 ## Run (this repository, maintainer)
 

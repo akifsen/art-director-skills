@@ -85,7 +85,26 @@ folder is universal.
 
 Host tools vary. Missing tools are reported, not simulated.
 
-## Current evidence (0.8.0)
+## Current evidence (0.9.0)
+
+| Surface | Status |
+|---|---|
+| Portable skill structure, Windows/PowerShell copy, relative links | Structure verified + install tested (repo tests, after 0.9.0 edits) |
+| Job vs domain + concrete art direction | Implemented in SKILL.md and design-method; independent host use is a separate test |
+| Rail Still media example | Vite-compiled; opening, work, and inquire inspected at 1280 and 390 in this authoring session |
+| Nadir Desk restyle | Source restyle of tokens/type; flows still the CI gate. Visual inspect of the restyle in this session if the desk server was opened |
+| Closeout native restyle | Source only. Device/simulator not opened for 0.9.0 |
+| ThemeForest catalog (user craft reference) | Not seen: Playwright received Cloudflare 403 ("Bir dakika lütfen..."). No demo pages inspected. No layout copied |
+| Independent skill trial on a new brief | File-path subagent on Willow Bay (clinic board), not Cursor discovery. Inspected 1280/390/dialog. Not Palatino-on-cream. No 0.8.0 same-brief arm |
+| Hand-corrected Fold Playwright (`--project=seefix`) | Unchanged 0.8.0 wiring |
+| Cursor isolated photographer trial | Historical 0.8.0; that Shoot board look is the problem this release addresses, and that site was not edited |
+
+See [0.9.0 evidence](../evals/evidence/craft-finish-0.9.0/REPORT.md). Historical
+[0.8.0](../evals/evidence/ci-seefix-0.8.0/REPORT.md),
+[0.7.0](../evals/evidence/see-and-fix-2026-09-20/REPORT.md), and
+[0.6.0](../evals/evidence/native-craft-2026-09-19/REPORT.md) stay as written.
+
+## Previous evidence (0.8.0)
 
 | Surface | Status |
 |---|---|
@@ -98,13 +117,13 @@ Host tools vary. Missing tools are reported, not simulated.
 | Closeout React Native / Expo example | Actual Android Pixel_9/API37 execution recorded in 0.5.0/0.6.0 evidence; not re-run for this release unless a new native regression appears |
 | Daypack ordinary-brief baseline/candidate | Historical 0.6.0 outputs preserved; the hand-corrected copy is source-checked. Device evidence for that copy is pending |
 | iOS, physical devices, VoiceOver/TalkBack | Not run; accessibility props are source evidence, not a screen-reader audit |
-| Cursor isolated workspace | Files and hashes can be prepared (`evals/cursor-trial`). Discovery, natural selection, explicit `/art-director`, and task use remain unverified until a new session records them |
+| Cursor isolated workspace | Isolated photographer trial: natural selection on the first brief; `/art-director` in the same chat. See [TRIAL.md](../evals/evidence/ci-seefix-0.8.0/TRIAL.md). A separate second-chat explicit-only run was not done |
 | Fresh Codex/file-path fallback | Useful and must be labeled separately from Cursor discovery |
 | Expo web as iOS/Android | Not accepted as native verification |
 | Flutter, SwiftUI, Jetpack Compose | Guide: keep the current framework; **not tested** |
 | Commercial third-party themes | Not bundled; eval 10 is an original fixture |
 
-See [0.8.0 evidence](../evals/evidence/ci-seefix-0.8.0/REPORT.md) for this
+See [0.8.0 evidence](../evals/evidence/ci-seefix-0.8.0/REPORT.md) for that
 release, [see-and-correct evidence](../evals/evidence/see-and-fix-2026-09-20/REPORT.md)
 for 0.7.0, [native craft / normal briefs](../evals/evidence/native-craft-2026-09-19/REPORT.md)
 for 0.6.0 outcomes, and [0.5.0 evidence](../evals/evidence/2026-09-19/REPORT.md)

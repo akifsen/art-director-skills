@@ -68,7 +68,10 @@ assert(skillMd.includes("native-mobile.md"), "SKILL.md routes native work to nat
 assert(skillMd.includes("completeness-and-states.md"), "SKILL.md routes scope to completeness-and-states.md");
 assert(/finished product interface|visually finished|finished craft/.test(skillMd), "promise mentions finished craft");
 assert(!/sodium/i.test(skillMd), "main skill is not tied to a sodium/eval example");
-assert((data.metadata && data.metadata.version) === "0.8.0", `version 0.8.0 (got ${data.metadata && data.metadata.version})`);
+assert((data.metadata && data.metadata.version) === "0.9.0", `version 0.9.0 (got ${data.metadata && data.metadata.version})`);
+assert(skillMd.includes("Job of the screen"), "SKILL.md names job vs domain");
+assert(skillMd.includes("media-portfolio.md"), "SKILL.md routes media work to media-portfolio");
+assert(!skillMd.includes("serif-on-cream default"), "skill no longer treats serif-on-cream as the copyable default phrase");
 assert(skillMd.includes("working surface"), "SKILL.md names a working surface, not only a hero");
 assert(!skillMd.includes("independent host use"), "distributed skill does not load host-eval protocol");
 assert(!skillMd.includes("authoring chat"), "distributed skill does not mention this authoring chat");
@@ -77,6 +80,18 @@ assert(fs.existsSync(path.join(root, "evals", "HOST-TRIAL.md")), "host-trial met
 assert(fs.readFileSync(path.join(root, "evals", "HOST-TRIAL.md"), "utf8").includes("This development chat is not independent host use"), "evals keep the honest host-trial distinction");
 assert(!skillMd.includes("disable-model-invocation: true"), "implicit invocation allowed");
 assert(!/^allowed-tools:/m.test(skillMd), "no allowed-tools permission expansion");
+
+const typeRef = fs.readFileSync(path.join(root, "skills", "art-director", "references", "typography-color-assets.md"), "utf8");
+assert(!/font-family:\s*Palatino/.test(typeRef), "applied type fragments are not Palatino");
+assert(typeRef.includes("media / catalog display"), "type guide has a catalog display fragment");
+assert(typeRef.includes("product workspace chrome"), "type guide has a workspace fragment");
+
+const craftRef = fs.readFileSync(path.join(root, "skills", "art-director", "references", "visual-craft.md"), "utf8");
+assert(!craftRef.includes("background: #efe7dc"), "visual-craft applied fragment is not warm paper");
+
+const method = fs.readFileSync(path.join(root, "skills", "art-director", "references", "design-method.md"), "utf8");
+assert(method.includes("Job vs domain"), "design-method separates job from domain");
+assert(method.includes("First look"), "design-method lists concrete art-direction decisions");
 
 const research = fs.readFileSync(path.join(root, "skills", "art-director", "references", "visual-research.md"), "utf8");
 assert(/Do not copy layout, assets, or brand/i.test(research), "visual-research forbids copying layout/assets/brand");
@@ -146,6 +161,10 @@ if (process.platform === "win32") {
 assert(fs.existsSync(path.join(dest, "SKILL.md")), `copied SKILL.md into ${dest}`);
 const copied = validateSkill(dest);
 assert(copied.problems.length === 0, copied.problems.length ? copied.problems.join("; ") : "copy under Turkish/space parent path");
+assert(
+  fs.existsSync(path.join(dest, "references", "examples", "media-portfolio", "App.jsx")),
+  "copied media-portfolio lands in the portable skill folder"
+);
 assert(
   fs.existsSync(path.join(dest, "references", "examples", "themeless-react", "kiln-store.js")),
   "copied kiln-store lands in the portable skill folder"

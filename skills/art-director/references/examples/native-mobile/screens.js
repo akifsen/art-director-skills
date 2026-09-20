@@ -17,7 +17,7 @@ function Status({ saved }) {
 export function ListScreen({ session, onOpen }) {
   const insets = useSafeAreaInsets();
   return <ScrollView style={s.screen} contentContainerStyle={{ paddingTop: insets.top + 24, paddingHorizontal: t.space, paddingBottom: insets.bottom + 24 }}>
-    <Text style={s.eyebrow}>TONIGHT</Text>
+    <Text style={s.eyebrow}>Tonight</Text>
     <Text accessibilityRole="header" style={s.title}>Closeout</Text>
     <Text style={[s.body, { marginTop: 8, marginBottom: 32 }]}>Three stations. Notes stay in this session only.</Text>
     <View style={s.stationList}>{session.stations.map((row, index) => <Pressable key={row.id} onPress={() => onOpen(row.id)} accessibilityRole="button"
@@ -34,11 +34,11 @@ export function DetailScreen({ session, id, onBack, onEdit }) {
   const row = getStation(session, id);
   return <ScrollView style={s.screen} contentContainerStyle={{ paddingTop: insets.top + 8, paddingHorizontal: t.space, paddingBottom: insets.bottom + 24 }}>
     <View style={{ alignSelf: "flex-start", marginLeft: -12, marginBottom: 24 }}><Tap label="‹  Back to stations" secondary onPress={onBack} /></View>
-    <Text style={s.eyebrow}>STATION</Text>
+    <Text style={s.eyebrow}>Station</Text>
     <Text accessibilityRole="header" style={s.title}>{row?.title ?? "Unknown station"}</Text>
     <Text style={[s.body, { marginTop: 12, marginBottom: 28 }]}>{row?.detail ?? "That id is not in this closeout. Nothing was changed."}</Text>
     {row ? <><View style={s.noteCard}>
-      <Text style={s.eyebrow}>CLOSER NOTE</Text>
+      <Text style={s.eyebrow}>Closer note</Text>
       <Text style={[s.note, { marginTop: 12 }]}>{row.note || "None yet. Add one before you leave the floor."}</Text>
       <View style={{ marginTop: 20, paddingTop: 16, borderTopColor: t.border, borderTopWidth: 1 }}><Status saved={Boolean(row.note)} /></View>
     </View><View style={{ marginTop: 20 }}><Tap label={row.note ? "Edit closer note" : "Add closer note"} onPress={onEdit} /></View></> : null}
@@ -62,7 +62,7 @@ export function EditScreen({ session, id, onSave, onClose }) {
   function finish() { setSheet(false); onClose(); }
   return <KeyboardAvoidingView style={s.screen} behavior={Platform.OS === "ios" ? "padding" : "height"} keyboardVerticalOffset={insets.top}>
     <ScrollView contentContainerStyle={{ paddingTop: insets.top + 24, padding: t.space, paddingBottom: insets.bottom + 24 }} keyboardShouldPersistTaps="handled">
-      <Text style={s.eyebrow}>{row.title.toUpperCase()}</Text>
+      <Text style={s.eyebrow}>{row.title}</Text>
       <Text accessibilityRole="header" style={[s.title, { fontSize: 28, marginBottom: 24 }]}>Closer note</Text>
       <Text nativeID="note-label" style={[s.body, { color: t.paper, marginBottom: 10 }]}>What still needs a manager?</Text>
       <TextInput accessibilityLabel="Closer note" accessibilityLabelledBy="note-label" value={note} onChangeText={(text) => { setNote(text); if (text.trim()) setError(""); }} multiline
@@ -73,7 +73,7 @@ export function EditScreen({ session, id, onSave, onClose }) {
     <Modal visible={sheet} transparent animationType="none" onRequestClose={finish}>
       <View style={[s.overlay, { paddingTop: insets.top + 24, paddingBottom: insets.bottom + 24 }]}>
         <ScrollView style={s.confirmation} contentContainerStyle={{ padding: 24 }}>
-          <Text style={[s.eyebrow, { color: t.ok }]}>✓  NOTE SAVED</Text>
+          <Text style={[s.eyebrow, { color: t.ok }]}>Note saved</Text>
           <Text accessibilityRole="header" style={[s.title, { fontSize: 28, marginTop: 12 }]}>{row.title}</Text>
           <Text style={[s.note, { marginVertical: 20 }]}>{note.trim()}</Text>
           <Text style={s.body}>{saveMessage}</Text>
@@ -86,7 +86,7 @@ export function EditScreen({ session, id, onSave, onClose }) {
 }
 const s = StyleSheet.create({
   screen: { flex: 1, backgroundColor: t.canvas },
-  eyebrow: { fontFamily: t.font, color: t.field, fontSize: 12, fontWeight: "700", letterSpacing: 1.6 },
+  eyebrow: { fontFamily: t.font, color: t.field, fontSize: 13, fontWeight: "600", letterSpacing: 0.2 },
   title: { fontFamily: t.font, fontSize: 36, fontWeight: "600", color: t.paper, marginTop: 8 },
   body: { fontFamily: t.font, fontSize: 15, lineHeight: 22, color: t.muted },
   note: { fontFamily: t.font, fontSize: 17, lineHeight: 26, color: t.paper },

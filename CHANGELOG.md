@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.9.0 — 2026-09-20
+
+- Teach job vs domain (portfolio / product workspace / native) so a field
+  like photography does not default to an editorial ledger.
+- Replace Palatino, tracked small-caps, and cream-paper applied fragments
+  with catalog and workspace recipes taken from a rendered example.
+- Add Rail Still (media-led catalog) as a worked React example and as the
+  skeleton-vs-finished study. Keep Kiln Rest clay/serif as a labeled
+  material voice, not the definition of finished.
+- Restyle Nadir Desk chrome away from display serif; cool Closeout tokens
+  and drop tracked all-caps eyebrows. Native device proof remains pending.
+
+See [dated evidence](evals/evidence/craft-finish-0.9.0/REPORT.md).
+
 ## 0.8.0 — 2026-09-20
 
 - Run the hand-corrected Fold Playwright project in CI. Build and test

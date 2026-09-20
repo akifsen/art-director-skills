@@ -1,8 +1,8 @@
 # Eval method
 
-The [see-and-correct run](evidence/see-and-fix-2026-09-20/REPORT.md) is the
-0.7.0 record. Host-trial how-to now lives in [HOST-TRIAL.md](HOST-TRIAL.md).
-The frozen Cursor trial brief is [cursor-trial/](cursor-trial/USAGE.md).
+The [craft-finish run](evidence/craft-finish-0.9.0/REPORT.md) is the 0.9.0
+record. Host-trial how-to lives in [HOST-TRIAL.md](HOST-TRIAL.md).
+The frozen Cursor photographer trial remains [cursor-trial/](cursor-trial/USAGE.md).
 
 The [native craft and normal-brief run](evidence/native-craft-2026-09-19/REPORT.md)
 starts from 0.5.0, preserves same-device before/after evidence and distinguishes

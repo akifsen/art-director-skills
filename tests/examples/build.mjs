@@ -26,6 +26,7 @@ function build(configRel) {
 
 build("evals/apps/kiln-queue/vite.config.js");
 build("evals/apps/nadir-desk/vite.config.js");
+build("evals/apps/rail-still/vite.config.js");
 
 if (process.env.ART_DIRECTOR_EVAL === '1') {
   for (const app of ['library-baseline', 'library-candidate', 'library-candidate2', 'existing-desk']) {
@@ -48,25 +49,35 @@ if (process.env.ART_DIRECTOR_SEEFIX === '1') {
 
 const kilnDir = path.join(root, "evals/artifacts/kiln-queue");
 const deskDir = path.join(root, "evals/artifacts/nadir-desk");
+const railDir = path.join(root, "evals/artifacts/rail-still");
 const kilnHtml = fs.readFileSync(path.join(kilnDir, "index.html"), "utf8");
 const deskHtml = fs.readFileSync(path.join(deskDir, "index.html"), "utf8");
+const railHtml = fs.readFileSync(path.join(railDir, "index.html"), "utf8");
 assert.match(kilnHtml, /<div id="root">/);
 assert.match(deskHtml, /<div id="root">/);
+assert.match(railHtml, /<div id="root">/);
 assert.match(kilnHtml, /main\.jsx|\/assets\//);
 assert.match(deskHtml, /main\.jsx|\/assets\//);
+assert.match(railHtml, /main\.jsx|\/assets\//);
 
 const kilnAssets = fs.readdirSync(path.join(kilnDir, "assets"));
 const deskAssets = fs.readdirSync(path.join(deskDir, "assets"));
+const railAssets = fs.readdirSync(path.join(railDir, "assets"));
 const kilnJsName = kilnAssets.find((f) => f.endsWith(".js"));
 const deskJsName = deskAssets.find((f) => f.endsWith(".js"));
+const railJsName = railAssets.find((f) => f.endsWith(".js"));
 assert.ok(kilnJsName, "kiln production bundle missing");
 assert.ok(deskJsName, "desk production bundle missing");
+assert.ok(railJsName, "rail production bundle missing");
 const kilnJs = fs.readFileSync(path.join(kilnDir, "assets", kilnJsName), "utf8");
 const deskJs = fs.readFileSync(path.join(deskDir, "assets", deskJsName), "utf8");
+const railJs = fs.readFileSync(path.join(railDir, "assets", railJsName), "utf8");
 assert.match(kilnJs, /Loads in fire/);
 assert.match(kilnJs, /Log a temperature hold/);
 assert.match(deskJs, /Morning list/);
 assert.match(deskJs, /commitNote|Save note/);
+assert.match(railJs, /Linear 40/);
+assert.match(railJs, /Email the desk/);
 assert.doesNotMatch(kilnJs, /React\.createElement\(React\.Fragment/);
 
 console.log("vite example builds ok");

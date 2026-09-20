@@ -13,8 +13,10 @@
     "test:install": "node tests/install-cli.mjs",
     "example:kiln": "vite --config evals/apps/kiln-queue/vite.config.js",
     "example:desk": "vite --config evals/apps/nadir-desk/vite.config.js",
+    "example:rail": "vite --config evals/apps/rail-still/vite.config.js",
     "example:kiln:preview": "node tests/examples/preview.mjs kiln",
     "example:desk:preview": "node tests/examples/preview.mjs desk",
+    "example:rail:preview": "node tests/examples/preview.mjs rail",
     "validate": "node tooling/validate-skill.mjs",
     "pack-skill": "node tooling/pack-skill.mjs"
   },

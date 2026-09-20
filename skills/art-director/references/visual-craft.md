@@ -34,21 +34,23 @@ proof or separate a stage. Do not stack all of them on the first viewport.
 **Common failure.** Every card gets the same 16px radius, 1px `#ddd`, and
 a purple button — a kit default, not a material decision.
 
-**Applied fragment** (panel on warm paper, no shadow required). This is
-one lighting story, not a house palette for every product:
+**Applied fragment** (catalog: cool canvas, unrounded stills). One lighting
+story, not a house palette:
 
 ```css
-.page { background: #efe7dc; color: #231e1a; }
-.stage {
-  background: #f7f1ea;
-  border: 1px solid rgb(35 30 26 / 12%);
-  border-radius: 2px;
-}
-.stage .inset {
-  border-radius: 1px; /* tighter than parent */
-  background: #ebe2d6;
+.page { background: #e7eaee; color: #121417; }
+.still img { border-radius: 0; object-fit: cover; }
+.mail {
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  background: #121417;
+  color: #f6f7f9;
+  border-radius: 0;
 }
 ```
+
+A ceramic shed may still use warm clay and a 2px mend line — that is
+[kiln-rest.material.html](studies/kiln-rest.material.html), not "finished."
 
 ## Product images and original graphics
 
@@ -122,12 +124,12 @@ blue underlines; the nav hover is a browser default. Three products.
   gap: 0.4em;
   min-height: 2.75rem;
   padding: 0 0.95rem;
-  border-radius: 999px;
-  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 0;
+  border: 1px solid rgb(18 20 23 / 14%);
   font: inherit;
 }
 .btn:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
-.btn--solid { background: #f4f1ea; color: #111; border-color: transparent; }
+.btn--solid { background: #121417; color: #f6f7f9; border-color: transparent; }
 ```
 
 Footer, tabs, and inputs should reuse the same radius and hairline story,

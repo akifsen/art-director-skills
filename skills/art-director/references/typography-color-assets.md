@@ -71,19 +71,38 @@ a hidden `font-family` on `body`.
 **Failure.** One size for `h1`–`h3`; `letter-spacing: 0.2em` on everything;
 Impact on a long article.
 
-**Applied fragment:**
+Do not treat Palatino, tracked small-caps metadata, or cream paper as the
+house finish. Those are valid when the *object* is editorial or ceramic and
+the user asked for that voice. See [kiln-rest.material.html](studies/kiln-rest.material.html).
+Unrelated products should not inherit that pairing from examples.
+
+**Applied fragment (media / catalog display):**
 
 ```css
 .display {
-  font-family: Palatino, "Iowan Old Style", "Times New Roman", serif;
-  font-weight: 500;
-  font-size: clamp(2.5rem, 7vw, 5rem);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  max-width: 12ch;
+  font-family: "Segoe UI Variable Display", "Segoe UI", "Avenir Next", sans-serif;
+  font-weight: 650;
+  font-size: clamp(2.8rem, 8vw, 5.6rem);
+  line-height: 0.92;
+  letter-spacing: -0.048em;
+  max-width: 7ch;
 }
-.body { font-size: 1.05rem; line-height: 1.55; max-width: 66ch; }
-.meta { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.body { font-size: 1.05rem; line-height: 1.5; max-width: 36ch; }
+.meta { font-size: 0.92rem; letter-spacing: 0; text-transform: none; color: var(--muted); }
+.nav { font-size: 0.95rem; font-weight: 500; letter-spacing: 0; text-transform: none; }
+```
+
+**Applied fragment (product workspace chrome):**
+
+```css
+.title {
+  font-family: "Segoe UI", "Avenir Next", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+.kicker { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.control { font-size: 0.9375rem; min-height: 2.35rem; }
 ```
 
 ## Color and surfaces
@@ -105,10 +124,10 @@ Impact on a long article.
 Do not stop at one accent. Do not equate dark canvases, neon, or glass
 with quality. Do not forbid a color.
 
-This skill's worked examples have their own faces (kiln oxide paper,
-clinic navy, kitchen yellow). Do not treat Palatino, gold tooling, or
-cream serif as the house "finished" look. Unrelated products should not
-inherit those pairings from the examples or from earlier evals.
+This skill's worked examples have their own faces (cool catalog stone,
+clinic navy, kiln oxide paper, night closeout). Do not treat Palatino, gold
+tooling, or cream serif as the house "finished" look. Unrelated products
+should not inherit those pairings from the examples or from earlier evals.
 
 Justify saturation and light/dark from context: a warehouse installation
 may want a field of the actual material; a long article may want a stable
@@ -126,18 +145,33 @@ readers. Keep status in words.
 **Failure.** `--accent: #7c5cfc` and nothing else; large paragraphs in
 accent color; a new purple careers page on a paper-and-iron site.
 
-**Applied fragment:**
+**Applied fragment (catalog surfaces):**
 
 ```css
 :root {
-  --canvas: #0d1412;
-  --raised: #151e1b;
-  --text: #e6efe9;
-  --text-dim: #93a59a;
-  --hair: rgb(230 239 233 / 12%);
-  --action: #d7f25a;
-  --action-ink: #12160f;
-  --danger: #f3b4a8;
+  --canvas: #e7eaee;
+  --raised: #f6f7f9;
+  --text: #121417;
+  --text-dim: #5b636c;
+  --hair: #c9ced6;
+  --action: #121417;
+  --action-ink: #f6f7f9;
+  --accent: #b85a32; /* one tick, not a cream field */
+}
+```
+
+**Applied fragment (product workspace surfaces):**
+
+```css
+:root {
+  --canvas: #e8eaee;
+  --surface: #ffffff;
+  --text: #16181c;
+  --text-dim: #5c6570;
+  --hair: #d0d5dc;
+  --action: #1f4e79;
+  --action-ink: #f4f7fb;
+  --danger: #9b2c2c;
 }
 ```
 

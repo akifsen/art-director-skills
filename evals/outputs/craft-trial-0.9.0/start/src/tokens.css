@@ -1,0 +1,41 @@
+:root {
+  --canvas: #cfd8d3;
+  --surface: #f4f7f5;
+  --raised: #e4ece8;
+  --ink: #13211c;
+  --ink-dim: #4a5d56;
+  --hair: #b4c3bc;
+  --brand: #0b6a5c;
+  --brand-deep: #084c42;
+  --brand-ink: #eef8f5;
+  --wait-ink: #6a4a00;
+  --wait-field: #e7efc8;
+  --ready-ink: #1b4d3e;
+  --ready-field: #d5ebe3;
+  --danger: #8f2d2d;
+  --danger-field: #f6e4e4;
+  --focus: #0b6a5c;
+  --font-ui: "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif;
+  --font-slot: "Cascadia Mono", "Consolas", "ui-monospace", monospace;
+  --title: 1.35rem;
+  --body: 1rem;
+  --meta: 0.8125rem;
+  --control: 0.9375rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --radius: 6px;
+  --radius-sm: 3px;
+  --control-h: 2.5rem;
+  --hairline: 1px;
+  --measure: 38rem;
+}
+
+@media (pointer: coarse) {
+  :root {
+    --control-h: 2.75rem;
+  }
+}

@@ -3,193 +3,169 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kiln Rest — finished fragment (study)</title>
+  <title>Rail Still — finished fragment (study)</title>
   <style>
     :root {
-      --clay: #e3c9a8;
-      --slip: #f3e6d4;
-      --iron: #2a2118;
-      --iron-dim: #5c4e40;
-      --mend: #b8882a;
-      --hair: rgb(42 33 24 / 16%);
+      --canvas: #e7eaee;
+      --ink: #121417;
+      --muted: #5b636c;
+      --line: #c9ced6;
+      --paper: #f6f7f9;
+      --copper: #b85a32;
+      --focus: #1d4f7a;
     }
     * { box-sizing: border-box; }
     html { color-scheme: light; }
     body {
       margin: 0;
-      background: var(--clay);
-      color: var(--iron);
-      font-family: Georgia, "Palatino Linotype", Palatino, serif;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif;
+      font-size: 1.05rem;
       line-height: 1.5;
     }
-    a { color: var(--iron); }
-    a:focus-visible { outline: 2px solid var(--iron); outline-offset: 3px; }
+    a { color: inherit; }
+    a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
     .bar {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      padding: 1.1rem 1.4rem;
-      border-bottom: 1px solid var(--hair);
-      font-family: "Segoe UI", "Helvetica Neue", sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+      gap: 1rem;
+      padding: 1rem clamp(1rem, 3vw, 2.5rem);
     }
-    .bar a { text-decoration: none; }
-    .stage {
+    .mark { font-weight: 650; letter-spacing: -0.03em; text-decoration: none; }
+    nav { display: flex; gap: 1.25rem; font-weight: 500; font-size: 0.95rem; }
+    nav a { text-decoration: none; }
+    .open {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 2.5rem;
-      padding: 2.2rem 1.4rem 3rem;
+      grid-template-columns: minmax(16rem, 0.9fr) minmax(0, 1.6fr);
+      gap: clamp(1.25rem, 3vw, 2.75rem);
       align-items: end;
-      border-bottom: 1px solid var(--hair);
+      padding: 0 clamp(1rem, 3vw, 2.5rem) 3rem;
+      min-height: calc(100svh - 3.5rem);
     }
-    .eyebrow {
-      margin: 0 0 0.8rem;
-      font-family: "Segoe UI", "Helvetica Neue", sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--iron-dim);
+    .kicker { margin: 0 0 0.85rem; color: var(--muted); font-size: 0.92rem; }
+    .kicker::before {
+      content: "";
+      display: inline-block;
+      width: 1.1rem;
+      height: 3px;
+      margin: 0 0.55rem 0.18rem 0;
+      vertical-align: middle;
+      background: var(--copper);
     }
     h1 {
       margin: 0;
-      font-weight: 500;
-      font-size: clamp(2.6rem, 8vw, 5.4rem);
+      font-size: clamp(2.8rem, 8vw, 5.6rem);
+      font-weight: 650;
       line-height: 0.92;
-      letter-spacing: -0.03em;
-      max-width: 9ch;
+      letter-spacing: -0.048em;
+      max-width: 7ch;
     }
-    .lede {
-      margin: 1.1rem 0 0;
-      max-width: 28ch;
-      font-size: 1.05rem;
-      color: var(--iron-dim);
-    }
-    .visit {
-      margin: 1.4rem 0 0;
-      font-size: 0.95rem;
-    }
-    figure {
-      margin: 0;
-      background: var(--slip);
-      border: 1px solid var(--hair);
-      border-radius: 2px;
-      padding: 1.2rem 1.2rem 0.9rem;
-    }
-    svg { display: block; width: 100%; height: auto; }
-    figcaption {
-      margin: 0.7rem 0 0;
-      font-family: "Segoe UI", "Helvetica Neue", sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--iron-dim);
-    }
-    .rest {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 2rem;
-      padding: 1.8rem 1.4rem 3rem;
-    }
-    h2 {
-      margin: 0 0 0.4rem;
-      font-size: 0.72rem;
-      font-family: "Segoe UI", "Helvetica Neue", sans-serif;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-    .rest p { margin: 0; max-width: 36ch; }
-    table {
+    .place { margin: 1rem 0 0; font-size: 1.2rem; letter-spacing: -0.02em; }
+    .lede { margin: 0.85rem 0 0; max-width: 28ch; color: var(--muted); }
+    figure { margin: 0; }
+    .hero img {
+      display: block;
       width: 100%;
-      border-collapse: collapse;
-      font-variant-numeric: tabular-nums;
+      height: min(78svh, 44rem);
+      object-fit: cover;
+      object-position: 28% 52%;
+      background: #d5d8de;
     }
-    th, td {
-      text-align: left;
-      padding: 0.45rem 0;
-      border-bottom: 1px solid var(--hair);
-      font-size: 0.95rem;
+    figcaption { margin: 0.55rem 0 0; font-size: 0.82rem; color: var(--muted); }
+    .work { padding: 0 clamp(1rem, 3vw, 2.5rem) 3rem; }
+    h2 { margin: 0 0 0.85rem; font-size: 1.05rem; font-weight: 650; letter-spacing: -0.02em; }
+    .index {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(14rem, 0.72fr);
+      gap: 1.25rem;
     }
-    th {
-      font-family: "Segoe UI", "Helvetica Neue", sans-serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: var(--iron-dim);
+    .index img { display: block; width: 100%; height: auto; object-fit: cover; background: #d5d8de; }
+    .yard img { aspect-ratio: 16 / 9; object-position: 50% 10%; }
+    .arm img { aspect-ratio: 3 / 4; object-position: 50% 40%; }
+    .index h3 { margin: 0.7rem 0 0; font-size: 1.15rem; letter-spacing: -0.02em; }
+    .index p { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.92rem; }
+    .end {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 2rem clamp(1rem, 3vw, 2.5rem) 3.5rem;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
     }
+    .end p { margin: 0; max-width: 42ch; }
     .mail {
-      display: inline-block;
-      margin-top: 0.9rem;
-      padding: 0.55rem 0.9rem;
-      background: var(--iron);
-      color: var(--slip);
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.75rem;
+      margin-top: 1rem;
+      padding: 0 1rem;
+      background: var(--ink);
+      color: var(--paper);
       text-decoration: none;
-      border-radius: 2px;
-      font-family: "Segoe UI", "Helvetica Neue", sans-serif;
-      font-size: 0.85rem;
+      font-weight: 600;
     }
-    .mail:focus-visible { outline-color: var(--iron); }
-    @media (max-width: 720px) {
-      .stage, .rest { grid-template-columns: 1fr; }
-      .stage { gap: 1.4rem; }
-      h1 {
-        max-width: none;
-        font-size: clamp(2.1rem, 11vw, 3.2rem);
-        padding-right: 0.15rem;
-        overflow-wrap: break-word;
-      }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      * { scroll-behavior: auto; }
+    @media (max-width: 860px) {
+      .open, .index, .end { grid-template-columns: 1fr; }
+      .open { min-height: 0; padding-bottom: 2rem; }
+      h1 { max-width: none; }
+      .hero img { height: min(52svh, 22rem); object-position: 50% 40%; }
     }
   </style>
 </head>
 <body>
   <header class="bar">
-    <a href="#">Kiln Rest</a>
-    <span>Kiln shed · Saturday 11–14</span>
+    <a class="mark" href="#top">Rail Still</a>
+    <nav aria-label="Studio">
+      <a href="#work">Work</a>
+      <a href="#studio">Studio</a>
+      <a href="#inquire">Inquire</a>
+    </nav>
   </header>
-  <section class="stage">
-    <div>
-      <p class="eyebrow">Showing through 3 November</p>
-      <h1>Twelve mended bowls</h1>
-      <p class="lede">A line of repairs in the kiln shed. Visitors on Saturdays, 11–14, no booking.</p>
-      <p class="visit">Unit of the old brick works. Ask at the gate for Kiln Rest.</p>
-    </div>
-    <figure>
-      <svg viewBox="0 0 320 220" role="img" aria-labelledby="bowl-title bowl-desc">
-        <title id="bowl-title">Mended bowl</title>
-        <desc id="bowl-desc">Diagram of a bowl with a gold repair line. Not a photograph of the showing.</desc>
-        <rect width="320" height="220" fill="#f3e6d4"/>
-        <ellipse cx="160" cy="168" rx="88" ry="14" fill="#d9c3a4"/>
-        <path d="M72 96c8 52 40 72 88 72s80-20 88-72c-10-44-40-62-88-62S82 52 72 96Z" fill="#efe0cc" stroke="#2a2118" stroke-width="1.4"/>
-        <path d="M118 58c12 28 8 70 4 102" fill="none" stroke="#b8882a" stroke-width="2.4"/>
-        <path d="M162 50c-6 36 14 58 22 98" fill="none" stroke="#b8882a" stroke-width="1.6"/>
-      </svg>
-      <figcaption>Diagram of the mend — not a photo of the bowls.</figcaption>
-    </figure>
-  </section>
-  <section class="rest">
-    <div>
-      <h2>Restoration</h2>
-      <p>Object and interior commissions. We answer with a slot, not a brochure.</p>
-      <a class="mail" href="mailto:shed@kilnrest.example">Email the shed</a>
-    </div>
-    <div>
-      <h2>Saturday clinics</h2>
-      <table>
-        <thead>
-          <tr><th>Date</th><th>Seats</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>18 October</td><td>Unknown</td></tr>
-          <tr><td>8 November</td><td>Unknown</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+  <main id="top">
+    <section class="open">
+      <div>
+        <p class="kicker">Current catalog still</p>
+        <h1>Linear 40</h1>
+        <p class="place">Ferry cabin</p>
+        <p class="lede">48V ceiling channel. Cool daylight, empty cabin, no retouch of the room.</p>
+      </div>
+      <figure class="hero">
+        <img src="../examples/media-portfolio/stills/linear40.png" alt="" width="1600" height="900">
+        <figcaption>Generated demo still — not a client shoot.</figcaption>
+      </figure>
+    </section>
+    <section class="work" id="work">
+      <h2>Other frames</h2>
+      <div class="index">
+        <figure class="yard">
+          <img src="../examples/media-portfolio/stills/dock-flood.png" alt="" width="1200" height="900">
+          <figcaption>
+            <h3>Dock flood</h3>
+            <p>Municipal yard · 2026</p>
+          </figcaption>
+        </figure>
+        <figure class="arm">
+          <img src="../examples/media-portfolio/stills/task-arm.png" alt="" width="900" height="1200">
+          <figcaption>
+            <h3>Task arm</h3>
+            <p>Drafting table · 2026</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="end">
+      <div id="studio">
+        <h2>Studio</h2>
+        <p>Rail Still photographs lighting hardware for manufacturer catalogs. The room in the frame is the room that was there.</p>
+      </div>
+      <div id="inquire">
+        <h2>Inquire</h2>
+        <p>Send the fixture name and the room you can give us.</p>
+        <a class="mail" href="mailto:desk@railstill.example?subject=Catalog%20still">Email the desk</a>
+      </div>
+    </section>
+  </main>
 </body>
 </html>

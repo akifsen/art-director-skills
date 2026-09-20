@@ -67,13 +67,13 @@ Pin a tag with a tree URL, not `owner/repo@v0.1.0` (`@` is a skill filter in
 this CLI):
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.8.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.9.0 --skill art-director --agent cursor --copy
 ```
 
-Use v0.8.0 after that tag exists. Until then, install from the commit on
-`main` or from a local clone. The v0.7.0 tag still contains independent-host
-wording in `SKILL.md` and does not run the Fold seefix Playwright project in
-CI.
+Use v0.9.0 after that tag exists. Until then, install from the commit on
+`main` or from a local clone. The v0.8.0 skill still teaches Palatino-on-cream
+applied fragments. The v0.7.0 tag still contains independent-host
+wording in `SKILL.md`.
 
 File install and hashes are not Cursor discovery. Explicit `/art-director`
 is not natural selection. See [evals/HOST-TRIAL.md](evals/HOST-TRIAL.md)
@@ -128,7 +128,8 @@ Discovery is not a real-task run. Visual review that did not happen is
 reported as not done. Keyword fixtures in `tests/run.mjs` are not proof
 that a host selected this skill.
 
-Current work is recorded in [0.8.0 evidence](evals/evidence/ci-seefix-0.8.0/REPORT.md).
+Current work is recorded in [0.9.0 evidence](evals/evidence/craft-finish-0.9.0/REPORT.md).
+The previous CI seefix / skill-split run stays in [0.8.0 evidence](evals/evidence/ci-seefix-0.8.0/REPORT.md).
 The previous see-and-correct run stays in [2026-09-20 evidence](evals/evidence/see-and-fix-2026-09-20/REPORT.md).
 The previous native-craft run stays in [2026-09-19 evidence](evals/evidence/native-craft-2026-09-19/REPORT.md).
 Complete means required gates passed. A useful delivery with blocked checks

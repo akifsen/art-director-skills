@@ -3,6 +3,10 @@
 Open when proof is about to become a gray rectangle, a stock gradient, or a
 long text list because "we have no screenshot."
 
+If the brief already has photographs or generated stills, open
+[media-portfolio.md](../examples/media-portfolio.md) instead — this study is
+the missing-media case.
+
 Two honest options on one fragment: a labeled interface diagram derived
 from the product, composed as the stage — not a fake capture.
 
