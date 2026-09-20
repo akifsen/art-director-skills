@@ -17,6 +17,11 @@ const apps = {
     config: "evals/apps/nadir-desk/vite.config.js",
     out: "evals/artifacts/nadir-desk",
     port: "5174"
+  },
+  rail: {
+    config: "evals/apps/rail-still/vite.config.js",
+    out: "evals/artifacts/rail-still",
+    port: "5176"
   }
 };
 

@@ -19,19 +19,44 @@ who writes long notes is not a "personal brand" template.
 If the user already named a direction, treat that as the thesis seed. Do not
 reopen a bake-off.
 
+## Job vs domain
+
+Write the **job of this screen** (portfolio / product workspace / native)
+before a look. The organization's field is a separate input.
+
+Do not produce an editorial ledger because the brief says photographer, or a
+neon terminal because it says technology. Do not treat archive, typewriter,
+or historical-form metaphors as the default brand unless the user asked for
+nostalgia. Do not "modernize" by applying dark glass or equal rounded cards
+to every product.
+
+A REFINE of one control does not authorize a new identity for the whole app.
+
 ## Visual thesis
 
-Write four answers in the project's language, short enough to scan:
+On a broad DESIGN, answer these as decisions to implement — not a meeting:
 
-1. First look: what occupies the opening viewport, in what material
-   (type, crop, surface)—and why that is finished, not a box to fill later.
-2. Distinctive material: the actual artifact, data, voice, or proof.
-3. Support: how type, grouping, imagery, surfaces, and rhythm carry it.
-4. Small screen: what is reordered, deferred, cropped, or disclosed.
+1. **First look** — what occupies the opening viewport, in what material
+2. **Composition / grid** — how title, media, navigation, and actions share
+   one weight, not four decorated boxes
+3. **Type roles** — display / heading / body / meta / control; scale, weight,
+   measure, tracking, leading, language coverage, and that faces actually load
+4. **Surfaces** — canvas, primary/secondary, text priority, separators,
+   interaction, semantic status; radius, border, and shadow from one family
+5. **Media's job** — proof, product, or absent (then diagram / type, not a
+   gray box). Data-dense tools do not need a hero photograph
+6. **Component language** — alignment, hit area, padding, control height,
+   hover/focus/pressed/selected/loading
+7. **Small screen** — what is reordered, cropped, or disclosed; not a shrunk
+   desktop
 
 Reject a thesis that would still fit any other product after swapping the
 name. "Clean layout, strong type, plenty of whitespace" is not a thesis.
 "Navy accent, Inter, three cards" is a kit, not a thesis.
+
+On a **product workspace**, do not push the main task below a marketing
+billboard. On a **portfolio**, do not fill the first viewport with generic
+copy while the work sits in section three.
 
 **Gotcha:** the product name can dominate the first viewport while the
 *object of the work* is missing. A lockup and a color rail on a dark field

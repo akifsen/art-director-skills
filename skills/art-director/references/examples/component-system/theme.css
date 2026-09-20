@@ -1,26 +1,26 @@
 :root {
-  --background: #f3f4f1;
-  --foreground: #142033;
-  --card: #fbfbf8;
-  --card-foreground: #142033;
-  --primary: #163f5f;
-  --primary-foreground: #f4f7f2;
-  --secondary: #e4e7df;
-  --secondary-foreground: #142033;
-  --muted: #e8ebe3;
-  --muted-foreground: #4c5a63;
-  --accent: #d7e4d2;
-  --accent-foreground: #142033;
+  --background: #e8eaee;
+  --foreground: #16181c;
+  --card: #ffffff;
+  --card-foreground: #16181c;
+  --primary: #1f4e79;
+  --primary-foreground: #f4f7fb;
+  --secondary: #dfe3e8;
+  --secondary-foreground: #16181c;
+  --muted: #eceff3;
+  --muted-foreground: #5c6570;
+  --accent: #e4eef6;
+  --accent-foreground: #16181c;
   --destructive: #9b2c2c;
-  --border: #cfd5c8;
-  --input: #cfd5c8;
-  --ring: #1d6a7b;
-  --sidebar: #142033;
-  --sidebar-foreground: #eef2ea;
-  --sidebar-accent: #1c3148;
-  --radius: 0.2rem;
-  --font-ui: "Cambria", "Iowan Old Style", "Times New Roman", serif;
-  --font-ctrl: "Segoe UI", "Helvetica Neue", sans-serif;
+  --border: #d0d5dc;
+  --input: #c5ccd4;
+  --ring: #1f4e79;
+  --sidebar: #1b1f24;
+  --sidebar-foreground: #eef2f6;
+  --sidebar-accent: #2a3138;
+  --radius: 0.45rem;
+  --font-ui: "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif;
+  --font-ctrl: "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif;
   --space: 0.55rem;
 }
 
@@ -53,8 +53,9 @@ body.nadir {
 .nd-toolbar h1 {
   margin: 0;
   font-family: var(--font-ui);
-  font-size: 1.85rem;
-  letter-spacing: -0.02em;
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+  font-weight: 650;
 }
 .nd-table tbody tr { cursor: pointer; }
 .nd-table tbody tr:focus-visible {
@@ -104,7 +105,7 @@ body.nadir {
 .nd-table tbody tr[data-selected="true"] { background: var(--accent); }
 .nd-table tbody tr:hover { background: var(--muted); }
 
-.nd-kicker { margin: 0; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-foreground); }
+.nd-kicker { margin: 0; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0; color: var(--muted-foreground); }
 .nd-side-meta { font-family: var(--font-ctrl); font-size: 0.8rem; letter-spacing: 0; color: var(--sidebar-foreground); opacity: 0.75; }
 .nd-selected {
   background: var(--card);

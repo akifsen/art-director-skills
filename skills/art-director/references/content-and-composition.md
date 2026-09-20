@@ -7,6 +7,10 @@ Page-level composition is a set of jobs: what is first, how wide it is, where
 the edges sit, how empty space works, and how one band hands off to the next.
 A "landing page" is not a template.
 
+Portfolio/marketing, product workspace, and native are different jobs. Do
+not force a catalog hero onto a dispatch board, or a dense table onto a
+stills site.
+
 ## Roles, not equal blocks
 
 **When.** More than one idea is on the page.
