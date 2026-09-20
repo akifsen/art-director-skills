@@ -57,13 +57,18 @@ Seefix assertions covered: catalogue (4 workshops), linked reserve flow at
 narrow form (`titleY < 220`, lead hidden, reserve reachable). Capture PNGs
 are under gitignored `evals/artifacts/` when `foldFlow(..., true)` runs.
 
-Remote GitHub Actions for **this commit** is recorded after push.
+Remote GitHub Actions on **this commit** `7c92b34`:
+[push run 35477978929](https://github.com/akifsen/art-director-skills/actions/runs/35477978929)
+green. `examples-web` step “Hand-corrected Fold flows” ran
+`npm run test:e2e:seefix` with `ART_DIRECTOR_SEEFIX: 1`, **Running 4 tests**,
+**4 passed (4.0s)**. Flows step: **17 passed**. Visual-capture steps stayed
+skipped (dispatch-only; not the seefix gate).
 
 ## A–D (this turn)
 
 | Gate | Result |
 |---|---|
-| A. New test path actually ran | **Yes, locally.** 4/4 seefix passed with env `1`. Missing env fails the job. Remote CI pending until this commit’s `examples-web` run |
+| A. New test path actually ran | **Yes.** Local 4/4; remote `examples-web` on `7c92b34` 4/4 passed with env `1`. Missing env fails the job |
 | B. Distributed skill split from eval load | **Yes.** `SKILL.md` 0.8.0 has no host-trial protocol. Method is in `evals/HOST-TRIAL.md` |
 | C. Correct skill discovered and used in Cursor | **Pending.** File install + hash match only |
 | D. UI from that Cursor use | **Not produced.** Photographer brief is frozen, not implemented in this chat |
