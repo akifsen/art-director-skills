@@ -50,6 +50,53 @@ unstyled leftovers are not.
 
 Manual copy works offline. See [docs/installation.md](docs/installation.md).
 
+### Any supported assistant (bundled installer, no network, no telemetry)
+
+From a local clone, `node tooling/install-skill.mjs` copies
+`skills/art-director/` into the skill folder each assistant documents:
+
+```sh
+node tooling/install-skill.mjs install --ai cursor
+node tooling/install-skill.mjs install --ai claude,codex,copilot
+node tooling/install-skill.mjs install --ai all --global
+node tooling/install-skill.mjs status  --ai all
+```
+
+Or without cloning (needs network for the one-time fetch; `npx` resolves the
+`bin` from this repository):
+
+```sh
+npx --yes github:akifsen/art-director-skills install --ai gemini
+```
+
+| `--ai` | Assistant | Project path | Global path (`--global`) |
+|---|---|---|---|
+| `claude` | Claude Code | `.claude/skills/` | `~/.claude/skills/` |
+| `cursor` | Cursor | `.cursor/skills/` | `~/.cursor/skills/` |
+| `copilot` | GitHub Copilot in VS Code, CLI, cloud agent | `.github/skills/` | `~/.copilot/skills/` |
+| `kiro` | Kiro | `.kiro/skills/` | `~/.kiro/skills/` |
+| `codex` | Codex CLI / IDE | `.agents/skills/` | `~/.agents/skills/` |
+| `qoder` | Qoder IDE / CLI | `.qoder/skills/` | `~/.qoder/skills/` |
+| `roocode` | Roo Code | `.roo/skills/` | `~/.roo/skills/` |
+| `gemini` | Gemini CLI | `.gemini/skills/` | `~/.gemini/skills/` |
+| `opencode` | OpenCode | `.opencode/skills/` | `~/.config/opencode/skills/` |
+| `continue` | Continue IDE extension | `.continue/skills/` | `~/.continue/skills/` |
+| `codebuddy` | CodeBuddy CLI | `.codebuddy/skills/` | `~/.codebuddy/skills/` |
+| `droid` | Droid (Factory) | `.factory/skills/` | `~/.factory/skills/` |
+| `kilocode` | Kilo Code | `.kilocode/skills/` | `~/.kilocode/skills/` |
+| `all` | every assistant above | all of the above | all of the above |
+
+Existing folders are kept unless you pass `--force`. `remove --ai <id>`
+deletes only a folder that contains `SKILL.md`. `all` writes thirteen
+copies; hosts that also read `.agents/skills/` or `.claude/skills/` will
+then list the skill twice, so prefer naming the assistants you use.
+Paths are what each vendor documents (see
+[docs/compatibility.md](docs/compatibility.md#supported-assistants)); the
+installer is install-tested for all thirteen, while real-session
+discovery is recorded only where it was run.
+
+### Vercel `skills` CLI (third-party)
+
 From a local clone, after you have this repository on disk:
 
 ```powershell
@@ -67,10 +114,10 @@ Pin a tag with a tree URL, not `owner/repo@v0.1.0` (`@` is a skill filter in
 this CLI):
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.9.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.9.1 --skill art-director --agent cursor --copy
 ```
 
-Use v0.9.0 after that tag exists. Until then, install from the commit on
+Use v0.9.1 after that tag exists. Until then, install from the commit on
 `main` or from a local clone. The v0.8.0 skill still teaches Palatino-on-cream
 applied fragments. The v0.7.0 tag still contains independent-host
 wording in `SKILL.md`.
@@ -87,14 +134,17 @@ If you already installed an older version, back up local edits and replace the
 `art-director` folder rather than mixing files. See [docs/installation.md](docs/installation.md#update-an-older-copy).
 
 Telemetry on `npx skills` belongs to that CLI. Opt out with
-`DISABLE_TELEMETRY=1` or `DO_NOT_TRACK=1`. This skill has no install
-scripts of its own.
+`DISABLE_TELEMETRY=1` or `DO_NOT_TRACK=1`. The bundled installer above
+makes no network calls and sends nothing.
 
 ## Use
 
 In Cursor, `/art-director` or a natural UI-design request. In Codex,
-`$art-director` or `/skills`. Speak to the agent in your language; the
-skill follows that.
+`$art-director` or `/skills`. In Claude Code, Copilot, Gemini CLI, Kiro,
+OpenCode, Qoder, Roo Code, Kilo Code, Continue, CodeBuddy and Droid the
+skill is listed under `art-director` and picked from its description or
+via the host's skill command (`/skills`, `/art-director`, or the `skill`
+tool). Speak to the agent in your language; the skill follows that.
 
 Modes (same skill, not extra commands):
 
@@ -128,8 +178,9 @@ Discovery is not a real-task run. Visual review that did not happen is
 reported as not done. Keyword fixtures in `tests/run.mjs` are not proof
 that a host selected this skill.
 
-Current work is recorded in [0.9.0 evidence](evals/evidence/craft-finish-0.9.0/REPORT.md)
-and the follow-up [action-quality record](evals/evidence/action-quality-0.9.0/REPORT.md).
+Current work is recorded in [0.9.1 state-craft evidence](evals/evidence/state-craft-0.9.1/REPORT.md).
+The 0.9.0 fragment rewrite stays in [craft-finish](evals/evidence/craft-finish-0.9.0/REPORT.md)
+and [action-quality](evals/evidence/action-quality-0.9.0/REPORT.md).
 The previous CI seefix / skill-split run stays in [0.8.0 evidence](evals/evidence/ci-seefix-0.8.0/REPORT.md).
 The previous see-and-correct run stays in [2026-09-20 evidence](evals/evidence/see-and-fix-2026-09-20/REPORT.md).
 The previous native-craft run stays in [2026-09-19 evidence](evals/evidence/native-craft-2026-09-19/REPORT.md).

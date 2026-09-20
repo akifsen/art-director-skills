@@ -65,6 +65,11 @@ Check status-bar icon contrast on the actual system-bar surface in each state.
   Material guidance; do not import web `44px` as a slogan without
   checking the running OS).
 - Pressed, disabled, busy — not hover-only affordances.
+- Design the combinations that can co-occur: selected + pressed, disabled
+  + pressed, invalid + focused input. Each keeps its label readable on the
+  surface it sits on and its `accessibilityState` matching what is shown.
+  This is the same discipline as web state pairs, done with `Pressable`
+  style functions and platform controls — not CSS pseudo-classes or ARIA.
 - Sheets, modals, pickers: platform-typical presentation; Cancel / back
   must dismiss without trapping.
 

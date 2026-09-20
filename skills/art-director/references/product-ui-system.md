@@ -69,11 +69,17 @@ If the product has more than one destination: navigation, sidebar or
 topbar, content width, breadcrumb or back affordance, page title, and
 small-screen behavior that match each other.
 
-On a list/detail/edit tool, the first viewport **is** that shell plus the
-working surface: the records, the selected object, and the next action.
-Do not leave a thin sheet on an empty canvas. Do not fill the gap with
-fake metrics, extra nav that goes nowhere, or stock photographs the
-brief did not supply. An empty state is for an empty list.
+On a list/detail/edit tool, decide the container from the content: how
+many records, whether the user compares them, whether detail is read
+beside the list or after choosing, and the screen size. A compact
+centered sheet, a wide list–detail workspace, and a separate detail page
+are all valid answers; the failure is a container that ignores its
+content — a thin sheet floating on an empty canvas because the layout
+was never decided, or every panel stretched to the viewport edges because
+"full" was mistaken for finished. Do not fill the gap with fake metrics,
+extra nav that goes nowhere, or stock photographs the brief did not
+supply. An empty state is for an empty list. Keep a readable form width
+and align it to the shell and heading on purpose.
 
 ### 5. Pages and flows
 
@@ -106,8 +112,9 @@ not markup stuffed through `dangerouslySetInnerHTML`.
 - Rewriting dialog/select/calendar as unmarked `<div>`s
 - A success toast when the record in state did not change
 - Reusing Kiln / Nadir / Closeout color, type, or URL shape on an unrelated product
-- A thin card on a large empty canvas for a list/detail tool; fake KPI tiles to hide that emptiness
+- A container chosen without the content: a thin card on a large empty canvas, or panels stretched edge to edge for three records; fake KPI tiles to hide either
 - A primary action stretched to fill leftover grid or flex space so it reads as a panel, not a button
+- Selected, hover, and focus written as separate base looks so a combination (selected + hover, focus ring outside a light button on a light surface) loses its text or indicator
 
 Worked files: list/detail method in
 [examples/themeless-react.md](examples/themeless-react.md) (kiln paper is

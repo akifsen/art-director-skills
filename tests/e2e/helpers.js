@@ -28,6 +28,60 @@ export function contrastRatio(a, b) {
   return (light + 0.05) / (dark + 0.05);
 }
 
+/**
+ * Composited background actually painted at a viewport point: the topmost
+ * hit-tested element, then its ancestors, alpha-blended down to the page
+ * canvas. Flat fixtures only (no gradients, images, or filters). Use it for
+ * the surface a focus ring or outline is drawn over, which is not the
+ * control's own fill when `outline-offset` is positive.
+ */
+export async function surfaceAt(page, x, y) {
+  return page.evaluate(([px, py]) => {
+    const parse = (c) => {
+      const m = String(c).match(/rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?/i);
+      if (!m) return null;
+      let a = 1;
+      if (m[4] !== undefined) a = m[4].endsWith("%") ? Number(m[4].slice(0, -1)) / 100 : Number(m[4]);
+      return [Number(m[1]), Number(m[2]), Number(m[3]), a];
+    };
+    const top = document.elementFromPoint(px, py);
+    const layers = [];
+    let el = top;
+    while (el) {
+      const c = parse(getComputedStyle(el).backgroundColor);
+      if (c && c[3] > 0) {
+        layers.push(c);
+        if (c[3] >= 1) break;
+      }
+      el = el.parentElement;
+    }
+    if (!layers.length || layers[layers.length - 1][3] < 1) layers.push([255, 255, 255, 1]);
+    let rgb = layers[layers.length - 1].slice(0, 3);
+    for (let i = layers.length - 2; i >= 0; i--) {
+      const [r, g, b, a] = layers[i];
+      rgb = [r, g, b].map((ch, k) => Math.round(ch * a + rgb[k] * (1 - a)));
+    }
+    const describe = (node) =>
+      node ? `${node.tagName.toLowerCase()}${node.className ? "." + String(node.className).split(" ").join(".") : ""}` : "none";
+    return { hit: describe(top), rgb };
+  }, [x, y]);
+}
+
+/**
+ * Viewport point in the middle of the outline stroke on the control's left
+ * edge: the ring is drawn `outline-offset` outside the border box.
+ */
+export async function ringPoint(locator, paintState) {
+  const box = await locator.boundingBox();
+  const offset = Number.parseFloat(paintState.outlineOffset) || 0;
+  const width = Number.parseFloat(paintState.outlineWidth) || 0;
+  return {
+    x: box.x - offset - width / 2,
+    y: box.y + box.height / 2,
+    box
+  };
+}
+
 /** Product UI is up: React painted and fonts settled. Not a sleep. */
 export async function ready(page) {
   await expect(page.locator("#root")).not.toBeEmpty();

@@ -85,6 +85,12 @@ Design these as part of the control, not as afterthoughts:
 Tabs, filters, and table row selection need a selected state that is not
 color alone.
 
+Design the valid combinations, not only the base look: selected + hover,
+selected + focus, invalid + focus, disabled + hover. Each must keep its
+text readable on the surface it actually sits on and its indicator
+readable on the surface it is drawn over. The method is in
+[visual-craft.md](visual-craft.md) (component family).
+
 ## Motion
 
 Motion is optional. Modernity does not require it. Do not ban it, and do

@@ -15,7 +15,7 @@ description: >-
 license: MIT
 metadata:
   author: akifsen
-  version: "0.9.0"
+  version: "0.9.1"
 ---
 
 # Art Director
@@ -95,13 +95,18 @@ Name this before loading a look. The organization's field is not the job.
 | **Native mobile** | Same product identity; platform controls, navigation, keyboard, safe area, touch |
 
 "Photographer" does not mean an editorial ledger. "Technology" does not mean
-a neon terminal. A photographer's delivery tracker is a **product workspace**:
-the jobs, the filter, the selected record, and the delivery edit filling the
-first viewport — not a portfolio landing and not a cream ledger. Do not
-invent KPI tiles, extra destinations, or stock portraits to look finished.
+a neon terminal. A delivery tracker for any trade is a **product workspace**:
+the main task, the record context, and the next action in a deliberate
+priority and relationship — not a portfolio landing. Whether that is a
+compact container, a wide list–detail workspace, or a separate detail page
+follows from content volume, task order, comparison need, and screen size,
+not from a rule that panels fill the viewport or that everything fits above
+the fold. Do not invent KPI tiles, extra destinations, or stock portraits to
+look finished; do not stretch three records across a screen to look busy.
 Do not default to archive, typewriter, or historical-form metaphors unless
 the user asked for nostalgia. Do not swing every interface to dark glass,
-equal rounded cards, or cool-gray sharp system chrome.
+equal rounded cards, or cool-gray sharp system chrome; changing warm to cool,
+serif to sans, or round to sharp is a voice choice, not a quality gain.
 
 Starter fonts, gray boxes, and a look the user already rejected are not a
 brand system to preserve.

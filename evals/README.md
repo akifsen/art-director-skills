@@ -1,5 +1,8 @@
 # Eval method
 
+The [state-craft run](evidence/state-craft-0.9.1/REPORT.md) is the 0.9.1
+record (focus ring vs surrounding surface, selected + hover chip, clean
+same-brief trial with a frozen candidate).
 The [action-quality run](evidence/action-quality-0.9.0/REPORT.md) is the
 follow-up 0.9.0 record (readable inquire action + photographer re-run).
 The [craft-finish run](evidence/craft-finish-0.9.0/REPORT.md) is the fragment
