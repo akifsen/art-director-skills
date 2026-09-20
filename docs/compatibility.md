@@ -95,7 +95,7 @@ Host tools vary. Missing tools are reported, not simulated.
 | Nadir Desk restyle | Source restyle of tokens/type; flows still the CI gate. Visual inspect of the restyle in this session if the desk server was opened |
 | Closeout native restyle | Source only. Device/simulator not opened for 0.9.0 |
 | ThemeForest catalog (user craft reference) | Not seen: Playwright received Cloudflare 403 ("Bir dakika lütfen..."). No demo pages inspected. No layout copied |
-| Independent skill trial on a new brief | Recorded separately in the 0.9.0 evidence file if a clean session ran; otherwise pending |
+| Independent skill trial on a new brief | File-path subagent on Willow Bay (clinic board), not Cursor discovery. Inspected 1280/390/dialog. Not Palatino-on-cream. No 0.8.0 same-brief arm |
 | Hand-corrected Fold Playwright (`--project=seefix`) | Unchanged 0.8.0 wiring |
 | Cursor isolated photographer trial | Historical 0.8.0; that Shoot board look is the problem this release addresses, and that site was not edited |
 

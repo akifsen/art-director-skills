@@ -70,11 +70,41 @@ density redesign). Native Closeout was not opened on a device.
 
 ## Independent skill trial
 
-Recorded in this folder if a file-path subagent ran on a new brief. That
-result is **not** the hand-finished Rail Still. Cursor natural selection of
-0.9.0 was not run in a fresh chat.
+**Kind:** file-path subagent, not Cursor natural discovery and not a
+second-chat `/art-director` run. Agent: [Willow Bay trial](e008a3ba-1b81-43de-8a54-72c03116c8da).
+Brief: `evals/outputs/craft-trial-0.9.0/brief.md` (clinic discharge board).
+Skill copy: this worktree `skills/art-director` at 0.9.0. New references were
+available (that is the point of testing the candidate). A 0.8.0 baseline arm
+was **not** re-run in a clean session; the kept weak result is the 0.8.0
+Shoot board photographer trial (cream ledger).
+
+Author inspected `http://127.0.0.1:5221/` on 2026-09-20:
+
+| File | What I saw |
+|---|---|
+| [willow-bay-1280.png](willow-bay-1280.png) | List/detail discharge board, sage workspace, sans type, demo banner. Not Palatino, not cream ledger, not Rail Still copper catalog |
+| [willow-bay-dialog-1280.png](willow-bay-dialog-1280.png) | Note dialog with animal identity, Save/Cancel, session-honest copy |
+| [willow-bay-390.png](willow-bay-390.png) | Stacked mast, horizontal pickup scroller, chart still the task |
+
+Craft questions (this author, these screens only):
+
+- Composition: complete enough for the job (queue + chart). Not a marketing hero.
+- Type: grotesque roles, sentence case. Character is a clinic board, not a poster.
+- Media: none required; a small SVG mark only. Appropriate for data work.
+- Components: tickets, status words, dialog, buttons share one family.
+- Main task: afternoon discharges and the note are obvious.
+- Narrow: separately stacked; not a shrunk catalog.
+- Related state: dialog seen; save/empty-validation not fully walked by this author after the agent’s own pass.
+
+Did not swing to the old ledger. Residual: a faint brand wash on the canvas;
+pickup names on mobile live in a horizontal scroller that needs a swipe.
+
+No 0.8.0 vs 0.9.0 same-brief pair. Cursor natural selection of 0.9.0 is still
+unverified.
 
 ## Tests / publish
 
-See the 0.9.0 changelog and CI on the PR. Do not treat a version bump as
-delivery until tests and the PR checks are recorded.
+Local, this session: `npm test` passed (0.9.0). `npm run test:examples:build`
+built kiln, desk, and Rail Still. Playwright `--project=flows` 17/17.
+`npm run pack-skill` wrote `dist/art-director-skill.zip`. Native device not
+run. Public tag/release not cut here.
