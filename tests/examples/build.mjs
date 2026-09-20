@@ -39,6 +39,11 @@ if (process.env.ART_DIRECTOR_CRAFT === '1') {
 
 if (process.env.ART_DIRECTOR_SEEFIX === '1') {
   build('evals/apps/fold-corrected/vite.config.js');
+  const foldDir = path.join(root, "evals/artifacts/fold-corrected");
+  const foldHtml = fs.readFileSync(path.join(foldDir, "index.html"), "utf8");
+  assert.match(foldHtml, /<div id="root">/);
+  const foldAssets = fs.readdirSync(path.join(foldDir, "assets"));
+  assert.ok(foldAssets.some((f) => f.endsWith(".js")), "fold-corrected production bundle missing");
 }
 
 const kilnDir = path.join(root, "evals/artifacts/kiln-queue");

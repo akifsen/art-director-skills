@@ -68,10 +68,13 @@ assert(skillMd.includes("native-mobile.md"), "SKILL.md routes native work to nat
 assert(skillMd.includes("completeness-and-states.md"), "SKILL.md routes scope to completeness-and-states.md");
 assert(/finished product interface|visually finished|finished craft/.test(skillMd), "promise mentions finished craft");
 assert(!/sodium/i.test(skillMd), "main skill is not tied to a sodium/eval example");
-assert((data.metadata && data.metadata.version) === "0.7.0", `version 0.7.0 (got ${data.metadata && data.metadata.version})`);
+assert((data.metadata && data.metadata.version) === "0.8.0", `version 0.8.0 (got ${data.metadata && data.metadata.version})`);
 assert(skillMd.includes("working surface"), "SKILL.md names a working surface, not only a hero");
-assert(skillMd.includes("Which real image and state"), "SKILL.md requires a see-and-correct checkpoint");
-assert(skillMd.includes("independent host use"), "SKILL.md separates independent host use from this chat");
+assert(!skillMd.includes("independent host use"), "distributed skill does not load host-eval protocol");
+assert(!skillMd.includes("authoring chat"), "distributed skill does not mention this authoring chat");
+assert(!skillMd.includes("Which real image and state"), "distributed skill does not require an eval checkpoint form");
+assert(fs.existsSync(path.join(root, "evals", "HOST-TRIAL.md")), "host-trial method is in evals");
+assert(fs.readFileSync(path.join(root, "evals", "HOST-TRIAL.md"), "utf8").includes("This development chat is not independent host use"), "evals keep the honest host-trial distinction");
 assert(!skillMd.includes("disable-model-invocation: true"), "implicit invocation allowed");
 assert(!/^allowed-tools:/m.test(skillMd), "no allowed-tools permission expansion");
 

@@ -3,8 +3,12 @@
 .demo{background:transparent;color:var(--muted);text-align:left;border-bottom:1px solid var(--line);padding:8px 5%}
 .picked-line{margin:8px 0 0;font-size:14px;color:var(--muted)}
 @media(max-width:720px){
-.demo{padding:8px 6%}
+.demo{padding:6px 6%}
+header{padding:12px 6%}
+main>.quiet{margin-top:8px}
 .picked{padding-bottom:4px}
+.picked .eyebrow{margin-bottom:8px}
+.detail{padding-top:8px;gap:16px}
 .detail h1{font-size:26px;letter-spacing:-.7px;line-height:1.18}
 .detail .lead,.booking .eyebrow{display:none}
 .facts{display:none}
