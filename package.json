@@ -3,7 +3,17 @@
   "private": true,
   "description": "Maintainer tooling for the art-director Agent Skill. Not a published npm package and not required to use the skill.",
   "type": "module",
+  "bin": {
+    "art-director-skill": "tooling/install-skill.mjs"
+  },
+  "files": [
+    "skills/",
+    "tooling/install-skill.mjs",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
+    "install-skill": "node tooling/install-skill.mjs",
     "test": "node tests/run.mjs",
     "test:examples": "node tests/examples/run.mjs",
     "test:examples:build": "node tests/examples/build.mjs",

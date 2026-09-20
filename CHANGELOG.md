@@ -25,6 +25,22 @@
   order, comparison need, and screen size. Add working-surface craft
   decisions (type levels, surfaces, row priority, control family, equal
   finish across list/detail/form, wide vs narrow).
+- Run a clean same-brief trial on the frozen candidate (no coaching, no
+  author patch) and inspect it live: selected + hover chip 15.66:1, real
+  Tab focus ring 13.67:1 against the canvas, full list → detail → edit →
+  error → save → cancel flow, unknown id and filter. Gaps kept as producer
+  output: 13px muted text 4.05:1, 38px chips on 390.
+- Add `tooling/install-skill.mjs` (also `npm run install-skill` and the
+  `art-director-skill` bin for `npx github:akifsen/art-director-skills`):
+  copies the skill folder to the vendor-documented path for Claude Code,
+  Cursor, GitHub Copilot, Kiro, Codex, Qoder, Roo Code, Gemini CLI,
+  OpenCode, Continue, CodeBuddy, Droid and Kilo Code (`--ai <ids|all>`,
+  `--global`, `--force`, `status`, `remove`). No network, no telemetry,
+  hash-verified copy. Uses its own copy/delete loops because Node 24
+  `fs.rmSync` deleted nothing (and did not throw) on a Windows path with
+  Turkish letters. Install-tested for all thirteen in
+  `tests/install-targets.mjs`; per-host discovery status stays separate in
+  `docs/compatibility.md`.
 
 See [dated evidence](evals/evidence/state-craft-0.9.1/REPORT.md).
 

@@ -22,6 +22,49 @@ Checked against https://agentskills.io/specification (retrieved 2026-09-17):
 - Optional `references/` and `assets/`
 - Relative links from `SKILL.md` are one level deep
 
+## Supported assistants
+
+The skill is one folder in the Agent Skills format, so any host that reads
+that format can load it. `tooling/install-skill.mjs` writes the folder to
+the path each vendor documents (see [installation.md](installation.md#bundled-installer)
+for the table with sources). Statuses below are per assistant and stay
+separate; **install tested** means `tests/install-targets.mjs` copied the
+tree to that path and verified the hashes in a temp project on this
+machine, not that the host was opened.
+
+| `--ai` | Assistant | Structure verified | Install tested | Client discovered | Used on a task |
+|---|---|---|---|---|---|
+| `cursor` | Cursor | yes | yes | yes — `.cursor/skills` file-path trials, 0.8.0 natural selection on the first brief ([TRIAL](../evals/evidence/ci-seefix-0.8.0/TRIAL.md)) | yes — photographer trials 0.8.0 → 0.9.1 (file-path subagent, not GUI discovery) |
+| `codex` | Codex CLI / IDE | yes | yes | not run | not run |
+| `claude` | Claude Code | yes | yes | not run | not run |
+| `copilot` | GitHub Copilot (VS Code, CLI, cloud agent) | yes | yes | not run | not run |
+| `kiro` | Kiro | yes | yes | not run | not run |
+| `qoder` | Qoder IDE / CLI | yes | yes | not run | not run |
+| `roocode` | Roo Code | yes | yes | not run | not run |
+| `gemini` | Gemini CLI | yes | yes | not run | not run |
+| `opencode` | OpenCode | yes | yes | not run | not run |
+| `continue` | Continue IDE extension | yes | yes | not run | not run |
+| `codebuddy` | CodeBuddy CLI | yes | yes | not run | not run |
+| `droid` | Droid (Factory) | yes | yes | not run | not run |
+| `kilocode` | Kilo Code | yes | yes | not run | not run |
+
+"Not run" means no session of that host was opened by the maintainer. It is
+not a claim that the host fails. Vendor-specific requirements that are
+known:
+
+- Kiro custom agents need `skill://.kiro/skills/**/SKILL.md` in
+  `resources`; the default agent needs nothing.
+- Gemini CLI loads workspace skills only from a trusted folder.
+- OpenCode, Copilot, Gemini CLI, Kilo Code, Codex and Cursor also read
+  `.agents/skills/` and/or `.claude/skills/`; installing to several of
+  those trees in one project lists the skill more than once.
+- Roo Code, Kilo Code, Continue, CodeBuddy and Droid paths come from the
+  Vercel `skills` agent table (re-checked 2026-09-21) rather than a vendor
+  page read directly by the maintainer. Kilo's own docs also list a newer
+  `.kilo/skills/` tree.
+- The `name` frontmatter (`art-director`) matches the folder name, which
+  OpenCode, VS Code Copilot and Kiro require.
+
 ## Cursor
 
 Sources: https://cursor.com/docs/skills.md (retrieved 2026-09-20).
@@ -93,7 +136,8 @@ Host tools vary. Missing tools are reported, not simulated.
 | Shoot board selected-filter hover | Fixed in a separate hand-corrected copy `evals/outputs/shoot-board-0.9.0-corrected` (eval output, not the distributed skill). Built and tested in the `seefix` project: selected/hover/focus pairs plus list → detail → edit → error → save → cancel. Original 0.9.0 output kept |
 | State-combination guidance | visual-craft, responsive-interaction, native-mobile (native controls, not CSS/ARIA) |
 | Container decision | SKILL.md and product-ui-system no longer prescribe filling the first viewport; container follows content, task order, comparison need, and screen size |
-| Clean same-brief trial with the frozen 0.9.1 candidate | See [state-craft evidence](../evals/evidence/state-craft-0.9.1/REPORT.md) for what was run, by which kind of session, and what remains pending |
+| Clean same-brief trial with the frozen 0.9.1 candidate | File-path subagent on the unchanged candidate, no coaching; live inspection at 1280 and 390 with real Tab traversal. See [state-craft evidence](../evals/evidence/state-craft-0.9.1/REPORT.md) |
+| Bundled installer for thirteen assistants | Install tested (`tests/install-targets.mjs`, project + global, Turkish/space paths). Client discovery per host: see [Supported assistants](#supported-assistants) |
 
 See [0.9.1 evidence](../evals/evidence/state-craft-0.9.1/REPORT.md).
 

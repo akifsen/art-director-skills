@@ -241,6 +241,14 @@ process.stdout.write(helperTests.stdout || "");
 process.stderr.write(helperTests.stderr || "");
 assert(helperTests.status === 0, "npx spawn and unique JSON key checks");
 
+const installerTests = spawnSync(process.execPath, [path.join(root, "tests", "install-targets.mjs")], {
+  encoding: "utf8",
+  cwd: root
+});
+process.stdout.write(installerTests.stdout || "");
+process.stderr.write(installerTests.stderr || "");
+assert(installerTests.status === 0, "installer writes the same tree to every supported assistant path");
+
 if (failed) {
   console.error(`\n${failed} failure(s)`);
   process.exit(1);

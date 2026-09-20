@@ -5,17 +5,87 @@ The skill is a directory. If `skills/art-director/` (with `SKILL.md`,
 by copying that folder into a host discovery path. No MCP server, API key,
 or extra daemon is required for that.
 
-The commands below use Vercel Labs' third-party `skills` CLI. That CLI is
-not this product. It may use the network. See [Telemetry](#telemetry).
+Two install paths are documented:
 
-Verified against the CLI docs at https://github.com/vercel-labs/skills and
-https://vercel-labs-skills.mintlify.app/commands/add (retrieved 2026-09-17).
+1. The bundled installer `tooling/install-skill.mjs` (this repository,
+   Node ≥ 20, no dependencies, no network, no telemetry). It supports the
+   thirteen assistants listed under [Bundled installer](#bundled-installer).
+2. Vercel Labs' third-party `skills` CLI. That CLI is not this product. It
+   may use the network. See [Telemetry](#telemetry). Verified against the
+   CLI docs at https://github.com/vercel-labs/skills and
+   https://vercel-labs-skills.mintlify.app/commands/add (retrieved
+   2026-09-17; agent table re-checked 2026-09-21).
+
+## Bundled installer
+
+```sh
+node tooling/install-skill.mjs install --ai <ids|all> [--global] [--force]
+node tooling/install-skill.mjs status  --ai <ids|all>
+node tooling/install-skill.mjs remove  --ai <ids|all> [--global]
+node tooling/install-skill.mjs list
+npm run install-skill -- install --ai cursor      # same thing through npm
+npx --yes github:akifsen/art-director-skills install --ai cursor   # without a clone
+```
+
+| `--ai` | Assistant | Project path | Global path | Vendor source |
+|---|---|---|---|---|
+| `claude` | Claude Code | `.claude/skills/` | `~/.claude/skills/` | Claude Code skills docs |
+| `cursor` | Cursor | `.cursor/skills/` | `~/.cursor/skills/` | https://cursor.com/docs/skills |
+| `copilot` | GitHub Copilot in VS Code, Copilot CLI, cloud agent | `.github/skills/` | `~/.copilot/skills/` | https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills |
+| `kiro` | Kiro | `.kiro/skills/` | `~/.kiro/skills/` | https://kiro.dev/docs/skills/ |
+| `codex` | Codex CLI / IDE | `.agents/skills/` | `~/.agents/skills/` | https://developers.openai.com/codex/skills/ |
+| `qoder` | Qoder IDE / CLI | `.qoder/skills/` | `~/.qoder/skills/` | https://docs.qoder.com/extensions/skills |
+| `roocode` | Roo Code | `.roo/skills/` | `~/.roo/skills/` | Roo Code skills docs; Vercel agent table |
+| `gemini` | Gemini CLI | `.gemini/skills/` | `~/.gemini/skills/` | https://geminicli.com/docs/cli/using-agent-skills/ |
+| `opencode` | OpenCode | `.opencode/skills/` | `~/.config/opencode/skills/` | https://opencode.ai/docs/skills/ |
+| `continue` | Continue IDE extension | `.continue/skills/` | `~/.continue/skills/` | Vercel agent table |
+| `codebuddy` | CodeBuddy CLI | `.codebuddy/skills/` | `~/.codebuddy/skills/` | Vercel agent table |
+| `droid` | Droid (Factory) | `.factory/skills/` | `~/.factory/skills/` | Vercel agent table |
+| `kilocode` | Kilo Code | `.kilocode/skills/` | `~/.kilocode/skills/` | Vercel agent table; Kilo also reads `.agents/skills/` and its newer `.kilo/skills/` |
+| `all` | every row above | | | |
+
+Behaviour:
+
+- Copies `skills/art-director/` file by file (`mkdirSync` + `copyFileSync`)
+  and verifies the SHA256 of the copied tree against the source before it
+  reports `installed`. No symlinks.
+- An existing `art-director` folder is **kept** unless `--force` is passed;
+  `--force` deletes and recopies it. Back up local edits first.
+- `remove` deletes only a folder that contains `SKILL.md`; anything else
+  at that path is left alone.
+- `status` prints `current`, `differs` (exit code 2), or `absent`.
+- Nothing is written outside the chosen skill directory. No lockfile, no
+  network, no telemetry.
+- `fs.cpSync` and `fs.rmSync` are not used: on this Windows authoring
+  machine with Node 24, both returned without doing their job on a path
+  that contained Turkish letters (`rmSync` deleted nothing and did not
+  throw). The installer's own copy and delete loops are covered by
+  `tests/install-targets.mjs` under a project path with Turkish letters and
+  a space.
+
+Notes printed after install:
+
+- Kiro: the default agent loads `.kiro/skills/`; a custom agent needs
+  `"skill://.kiro/skills/**/SKILL.md"` in its `resources`.
+- Gemini CLI: workspace skills load only from a trusted folder; run
+  `/skills reload`.
+
+`--ai all` writes thirteen copies into one project. Cursor, Codex, Copilot,
+Gemini CLI, OpenCode, Kilo Code and Claude-compatible hosts also read
+`.agents/skills/` or `.claude/skills/`, so they will list the skill more
+than once. Name the assistants you actually use.
+
+What the installer proves: the copy exists at the vendor-documented path
+with the same hashes as the source (**install tested** for all thirteen).
+What it does not prove: that a given host build listed or used the skill in
+a real session (**client discovered / used on a task**). Those rows are in
+[compatibility.md](compatibility.md#supported-assistants).
 
 ## Project vs user scope
 
 | Scope | Typical flag | Effect |
 |---|---|---|
-| Project (default) | none | Files land in the current repo (for Cursor via this CLI, `.agents/skills/`) and can be committed with the project |
+| Project (default) | none | Files land in the current repo (bundled installer: the vendor's project path, e.g. `.cursor/skills/`; Vercel CLI for Cursor: `.agents/skills/`) and can be committed with the project |
 | User / global | `-g` / `--global` | Files land in a home-directory skills folder and apply across projects |
 
 Do not use `--global` unless you want the skill on every project on this
@@ -57,7 +127,7 @@ New-Item -ItemType Directory -Force .agents\skills | Out-Null
 Copy-Item -Recurse -Force path\to\art-director-skills\skills\art-director .agents\skills\art-director
 ```
 
-## CLI from a local folder (test this first)
+## Vercel CLI from a local folder (test this first)
 
 From a **different** project directory, so this repo is only a source:
 
@@ -87,7 +157,7 @@ npx skills add C:\path\to\art-director-skills --skill art-director --agent codex
 Do not pass both `--agent cursor` and `--agent codex` if you are trying to
 avoid two copies. Cursor already reads `.agents/skills/` in many setups.
 
-## CLI from GitHub
+## Vercel CLI from GitHub
 
 This repository is public at `akifsen/art-director-skills`. Network install
 is optional; manual copy still works offline.
@@ -154,7 +224,15 @@ New-Item -ItemType Directory -Force (Split-Path $skillTarget) | Out-Null
 Copy-Item -LiteralPath $skillSource -Destination $skillTarget -Recurse
 ```
 
-If you installed with the CLI:
+With the bundled installer (the target folder is replaced only with
+`--force`):
+
+```sh
+node tooling/install-skill.mjs status  --ai cursor
+node tooling/install-skill.mjs install --ai cursor --force
+```
+
+If you installed with the Vercel CLI:
 
 ```sh
 npx skills add akifsen/art-director-skills --skill art-director --agent cursor --copy --yes
