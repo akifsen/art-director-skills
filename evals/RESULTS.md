@@ -1,7 +1,8 @@
 # Eval results
 
-Latest separate record: [action quality 0.9.0](evidence/action-quality-0.9.0/REPORT.md),
-2026-09-20. Previous same-day fragment rewrite:
+Latest separate record: [state craft 0.9.1](evidence/state-craft-0.9.1/REPORT.md),
+2026-09-21. Previous: [action quality 0.9.0](evidence/action-quality-0.9.0/REPORT.md),
+2026-09-20, and the same-day fragment rewrite:
 [craft finish 0.9.0](evidence/craft-finish-0.9.0/REPORT.md). Previous:
 [CI seefix / skill split 0.8.0](evidence/ci-seefix-0.8.0/REPORT.md).
 The [native craft / two normal briefs](evidence/native-craft-2026-09-19/REPORT.md)

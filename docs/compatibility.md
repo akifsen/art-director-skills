@@ -85,7 +85,19 @@ folder is universal.
 
 Host tools vary. Missing tools are reported, not simulated.
 
-## Current evidence (0.9.0)
+## Current evidence (0.9.1)
+
+| Surface | Status |
+|---|---|
+| Rail Still keyboard focus | Ring now uses the ink `--rs-focus` token; Playwright measures the ring against the composited surface it is drawn over (`surfaceAt`), 1280 and 390. Previous check compared the ring with the button fill and passed while the real ring was 1.00:1 |
+| Shoot board selected-filter hover | Fixed in a separate hand-corrected copy `evals/outputs/shoot-board-0.9.0-corrected` (eval output, not the distributed skill). Built and tested in the `seefix` project: selected/hover/focus pairs plus list → detail → edit → error → save → cancel. Original 0.9.0 output kept |
+| State-combination guidance | visual-craft, responsive-interaction, native-mobile (native controls, not CSS/ARIA) |
+| Container decision | SKILL.md and product-ui-system no longer prescribe filling the first viewport; container follows content, task order, comparison need, and screen size |
+| Clean same-brief trial with the frozen 0.9.1 candidate | See [state-craft evidence](../evals/evidence/state-craft-0.9.1/REPORT.md) for what was run, by which kind of session, and what remains pending |
+
+See [0.9.1 evidence](../evals/evidence/state-craft-0.9.1/REPORT.md).
+
+## Previous evidence (0.9.0, not tagged)
 
 | Surface | Status |
 |---|---|
