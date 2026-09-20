@@ -68,7 +68,7 @@ assert(skillMd.includes("native-mobile.md"), "SKILL.md routes native work to nat
 assert(skillMd.includes("completeness-and-states.md"), "SKILL.md routes scope to completeness-and-states.md");
 assert(/finished product interface|visually finished|finished craft/.test(skillMd), "promise mentions finished craft");
 assert(!/sodium/i.test(skillMd), "main skill is not tied to a sodium/eval example");
-assert((data.metadata && data.metadata.version) === "0.9.0", `version 0.9.0 (got ${data.metadata && data.metadata.version})`);
+assert((data.metadata && data.metadata.version) === "0.9.1", `version 0.9.1 (got ${data.metadata && data.metadata.version})`);
 assert(skillMd.includes("Job of the screen"), "SKILL.md names job vs domain");
 assert(skillMd.includes("product workspace"), "SKILL.md names photographer tracker as product workspace, not a landing");
 assert(skillMd.includes("media-portfolio.md"), "SKILL.md routes media work to media-portfolio");
@@ -104,7 +104,20 @@ assert(!/^Copy layout, assets, or brand/m.test(research), "visual-research does 
 
 const productUi = fs.readFileSync(path.join(root, "skills", "art-director", "references", "product-ui-system.md"), "utf8");
 assert(productUi.includes("thin card on a large empty canvas"), "product-ui-system rejects a postage-stamp ops board");
+assert(productUi.includes("stretched edge to edge"), "product-ui-system rejects filling the viewport as a quality rule");
 assert(productUi.includes("stretched to fill leftover"), "product-ui-system rejects a stretched primary action");
+assert(/first viewport \*\*is\*\*/.test(productUi) === false, "product-ui-system no longer declares the first viewport must be the workspace");
+assert(!/filling the\s+first viewport/.test(skillMd), "SKILL.md does not prescribe filling the first viewport");
+assert(skillMd.includes("voice choice, not a quality gain"), "SKILL.md separates palette/serif/radius swaps from quality");
+
+const craft = fs.readFileSync(path.join(root, "skills", "art-director", "references", "visual-craft.md"), "utf8");
+assert(craft.includes("Design the valid state combinations"), "visual-craft teaches state combinations, not base looks");
+assert(craft.includes("Working-surface craft"), "visual-craft names list/detail/form craft decisions");
+assert(!/focus-visible \{ outline: 2px solid currentColor/.test(craft), "visual-craft fragment does not teach a currentColor ring");
+const responsive = fs.readFileSync(path.join(root, "skills", "art-director", "references", "responsive-interaction.md"), "utf8");
+assert(responsive.includes("selected + hover"), "responsive-interaction lists co-occurring states");
+const nativeStates = fs.readFileSync(path.join(root, "skills", "art-director", "references", "native-mobile.md"), "utf8");
+assert(nativeStates.includes("selected + pressed") && nativeStates.includes("not CSS pseudo-classes"), "native guide applies state pairs through native controls");
 
 const polish = fs.readFileSync(path.join(root, "skills", "art-director", "references", "polish-pass.md"), "utf8");
 assert(polish.includes("Gate A") && polish.includes("Gate C") && polish.includes("Gate D"), "polish-pass has four gates");
@@ -118,7 +131,9 @@ assert(visualReview.includes("toBeVisible"), "visual-review does not treat prese
 const railCss = fs.readFileSync(path.join(root, "skills", "art-director", "references", "examples", "media-portfolio", "styles.css"), "utf8");
 assert(!/\.rs a\s*\{[^}]*color:\s*inherit/.test(railCss), "rail link reset is not more specific than .rs-mail");
 assert(/^a \{ color: inherit; \}$/m.test(railCss), "rail uses an element-only link color reset");
-assert(railCss.includes("currentColor"), "rail focus outline follows the control's type color");
+assert(/outline:\s*2px solid var\(--rs-focus\)/.test(railCss), "rail focus ring uses a surface-contrast token");
+assert(!/outline:[^;]*currentColor/.test(railCss), "rail focus ring is not currentColor (paper ring on paper surface)");
+assert(/--rs-focus:\s*var\(--rs-ink\)/.test(railCss), "rail focus token is ink, readable on canvas and paper");
 
 const finishStudy = fs.readFileSync(path.join(root, "skills", "art-director", "references", "studies", "wireframe-to-finish.md"), "utf8");
 assert(finishStudy.includes("this catalog's voice"), "finish study labels cool stone as this catalog, not universal quality");

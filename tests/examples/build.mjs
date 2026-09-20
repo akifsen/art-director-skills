@@ -45,6 +45,14 @@ if (process.env.ART_DIRECTOR_SEEFIX === '1') {
   assert.match(foldHtml, /<div id="root">/);
   const foldAssets = fs.readdirSync(path.join(foldDir, "assets"));
   assert.ok(foldAssets.some((f) => f.endsWith(".js")), "fold-corrected production bundle missing");
+
+  build('evals/apps/shoot-board-corrected/vite.config.js');
+  const shootDir = path.join(root, "evals/artifacts/shoot-board-corrected");
+  assert.match(fs.readFileSync(path.join(shootDir, "index.html"), "utf8"), /<div id="root">/);
+  const shootAssets = fs.readdirSync(path.join(shootDir, "assets"));
+  const shootJs = shootAssets.find((f) => f.endsWith(".js"));
+  assert.ok(shootJs, "shoot-board-corrected production bundle missing");
+  assert.match(fs.readFileSync(path.join(shootDir, "assets", shootJs), "utf8"), /Teslimatı düzenle/);
 }
 
 const kilnDir = path.join(root, "evals/artifacts/kiln-queue");

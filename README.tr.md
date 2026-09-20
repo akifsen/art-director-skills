@@ -25,6 +25,9 @@ işçilik, kapsam, platform/erişilebilirlik) ayır.
 Geniş DESIGN işinde ilk gerçek ekranı görsel olarak inceleyip gerekli
 düzeltmeyi yapmadan tasarımı bütün ekranlara yaymaz. Engellenmiş kontrol,
 geçmiş kontrol sayılmaz: tamamlandı / kısmi teslim / tamamlanmadı ayrılır.
+0.9.1: seçili+hover ve focus halkası gibi durum birleşimlerinin tasarlanması,
+halkanın üzerinde durduğu yüzeye göre ölçülmesi, "ilk viewport'u doldur"
+yerine içerikten gelen kap kararı. [0.9.1 kanıt](evals/evidence/state-craft-0.9.1/REPORT.md).
 0.9.0: iş türü ayrımı, Palatino/krem varsayılanının kırılması (yerine soğuk
 gri keskin reçete koymadan), Rail Still öğreticisi ve okunur inquire eylemi.
 [0.9.0 kanıt](evals/evidence/craft-finish-0.9.0/REPORT.md);

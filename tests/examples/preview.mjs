@@ -36,6 +36,11 @@ apps['fold-corrected'] = {
   out: 'evals/artifacts/fold-corrected',
   port: '5205'
 };
+apps['shoot-board-corrected'] = {
+  config: 'evals/apps/shoot-board-corrected/vite.config.js',
+  out: 'evals/artifacts/shoot-board-corrected',
+  port: '5206'
+};
 const app = apps[process.argv[2]];
 if (!app) {
   console.error(`usage: node tests/examples/preview.mjs ${Object.keys(apps).join('|')}`);

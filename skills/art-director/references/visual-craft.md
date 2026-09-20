@@ -112,6 +112,31 @@ Finish the states you ship:
   values, not a contest)
 - Icon + text: align to the text x-height, not optically drifting above it
 
+**Design the valid state combinations, not the base look.** Selected,
+hover, focus, disabled, and validation styles must not break each other's
+text, surface, and indicator pairs. Check the pairs that can actually
+co-occur: selected + hover, selected + focus, invalid + focus, disabled
++ hover. Two traps recur:
+
+- A hover rule written for the rest state (`.chip:hover { background:
+  light }`) outranks the selected class (`.chip--on`) because the
+  pseudo-class adds specificity, so the selected light label lands on the
+  light hover surface. Restate the selected surface for hover with its own
+  tone, or write the selected rule at equal or higher specificity after
+  hover. Order and specificity are the method; the class names are not.
+- A focus ring drawn with `outline-offset` sits **outside** the control,
+  so it must contrast with the surface around the control, not with the
+  control's own type. `currentColor` on a light-on-dark button paints a
+  light ring on a light page. Use a focus token chosen against the
+  surrounding surface; on mixed surfaces a two-tone ring (light inner,
+  dark outer) is the honest answer.
+
+Measure text against the surface it actually sits on (composited, not the
+first ancestor's `background`) and the ring against the surface it is
+drawn over. Native controls have the same combinations through pressed,
+selected, disabled, and `accessibilityState`; see
+[native-mobile.md](native-mobile.md).
+
 **Common failure.** Hero button is a bright pill; footer links are raw
 blue underlines; the nav hover is a browser default. Three products.
 
@@ -120,6 +145,7 @@ action). A clinic may share a `0.45rem` radius; a ceramic shed may use
 `2px`. Quality is that relatives match, not the number:
 
 ```css
+:root { --focus: #121417; } /* chosen against the page surfaces, not the label */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -130,15 +156,16 @@ action). A clinic may share a `0.45rem` radius; a ceramic shed may use
   border: 1px solid rgb(18 20 23 / 14%);
   font: inherit;
 }
-.btn:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 .btn--solid { background: #121417; color: #f6f7f9; border-color: transparent; }
 ```
 
-A filled action must keep type and focus visible on its fill. A `color:
-inherit` rule on `a` that is more specific than the action class paints
-the label in the same ink as the fill. Keep that reset at element
-specificity, or let the action class win. `toBeVisible` does not prove
-the label can be read.
+A filled action must keep type readable on its fill and its focus ring
+readable on the surface around it. A `color: inherit` rule on `a` that is
+more specific than the action class paints the label in the same ink as
+the fill. Keep that reset at element specificity, or let the action class
+win. `toBeVisible` does not prove the label can be read; an outline that
+exists does not prove the ring can be seen.
 
 Footer, tabs, and inputs should reuse the same radius and hairline story,
 not invent a new one.
@@ -148,6 +175,33 @@ commit action from Cancel and back navigation through label, placement and
 surface weight, not hue alone. A quiet action still needs a readable label,
 pressed/focus feedback and a full touch target. Check the same roles on the
 detail and success surfaces; making every control prominent erases priority.
+
+## Working-surface craft (list, detail, form)
+
+These are decisions to make on purpose for a product tool. They are not
+numbers to copy.
+
+- **Type scale across levels.** Product name, screen title, record name,
+  and metadata are four levels. Give them a deliberate size and weight
+  relation (for example product name quiet and small, screen title the
+  largest, record name a clear step below, meta smallest but still
+  readable). Two levels set to the same size read as one.
+- **Surfaces.** Canvas, working surface, selected region, and interactive
+  controls should be distinguishable without being four unrelated colors.
+  A 3–8% lightness step plus one hairline usually does it. Painting
+  everything in two flat tones is not restraint; it removes the map.
+- **Row priority.** In a record row decide the order: name, then client
+  or owner, then status, then date — or whatever the task ranks. Helper
+  text is smaller, not faint; muted text still meets the text threshold.
+- **Control family.** Filter chips, buttons, badges, fields, and the
+  dialog share height, padding, border, radius, and icon–label alignment.
+  A chip that is 2px shorter than the button beside it is a second family.
+- **Equal finish across screens.** The list, the detail, and the form are
+  the same product. A polished list with a browser-default form is not done.
+- **Wide and narrow are two designs.** On a narrow screen a repeated
+  product name, kicker, and record header can push the task below the
+  fold. Keep one compact identity line; do not restate the same metadata
+  twice above the first field.
 
 ## Cross-project sameness
 

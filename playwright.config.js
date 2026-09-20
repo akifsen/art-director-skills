@@ -30,7 +30,7 @@ export default defineConfig({
     { name: "flows", testMatch: /kiln-flow|nadir-desk|narrow-flow|rail-flow/ },
     { name: "quality", testMatch: /library-flow|existing-flow/ },
     { name: "craft", testMatch: /fold-flow/ },
-    { name: "seefix", testMatch: /fold-corrected/ },
+    { name: "seefix", testMatch: /fold-corrected|shoot-board-corrected/ },
     { name: "visual", testMatch: /visual-capture/ }
   ],
   webServer: [
@@ -45,6 +45,11 @@ export default defineConfig({
       [{
         command: 'node tests/examples/preview.mjs fold-corrected',
         url: 'http://127.0.0.1:5205',
+        timeout: 60000,
+        reuseExistingServer: false
+      }, {
+        command: 'node tests/examples/preview.mjs shoot-board-corrected',
+        url: 'http://127.0.0.1:5206',
         timeout: 60000,
         reuseExistingServer: false
       }] : []),

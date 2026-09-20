@@ -11,7 +11,9 @@ import {
   RAIL,
   contrastRatio,
   gotoApp,
-  parseRgb
+  parseRgb,
+  ringPoint,
+  surfaceAt
 } from "./helpers.js";
 
 const artifacts = path.resolve(
@@ -21,6 +23,33 @@ const artifacts = path.resolve(
 
 /** WCAG 2 AA for normal text. This label is ~1.05rem / weight 600, not large text. */
 const AA_NORMAL = 4.5;
+/**
+ * WCAG 2.2 SC 1.4.11 Non-text Contrast (AA): a focus indicator needs 3:1
+ * against adjacent colors. With a positive `outline-offset` the adjacent
+ * color is the surface the ring sits on, not the control's fill. Passing
+ * this one pair is not a full 1.4.11 / 2.4.13 audit.
+ */
+const NON_TEXT = 3;
+
+/** Ring stroke vs the composited surface it is painted over, plus a checked rest→focus change. */
+async function expectVisibleRing(page, locator, rest, focused, label) {
+  expect(focused.outlineStyle, `${label}: outline style`).not.toBe("none");
+  const width = Number.parseFloat(focused.outlineWidth);
+  expect(width, `${label}: outline width`).toBeGreaterThanOrEqual(2);
+  const restWidth = rest.outlineStyle === "none" ? 0 : Number.parseFloat(rest.outlineWidth) || 0;
+  expect(restWidth, `${label}: ring appears only on focus`).toBeLessThan(width);
+
+  const point = await ringPoint(locator, focused);
+  expect(point.x, `${label}: ring inside viewport`).toBeGreaterThanOrEqual(0);
+  const behind = await surfaceAt(page, point.x, point.y);
+  expect(behind.hit, `${label}: ring point is outside the control (${behind.hit})`).not.toMatch(/rs-mail/);
+  const ring = parseRgb(focused.outlineColor);
+  const ratio = contrastRatio(ring, behind.rgb);
+  expect(
+    ratio,
+    `${label}: ring ${focused.outlineColor} over ${behind.hit} rgb(${behind.rgb.join(", ")}) = ${ratio.toFixed(2)}:1`
+  ).toBeGreaterThanOrEqual(NON_TEXT);
+}
 
 async function mailLink(page) {
   return page.getByRole("link", { name: "Email the desk" });
@@ -140,35 +169,35 @@ test.describe("rail still — inquire action", () => {
     await page.setViewportSize({ width: 1280, height: 900 });
     await gotoApp(page, RAIL, "/");
     const inquire = page.getByRole("navigation", { name: "Studio" }).getByRole("link", { name: "Inquire" });
+    const link = await mailLink(page);
+    await link.scrollIntoViewIfNeeded();
+    const rest = await paint(link);
     await inquire.focus();
     await page.keyboard.press("Tab");
-    const link = await mailLink(page);
     await expect(link).toBeFocused();
     const focused = await paint(link);
     expectReadableFill(focused, "focus");
-    expect(focused.outlineStyle).not.toBe("none");
-    expect(Number.parseFloat(focused.outlineWidth)).toBeGreaterThanOrEqual(2);
-    const outline = parseRgb(focused.outlineColor);
-    const bg = parseRgb(focused.background);
-    expect(
-      contrastRatio(outline, bg),
-      `focus outline ${focused.outlineColor} on ${focused.background}`
-    ).toBeGreaterThanOrEqual(3);
+    await expectVisibleRing(page, link, rest, focused, "focus 1280");
 
-    await link.scrollIntoViewIfNeeded();
-    await link.screenshot({
-      path: path.join(artifacts, "rail-still-mail-focus-1280.png")
+    // Control plus ring, offset, and the surface around it — not the fill alone.
+    const box = await link.boundingBox();
+    await page.screenshot({
+      path: path.join(artifacts, "rail-still-mail-focus-1280.png"),
+      clip: { x: Math.max(0, box.x - 24), y: Math.max(0, box.y - 24), width: box.width + 48, height: box.height + 48 }
     });
 
     await page.setViewportSize({ width: 390, height: 844 });
+    await link.evaluate((el) => el.blur());
+    await expect(link).not.toBeFocused();
     await link.scrollIntoViewIfNeeded();
+    const restNarrow = await paint(link);
     await inquire.focus();
     await page.keyboard.press("Tab");
     await expect(link).toBeFocused();
     const narrow = await paint(link);
     expectReadableFill(narrow, "focus 390");
     expectUnclippedLabel(narrow, "focus 390");
-    expect(Number.parseFloat(narrow.outlineWidth)).toBeGreaterThanOrEqual(2);
+    await expectVisibleRing(page, link, restNarrow, narrow, "focus 390");
     const nBox = await link.boundingBox();
     expect(nBox.x + nBox.width).toBeLessThanOrEqual(390 + 1);
   });

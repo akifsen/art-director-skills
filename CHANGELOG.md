@@ -1,6 +1,34 @@
 # Changelog
 
-## 0.9.0 — 2026-09-20
+## 0.9.1 — 2026-09-21
+
+- Make the Rail Still focus ring readable: the ring is drawn outside the
+  control, so it now uses an ink `--rs-focus` token against the canvas /
+  paper surface instead of `currentColor` (a paper ring on paper measured
+  1.00:1). Same change in the finished-fragment study and the
+  `visual-craft` applied fragment.
+- Fix the Playwright focus check to compare the ring with the composited
+  surface it is painted over (`surfaceAt` / `ringPoint` helpers), not with
+  the control's own fill. WCAG 2.2 SC 1.4.11 (3:1) is the stated bar for
+  that one pair; a passing check is not a full audit.
+- Add a hand-corrected copy of the Shoot board eval output
+  (`evals/outputs/shoot-board-0.9.0-corrected`): `.chip:hover` outranked
+  `.chip--on` and put the light selected label on the light hover surface
+  (1.09:1). Selected + hover now has its own tone. Built and tested in the
+  existing `seefix` CI project with a full list → detail → edit → error →
+  save → cancel flow. The original 0.9.0 output is kept as recorded.
+- Teach state combinations (selected + hover, selected + focus, invalid +
+  focus, disabled + hover) as a design step in visual-craft,
+  responsive-interaction, and native-mobile (native controls, not CSS/ARIA).
+- Replace "fill the first viewport" wording in SKILL.md and
+  product-ui-system with a container decision from content volume, task
+  order, comparison need, and screen size. Add working-surface craft
+  decisions (type levels, surfaces, row priority, control family, equal
+  finish across list/detail/form, wide vs narrow).
+
+See [dated evidence](evals/evidence/state-craft-0.9.1/REPORT.md).
+
+## 0.9.0 — 2026-09-20 (not tagged)
 
 - Teach job vs domain (portfolio / product workspace / native) so a field
   like photography does not default to an editorial ledger.
