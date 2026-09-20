@@ -98,7 +98,7 @@ Host tools vary. Missing tools are reported, not simulated.
 | Closeout React Native / Expo example | Actual Android Pixel_9/API37 execution recorded in 0.5.0/0.6.0 evidence; not re-run for this release unless a new native regression appears |
 | Daypack ordinary-brief baseline/candidate | Historical 0.6.0 outputs preserved; the hand-corrected copy is source-checked. Device evidence for that copy is pending |
 | iOS, physical devices, VoiceOver/TalkBack | Not run; accessibility props are source evidence, not a screen-reader audit |
-| Cursor isolated workspace | Files and hashes can be prepared (`evals/cursor-trial`). Discovery, natural selection, explicit `/art-director`, and task use remain unverified until a new session records them |
+| Cursor isolated workspace | Isolated photographer trial: natural selection on the first brief; `/art-director` in the same chat. See [TRIAL.md](../evals/evidence/ci-seefix-0.8.0/TRIAL.md). A separate second-chat explicit-only run was not done |
 | Fresh Codex/file-path fallback | Useful and must be labeled separately from Cursor discovery |
 | Expo web as iOS/Android | Not accepted as native verification |
 | Flutter, SwiftUI, Jetpack Compose | Guide: keep the current framework; **not tested** |

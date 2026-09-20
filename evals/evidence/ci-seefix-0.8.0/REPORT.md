@@ -70,8 +70,8 @@ skipped (dispatch-only; not the seefix gate).
 |---|---|
 | A. New test path actually ran | **Yes.** Local 4/4; remote `examples-web` on `7c92b34` 4/4 passed with env `1`. Missing env fails the job |
 | B. Distributed skill split from eval load | **Yes.** `SKILL.md` 0.8.0 has no host-trial protocol. Method is in `evals/HOST-TRIAL.md` |
-| C. Correct skill discovered and used in Cursor | **Pending.** File install + hash match only |
-| D. UI from that Cursor use | **Not produced.** Photographer brief is frozen, not implemented in this chat |
+| C. Correct skill discovered and used in Cursor | **Yes, natural selection** in the isolated photographer workspace. `/art-director` followed in the **same** chat. See [TRIAL.md](TRIAL.md) |
+| D. UI from that Cursor use | **Shoot board** at `127.0.0.1:5220`. List/filter/detail/edit/save/cancel/390 inspected live. Empty filter not reachable with this sample. Next-due strip ignores the active filter |
 
 ## Pier Kettle (authoring-session app, not Cursor trial)
 
@@ -82,8 +82,7 @@ wordmark; do not treat a faint screenshot ghost as a second header.
 
 This does not make Pier Kettle an independent host result.
 
-## Cursor remaining step
+## Cursor trial
 
-`node evals/cursor-trial/prepare.mjs` then open the printed directory as a
-new Cursor workspace. Two **new** chats: (1) paste only `brief.md`; (2)
-`/art-director` plus the same brief. See [USAGE.md](../../cursor-trial/USAGE.md).
+Ran in an isolated temp workspace. Natural selection on the first brief;
+`/art-director` in the same chat. Outcome: [TRIAL.md](TRIAL.md).

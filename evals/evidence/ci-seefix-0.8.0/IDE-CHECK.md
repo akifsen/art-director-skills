@@ -1,4 +1,4 @@
-# Cursor check (0.8.0) — file prep only
+# Cursor check (0.8.0)
 
 Date: 2026-09-20 (Europe/Istanbul).
 This development session edited `skills/art-director` and is **not** an
@@ -21,9 +21,9 @@ Method detail: [HOST-TRIAL.md](../../HOST-TRIAL.md).
 | Claim | Result |
 | --- | --- |
 | Isolated file install | Prepared; SKILL.md SHA256 `dbbd435d…c2375a8` matches source; tree `fafe460c…8f10415`; `.cursor/skills` only |
-| Client discovered skill | Unverified |
-| Natural selection | Not executed |
-| Explicit `/art-director` | Not executed |
-| Skill used in a Cursor task | Unverified |
+| Client discovered skill | **Yes** in the isolated trial: first message was the photographer brief only; the agent read `.cursor/skills/art-director/SKILL.md` |
+| Natural selection | **Executed and selected** (same trial, 3:32). Brief was pasted twice in one message; no slash command |
+| Explicit `/art-director` | Same chat at 3:35, not a second isolated chat |
+| Skill used in a Cursor task | **Yes** — Shoot board React app; see [TRIAL.md](TRIAL.md) |
 
 Do not loop desktop SendInput. A file-path subagent is not Cursor discovery.
