@@ -27,6 +27,12 @@ npm run install-skill -- install --ai cursor      # same thing through npm
 npx --yes github:akifsen/art-director-skills install --ai cursor   # without a clone
 ```
 
+The `npx github:` form was run once from an empty temp directory on this
+Windows machine (2026-09-21, branch `craft-finish`): it wrote
+`.kiro/skills/art-director` and `.opencode/skills/art-director` and printed
+the Kiro note. It needs network for that fetch and uses npm's cache; it
+is still not an npm-published package.
+
 | `--ai` | Assistant | Project path | Global path | Vendor source |
 |---|---|---|---|---|
 | `claude` | Claude Code | `.claude/skills/` | `~/.claude/skills/` | Claude Code skills docs |
@@ -244,7 +250,12 @@ form as install. Then confirm the copied `SKILL.md` metadata version is
 `references/examples/media-portfolio/App.jsx` exists.
 
 Compare file contents too: `Get-FileHash -Algorithm SHA256` on source and
-installed `SKILL.md` detects a stale entrypoint. Maintainer `npm run
+installed `SKILL.md` detects a stale entrypoint. Line endings change that
+hash: a Windows checkout with `core.autocrlf=true` has CRLF, while a copy
+fetched through `npx github:…` or a Linux clone has LF, so the same text
+can show two SHA256 values. `git hash-object <file>` normalises line
+endings and gives the same id for both; the installer's own check compares
+the copy with the source it copied from, so it is unaffected. Maintainer `npm run
 test:install` compares every relative file and SHA256, not just the version.
 If local edits are intentionally reapplied, document that the hash differs.
 
