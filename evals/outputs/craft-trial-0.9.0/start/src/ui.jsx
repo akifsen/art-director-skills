@@ -31,9 +31,5 @@ export function StatusWord({ ready }) {
 }
 
 export function DemoBanner() {
-  return (
-    <p className="demo-banner">
-      Sample records in this tab. Changes stay in this session and are not sent to a clinic system.
-    </p>
-  );
+  return <p className="demo-banner">Sample records in this tab</p>;
 }

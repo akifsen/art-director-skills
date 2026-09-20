@@ -79,10 +79,10 @@ export default function App() {
             <h1 className="mast__title">Willow Bay</h1>
           </div>
         </div>
-        <div className="mast__task">
-          <p className="mast__lead">Afternoon discharges</p>
-          <p className="mast__count">{summary}</p>
-        </div>
+        <p className="mast__lead">
+          Afternoon discharges
+          <span className="mast__count">{summary}</span>
+        </p>
         <DemoBanner />
       </header>
 
@@ -131,35 +131,14 @@ export default function App() {
           ) : (
             <>
               <header className="chart__head">
-                <p className="chart__kicker">
-                  {selected.slot} pickup · {selected.id}
-                </p>
                 <h2 id="chart-title" className="chart__name">
                   {selected.name}
                 </h2>
-                <p className="chart__species">
-                  {selected.species} going home after {selected.reason.toLowerCase()}
+                <p className="chart__line">
+                  <span className="chart__slot">{selected.slot}</span>
+                  {selected.species} · {selected.reason} · Owner {selected.owner} · {selected.id}
                 </p>
               </header>
-
-              <dl className="facts">
-                <div>
-                  <dt>Owner</dt>
-                  <dd>{selected.owner}</dd>
-                </div>
-                <div>
-                  <dt>Pickup</dt>
-                  <dd>{selected.slot}</dd>
-                </div>
-                <div>
-                  <dt>Visit</dt>
-                  <dd>{selected.reason}</dd>
-                </div>
-                <div>
-                  <dt>Record</dt>
-                  <dd>{selected.id}</dd>
-                </div>
-              </dl>
 
               <div className="slip">
                 <div className="slip__head">

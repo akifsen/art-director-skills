@@ -78,26 +78,30 @@ available (that is the point of testing the candidate). A 0.8.0 baseline arm
 was **not** re-run in a clean session; the kept weak result is the 0.8.0
 Shoot board photographer trial (cream ledger).
 
-Author inspected `http://127.0.0.1:5221/` on 2026-09-20:
+Author inspected `http://127.0.0.1:5221/` on 2026-09-20.
+
+First pass:
 
 | File | What I saw |
 |---|---|
-| [willow-bay-1280.png](willow-bay-1280.png) | List/detail discharge board, sage workspace, sans type, demo banner. Not Palatino, not cream ledger, not Rail Still copper catalog |
-| [willow-bay-dialog-1280.png](willow-bay-dialog-1280.png) | Note dialog with animal identity, Save/Cancel, session-honest copy |
-| [willow-bay-390.png](willow-bay-390.png) | Stacked mast, horizontal pickup scroller, chart still the task |
+| [willow-bay-1280.png](willow-bay-1280.png) | List/detail board, sage workspace, four-cell facts grid, long demo line |
+| [willow-bay-dialog-1280.png](willow-bay-dialog-1280.png) | Note dialog with animal identity, Save/Cancel |
+| [willow-bay-390.png](willow-bay-390.png) | Stacked mast, horizontal pickup scroller |
 
-Craft questions (this author, these screens only):
+[Willow Bay trial](e008a3ba-1b81-43de-8a54-72c03116c8da) then compacted the chart: one identity line, note beside the action, shorter demo chip, no canvas wash. Re-inspected:
 
-- Composition: complete enough for the job (queue + chart). Not a marketing hero.
-- Type: grotesque roles, sentence case. Character is a clinic board, not a poster.
-- Media: none required; a small SVG mark only. Appropriate for data work.
-- Components: tickets, status words, dialog, buttons share one family.
-- Main task: afternoon discharges and the note are obvious.
-- Narrow: separately stacked; not a shrunk catalog.
-- Related state: dialog seen; save/empty-validation not fully walked by this author after the agent’s own pass.
+| File | What I saw |
+|---|---|
+| [willow-bay-compact-1280.png](willow-bay-compact-1280.png) | Queue + compact chart; “Tell the owner” is the working surface |
 
-Did not swing to the old ledger. Residual: a faint brand wash on the canvas;
-pickup names on mobile live in a horizontal scroller that needs a swipe.
+The producing agent also reported empty-save keeps the dialog with
+“Write the going-home note before saving,” Cancel drops a draft, and Pax’s
+existing note stayed on that row. This author did not re-walk those three
+after the compact pass.
+
+Craft (compact 1280, this author): product workspace, sans, no Palatino/cream
+ledger, no Rail Still catalog. Residual: 390 pickup rail still clips the
+third card until scroll.
 
 No 0.8.0 vs 0.9.0 same-brief pair. Cursor natural selection of 0.9.0 is still
 unverified.
