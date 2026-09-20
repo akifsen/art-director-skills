@@ -20,7 +20,9 @@ Required peer packages (host project): `react`, `react-native`,
 `react-native-safe-area-context`.
 
 Device/simulator is required for Gate D. If none is available, leave native
-run-verification **pending**. Do not treat Expo web as the proof.
+run-verification **pending**. Do not treat Expo web as the proof. Visual
+acceptance of this restyle is **unverified on device** until a phone or
+simulator is opened.
 
 Layer that always runs in this repository: Node tests on `session-store.js`
 (`npm test` / `npm run test:examples`).

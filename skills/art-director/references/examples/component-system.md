@@ -1,7 +1,9 @@
 # Example — existing component system (Nadir Desk)
 
 **When:** local primitives with semantic tokens already in the repo.
-**Not:** Kiln Queue or Closeout. Original example in this skill.
+**Not:** Kiln Queue, Rail Still, or Closeout. This is a clinic intake board:
+compact chrome, list/detail, a real note dialog. Do not copy Cambria, cream
+paper, or catalog stills onto it.
 
 Notes are stored **per row in this tab**. Cancel drops the draft. Clicks
 on the dialog panel, including padding, do not cancel.

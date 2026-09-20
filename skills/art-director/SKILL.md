@@ -15,7 +15,7 @@ description: >-
 license: MIT
 metadata:
   author: akifsen
-  version: "0.8.0"
+  version: "0.9.0"
 ---
 
 # Art Director
@@ -84,6 +84,24 @@ Name these before loading craft recipes. They change which references apply.
 Do not invent file paths or APIs. Read the repo. Confirm installed package
 versions. Do not add a competing UI library beside a working one.
 
+## Job of the screen
+
+Name this before loading a look. The organization's field is not the job.
+
+| Job | What the screen is for |
+|---|---|
+| **Portfolio / marketing** | Show the work or product, brand character, page rhythm |
+| **Product workspace** | Main task, density, navigation, states, an uninterrupted flow |
+| **Native mobile** | Same product identity; platform controls, navigation, keyboard, safe area, touch |
+
+"Photographer" does not mean an editorial ledger. "Technology" does not mean
+a neon terminal. Do not default to archive, typewriter, or historical-form
+metaphors unless the user asked for nostalgia. Do not swing every interface
+to dark glass or equal rounded cards.
+
+Starter fonts, gray boxes, and a look the user already rejected are not a
+brand system to preserve.
+
 ## Working method
 
 Do not implement the whole product and inspect later.
@@ -91,8 +109,11 @@ Do not implement the whole product and inspect later.
 1. **Read the project** — stack, routes, real copy, leftovers, platform,
    foundation, what must not change.
 2. **Open needed references** for this mode, platform, and foundation.
-3. **DESIGN** — short visual thesis ([design-method.md](references/design-method.md)).
-   Reject a thesis that still fits another product after swapping the name.
+3. **DESIGN** — short visual thesis ([design-method.md](references/design-method.md)):
+   first look, composition/grid, type roles, surfaces, media's job, component
+   language, small-screen change. Reject a thesis that still fits another
+   product after swapping the name. "Large title, nice cards, lots of space"
+   is not a direction.
 4. **Broad DESIGN, and you can see pages** — two to four visual notes
    ([visual-research.md](references/visual-research.md)). Native needs app
    UI, not only desktop landings. If you cannot see, say so and use a study.
@@ -179,15 +200,16 @@ Studies (web composition). Open the pair that matches the failure mode:
 - Quiet vs empty: [minimal-vs-unfinished.md](references/studies/minimal-vs-unfinished.md)
 - Media as structure: [media-in-composition.md](references/studies/media-in-composition.md)
 
-Worked **methods** (not a theme pack; identities differ). Copy the *approach*,
-not the look: named-record saves, real overlays, reachable states, shared
-tokens. Do **not** copy an example’s palette, serif-on-cream default, hash
-router, `?fixture=` query API, or source files (`dialog-geometry.js`,
+Worked **methods** (not a theme pack; identities differ). Copy the *decision
+method*, not the look. Do **not** copy an example’s palette, type pairing,
+hash router, `?fixture=` query API, or source files (`dialog-geometry.js`,
 `ui.jsx`, token sheets) into another product. Re-implement the rule under
-this app’s names.
+this app’s names. Open only the example that matches this job:
 
-- Theme-less React list/detail/form: [themeless-react.md](references/examples/themeless-react.md)
-- Token + variant + composite screen: [component-system.md](references/examples/component-system.md)
+- Media-led catalog / portfolio: [media-portfolio.md](references/examples/media-portfolio.md)
+- Theme-less React list/detail/form (this kiln’s paper, not a house look):
+  [themeless-react.md](references/examples/themeless-react.md)
+- Product workspace, tokens + variants: [component-system.md](references/examples/component-system.md)
 - Native list/detail/edit, safe area, keyboard, sheet: [native-mobile-example.md](references/examples/native-mobile-example.md)
 
 ## Implementation constraints
