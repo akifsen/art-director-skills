@@ -72,6 +72,10 @@ Check status-bar icon contrast on the actual system-bar surface in each state.
   style functions and platform controls — not CSS pseudo-classes or ARIA.
 - Sheets, modals, pickers: platform-typical presentation; Cancel / back
   must dismiss without trapping.
+- Placement and feedback follow the task, not a rule: not every control
+  belongs in a bottom bar, not every dialog is a sheet, and a press does
+  not need a scale animation or haptic to count. Keep the platform font
+  and working native controls unless the design has a reason to change them.
 
 Choose feedback by consequence using [completeness-and-states.md](completeness-and-states.md).
 On a device, inspect the actual presentation: a requested sheet may become a

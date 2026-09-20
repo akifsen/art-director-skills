@@ -25,12 +25,15 @@ Replace every section with project facts. Do not keep these sample words.
 3. Support:
 4. Action:
 
-## Visual thesis
+## Design direction
 
-- First look (finished material, not a box to fill):
-- Distinctive material:
-- How type, grouping, surfaces, and media support it:
-- Small screen:
+- Main task and content priority; first look (finished material, not a box to fill):
+- Composition and density:
+- Type roles and readability:
+- Color, surfaces, and state pairs:
+- Imagery's real role:
+- Interaction on this platform; small screen order:
+- The one or two decisions that make this product's direction:
 
 ## Visual research
 
