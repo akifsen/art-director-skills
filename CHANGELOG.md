@@ -49,6 +49,12 @@
   command palette and shortcuts are answers to destination count, not
   defaults. Native: placement and press feedback follow the task; keep
   platform fonts and working controls.
+- Second clean trial on the same brief with that candidate frozen
+  (`evals/outputs/shoot-board-0.9.1-direction`, inspected live): the
+  direction step produced one applied decision (countdown as lead figure)
+  and all measured text pairs cleared 4.5:1; material character did not
+  improve (neutral gray canvas, placeholder idle pane). One run per arm;
+  recorded as not a clear win, no quality gain claimed from the text edits.
 - Add `tooling/install-skill.mjs` (also `npm run install-skill` and the
   `art-director-skill` bin for `npx github:akifsen/art-director-skills`):
   copies the skill folder to the vendor-documented path for Claude Code,
