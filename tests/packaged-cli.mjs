@@ -16,11 +16,17 @@ import { removeTree, treeHash } from "../tooling/install-skill.mjs";
 const root = repoRootPath();
 const npmCli = (() => {
   // Resolve npm's JS entry so we never spawn npm.cmd / shell:true.
-  const fromExec = path.join(path.dirname(process.execPath), "node_modules", "npm", "bin", "npm-cli.js");
-  if (fs.existsSync(fromExec)) return fromExec;
-  const fromPrefix = spawnSync(process.execPath, ["-p", "require.resolve('npm/bin/npm-cli.js')"], { encoding: "utf8" });
-  if (fromPrefix.status === 0) return fromPrefix.stdout.trim();
-  throw new Error("cannot locate npm-cli.js");
+  // Same lookup as tooling/npx.mjs: npm_execpath (set under npm scripts), then Node's own layouts.
+  const nodeDir = path.dirname(process.execPath);
+  const candidates = [
+    process.env.npm_execpath && path.join(path.dirname(process.env.npm_execpath), "npm-cli.js"),
+    path.join(nodeDir, "node_modules", "npm", "bin", "npm-cli.js"),
+    path.join(nodeDir, "..", "lib", "node_modules", "npm", "bin", "npm-cli.js"),
+    path.join(nodeDir, "..", "node_modules", "npm", "bin", "npm-cli.js")
+  ].filter(Boolean);
+  const found = candidates.find((f) => fs.existsSync(f));
+  if (found) return path.resolve(found);
+  throw new Error(`cannot locate npm-cli.js next to Node (${process.execPath}); tried ${candidates.join(", ")}`);
 })();
 const npm = (args, opts = {}) => spawnSync(process.execPath, [npmCli, ...args], {
   encoding: "utf8",
