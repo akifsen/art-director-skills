@@ -94,22 +94,24 @@ Name this before loading a look. The organization's field is not the job.
 | **Product workspace** | Main task, density, navigation, states, an uninterrupted flow |
 | **Native mobile** | Same product identity; platform controls, navigation, keyboard, safe area, touch |
 
-"Photographer" does not mean an editorial ledger. "Technology" does not mean
-a neon terminal. A delivery tracker for any trade is a **product workspace**:
-the main task, the record context, and the next action in a deliberate
-priority and relationship — not a portfolio landing. Whether that is a
-compact container, a wide list–detail workspace, or a separate detail page
+The field does not pick a metaphor. A photographer's delivery tracker is a
+**product workspace** — the main task, the record context, and the next
+action in a deliberate priority — not a portfolio landing; the same
+photographer's portfolio is a different problem. Whether the workspace is a
+compact container, a wide list–detail surface, or a separate detail page
 follows from content volume, task order, comparison need, and screen size,
-not from a rule that panels fill the viewport or that everything fits above
-the fold. Do not invent KPI tiles, extra destinations, or stock portraits to
-look finished; do not stretch three records across a screen to look busy.
-Do not default to archive, typewriter, or historical-form metaphors unless
-the user asked for nostalgia. Do not swing every interface to dark glass,
-equal rounded cards, or cool-gray sharp system chrome; changing warm to cool,
-serif to sans, or round to sharp is a voice choice, not a quality gain.
+not from a rule that panels fill the viewport. Do not invent KPI tiles,
+extra destinations, or stock portraits to look finished; do not stretch
+three records across a screen to look busy.
 
-Starter fonts, gray boxes, and a look the user already rejected are not a
-brand system to preserve.
+Fonts, warm or cool palettes, light or dark surfaces, symmetry, cards,
+gradients, wide spacing, and hairlines are tools, not rules. None is banned
+and none is required. Each choice is justified by the task, the content,
+the brand in force, the audience, and the platform. Changing warm to cool,
+serif to sans, or round to sharp is a voice choice, not a quality gain.
+Keep preferences the user stated and directions they rejected; do not
+assume preferences the brief did not give. Starter fonts, gray boxes, and a
+look the user already rejected are not a brand system to preserve.
 
 ## Working method
 
@@ -118,14 +120,18 @@ Do not implement the whole product and inspect later.
 1. **Read the project** — stack, routes, real copy, leftovers, platform,
    foundation, what must not change.
 2. **Open needed references** for this mode, platform, and foundation.
-3. **DESIGN** — short visual thesis ([design-method.md](references/design-method.md)):
-   first look, composition/grid, type roles, surfaces, media's job, component
-   language, small-screen change. Reject a thesis that still fits another
-   product after swapping the name. "Large title, nice cards, lots of space"
-   is not a direction.
+3. **DESIGN** — short design direction ([design-method.md](references/design-method.md)):
+   main task and content priority; composition and information density;
+   type roles and readability; color, surface, and state relations; the
+   real role of imagery; the interaction approach on this platform. Turn
+   adjectives into decisions — not "bold," but which content, at what
+   measure, in what relation to the rest. One or two distinctive decisions
+   carry a direction; every component competing for attention does not.
+   Reject a thesis that still fits another product after swapping the name.
 4. **Broad DESIGN, and you can see pages** — two to four visual notes
    ([visual-research.md](references/visual-research.md)). Native needs app
-   UI, not only desktop landings. If you cannot see, say so and use a study.
+   UI, not only desktop landings. Translate what you saw; do not copy
+   layout, code, or brand. If you cannot see, say so and use a study.
 5. **Scope** — more than one screen: short matrix
    ([completeness-and-states.md](references/completeness-and-states.md)).
    Optional notes from [design-notes.example.md](assets/design-notes.example.md).
@@ -134,13 +140,14 @@ Do not implement the whole product and inspect later.
    ([implementation.md](references/implementation.md), then matching
    guides). That screen is the working surface for the main task and the
    product’s component language. It is not always a hero.
-7. **See it, then correct it** — after Gate A, inspect hierarchy, density,
-   action visibility, and finish — not only CSS/font load. Open the current
-   render of in-scope actions and states, not only the hero ([visual-review.md](references/visual-review.md)).
-   Note the real render you opened, the two task problems that mattered, and
-   the change you rechecked. Saving a screenshot file is not inspection. If
-   the host cannot open the image, do not claim visual inspection. Native: a
-   web mock is not device proof.
+7. **See it, then correct it** — after Gate A, open the current render of
+   in-scope actions and states — rest, selected, hover, focus, error, and
+   loading where it exists — not only the hero ([visual-review.md](references/visual-review.md)).
+   Fix the problem that is there: readability, composition, or action
+   hierarchy. Do not apply one recipe (bigger title, thinner line, more
+   space, broken symmetry) to every weak result. Saving a screenshot file
+   is not inspection. If the host cannot open the image, do not claim
+   visual inspection. Native: a web mock is not device proof.
 8. **Extend related screens**, walk the flow and states, and recheck
    shared tokens/headers/cards/spacing ([polish-pass.md](references/polish-pass.md)).
    A local win that regresses another in-scope screen is not done.
@@ -155,6 +162,13 @@ Host decides and continues unless the user asked to see options.
 Finished means the **requested** scope is implemented and checked: screens,
 interactions, and relevant states. It is not “add login, billing, charts,
 dark mode, and every component.”
+
+Within that scope, composition, type, imagery or its honest substitute,
+surfaces, component detail, and interaction states are completed together.
+A wireframe with colors, or default controls on a tinted page, is not a
+final design unless the user asked for that level. Quiet is valid when each
+decision relates to the task and content; an unworked result is not
+minimalism. None of this promises awards or flawlessness.
 
 A polished hero does not cover a dead Save. Passing unit tests do not cover
 an untreated UI. Two polish tours do not cover missing routes.
@@ -265,9 +279,10 @@ defect remains. Disclosing a blocked check does not pass it.
 
 ## Report
 
-Keep this short. Do not turn a normal UI task into an experiment log.
+Keep this short. Do not turn a normal UI task into an experiment log, and
+do not narrate deliberation; state the decision, the change, and the check.
 
-- Mode, platform, UI foundation, and the thesis (DESIGN)
+- Mode, platform, UI foundation, and the direction (DESIGN)
 - Files changed (REVIEW: none)
 - What you ran or opened, and what you could not verify
 - Delivery status: complete / partial delivery / incomplete, with reason

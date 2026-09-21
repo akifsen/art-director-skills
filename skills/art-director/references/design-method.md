@@ -25,30 +25,50 @@ Write the **job of this screen** (portfolio / product workspace / native)
 before a look. The organization's field is a separate input.
 
 Do not produce an editorial ledger because the brief says photographer, or a
-neon terminal because it says technology. Do not treat archive, typewriter,
-or historical-form metaphors as the default brand unless the user asked for
-nostalgia. Do not "modernize" by applying dark glass, equal rounded cards,
-or cool-gray sharp system chrome to every product.
+neon terminal because it says technology. Archive, typewriter, dark glass,
+equal rounded cards, cool-gray sharp system chrome, warm paper, serif,
+sans: each is a valid tool for some product. Choosing one because it is
+the current default — or because it inverts the last default — is the
+failure, not the tool. Justify it from task, content, brand in force,
+audience, and platform.
+
+Keep what the user stated: a named direction, a rejected look, a brand in
+force. Do not assume preferences the brief did not give.
 
 A REFINE of one control does not authorize a new identity for the whole app.
 
-## Visual thesis
+## Design direction
 
-On a broad DESIGN, answer these as decisions to implement — not a meeting:
+On a broad DESIGN, write a short direction as decisions to implement — not
+a meeting, not an inner monologue:
 
-1. **First look** — what occupies the opening viewport, in what material
-2. **Composition / grid** — how title, media, navigation, and actions share
-   one weight, not four decorated boxes
-3. **Type roles** — display / heading / body / meta / control; scale, weight,
-   measure, tracking, leading, language coverage, and that faces actually load
-4. **Surfaces** — canvas, primary/secondary, text priority, separators,
-   interaction, semantic status; radius, border, and shadow from one family
-5. **Media's job** — proof, product, or absent (then diagram / type, not a
-   gray box). Data-dense tools do not need a hero photograph
-6. **Component language** — alignment, hit area, padding, control height,
-   hover/focus/pressed/selected/loading
-7. **Small screen** — what is reordered, cropped, or disclosed; not a shrunk
-   desktop
+1. **Main task and content priority** — what the user does first, which
+   content carries it, what is secondary. **First look**: what occupies the
+   opening viewport, in what material.
+2. **Composition and density** — how title, media, navigation, and actions
+   share one weight, not four decorated boxes; how many records or ideas
+   are visible at once and why that amount serves the task.
+3. **Type roles and readability** — display / heading / body / meta /
+   control; scale, weight, measure, leading, language coverage, and that
+   faces actually load.
+4. **Color, surfaces, and states** — canvas, working surface, text
+   priority, separators, interaction, semantic status; the selected,
+   hover, focus, error, and loading pairs that must stay readable; radius,
+   border, and shadow from one family.
+5. **Imagery's real role** — proof, product, or absent (then diagram /
+   type, not a gray box). Data-dense tools do not need a hero photograph.
+6. **Interaction on this platform** — navigation model, control sizes,
+   keyboard or touch path, small-screen order; what is reordered, cropped,
+   or disclosed, not a shrunk desktop.
+
+Turn adjectives into decisions. "Bold" says nothing; "the delivery date is
+the largest text in the row, the client name a step below, the ID mono and
+muted" is a decision someone can implement and check. One or two
+distinctive decisions carry a direction. If every component tries to be
+the event, none is.
+
+Type values and CSS in this skill's references are starting options, not
+required measures for every face and screen.
 
 Reject a thesis that would still fit any other product after swapping the
 name. "Clean layout, strong type, plenty of whitespace" is not a thesis.
@@ -64,10 +84,11 @@ is a poster. Finish the artifact: a crop, a diagram, a working surface, a
 caption — something a visitor could point at. Do not "fix" this by adding
 numbered filler cards under the poster.
 
-## Two directions, not a catalog
+## Two readings, not a catalog
 
-On a large DESIGN task, compare two directions that the content can actually
-support. State the tradeoff in a few lines, pick one, and implement it.
+When the content supports two structural readings, name both in a few
+lines, state the tradeoff, pick one, and implement it. If one reading is
+clearly right, do not stage a comparison.
 
 Useful contrasts are structural, not decorative:
 

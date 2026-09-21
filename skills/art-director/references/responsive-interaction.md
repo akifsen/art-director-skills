@@ -42,8 +42,10 @@ right" after you stacked the diagram under the title.
 on a phone.
 
 **How.** Match the nav to the number of destinations and the task. A
-labeled control that expands a list is usually clearer than a mystery
-icon. Use a real `button`, `aria-expanded`, Escape to close, and restore
+sidebar, command palette, or keyboard shortcuts are answers to many
+destinations or frequent expert use, not defaults for every project; a
+shortcut you show must work. A labeled control that expands a list is
+usually clearer than a mystery icon. Use a real `button`, `aria-expanded`, Escape to close, and restore
 focus to the trigger. Do not trap focus unless you are building a modal
 and can implement it completely.
 

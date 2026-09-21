@@ -64,9 +64,10 @@ lockup).
   cursor, or a horizon on purpose (`object-position`). Give the image a
   role in the grid (full-bleed proof, column, or captioned specimen), not
   a random rounded rectangle in a card.
-- If media does not exist: do not drop a gray box. Prefer a typographic
-  composition, a diagram derived from the real content, or a small original
-  SVG/CSS graphic. Label conceptual graphics as diagrams, not product
+- If media does not exist: do not drop a gray box, and do not let a bare
+  ruled list stand in as the finish. Choose an approach that is complete
+  without pictures: a typographic composition, a diagram derived from the
+  real content, or a small original SVG/CSS graphic. Label conceptual graphics as diagrams, not product
   photography. Label demo data as demo data.
 - Do not present a generated picture as a captured product screen.
 

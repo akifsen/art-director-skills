@@ -73,6 +73,7 @@ Sources in [evals/outputs/shoot-board-0.9.1-clean](../../outputs/shoot-board-0.9
 | 0.9.1 after save | List row and detail both updated; live-region notice. [clean-detail-saved-1280.png](clean-detail-saved-1280.png) |
 | 0.9.1 states | Selected chip on hover 15.66:1 [clean-chip-selected-hover-1280.png](clean-chip-selected-hover-1280.png); real Tab focus ring 13.67:1 vs canvas [clean-chip-focus-1280.png](clean-chip-focus-1280.png), [clean-row-focus-1280.png](clean-row-focus-1280.png) |
 | 0.9.1 narrow | [clean-list-390.png](clean-list-390.png), [clean-detail-390.png](clean-detail-390.png), [clean-edit-390.png](clean-edit-390.png), [clean-edit-error-390.png](clean-edit-error-390.png), [clean-empty-filter-390.png](clean-empty-filter-390.png), [clean-unknown-390.png](clean-unknown-390.png) |
+| **Direction candidate (`952f1df`), clean, no coaching** | Countdown figure leads each row and the detail block; neutral gray canvas, white sheets, one control family. Better hierarchy and contrast than the first arm, less material character, idle pane is a placeholder. [direction/list-1280.png](direction/list-1280.png), [direction/detail-1280.png](direction/detail-1280.png), [direction/edit-error-1280.png](direction/edit-error-1280.png), [direction/list-390.png](direction/list-390.png). Details: [direction/TRIAL.md](direction/TRIAL.md) |
 
 What changed between the 0.9.0 and 0.9.1 arms is the skill text and the
 absence of coaching; brief, start files, model family and tool access were
@@ -97,6 +98,26 @@ the same. n = 1 per arm. Author not blind.
 - System sans stack, no job photographs, English titles in Turkish chrome.
 
 These are the producer's output. They were not patched.
+
+## Design-direction edits, second arm
+
+After the trial above, the skill text was edited once more (`952f1df`):
+fonts, palettes, surfaces, symmetry, cards, gradients, spacing and
+hairlines named as tools that need a justification, none banned or
+required; DESIGN opens with six direction decisions and turns adjectives
+into checkable decisions; "finished" names the level; correction is by
+problem, not one recipe. A second clean trial on the same brief ran with
+that candidate frozen ([direction/TRIAL.md](direction/TRIAL.md)).
+
+What the second arm shows: the direction step produced one explicit,
+consistently applied decision (the countdown as lead figure) and every
+measured text pair cleared 4.5:1. What it did not show: a gain in material
+character — a neutral gray canvas and white sheets read closer to a system
+default than the first arm's warm light table, and the idle pane fell back
+to a placeholder. One trial per arm does not separate the skill text from
+run-to-run variance. The guidance edits are kept because they remove
+contradictions and duplicated bans; they are not claimed to raise visual
+quality on this brief.
 
 ## Not claimed
 

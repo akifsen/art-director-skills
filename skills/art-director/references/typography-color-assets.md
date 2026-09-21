@@ -145,13 +145,9 @@ examples.
 - **Semantic status** — danger, warning, success, each with a non-color cue
 
 Do not stop at one accent. Do not equate dark canvases, neon, or glass
-with quality. Do not forbid a color.
-
-This skill's worked examples have their own faces (cool catalog stone,
-clinic navy, kiln oxide paper, night closeout). Do not treat Palatino, gold
-tooling, or cream serif as the house "finished" look. Do not treat cool gray
-and sharp corners as the replacement house look either. Unrelated products
-should not inherit those pairings from the examples or from earlier evals.
+with quality. Do not forbid a color. The worked examples' pairings (cool
+catalog stone, clinic navy, kiln oxide paper, night closeout) belong to
+those products; see Choice versus quality above.
 
 Justify saturation and light/dark from context: a warehouse installation
 may want a field of the actual material; a long article may want a stable
