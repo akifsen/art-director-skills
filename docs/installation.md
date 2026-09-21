@@ -36,8 +36,24 @@ npm run install-skill -- install --ai cursor
 npx --yes -p github:akifsen/art-director-skills art-director-skills install --ai cursor
 ```
 
-`bin/cli.js` is a thin wrapper over `tooling/install-skill.mjs` that adds
-`--version`; the installer logic has one code path. `npm pack` runs
+`bin/cli.js` also has a **single-file mode** for hosts that read one
+instructions file rather than a skills folder:
+
+```sh
+npx art-director-skills            # ./SKILL.md (frontmatter kept)
+npx art-director-skills --cursor   # ./.cursorrules (frontmatter stripped, header comment added)
+npx art-director-skills --claude   # ./CLAUDE.md   (same body as .cursorrules)
+```
+
+It writes into `process.cwd()`, prints `Overwriting existing <file>...`
+when the target exists, rewrites `references/…` and `assets/…` links to
+`https://github.com/akifsen/art-director-skills/blob/main/skills/art-director/…`
+so a lone file has no dead links, and exits 1 with a message if the
+package's `SKILL.md` is missing or an option is unknown. The full mode
+(`install --ai …`) is still the way to get the references on disk.
+
+For subcommands `install`, `remove`, `status`, `list`, `bin/cli.js` hands
+off to `tooling/install-skill.mjs`; the installer logic has one code path. `npm pack` runs
 `validate-skill` first and ships only `bin/`, `skills/`,
 `tooling/install-skill.mjs`, `LICENSE`, and `README.md` (71 files, about
 0.7 MB, no dependencies).

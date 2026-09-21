@@ -75,8 +75,15 @@
   no longer `private`, carries `version` 0.9.1 (matches the skill),
   `type: module`, repository/license metadata, and `bin` entries
   `art-director`, `art-director-skills`, and the older `art-director-skill`,
-  all pointing at the new `bin/cli.js` wrapper (adds `--version`) over
-  `tooling/install-skill.mjs`. `npm pack` runs `validate-skill` and ships
+  all pointing at the new `bin/cli.js` (mode `100755`). Single-file mode
+  writes into the current directory: no args → `SKILL.md`, `--cursor` →
+  `.cursorrules`, `--claude` → `CLAUDE.md` (frontmatter stripped for the
+  last two, header comment pointing at the full install); relative
+  `references/` links are rewritten to repository URLs so a lone file has
+  no dead links; existing files are overwritten with a notice; missing
+  source or unknown option exits 1. `install|remove|status|list` hand off
+  to `tooling/install-skill.mjs` unchanged. Covered in `tests/run.mjs`
+  (spawned CLI in a temp dir with Turkish letters). `npm pack` runs `validate-skill` and ships
   `bin/`, `skills/`, the installer, `LICENSE`, `README.md`. Verified from
   the packed tarball in a temp project on Windows (install / status /
   remove through all three bins). Not yet published; the registry `npx`

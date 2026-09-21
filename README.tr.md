@@ -59,6 +59,27 @@ başlatmamalıdır.
 
 Çevrimdışı kopya yeterlidir. Ayrıntı: [docs/installation.md](docs/installation.md).
 
+### Hızlı Kurulum (npx)
+
+Tek komut; bağımlılık yok, indirme sonrası ağ yok, telemetri yok.
+Bulunduğun çalışma dizinine yazar:
+
+```bash
+# Projeye doğrudan eklemek için (proje kökünde SKILL.md):
+npx art-director-skills
+
+# Cursor kuralları (.cursorrules) olarak eklemek için:
+npx art-director-skills --cursor
+
+# Claude Desktop / Projects / Claude Code için (CLAUDE.md):
+npx art-director-skills --claude
+```
+
+Hedefte dosya varsa "Overwriting existing …" uyarısıyla üzerine yazılır.
+Tek dosya `SKILL.md` gövdesinin tamamını taşır; `references/` bağlantıları
+bu depoya işaret eder. Referanslarıyla birlikte, asistanın skill aradığı
+klasöre kurmak için aşağıdaki tam modu kullan.
+
 ### Desteklenen tüm asistanlar (paketle gelen yükleyici, ağ yok, telemetri yok)
 
 Paket bir CLI içerir (`art-director`, eş adı `art-director-skills`);

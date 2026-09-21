@@ -50,6 +50,27 @@ unstyled leftovers are not.
 
 Manual copy works offline. See [docs/installation.md](docs/installation.md).
 
+### Quick Start (npx)
+
+One command, no dependencies, no network after the fetch, no telemetry.
+Runs against the current working directory:
+
+```bash
+# Add directly to the project (SKILL.md in the project root):
+npx art-director-skills
+
+# As Cursor rules (.cursorrules):
+npx art-director-skills --cursor
+
+# For Claude Desktop / Projects / Claude Code (CLAUDE.md):
+npx art-director-skills --claude
+```
+
+An existing file is overwritten with a notice. The single file carries the
+whole `SKILL.md` body; its links to `references/` point at this repository.
+For the skill *with* its references installed where the assistant discovers
+skills, use the full mode below.
+
 ### Any supported assistant (bundled installer, no network, no telemetry)
 
 The package ships a CLI (`art-director`, alias `art-director-skills`) that
