@@ -1,0 +1,25 @@
+:root {
+  --paper: #f4efe6;
+  --iron: #241f1c;
+  --action: #9b2d1f;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--iron);
+  font-family: system-ui, sans-serif;
+}
+.site {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #d9d0c3;
+}
+.wordmark, h1 {
+  font-family: "Iowan Old Style", Georgia, serif;
+}
+h1 { font-size: clamp(2rem, 6vw, 4rem); line-height: 1.1; max-width: 16ch; }
+main { padding: 3rem 1.5rem 5rem; max-width: 40rem; }
+.label { letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.75rem; }
+.action { color: var(--paper); background: var(--action); text-decoration: none; padding: 0.55rem 0.9rem; display: inline-block; }
+nav a { color: var(--iron); margin-left: 1rem; }

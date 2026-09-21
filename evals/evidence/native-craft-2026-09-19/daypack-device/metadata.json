@@ -1,0 +1,245 @@
+{
+  "run": "native-craft-2026-09-19/daypack-device",
+  "localDate": "2026-09-20",
+  "baselineCommit": "be2a2cd4d49833b6d4b7dca79502db5a795fce5b",
+  "candidateSkillTree": "4bd790a9253b6f75db073761d4495780955d4477a6243cfcb5658fab99b293c6",
+  "platform": {
+    "device": "Pixel_9 AVD",
+    "android": 17,
+    "api": 37,
+    "physicalPixels": [
+      1080,
+      2424
+    ],
+    "density": 420,
+    "expoSdk": 52,
+    "reactNative": "0.76.5",
+    "fontScales": [
+      1,
+      1.5
+    ]
+  },
+  "sourceSha256": {
+    "baseline": {
+      "app.json": "b8830e60e45c648cd3159dee0c6472f336d9b0a6814c5e160ed9b3a0dae76d43",
+      "App.jsx": "95b9241b1263d8e847ca090402272a967d849a956054171d59d6ae8d72ffb296",
+      "data.js": "88c5adf682961c1674735ffa11cc7bae8a1f761dd567bff834f571710704905c",
+      "index.js": "6d9f9877077729a8d4c5a9bdcf69878195d252fcda784157c8f3861e57da1e2a",
+      "package.json": "374f9aa0baacfc9b0fb8b22b4ef3e270d3945719470aa98c161a2bc2b5ed034a"
+    },
+    "candidate": {
+      "app.json": "b8830e60e45c648cd3159dee0c6472f336d9b0a6814c5e160ed9b3a0dae76d43",
+      "App.jsx": "511f2cc0033feac422f0d6c2a170dfa4aca3034073c74d25de230a778c366a3d",
+      "data.js": "88c5adf682961c1674735ffa11cc7bae8a1f761dd567bff834f571710704905c",
+      "index.js": "6d9f9877077729a8d4c5a9bdcf69878195d252fcda784157c8f3861e57da1e2a",
+      "package.json": "374f9aa0baacfc9b0fb8b22b4ef3e270d3945719470aa98c161a2bc2b5ed034a",
+      "state.js": "b85be6a2ae3db5741a28dfe656a17799c4bea9f2f3344c0949366bebc4ac0be1",
+      "ui.jsx": "5ee7c1d8ee8a470ec760cb052e905ee07bd188c6761c33ebd3a55d37211db9e9"
+    }
+  },
+  "sourceUnchangedAfterValidation": true,
+  "dataIdentical": true,
+  "nativeBundleModules": {
+    "baseline": 664,
+    "candidate": 666
+  },
+  "flow": {
+    "baseline": {
+      "incompleteFinishBlocked": true,
+      "checkUndo": true,
+      "backPreserves": true,
+      "otherPlanIsolated": true,
+      "summary": true,
+      "restartClears": true,
+      "largeTextReadable": true
+    },
+    "candidate": {
+      "incompleteFinishBlocked": true,
+      "checkUndo": true,
+      "backPreserves": true,
+      "otherPlanIsolated": true,
+      "summary": true,
+      "restartClears": true,
+      "largeTextReadable": true
+    }
+  },
+  "notTested": [
+    "iOS",
+    "physical device",
+    "standalone APK",
+    "screen reader",
+    "landscape",
+    "keyboard (no text entry in brief)",
+    "large-text completed summary"
+  ],
+  "screenshots": [
+    {
+      "file": "baseline-checklist.png",
+      "sha256": "997dc33e84319b37b201606a66db7966dfe37d0a74d5de20f1df07199317fa7f",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    },
+    {
+      "file": "baseline-large-actions.png",
+      "sha256": "93595bec885165b32c67abfe3c75f203b47c995021b4a672bfdce12d5f3aed80",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1.5,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    },
+    {
+      "file": "baseline-large-checklist.png",
+      "sha256": "59dc69b3d5e1bc58de9a80df16866a24187c863927bd153c865b40164715ce39",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1.5,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    },
+    {
+      "file": "baseline-large-plans.png",
+      "sha256": "bbfb9a1b5f6b0080e14e69e08ea24694712cba99b85a78ce33bd02ec055b5cec",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1.5,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    },
+    {
+      "file": "baseline-partial.png",
+      "sha256": "c19c6555b1af35b591d988291b84779cbdeb353d170cec810928204297c3ba13",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    },
+    {
+      "file": "baseline-plans.png",
+      "sha256": "3ce3c727f5814ab9e3f7462f01f1f98fe6fcb704fcb3f3cd4ea1770612b176dc",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    },
+    {
+      "file": "baseline-summary.png",
+      "sha256": "7e05272a615b762df9bb74b65b4205645478c1e994ed4dbeadce571dd45875fb",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    },
+    {
+      "file": "candidate-checklist.png",
+      "sha256": "ef1f5a04f5310a51f0acf10ff5db6bb4d17701dde891e7986672b3dce0bd698e",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    },
+    {
+      "file": "candidate-large-actions.png",
+      "sha256": "1522f7f351a89d4ac63c3a891a1652bba343b3e46b8f2cbfaaa5c201607e7f95",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1.5,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    },
+    {
+      "file": "candidate-large-checklist.png",
+      "sha256": "5344ba1745439c7aec6f191290ec6fe10dfdb1c8ca7f043c99981bc16c3a2003",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1.5,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    },
+    {
+      "file": "candidate-large-plans.png",
+      "sha256": "2d54957ad5df7440d00c0eefb15cf9e6315bebff85bc44d477e76ba839f21c03",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1.5,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    },
+    {
+      "file": "candidate-partial.png",
+      "sha256": "5eb0ebdbb5efda2ac65f2522084fa9cadf04971a4d804656a870a7ef16480a70",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    },
+    {
+      "file": "candidate-plans.png",
+      "sha256": "1bc29e1b34c2f94a27e5afa0e3b3b56f318c1d7c9ead9b93c6551eea1c04195e",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    },
+    {
+      "file": "candidate-summary.png",
+      "sha256": "1388ebda879a145778d4b3335fe6cfe1a840963a1a98231c14d4e4e4036cba3f",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "produced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex device validator; not blind"
+    }
+  ]
+}

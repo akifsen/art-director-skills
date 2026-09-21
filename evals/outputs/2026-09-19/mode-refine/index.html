@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumen Ferry</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="bar">
+    <a class="logo" href="index.html">Lumen Ferry</a>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-links">☰</button>
+    <nav class="links" id="site-links" aria-label="Main">
+      <a href="#tickets">Tickets</a>
+      <a href="#times">Times</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <h1>Cross at dusk.</h1>
+    <p>Three sailings. Real times on the board at the pier.</p>
+  </section>
+  <main>
+    <h2 id="tickets">Tickets</h2>
+    <p>Buy at the kiosk. No online cart in this fixture.</p>
+    <h2 id="times">Times</h2>
+    <p>06:40, 12:10, 18:45.</p>
+    <h2 id="contact">Contact</h2>
+    <p>pier@lumenferry.example</p>
+  </main>
+  <script>
+    const trigger = document.querySelector('.burger');
+    const links = document.querySelector('.links');
+    function setOpen(open) {
+      links.classList.toggle('open', open);
+      trigger.setAttribute('aria-expanded', String(open));
+    }
+    trigger.addEventListener('click', () => setOpen(trigger.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        trigger.focus();
+      }
+    });
+    window.matchMedia('(max-width: 700px)').addEventListener('change', () => setOpen(false));
+  </script>
+</body>
+</html>

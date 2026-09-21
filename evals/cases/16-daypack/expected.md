@@ -1,0 +1,1 @@
+Shared scope: supplied plans/items unchanged; choose, inspect/check, undo, back preserves per-plan progress, incomplete finish prevented, contextual complete summary, start again resets appropriate progress. Actual React Native. No persistence/notification claims; Android device results separate from source checks and iOS.

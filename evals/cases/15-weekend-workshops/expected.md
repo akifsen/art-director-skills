@@ -1,0 +1,1 @@
+Shared scope: supplied data unchanged; craft filter and recoverable no-match state; detail, session and 1–2 seats; required name; full session cannot reserve; cancellation restores session-only availability. Desktop and narrow layouts. No real booking or invented testimonials/assets. Visual quality is independently inspected, not inferred from passing flows.

@@ -1,0 +1,138 @@
+:root {
+  --background: #e8eaee;
+  --foreground: #16181c;
+  --card: #ffffff;
+  --card-foreground: #16181c;
+  --primary: #1f4e79;
+  --primary-foreground: #f4f7fb;
+  --secondary: #dfe3e8;
+  --secondary-foreground: #16181c;
+  --muted: #eceff3;
+  --muted-foreground: #5c6570;
+  --accent: #e4eef6;
+  --accent-foreground: #16181c;
+  --destructive: #9b2c2c;
+  --border: #d0d5dc;
+  --input: #c5ccd4;
+  --ring: #1f4e79;
+  --sidebar: #1b1f24;
+  --sidebar-foreground: #eef2f6;
+  --sidebar-accent: #2a3138;
+  --radius: 0.45rem;
+  --font-ui: "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif;
+  --font-ctrl: "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif;
+  --space: 0.55rem;
+}
+
+body.nadir {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-ctrl);
+}
+
+.nd-shell { display: grid; grid-template-columns: 13rem 1fr; min-height: 100vh; }
+.nd-side {
+  background: var(--sidebar);
+  color: var(--sidebar-foreground);
+  padding: calc(var(--space) * 3);
+  font-family: var(--font-ui);
+}
+.nd-side p:first-child {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+.nd-nav-current {
+  margin: 1.25rem 0 0;
+  padding: 0.35rem 0.5rem;
+  background: var(--sidebar-accent);
+  font-family: var(--font-ctrl);
+  font-size: 0.875rem;
+}
+.nd-toolbar h1 {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+  font-weight: 650;
+}
+.nd-table tbody tr { cursor: pointer; }
+.nd-table tbody tr:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: -3px;
+}
+.nd-main { min-width: 0; padding: calc(var(--space) * 4); }
+.nd-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space);
+  margin-bottom: calc(var(--space) * 3);
+  padding-bottom: calc(var(--space) * 2);
+  border-bottom: 1px solid var(--border);
+}
+
+.nd-btn {
+  min-height: 2.35rem;
+  padding: 0 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font: inherit;
+  cursor: pointer;
+}
+.nd-btn:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+.nd-btn:disabled { opacity: 0.45; }
+.nd-btn-primary { background: var(--primary); color: var(--primary-foreground); }
+.nd-btn-secondary { background: var(--secondary); color: var(--secondary-foreground); border-color: var(--border); }
+.nd-btn-ghost { background: transparent; color: var(--primary); }
+.nd-btn-danger { background: var(--destructive); color: #fff; }
+.nd-btn-sm { min-height: 1.85rem; font-size: 0.8125rem; }
+
+.nd-field { display: grid; gap: 0.25rem; font-size: 0.875rem; }
+.nd-field input, .nd-field select {
+  min-height: 2.35rem;
+  border: 1px solid var(--input);
+  border-radius: var(--radius);
+  padding: 0 0.6rem;
+  font: inherit;
+  background: var(--card);
+}
+.nd-field[data-invalid="true"] input { border-color: var(--destructive); }
+.nd-error { color: var(--destructive); }
+
+.nd-table { width: 100%; border-collapse: collapse; background: var(--card); }
+.nd-table th, .nd-table td { padding: 0.7rem 0.65rem; border-bottom: 1px solid var(--border); text-align: left; }
+.nd-table tbody tr[data-selected="true"] { background: var(--accent); }
+.nd-table tbody tr:hover { background: var(--muted); }
+
+.nd-kicker { margin: 0; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0; color: var(--muted-foreground); }
+.nd-side-meta { font-family: var(--font-ctrl); font-size: 0.8rem; letter-spacing: 0; color: var(--sidebar-foreground); opacity: 0.75; }
+.nd-selected {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+.nd-selected p { margin: 0.35rem 0 0; color: var(--muted-foreground); }
+.nd-table-wrap { overflow: auto; }
+.nd-dialog-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+
+dialog.nd-dialog {
+  box-sizing: border-box;
+  width: min(26rem, calc(100vw - 1.5rem));
+  max-height: min(32rem, calc(100vh - 2rem));
+  overflow: auto;
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+}
+dialog.nd-dialog::backdrop { background: rgb(20 32 51 / 0.45); }
+dialog.nd-dialog h2 { font-family: var(--font-ui); margin-top: 0; }
+
+@media (max-width: 48rem) {
+  .nd-shell { grid-template-columns: 1fr; }
+  .nd-side { padding-block: 0.6rem; }
+}

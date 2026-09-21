@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "checks": [
+    "craft filter",
+    "missing session/name validation",
+    "one-seat capacity error",
+    "one-place reservation",
+    "cancellation",
+    "full session disabled",
+    "two-place reservation",
+    "reload resets reservation",
+    "390px no overflow",
+    "unknown workshop recovery",
+    "keyboard focus"
+  ],
+  "focused": {
+    "tag": "BUTTON",
+    "outline": "solid"
+  },
+  "errors": []
+}

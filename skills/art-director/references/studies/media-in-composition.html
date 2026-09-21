@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tideprint — media in composition (study)</title>
+  <style>
+    :root {
+      --harbor: #07131c;
+      --panel: #0d1e2a;
+      --phosphor: #9be7c4;
+      --foam: #d7efe6;
+      --dim: #7fa196;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--harbor);
+      color: var(--foam);
+      font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+    }
+    a { color: var(--phosphor); }
+    a:focus-visible { outline: 2px solid var(--phosphor); outline-offset: 3px; }
+    .page {
+      display: grid;
+      grid-template-columns: minmax(16rem, 28rem) minmax(0, 1fr);
+      min-height: 100vh;
+    }
+    .copy {
+      padding: 2rem 1.5rem 2.5rem;
+      border-right: 1px solid rgb(155 231 196 / 14%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .meta {
+      margin: 0 0 0.8rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim);
+      font-family: ui-monospace, Consolas, monospace;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+    }
+    .lede {
+      margin: 1rem 0 0;
+      max-width: 28ch;
+      color: var(--dim);
+      line-height: 1.5;
+    }
+    pre {
+      margin: 1.4rem 0 0;
+      padding: 0.7rem 0.8rem;
+      background: var(--panel);
+      color: var(--phosphor);
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+    }
+    .stage {
+      padding: 2rem 1.4rem;
+      display: grid;
+      align-items: center;
+    }
+    figure { margin: 0; }
+    .term {
+      background: var(--panel);
+      border: 1px solid rgb(155 231 196 / 22%);
+      border-radius: 10px 10px 4px 4px;
+      overflow: hidden;
+    }
+    .term-top {
+      display: flex;
+      gap: 0.35rem;
+      padding: 0.55rem 0.7rem;
+      background: #102331;
+    }
+    .term-top span {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
+      background: #3a5560;
+    }
+    svg { display: block; width: 100%; height: auto; }
+    figcaption {
+      margin: 0.65rem 0 0;
+      font-size: 0.75rem;
+      color: var(--dim);
+      font-family: ui-monospace, Consolas, monospace;
+    }
+    @media (max-width: 800px) {
+      .page { grid-template-columns: 1fr; }
+      .copy { border-right: 0; border-bottom: 1px solid rgb(155 231 196 / 14%); }
+      .stage { padding-top: 0; }
+      .crop { max-height: 14rem; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="copy">
+      <p class="meta">Berth tables · demo data</p>
+      <h1>Tideprint</h1>
+      <p class="lede">Print twelve hours of water for a named berth. The grid on the right is a diagram of the CLI, not a captured window.</p>
+      <pre>tideprint --berth A3 --hours 12</pre>
+      <p class="lede" style="margin-top:1rem">Install line (fictional): <a href="#">npm i -g tideprint</a></p>
+    </section>
+    <section class="stage">
+      <figure>
+        <div class="term crop">
+          <div class="term-top" aria-hidden="true"><span></span><span></span><span></span></div>
+          <svg viewBox="0 0 420 220" role="img" aria-labelledby="tp-title tp-desc">
+            <title id="tp-title">tideprint demo output</title>
+            <desc id="tp-desc">Diagram of CLI output for berth A3. Demo data, not a live feed or a screenshot.</desc>
+            <rect width="420" height="220" fill="#0d1e2a"/>
+            <text x="18" y="32" fill="#7fa196" font-family="Consolas, monospace" font-size="12">berth A3 · next 12h · demo</text>
+            <text x="18" y="64" fill="#9be7c4" font-family="Consolas, monospace" font-size="14">06:12  flood   1.8m</text>
+            <text x="18" y="92" fill="#d7efe6" font-family="Consolas, monospace" font-size="14">12:48  slack   0.4m</text>
+            <text x="18" y="120" fill="#9be7c4" font-family="Consolas, monospace" font-size="14">18:05  ebb    -0.6m</text>
+            <text x="18" y="168" fill="#7fa196" font-family="Consolas, monospace" font-size="12">unassigned rows omitted</text>
+          </svg>
+        </div>
+        <figcaption>Interface diagram — not a screenshot. Rows are demo data.</figcaption>
+      </figure>
+    </section>
+  </div>
+</body>
+</html>

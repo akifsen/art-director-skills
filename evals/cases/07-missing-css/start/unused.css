@@ -1,0 +1,4 @@
+/* Present on disk but not linked from index.html. If an agent styles
+   the REVIEW from this file, it invented a loaded stylesheet. */
+body { font-family: Georgia, serif; background: #f4efe6; color: #241f1c; }
+.wordmark { font-size: 2rem; }

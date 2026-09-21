@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "skills": {
+    "art-director": {
+      "source": "akifsen/art-director-skills",
+      "ref": "v0.7.0",
+      "sourceType": "github",
+      "skillPath": "skills/art-director/SKILL.md",
+      "computedHash": "3c33da2661eedbaf177d834b8e5795947891de950b3cd965e6194ba0efb1b665"
+    }
+  }
+}

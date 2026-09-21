@@ -1,0 +1,261 @@
+{
+  "baselineCommit": "be2a2cd4d49833b6d4b7dca79502db5a795fce5b",
+  "run": "native-craft-2026-09-19",
+  "completedLocalDate": "2026-09-20",
+  "platform": "Android17 API37 Pixel_9",
+  "density": 420,
+  "sourceSha256": {
+    "App.jsx": "bbb57a7fc792bd9f558dc1b275d2cdba2cf7302f70cfba1a6282010ee1047c29",
+    "screens.js": "ece9e5de782dfc6a3e06ef227a1c0d58d3b7d5044466ad52ff05cb1f7c49acac",
+    "theme.js": "09c5f64ac255cd2f04e53d9a8534979d2b7a4ad243651bcf9ae75ca60b993e78",
+    "session-store.js": "238c6ced028964d9f50fa2ef0ee03419cc3462800fcf25b2678e9ab68206d3f3"
+  },
+  "sourceHashesAreRawBytes": true,
+  "correctionPasses": 1,
+  "appRan": true,
+  "standaloneApkBuilt": false,
+  "flowVerified": true,
+  "visualJudgment": "Bounded improvement; limitations in README",
+  "screenshots": [
+    {
+      "file": "after-cancel.png",
+      "sha256": "80fa8271e6f1c728bd0e6f8c4c7cc4a11609605ac6e95ac4eb266ef982841526",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "after-detail.png",
+      "sha256": "479917139087c3826cd46d9074e06a059b28df177b1b520c32b3cd69540e9d9e",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "after-form.png",
+      "sha256": "0f92f79350c4ec05d820025ec4772228371d1d76e41e05ce3979661974aa1b4f",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "after-keyboard.png",
+      "sha256": "19b3d0a53c806587707f715b19afb2af257646f84a880ff437e1b2281580e0ae",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "after-large-detail.png",
+      "sha256": "9acff28075c478cb90bf6bcf0b357c56d6e544cf1fc4edccb5b2d5aae9239150",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1.5,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "after-large-keyboard.png",
+      "sha256": "f049796922f4b31496856b441664e08d1dc85249af238341c406e011b8117cea",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1.5,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "after-large-list.png",
+      "sha256": "555a239a06a5399e15348741f8b3b303c4d6289bbb6901d7965a2e0afacbe534",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1.5,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "after-large-success.png",
+      "sha256": "546dd7abb5259255ed200f74759b176aa3aebe3cf39a542430f39b30a45c80da",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1.5,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "after-large-validation.png",
+      "sha256": "0faf1bfd9f6abb1913968284d9ad3e8c23006014641d3cfe6e769483be6e49b2",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1.5,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "after-list.png",
+      "sha256": "93fb097dbcbef14d1bfdfb693d130b2e4a0e345e27cb1aa046dbbfb32f5f9f9d",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "after-saved-detail.png",
+      "sha256": "778f8116155549c37933318fe9be2878255e8ffcc9beedd49ef6246339939367",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "after-saved-list.png",
+      "sha256": "e9590ba1cac0c5fe4e047ea10a1a106c1b197c31e84adcbb75ecf4cd0958a278",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "after-success.png",
+      "sha256": "96715e1e7372b43966388a2d26dbd23dfe6bbc842eced3a09738ee145b038db8",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "after-validation.png",
+      "sha256": "d003b6a89fc8c7aebc9b827e9ca49d6f7de050cc4a1d1cbd2515f8f2a7cf2822",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "before-detail.png",
+      "sha256": "850cfcb4bb000031130732966adb5fb993ac062f486fef49e34e82e800a21ad8",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "before-form.png",
+      "sha256": "86a47ebc9ad19e84a4e04a3b131248847dd84b9e845e026b3f30a7e0a1f760d5",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "before-keyboard.png",
+      "sha256": "4f0801736d9b55b88bf1747a9aadebb7c1e812f7444bc3ade4cc0ce470613038",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "before-large-keyboard.png",
+      "sha256": "b74cc2f7338de7aefc952cdead98c6820dd8e74cf4f5851e87937a4e9d37d836",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1.5,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "before-list.png",
+      "sha256": "3855478e61673a40737c6ed735ec4889ebd0102857f9e9564108a032807f3a3a",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    },
+    {
+      "file": "before-success.png",
+      "sha256": "15b3d0f517780ca9524b8eff15a3df21eb6aee1f7acc48af6e793868749c4138",
+      "dimensions": [
+        1080,
+        2424
+      ],
+      "fontScale": 1,
+      "artifactProduced": true,
+      "visuallyInspected": true,
+      "reviewer": "Codex implementation agent (not blind)"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "Closeout validation",
+    "slug": "closeout-validation",
+    "version": "1.0.0",
+    "android": {
+      "package": "org.example.closeoutvalidation"
+    },
+    "plugins": [
+      "expo-asset"
+    ]
+  }
+}

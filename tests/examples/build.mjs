@@ -1,0 +1,91 @@
+/**
+ * Layer: Vite production build of the tutorial React apps.
+ * Maintainer path only. Not a skill runtime and not a custom JSX compiler.
+ */
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import { formatSpawnFailure, runNodeCli } from "../../tooling/npx.mjs";
+import { resolveViteBin, root } from "./vite-cli.mjs";
+
+const viteBin = resolveViteBin();
+
+function build(configRel) {
+  const result = runNodeCli(
+    viteBin,
+    ["build", "--config", configRel],
+    { cwd: root, timeout: 120000, env: process.env }
+  );
+  if (result.status !== 0 || result.error) {
+    console.error(formatSpawnFailure(`vite build ${configRel}`, result));
+    process.exit(result.status || 1);
+  }
+  process.stdout.write(result.stdout || "");
+  if (result.stderr) process.stderr.write(result.stderr);
+}
+
+build("evals/apps/kiln-queue/vite.config.js");
+build("evals/apps/nadir-desk/vite.config.js");
+build("evals/apps/rail-still/vite.config.js");
+
+if (process.env.ART_DIRECTOR_EVAL === '1') {
+  for (const app of ['library-baseline', 'library-candidate', 'library-candidate2', 'existing-desk']) {
+    build(`evals/apps/${app}/vite.config.js`);
+  }
+}
+
+if (process.env.ART_DIRECTOR_CRAFT === '1') {
+  for (const app of ['fold-baseline', 'fold-candidate']) build(`evals/apps/${app}/vite.config.js`);
+}
+
+if (process.env.ART_DIRECTOR_SEEFIX === '1') {
+  build('evals/apps/fold-corrected/vite.config.js');
+  const foldDir = path.join(root, "evals/artifacts/fold-corrected");
+  const foldHtml = fs.readFileSync(path.join(foldDir, "index.html"), "utf8");
+  assert.match(foldHtml, /<div id="root">/);
+  const foldAssets = fs.readdirSync(path.join(foldDir, "assets"));
+  assert.ok(foldAssets.some((f) => f.endsWith(".js")), "fold-corrected production bundle missing");
+
+  build('evals/apps/shoot-board-corrected/vite.config.js');
+  const shootDir = path.join(root, "evals/artifacts/shoot-board-corrected");
+  assert.match(fs.readFileSync(path.join(shootDir, "index.html"), "utf8"), /<div id="root">/);
+  const shootAssets = fs.readdirSync(path.join(shootDir, "assets"));
+  const shootJs = shootAssets.find((f) => f.endsWith(".js"));
+  assert.ok(shootJs, "shoot-board-corrected production bundle missing");
+  assert.match(fs.readFileSync(path.join(shootDir, "assets", shootJs), "utf8"), /Teslimatı düzenle/);
+}
+
+const kilnDir = path.join(root, "evals/artifacts/kiln-queue");
+const deskDir = path.join(root, "evals/artifacts/nadir-desk");
+const railDir = path.join(root, "evals/artifacts/rail-still");
+const kilnHtml = fs.readFileSync(path.join(kilnDir, "index.html"), "utf8");
+const deskHtml = fs.readFileSync(path.join(deskDir, "index.html"), "utf8");
+const railHtml = fs.readFileSync(path.join(railDir, "index.html"), "utf8");
+assert.match(kilnHtml, /<div id="root">/);
+assert.match(deskHtml, /<div id="root">/);
+assert.match(railHtml, /<div id="root">/);
+assert.match(kilnHtml, /main\.jsx|\/assets\//);
+assert.match(deskHtml, /main\.jsx|\/assets\//);
+assert.match(railHtml, /main\.jsx|\/assets\//);
+
+const kilnAssets = fs.readdirSync(path.join(kilnDir, "assets"));
+const deskAssets = fs.readdirSync(path.join(deskDir, "assets"));
+const railAssets = fs.readdirSync(path.join(railDir, "assets"));
+const kilnJsName = kilnAssets.find((f) => f.endsWith(".js"));
+const deskJsName = deskAssets.find((f) => f.endsWith(".js"));
+const railJsName = railAssets.find((f) => f.endsWith(".js"));
+assert.ok(kilnJsName, "kiln production bundle missing");
+assert.ok(deskJsName, "desk production bundle missing");
+assert.ok(railJsName, "rail production bundle missing");
+const kilnJs = fs.readFileSync(path.join(kilnDir, "assets", kilnJsName), "utf8");
+const deskJs = fs.readFileSync(path.join(deskDir, "assets", deskJsName), "utf8");
+const railJs = fs.readFileSync(path.join(railDir, "assets", railJsName), "utf8");
+assert.match(kilnJs, /Loads in fire/);
+assert.match(kilnJs, /Log a temperature hold/);
+assert.match(deskJs, /Morning list/);
+assert.match(deskJs, /commitNote|Save note/);
+assert.match(railJs, /Linear 40/);
+assert.match(railJs, /Email the desk/);
+assert.doesNotMatch(kilnJs, /React\.createElement\(React\.Fragment/);
+
+console.log("vite example builds ok");

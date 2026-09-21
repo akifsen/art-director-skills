@@ -1,0 +1,249 @@
+:root {
+  --rs-canvas: #e7eaee;
+  --rs-ink: #121417;
+  --rs-muted: #5b636c;
+  --rs-line: #c9ced6;
+  --rs-paper: #f6f7f9;
+  --rs-copper: #b85a32;
+  /* Focus ring is drawn outside the control, so it must contrast with the
+     surface around the control (canvas or paper), not with the control's
+     own type. Ink over both light surfaces reads; paper-on-paper does not. */
+  --rs-focus: var(--rs-ink);
+  --rs-space: 1.25rem;
+  --rs-display: "Segoe UI Variable Display", "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif;
+  --rs-body: "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; color-scheme: light; }
+
+body.rs {
+  margin: 0;
+  background: var(--rs-canvas);
+  color: var(--rs-ink);
+  font-family: var(--rs-body);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+/* Element-only reset. A classed action such as `.rs-mail` must win on color. */
+a { color: inherit; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--rs-focus);
+  outline-offset: 3px;
+}
+
+.rs-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 3vw, 2.5rem);
+}
+
+.rs-mark {
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+
+.rs-nav {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.rs-nav a { text-decoration: none; }
+.rs-nav a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+
+.rs-open {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.9fr) minmax(0, 1.6fr);
+  gap: clamp(1.25rem, 3vw, 2.75rem);
+  align-items: end;
+  padding: 0 clamp(1rem, 3vw, 2.5rem) 3rem;
+  min-height: calc(100svh - 3.5rem);
+}
+
+.rs-kicker {
+  margin: 0 0 0.85rem;
+  color: var(--rs-muted);
+  font-size: 0.92rem;
+}
+
+.rs-kicker::before {
+  content: "";
+  display: inline-block;
+  width: 1.1rem;
+  height: 3px;
+  margin-right: 0.55rem;
+  margin-bottom: 0.18rem;
+  vertical-align: middle;
+  background: var(--rs-copper);
+}
+
+.rs-open h1 {
+  margin: 0;
+  font-family: var(--rs-display);
+  font-size: clamp(2.8rem, 8vw, 5.6rem);
+  font-weight: 650;
+  line-height: 0.92;
+  letter-spacing: -0.048em;
+  max-width: 7ch;
+}
+
+.rs-place {
+  margin: 1rem 0 0;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.rs-lede {
+  margin: 0.85rem 0 0;
+  max-width: 28ch;
+  color: var(--rs-muted);
+}
+
+.rs-meta {
+  margin: 1.4rem 0 0;
+  font-size: 0.92rem;
+  color: var(--rs-muted);
+}
+
+.rs-hero {
+  margin: 0;
+}
+
+.rs-hero img {
+  display: block;
+  width: 100%;
+  height: min(78svh, 44rem);
+  object-fit: cover;
+  object-position: 28% 52%;
+  background: #d5d8de;
+}
+
+.rs-hero figcaption {
+  margin: 0.55rem 0 0;
+  font-size: 0.82rem;
+  color: var(--rs-muted);
+}
+
+.rs-work {
+  padding: 0 clamp(1rem, 3vw, 2.5rem) 4rem;
+}
+
+.rs-work h2,
+.rs-end h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.rs-index {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(14rem, 0.72fr);
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  align-items: start;
+}
+
+.rs-tile {
+  margin: 0;
+}
+
+.rs-tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  background: #d5d8de;
+}
+
+.rs-tile--yard img {
+  aspect-ratio: 16 / 9;
+  object-position: 50% 10%;
+}
+
+.rs-tile--arm img {
+  aspect-ratio: 3 / 4;
+  object-position: 50% 40%;
+}
+
+.rs-tile figcaption {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.7rem 0 0;
+}
+
+.rs-tile h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.rs-tile p {
+  margin: 0;
+  color: var(--rs-muted);
+  font-size: 0.92rem;
+}
+
+.rs-end {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem clamp(1rem, 3vw, 2.5rem) 3.5rem;
+  border-top: 1px solid var(--rs-line);
+  background: var(--rs-paper);
+}
+
+.rs-end p { margin: 0; max-width: 42ch; }
+
+.rs-mail {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  background: var(--rs-ink);
+  color: var(--rs-paper);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.rs-mail:hover { background: #000; }
+
+.rs-note {
+  margin: 1rem 0 0;
+  font-size: 0.82rem;
+  color: var(--rs-muted);
+  max-width: 46ch;
+}
+
+@media (max-width: 860px) {
+  .rs-open,
+  .rs-index,
+  .rs-end {
+    grid-template-columns: 1fr;
+  }
+  .rs-open {
+    min-height: 0;
+    padding-bottom: 2rem;
+    gap: 1.25rem;
+  }
+  .rs-open h1 { max-width: none; }
+  .rs-hero img {
+    height: min(52svh, 22rem);
+    object-position: 50% 40%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rail Still — finished fragment (study)</title>
+  <style>
+    :root {
+      --canvas: #e7eaee;
+      --ink: #121417;
+      --muted: #5b636c;
+      --line: #c9ced6;
+      --paper: #f6f7f9;
+      --copper: #b85a32;
+      --focus: var(--ink); /* ring sits outside the control, on canvas or paper */
+    }
+    * { box-sizing: border-box; }
+    html { color-scheme: light; }
+    body {
+      margin: 0;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+    /* Element-only reset so `.mail` can set inverse type on the filled action. */
+    a { color: inherit; }
+    a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+    .bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1rem clamp(1rem, 3vw, 2.5rem);
+    }
+    .mark { font-weight: 650; letter-spacing: -0.03em; text-decoration: none; }
+    nav { display: flex; gap: 1.25rem; font-weight: 500; font-size: 0.95rem; }
+    nav a { text-decoration: none; }
+    .open {
+      display: grid;
+      grid-template-columns: minmax(16rem, 0.9fr) minmax(0, 1.6fr);
+      gap: clamp(1.25rem, 3vw, 2.75rem);
+      align-items: end;
+      padding: 0 clamp(1rem, 3vw, 2.5rem) 3rem;
+      min-height: calc(100svh - 3.5rem);
+    }
+    .kicker { margin: 0 0 0.85rem; color: var(--muted); font-size: 0.92rem; }
+    .kicker::before {
+      content: "";
+      display: inline-block;
+      width: 1.1rem;
+      height: 3px;
+      margin: 0 0.55rem 0.18rem 0;
+      vertical-align: middle;
+      background: var(--copper);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 8vw, 5.6rem);
+      font-weight: 650;
+      line-height: 0.92;
+      letter-spacing: -0.048em;
+      max-width: 7ch;
+    }
+    .place { margin: 1rem 0 0; font-size: 1.2rem; letter-spacing: -0.02em; }
+    .lede { margin: 0.85rem 0 0; max-width: 28ch; color: var(--muted); }
+    figure { margin: 0; }
+    .hero img {
+      display: block;
+      width: 100%;
+      height: min(78svh, 44rem);
+      object-fit: cover;
+      object-position: 28% 52%;
+      background: #d5d8de;
+    }
+    figcaption { margin: 0.55rem 0 0; font-size: 0.82rem; color: var(--muted); }
+    .work { padding: 0 clamp(1rem, 3vw, 2.5rem) 3rem; }
+    h2 { margin: 0 0 0.85rem; font-size: 1.05rem; font-weight: 650; letter-spacing: -0.02em; }
+    .index {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(14rem, 0.72fr);
+      gap: 1.25rem;
+    }
+    .index img { display: block; width: 100%; height: auto; object-fit: cover; background: #d5d8de; }
+    .yard img { aspect-ratio: 16 / 9; object-position: 50% 10%; }
+    .arm img { aspect-ratio: 3 / 4; object-position: 50% 40%; }
+    .index h3 { margin: 0.7rem 0 0; font-size: 1.15rem; letter-spacing: -0.02em; }
+    .index p { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.92rem; }
+    .end {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 2rem clamp(1rem, 3vw, 2.5rem) 3.5rem;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .end p { margin: 0; max-width: 42ch; }
+    .mail {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.75rem;
+      margin-top: 1rem;
+      padding: 0 1rem;
+      background: var(--ink);
+      color: var(--paper);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    @media (max-width: 860px) {
+      .open, .index, .end { grid-template-columns: 1fr; }
+      .open { min-height: 0; padding-bottom: 2rem; }
+      h1 { max-width: none; }
+      .hero img { height: min(52svh, 22rem); object-position: 50% 40%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="bar">
+    <a class="mark" href="#top">Rail Still</a>
+    <nav aria-label="Studio">
+      <a href="#work">Work</a>
+      <a href="#studio">Studio</a>
+      <a href="#inquire">Inquire</a>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="open">
+      <div>
+        <p class="kicker">Current catalog still</p>
+        <h1>Linear 40</h1>
+        <p class="place">Ferry cabin</p>
+        <p class="lede">48V ceiling channel. Cool daylight, empty cabin, no retouch of the room.</p>
+      </div>
+      <figure class="hero">
+        <img src="../examples/media-portfolio/stills/linear40.png" alt="" width="1600" height="900">
+        <figcaption>Generated demo still — not a client shoot.</figcaption>
+      </figure>
+    </section>
+    <section class="work" id="work">
+      <h2>Other frames</h2>
+      <div class="index">
+        <figure class="yard">
+          <img src="../examples/media-portfolio/stills/dock-flood.png" alt="" width="1200" height="900">
+          <figcaption>
+            <h3>Dock flood</h3>
+            <p>Municipal yard · 2026</p>
+          </figcaption>
+        </figure>
+        <figure class="arm">
+          <img src="../examples/media-portfolio/stills/task-arm.png" alt="" width="900" height="1200">
+          <figcaption>
+            <h3>Task arm</h3>
+            <p>Drafting table · 2026</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="end">
+      <div id="studio">
+        <h2>Studio</h2>
+        <p>Rail Still photographs lighting hardware for manufacturer catalogs. The room in the frame is the room that was there.</p>
+      </div>
+      <div id="inquire">
+        <h2>Inquire</h2>
+        <p>Send the fixture name and the room you can give us.</p>
+        <a class="mail" href="mailto:desk@railstill.example?subject=Catalog%20still">Email the desk</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

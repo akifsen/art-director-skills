@@ -1,0 +1,25 @@
+{
+  "passed": [
+    "four workshop data records",
+    "craft filter",
+    "detail navigation",
+    "missing session validation",
+    "blank name validation",
+    "two-place booking",
+    "confirmation data",
+    "cancellation",
+    "filter preserved",
+    "sold-out session disabled",
+    "one-seat capacity validation",
+    "one-place booking",
+    "refresh clears reservation",
+    "unknown workshop recovery",
+    "390px no horizontal overflow",
+    "no page errors"
+  ],
+  "focus": {
+    "tag": "BUTTON",
+    "outline": "solid",
+    "font": "\"Segoe UI\", Arial, sans-serif"
+  }
+}

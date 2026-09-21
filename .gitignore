@@ -1,0 +1,14 @@
+node_modules/
+dist/
+evals/runs/
+evals/artifacts/
+.DS_Store
+Thumbs.db
+*.log
+.art-director/
+.agents/
+.cursor/
+.npm-cache/
+playwright-report/
+test-results/
+.playwright-mcp

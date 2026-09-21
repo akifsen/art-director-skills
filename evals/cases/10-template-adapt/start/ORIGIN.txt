@@ -1,0 +1,2 @@
+Sable Ledger is an original evaluation fixture in this repository.
+It is a small admin template for eval use, not a commercial theme dump.

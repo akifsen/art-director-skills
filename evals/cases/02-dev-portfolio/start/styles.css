@@ -1,0 +1,4 @@
+body { font-family: Arial, sans-serif; margin: 0; }
+header { padding: 3rem 1rem; background: #0f172a; color: #e2e8f0; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 1rem; }
+.grid a { display: block; padding: 2rem; background: #e2e8f0; color: #0f172a; text-align: center; }
