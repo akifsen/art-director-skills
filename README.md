@@ -134,11 +134,10 @@ Pin a tag with a tree URL, not `owner/repo@v0.1.0` (`@` is a skill filter in
 this CLI):
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.9.1 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.10.0 --skill art-director --agent cursor --copy
 ```
 
-Use v0.9.1 after that tag exists. Until then, install from the commit on
-`main` or from a local clone. The v0.8.0 skill still teaches Palatino-on-cream
+The v0.10.0 skill content equals 0.9.1 apart from the version line. The v0.8.0 skill still teaches Palatino-on-cream
 applied fragments. The v0.7.0 tag still contains independent-host
 wording in `SKILL.md`.
 

@@ -260,14 +260,15 @@ Do not write `akifsen/art-director-skills@v0.4.0` expecting a tag.
 Documented pin: a GitHub tree URL whose path segment is the branch or tag.
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.9.1 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.10.0 --skill art-director --agent cursor --copy
 ```
 
-Use a real tag after it exists. Prefer the tag or commit published in
-[CHANGELOG.md](../CHANGELOG.md). A release archive of `skills/art-director/`
-can be copied manually the same way as the offline folder.
+Prefer the tag or commit published in [CHANGELOG.md](../CHANGELOG.md). A
+release archive of `skills/art-director/` can be copied manually the same
+way as the offline folder.
 
-The v0.9.1 skill designs interaction-state combinations (selected + hover,
+The v0.10.0 skill content equals v0.9.1 apart from the version line; the
+release is a CLI security fix. The v0.9.1 skill designs interaction-state combinations (selected + hover,
 focus ring vs surrounding surface) and treats container size as a content
 decision, not a fill-the-viewport rule. The untagged 0.9.0 work taught job
 vs domain and replaced Palatino-on-cream applied fragments without making
