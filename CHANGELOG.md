@@ -30,6 +30,25 @@
   Tab focus ring 13.67:1 against the canvas, full list → detail → edit →
   error → save → cancel flow, unknown id and filter. Gaps kept as producer
   output: 13px muted text 4.05:1, 38px chips on 390.
+- Strengthen the design claim without a house look. SKILL.md: fonts,
+  warm/cool, light/dark, symmetry, cards, gradients, spacing and hairlines
+  are tools that need a justification from task, content, brand, audience
+  and platform — none banned, none required; keep the user's stated and
+  rejected directions, do not assume unstated ones. DESIGN opens with a
+  short direction of six decisions (task and content priority, composition
+  and density, type roles, color/surface/state pairs, imagery's role,
+  platform interaction), adjectives turned into checkable decisions, one or
+  two distinctive moves. "Finished" now names the level: composition,
+  type, imagery or its honest substitute, surfaces, component detail and
+  states done together; a colored wireframe is not final, an unworked page
+  is not minimalism, and nothing promises awards. Correction is by problem
+  (readability, composition, action hierarchy), not one recipe, and covers
+  loading. Design-method's thesis list became that six-item direction and
+  drops the duplicated metaphor bans; typography's duplicate house-look
+  paragraph is folded into "Choice versus quality". Web nav: sidebar,
+  command palette and shortcuts are answers to destination count, not
+  defaults. Native: placement and press feedback follow the task; keep
+  platform fonts and working controls.
 - Add `tooling/install-skill.mjs` (also `npm run install-skill` and the
   `art-director-skill` bin for `npx github:akifsen/art-director-skills`):
   copies the skill folder to the vendor-documented path for Claude Code,
