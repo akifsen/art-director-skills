@@ -59,22 +59,46 @@ başlatmamalıdır.
 
 Çevrimdışı kopya yeterlidir. Ayrıntı: [docs/installation.md](docs/installation.md).
 
-### Desteklenen tüm asistanlar (paketle gelen yükleyici, ağ yok, telemetri yok)
+### Hızlı Kurulum (npx)
 
-Yerel klondan `node tooling/install-skill.mjs`, `skills/art-director/`
-klasörünü her asistanın belgelediği skill dizinine kopyalar:
+Tek komut; bağımlılık yok, indirme sonrası ağ yok, telemetri yok.
+Bulunduğun çalışma dizinine yazar:
 
-```sh
-node tooling/install-skill.mjs install --ai cursor
-node tooling/install-skill.mjs install --ai claude,codex,copilot
-node tooling/install-skill.mjs install --ai all --global
-node tooling/install-skill.mjs status  --ai all
+```bash
+# Projeye doğrudan eklemek için (proje kökünde SKILL.md):
+npx art-director-skills
+
+# Cursor kuralları (.cursorrules) olarak eklemek için:
+npx art-director-skills --cursor
+
+# Claude Desktop / Projects / Claude Code için (CLAUDE.md):
+npx art-director-skills --claude
 ```
 
-Klonlamadan (tek seferlik indirme için ağ gerekir):
+Hedefte dosya varsa "Overwriting existing …" uyarısıyla üzerine yazılır.
+Tek dosya `SKILL.md` gövdesinin tamamını taşır; `references/` bağlantıları
+bu depoya işaret eder. Referanslarıyla birlikte, asistanın skill aradığı
+klasöre kurmak için aşağıdaki tam modu kullan.
+
+### Desteklenen tüm asistanlar (paketle gelen yükleyici, ağ yok, telemetri yok)
+
+Paket bir CLI içerir (`art-director`, eş adı `art-director-skills`);
+`skills/art-director/` klasörünü her asistanın belgelediği skill dizinine
+kopyalar:
 
 ```sh
-npx --yes github:akifsen/art-director-skills install --ai gemini
+npx art-director-skills install --ai cursor
+npx art-director-skills install --ai claude,codex,copilot
+npx art-director-skills install --ai all --global
+npx art-director-skills status  --ai all
+npx art-director --version
+```
+
+npm'e yayın henüz yapılmadı; o zamana kadar klon veya GitHub kaynağı:
+
+```sh
+node bin/cli.js install --ai cursor                       # klon
+npx --yes -p github:akifsen/art-director-skills art-director-skills install --ai gemini
 ```
 
 | `--ai` | Asistan | Proje yolu | Genel yol (`--global`) |
