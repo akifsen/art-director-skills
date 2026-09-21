@@ -29,7 +29,9 @@
   brand-owned) with starting canvases, a ban on stock framework values,
   and a visible tone step (~1.08–1.15) between adjacent surfaces. `SKILL.md`
   "Surface and light" now requires naming the regime and reserves warm
-  paper for subjects that own it.
+  paper for subjects that own it. Derived tokens (hairlines, shadows,
+  hover/active) follow the regime as well: ink at low alpha, not slate
+  under warm paper; hover moves toward paper in dark mode.
 - README (EN/TR): CLI examples (`--yes`, `--dry-run`, `list`, `remove`),
   DESIGN / REFINE / REVIEW chat prompts, and per-host use (Cursor, Gemini
   CLI including `.agents/skills` when `.gemini/skills` is not listed,

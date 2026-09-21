@@ -176,6 +176,11 @@ Rules that follow:
   (meta on the tinted grouping background, not only on canvas). AA is
   4.5:1 for body and 3:1 for ≥ 24px; aim for 4.5 on metadata since it is
   usually 12–13px.
+- Derived tokens follow the regime too. Hairlines, borders, and shadows are
+  the regime's *ink* at low alpha (warm ink on paper, graphite on steel),
+  not a slate `rgba(15, 23, 42, …)` pasted under a warm palette. Hover and
+  active states move toward the ink in light mode and toward the paper in
+  dark mode — an accent that darkens on hover over a dark canvas disappears.
 - When REFINE inherits a palette, keep it — but still name its regime and
   fix pairs that fail the two checks above. Changing regime in REFINE needs
   the user's word.
