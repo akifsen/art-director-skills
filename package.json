@@ -1,6 +1,6 @@
 {
   "name": "art-director-skills",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "Art Director Agent Skill for frontend UI design, plus a zero-dependency CLI that installs it into Claude Code, Cursor, Copilot, Kiro, Codex, Qoder, Roo Code, Gemini CLI, OpenCode, Continue, CodeBuddy, Droid, and Kilo Code.",
   "license": "MIT",
   "author": "akifsen (https://github.com/akifsen)",
