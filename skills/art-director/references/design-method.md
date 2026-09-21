@@ -40,7 +40,11 @@ A REFINE of one control does not authorize a new identity for the whole app.
 ## Design direction
 
 On a broad DESIGN, write a short direction as decisions to implement — not
-a meeting, not an inner monologue:
+a meeting, not an inner monologue. Decide in this order: first the tone in
+three words tied to task and audience ("quiet, exact, warm" for a
+photographer's tracker; not "clean, modern, minimal"); then the type regime
+and the surface/contrast regime; then the focal anchor and the composition
+around it. The six items below record those decisions and the rest:
 
 1. **Main task and content priority** — what the user does first, which
    content carries it, what is secondary. **First look**: what occupies the

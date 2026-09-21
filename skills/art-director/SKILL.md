@@ -113,6 +113,13 @@ Keep preferences the user stated and directions they rejected; do not
 assume preferences the brief did not give. Starter fonts, gray boxes, and a
 look the user already rejected are not a brand system to preserve.
 
+The failure is the **unconscious default**: Inter or Roboto, a 12-column
+grid of equal cards, raw white with a drop shadow, a blue accent — chosen
+because nothing was chosen. A default is allowed when it is the answer to
+a stated reason (platform font on native, a dense tool that must read on
+bad monitors, a brand already in force). Without the reason it is a
+missing decision, and the result reads as a template no matter how tidy.
+
 ## Working method
 
 Do not implement the whole product and inspect later.
@@ -120,11 +127,15 @@ Do not implement the whole product and inspect later.
 1. **Read the project** — stack, routes, real copy, leftovers, platform,
    foundation, what must not change.
 2. **Open needed references** for this mode, platform, and foundation.
-3. **DESIGN** — short design direction ([design-method.md](references/design-method.md)):
-   main task and content priority; composition and information density;
-   type roles and readability; color, surface, and state relations; the
-   real role of imagery; the interaction approach on this platform. Turn
-   adjectives into decisions — not "bold," but which content, at what
+3. **DESIGN** — short design direction ([design-method.md](references/design-method.md)),
+   decided in this order: **(a)** the product's tone in three words, tied
+   to the task and audience (not "clean, modern, minimal"); **(b)** the type
+   regime and the surface/contrast regime — which faces in which roles,
+   light or dark, how depth is drawn; **(c)** the focal anchor — the one
+   element the eye lands on — and the composition and density built around
+   it. Then the remaining decisions: color, surface, and state relations;
+   the real role of imagery; the interaction approach on this platform.
+   Turn adjectives into decisions — not "bold," but which content, at what
    measure, in what relation to the rest. One or two distinctive decisions
    carry a direction; every component competing for attention does not.
    Reject a thesis that still fits another product after swapping the name.
@@ -141,11 +152,13 @@ Do not implement the whole product and inspect later.
    guides). That screen is the working surface for the main task and the
    product’s component language. It is not always a hero.
 7. **See it, then correct it** — after Gate A, open the current render of
-   in-scope actions and states — rest, selected, hover, focus, error, and
-   loading where it exists — not only the hero ([visual-review.md](references/visual-review.md)).
-   Fix the problem that is there: readability, composition, or action
-   hierarchy. Do not apply one recipe (bigger title, thinner line, more
-   space, broken symmetry) to every weak result. Saving a screenshot file
+   in-scope actions and states — rest, hover, active/pressed, selected,
+   focus, error, and loading or skeleton where it exists — not only the
+   hero ([visual-review.md](references/visual-review.md)). Check it
+   against the craft bar below. Fix the problem that is there:
+   readability, composition, or action hierarchy. Do not apply one recipe
+   (bigger title, thinner line, more space, broken symmetry) to every weak
+   result. Saving a screenshot file
    is not inspection. If the host cannot open the image, do not claim
    visual inspection. Native: a web mock is not device proof.
 8. **Extend related screens**, walk the flow and states, and recheck
@@ -179,6 +192,66 @@ DESIGN of a product: do not stop after the first screen if list/detail/edit
 (or the equivalent) was asked for.
 
 REVIEW: do not edit sources.
+
+## Craft bar
+
+The level a finished screen is checked against. Values are starting
+points and checks, not quotas; a deliberate departure with a reason passes,
+an accidental one does not. DESIGN builds to this bar; REFINE matches the
+regime already in the product; REVIEW reads against it.
+
+**Type.** Heading and body have a real contrast of tone — weight, width,
+or family — not the same face at two sizes. For editorial, technical, or
+luxury work, consider a display, serif, or grotesk pairing that fits the
+content before a generic sans; a system font is fine when the reason is
+platform, density, or brand. Large headings usually want negative tracking
+(around `-0.02em` to `-0.04em`) for optical balance; body wants a relaxed
+line height (about `1.5`–`1.65`) and a measure that reads. Figures in
+metrics, tables, code, and money use `tabular-nums`. Confirm the face
+loaded.
+
+**Surface and light.** Do not leave the page on raw `#FFFFFF` or pitch
+`#000000` with hard drop shadows unless the brand or medium asks for it.
+Light modes sit on a natural near-white (chalk, bone, paper); dark modes on
+deep graphite or smoke, not black. Layer cards and panels with 1px hairline
+borders or low-opacity strokes and a soft ambient shadow instead of thick
+shadows. Radius, border, and shadow come from one family. Keep color
+disciplined: most of the screen is neutral ground and text, a smaller share
+is structural surface, and one signature accent is scarce enough to still
+be an accent — a rough 80 / 15 / 5 is a useful check, not a rule.
+Semantic status colors carry a word or mark, never color alone.
+
+**Space and focus.** Avoid the reflex grid of three equal modules. Pick the
+focal anchor from the content's value and let secondary and tertiary
+material take unequal sizes around it; equal cells are right only when the
+items are true peers. Negative space is part of the composition and of
+readability — not an omission to fill, and not padding that pushes the
+main task below the fold on a product workspace.
+
+**States.** Rest, hover, active/pressed, selected, focus, disabled, error,
+and loading or skeleton are designed as combinations. One state does not
+break another's text contrast, alignment, or size. Focus is visible
+against the surface the ring is drawn over. Transitions on hover and focus
+are short (about 150–200ms) and respect reduced-motion settings.
+
+**Native and web mobile.** Not a shrunk desktop: reorder, crop, and
+disclose. Keep the primary action and frequent filters where the thumb
+reaches when the task is frequent; a top placement is fine for rare or
+destructive actions. Touch targets are at least 44×44pt (web: 44 CSS px
+or the platform's current guide). Pressed feedback follows the platform's
+own convention (opacity, tint, or a slight scale), not a mandatory scale
+on every tap. Bottom sheets, segmented controls, and horizontally
+scrolling chips are options when the task is short and the context must
+stay visible; a full-page route is right for long forms and deep records.
+Evaluate navigation, keyboard, reach, safe area, large text, and task
+length together ([native-mobile.md](references/native-mobile.md)).
+
+**Web and desktop.** Do not spend the wide screen on empty gutters around
+a phone-width column when the task needs comparison or a working pane.
+A persistent sidebar, command palette (`Cmd/Ctrl+K`), and keyboard paths
+(`Esc` closes, arrows move) are answers to destination count, frequency,
+and expert use, not defaults; anything visible must actually work.
+Hover and focus use a subtle border or surface shift, not only color.
 
 ## Which references to open
 
@@ -241,7 +314,10 @@ this app’s names. Open only the example that matches this job:
 Stay in the current framework, templates, tokens, and components.
 
 Reuse primitives that already exist (including dialog, select, calendar).
-Do not rewrite complex overlays from scratch to look original.
+Do not rewrite complex overlays from scratch to look original. Do not add a
+runtime dependency (animation, icon, or UI library) to reach the craft bar
+when CSS, the platform, and the installed stack can do it; a new package
+needs a reason and must not break the project's existing tests.
 
 Keep real copy, routes, and data rules. Unknown stays unknown. Do not invent
 testimonials, metrics, customer photos, or dates the brief did not give.
@@ -261,8 +337,9 @@ store) actually changed. Session state is not device storage.
 Do not average these into one quality score.
 
 - **A.** Load, technical function, content fidelity
-- **B.** Visual craft and product-wide consistency
-- **C.** In-scope screens, interactions, and states
+- **B.** Visual craft against the craft bar, and product-wide consistency
+- **C.** In-scope screens, interactions, and states (including active and
+  loading/skeleton where they exist)
 - **D.** Platform-appropriate behavior and accessibility
 
 Report three evidence kinds separately: **implemented**, **run-verified**,
@@ -282,7 +359,8 @@ defect remains. Disclosing a blocked check does not pass it.
 Keep this short. Do not turn a normal UI task into an experiment log, and
 do not narrate deliberation; state the decision, the change, and the check.
 
-- Mode, platform, UI foundation, and the direction (DESIGN)
+- Mode, platform, UI foundation, and the direction (DESIGN: tone in three
+  words, type and surface regime, focal anchor, then the rest)
 - Files changed (REVIEW: none)
 - What you ran or opened, and what you could not verify
 - Delivery status: complete / partial delivery / incomplete, with reason
