@@ -80,6 +80,27 @@ A contrast or accessibility pass on a flat pair is evidence for that pair.
 It is not approval of the whole design. Do not save a new snapshot that
 still shows the defect and call the defect expected.
 
+## Measure, do not read the comment
+
+Stylesheet headers that say "strict 44×44 touch targets", "asymmetric
+hero", or "hairline borders" are intentions. Check the render:
+
+- At a phone width (~390): `document.documentElement.scrollWidth` must not
+  exceed `innerWidth`. If it does, name the element whose right edge
+  overflows.
+- Bounding boxes of `a, button, input` in the requested scope: list the
+  ones under the floor with their size and label. Zero is the report you
+  want; "min-height is set" is not.
+- Hover-only presentation without `@media (hover: hover)` is a defect on a
+  touch review, even when the desktop render looks right.
+- `<img>` without intrinsic `width`/`height` (or a CSS `aspect-ratio`)
+  shifts layout on load; note it under the functional ledger.
+- A theme toggle whose stored value is applied only from a deferred script
+  paints the wrong theme first. Reload with the non-default theme stored
+  and watch the first frame.
+
+Report the numbers you measured, not the values the CSS promised.
+
 ## Scope
 
 Stay inside the user's request. A review of the mobile menu does not become

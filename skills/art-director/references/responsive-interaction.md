@@ -66,10 +66,39 @@ Assume both a coarse pointer and a keyboard.
 - Do not remove outlines without an equivalent (`:focus-visible` is a
   starting pattern).
 - Align icon and label to one baseline.
+- Put hover-only presentation (lift, image zoom, color swap) inside
+  `@media (hover: hover)`. On a touch screen an unguarded `:hover` sticks
+  after the tap and the "lift" never comes back down. Pressed feedback is
+  `:active` (a slight tint, opacity, or scale), and it is the only feedback
+  a phone user gets.
 
 Useful starting floors (not laws): ~24px pointer target; ~44px on coarse
 pointers; input font-size at least `16px` on small screens if you must
 avoid iOS zoom.
+
+A floor written in a comment or applied to a class the element does not
+carry is not a hit area. Measure the rendered boxes at a phone width
+(`getBoundingClientRect()` over `a, button, input`) and read
+`document.documentElement.scrollWidth` against `innerWidth` before saying
+"44px" or "no horizontal overflow". A footer link at `110×17`, a filter chip
+at `51×23`, or a masthead button that pushes `scrollWidth` to `431` on a
+`390` viewport fail regardless of what the stylesheet header claims.
+Text links that must be tappable (footer, breadcrumbs, related lists,
+"read more") get the floor with `display: inline-flex; min-height; min-width`
+rather than a larger font.
+
+**Applied fragment:**
+
+```css
+.btn, .chip, .card { transition: transform 120ms ease; }
+.btn:active, .chip:active { transform: scale(0.98); }
+.card:active { transform: scale(0.985); }
+
+@media (hover: hover) {
+  .btn:hover { background: var(--surface-2); }
+  .card:hover .title { text-decoration: underline; }
+}
+```
 
 ## States
 

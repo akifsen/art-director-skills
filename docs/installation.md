@@ -20,11 +20,11 @@ Two install paths are documented:
 
 ```sh
 # npm package art-director-skills (pin the version):
-npx art-director-skills@0.10.1 install --ai <ids|all> [--global] [--force] [--dry-run]
-npx art-director-skills@0.10.1 status  --ai <ids|all>
-npx art-director-skills@0.10.1 remove  --ai <ids|all> [--global]
-npx art-director-skills@0.10.1 list
-npx art-director-skills@0.10.1 --version
+npx art-director-skills@0.10.2 install --ai <ids|all> [--global] [--force] [--dry-run]
+npx art-director-skills@0.10.2 status  --ai <ids|all>
+npx art-director-skills@0.10.2 remove  --ai <ids|all> [--global]
+npx art-director-skills@0.10.2 list
+npx art-director-skills@0.10.2 --version
 
 # from a clone:
 node bin/cli.js install --ai cursor

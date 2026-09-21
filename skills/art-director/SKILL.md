@@ -15,7 +15,7 @@ description: >-
 license: MIT
 metadata:
   author: akifsen
-  version: "0.10.1"
+  version: "0.10.2"
 ---
 
 # Art Director
@@ -210,10 +210,24 @@ line height (about `1.5`–`1.65`) and a measure that reads. Figures in
 metrics, tables, code, and money use `tabular-nums`. Confirm the face
 loaded.
 
-**Surface and light.** Do not leave the page on raw `#FFFFFF` or pitch
-`#000000` with hard drop shadows unless the brand or medium asks for it.
-Light modes sit on a natural near-white (chalk, bone, paper); dark modes on
-deep graphite or smoke, not black. Layer cards and panels with 1px hairline
+**Surface and light.** Decide the color regime before any hex: name the
+product's sector and temperament, pick one of the regimes in
+[typography-color-assets.md](references/typography-color-assets.md)
+(cool technical, editorial/craft, clinical/corporate, kinetic/bold, or the
+brand's own), and write the reason in one line. Warm paper, cream, bone,
+and travertine are legitimate only when the subject owns them (print,
+craft, place, food, heritage); a fintech, developer, operations, or
+clinical product defaults to cool or neutral graphite/steel/ice with one
+technical accent. Reusing the previous project's warm neutrals — or a
+utility framework's stock slate/emerald/red set for dark mode — is a fail
+even when each pair passes contrast. Do not leave the page on raw `#FFFFFF`
+or pitch `#000000` with hard drop shadows unless the brand or medium asks
+for it. Light modes sit on a natural near-white *of the chosen regime*
+(chalk and bone for warm, ice and steel for cool); dark modes on deep
+graphite, smoke, or a warm umber, not black and not a navy borrowed from a
+framework. Adjacent surfaces differ by a visible tone step (aim for a
+~1.08–1.15 luminance ratio between canvas and surface) so layering does
+not rest on shadow alone. Layer cards and panels with 1px hairline
 borders or low-opacity strokes and a soft ambient shadow instead of thick
 shadows. Radius, border, and shadow come from one family. Keep color
 disciplined: most of the screen is neutral ground and text, a smaller share
@@ -232,13 +246,17 @@ main task below the fold on a product workspace.
 and loading or skeleton are designed as combinations. One state does not
 break another's text contrast, alignment, or size. Focus is visible
 against the surface the ring is drawn over. Transitions on hover and focus
-are short (about 150–200ms) and respect reduced-motion settings.
+are short (about 150–200ms) and respect reduced-motion settings. Hover-only
+presentation sits behind `@media (hover: hover)`; `:active` carries the
+pressed feedback a touch user actually sees.
 
 **Native and web mobile.** Not a shrunk desktop: reorder, crop, and
 disclose. Keep the primary action and frequent filters where the thumb
 reaches when the task is frequent; a top placement is fine for rare or
 destructive actions. Touch targets are at least 44×44pt (web: 44 CSS px
-or the platform's current guide). Pressed feedback follows the platform's
+or the platform's current guide) — measured on the rendered boxes at a
+phone width, with no horizontal overflow, not asserted in a stylesheet
+comment. Pressed feedback follows the platform's
 own convention (opacity, tint, or a slight scale), not a mandatory scale
 on every tap. Bottom sheets, segmented controls, and horizontally
 scrolling chips are options when the task is short and the context must

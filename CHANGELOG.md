@@ -1,7 +1,35 @@
 # Changelog
 
-## Unreleased
+## 0.10.2 — 2026-09-21 (skill: measured touch, hover guard, first paint)
 
+- Skill: lessons from a two-project comparison (2026-09-21, static local
+  news sites; one built with the skill, one without). The skill-built site
+  passed the surface, type, composition, and honesty bar but was silent on
+  four things the review had to add by hand; the other site *claimed*
+  "strict 44×44" in a CSS comment while rendering 23px chips and a 431px
+  `scrollWidth` at 390. Added:
+  - `responsive-interaction.md`: hover-only presentation behind
+    `@media (hover: hover)`, `:active` as the touch feedback, and hit
+    areas measured from rendered boxes (`getBoundingClientRect`,
+    `scrollWidth` vs `innerWidth`) rather than read from a comment.
+  - `visual-review.md`: "Measure, do not read the comment" — overflow,
+    hit-area list, hover guard, missing `<img>` dimensions, and first-frame
+    theme flash as concrete checks.
+  - `implementation.md`: intrinsic `width`/`height` + lazy/eager split,
+    stored theme applied from an inline `<head>` script, remote font
+    `@import` inside CSS, locale-aware case folding and escaping for
+    search/filter code.
+  - `SKILL.md` craft bar: one sentence each for the hover guard and for
+    measured (not asserted) touch targets.
+- Skill: color regime before hex. A third build of the same brief landed on
+  `#F9F8F5` chalk + `#FFFFFF` cards (1.06 step) in light and a Tailwind
+  slate/emerald/red set in dark. `typography-color-assets.md` gains "Regime
+  before hex": sector → temperament → owned material, a five-regime table
+  (cool technical, editorial/craft, clinical/corporate, kinetic/bold,
+  brand-owned) with starting canvases, a ban on stock framework values,
+  and a visible tone step (~1.08–1.15) between adjacent surfaces. `SKILL.md`
+  "Surface and light" now requires naming the regime and reserves warm
+  paper for subjects that own it.
 - README (EN/TR): CLI examples (`--yes`, `--dry-run`, `list`, `remove`),
   DESIGN / REFINE / REVIEW chat prompts, and per-host use (Cursor, Gemini
   CLI including `.agents/skills` when `.gemini/skills` is not listed,

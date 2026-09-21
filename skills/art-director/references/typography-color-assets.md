@@ -132,6 +132,59 @@ examples.
 
 **When.** You are choosing more than a single accent on white.
 
+### Regime before hex
+
+Agents anchor: after two warm-paper projects every canvas turns cream, and
+every dark mode turns into a framework's slate-900/slate-400/emerald-500
+set. Both are overfitting, not taste. Before writing a color, answer three
+questions in DESIGN notes (one line each) and only then open a palette:
+
+1. **Sector and function.** What is this product for and who uses it all
+   day? (a newsroom, a ledger, a clinic intake, a sneaker drop, a plant
+   dashboard)
+2. **Temperament.** Grounded / technical / clinical / kinetic — which one
+   does the content itself carry?
+3. **Owned material.** Is there a real material, place, or craft the brand
+   *owns* (kilim dye, kiln, harbor steel, hospital linen)? If not, do not
+   invent one.
+
+Then pick **one** regime and name it in the tokens comment:
+
+| Regime | Fits | Canvas / surface | Ink | Accent |
+|---|---|---|---|---|
+| **Cool technical** | fintech, developer tools, ops boards, logistics, B2B SaaS | steel `#E6E9ED` → `#F3F5F7`; dark graphite `#121417` → `#1A1E23` | `#14181D` / `#E8EBEF` | one signal: `#0B62BF`, `#0F766E`, `#E4572E` |
+| **Editorial / craft** | print, publishing, food, place, heritage, studios that make things | chalk or bone `#F3F0EA` → `#FDFCFA`; dark umber `#15130F` → `#1E1B16` | `#1A1611` / `#EFE9DF` | a dye or material tone: madder, ochre, pine |
+| **Clinical / corporate** | health, insurance, government, legal, HR | cool white `#EEF1F4` → `#F8FAFB`; dark slate-blue `#0F151C` → `#171F28` | `#16181C` / `#EEF2F6` | a restrained navy or teal, status colors carry words |
+| **Kinetic / bold** | sport, music, fashion drops, youth culture | ice `#F4F6F8` → `#FAFBFC` or obsidian `#0B0D10` → `#14171B` | `#0B0D10` / `#F4F6F8` | one loud signature, large fields allowed |
+| **Brand-owned** | any product that already has a palette | map the roles onto it | as defined | as defined |
+
+Rules that follow:
+
+- Warm neutrals are a *regime*, not a default. A pomegranate-town
+  newspaper may sit on chalk; an invoice ledger or a deployment console may
+  not, unless the brand says so.
+- Light and dark modes belong to the same regime. Warm paper in light and
+  Tailwind navy in dark is two products.
+- Stock utility-framework values (`#0F172A`, `#64748B`, `#94A3B8`,
+  `#22C55E`, `#EF4444`, `#D97706` and their neighbours) are a tell. If they
+  appear in tokens, derive the product's own from the regime instead.
+- Every adjacent surface pair needs a tone step you can see without a
+  shadow: canvas → surface → raised at roughly 1.08–1.15 luminance ratio
+  each. `#F9F8F5` against `#FFFFFF` (1.06) is not a step; it is a shadow
+  dependency.
+- Check the smallest text on the darkest allowed surface it can land on
+  (meta on the tinted grouping background, not only on canvas). AA is
+  4.5:1 for body and 3:1 for ≥ 24px; aim for 4.5 on metadata since it is
+  usually 12–13px.
+- When REFINE inherits a palette, keep it — but still name its regime and
+  fix pairs that fail the two checks above. Changing regime in REFINE needs
+  the user's word.
+
+**Failure.** Third project in a row on `#F9F8F5` chalk with `#B8321E`
+madder; a dark mode assembled from slate-900 / slate-400 / emerald-500 for a
+Mediterranean newspaper; a fintech dashboard on cream because "paper is
+calm".
+
 **How.** Name colors by job, then relate them:
 
 - **Canvas** — page background
