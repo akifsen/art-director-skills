@@ -187,5 +187,16 @@ for (const alias of Object.keys(pkg.bin)) {
 }
 console.log(`ok: bin aliases ${Object.keys(pkg.bin).join(", ")} via npm exec`);
 
+// Fixture cleanup: npm's .bin entries are symlinks on POSIX and the guarded
+// removeTree refuses links by design, so drop the links themselves first.
+(function unlinkLinks(dir) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, e.name);
+    const st = fs.lstatSync(full);
+    if (st.isSymbolicLink()) {
+      try { fs.unlinkSync(full); } catch { fs.rmdirSync(full); }
+    } else if (st.isDirectory()) unlinkLinks(full);
+  }
+})(work);
 removeTree(work, { boundary: os.tmpdir() });
 console.log(`packaged cli ok: ${info.filename} verified in a clean consumer project on ${process.platform}`);
