@@ -55,6 +55,22 @@
   and all measured text pairs cleared 4.5:1; material character did not
   improve (neutral gray canvas, placeholder idle pane). One run per arm;
   recorded as not a clear win, no quality gain claimed from the text edits.
+- Add a **craft bar** to SKILL.md and name the unconscious default as the
+  failure. DESIGN now decides in order: tone in three words, type and
+  surface/contrast regime, focal anchor and composition, then the rest
+  (mirrored in design-method). The bar gives checkable starting values —
+  heading/body tone contrast, negative tracking on large headings,
+  body leading 1.5–1.65, `tabular-nums`; natural near-white or graphite
+  grounds instead of raw white/black with hard shadows, hairline plus
+  ambient depth, one scarce accent (80/15/5 as a check, not a rule); a
+  focal anchor with unequal modules instead of the reflex three-card grid;
+  states as combinations including active/pressed and loading/skeleton,
+  150–200ms transitions with reduced motion; thumb reach, 44pt targets,
+  platform-native press feedback, sheets and chips as options; wide
+  screens not spent on gutters, sidebar and `Cmd/Ctrl+K` as answers to
+  destination count. Nothing is banned or mandated; a stated reason passes.
+  No new runtime dependency to reach the bar. Tests assert the bar and that
+  sidebar / palette / scale stay conditional.
 - Add `tooling/install-skill.mjs` (also `npm run install-skill` and the
   `art-director-skill` bin for `npx github:akifsen/art-director-skills`):
   copies the skill folder to the vendor-documented path for Claude Code,

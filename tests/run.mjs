@@ -109,6 +109,14 @@ assert(productUi.includes("stretched to fill leftover"), "product-ui-system reje
 assert(/first viewport \*\*is\*\*/.test(productUi) === false, "product-ui-system no longer declares the first viewport must be the workspace");
 assert(!/filling the\s+first viewport/.test(skillMd), "SKILL.md does not prescribe filling the first viewport");
 assert(skillMd.includes("voice choice, not a quality gain"), "SKILL.md separates palette/serif/radius swaps from quality");
+assert(skillMd.includes("## Craft bar"), "SKILL.md names a craft bar");
+assert(skillMd.includes("unconscious default"), "SKILL.md names the unconscious default as the failure");
+assert(/tabular-nums/.test(skillMd) && /-0\.02em/.test(skillMd), "craft bar gives type starting values");
+assert(/not quotas|not a rule/.test(skillMd), "craft bar values are starting points, not quotas");
+assert(/tone in three words/.test(skillMd), "DESIGN decides tone, regime, then focal anchor");
+assert(/active\/pressed/.test(skillMd) && /skeleton/.test(skillMd), "states include active and loading/skeleton");
+assert(/not defaults/.test(skillMd) && /not a mandatory scale/.test(skillMd), "sidebar/palette/scale stay conditional, not universal");
+assert(!/\bmust use (Inter|Roboto)/i.test(skillMd), "no required font family");
 
 const craft = fs.readFileSync(path.join(root, "skills", "art-director", "references", "visual-craft.md"), "utf8");
 assert(craft.includes("Design the valid state combinations"), "visual-craft teaches state combinations, not base looks");
