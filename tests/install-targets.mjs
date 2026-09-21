@@ -86,14 +86,30 @@ assert.equal(
 const outside = fs.readdirSync(tmp).filter((name) => !["çekim panosu", "ev dizini"].includes(name));
 assert.deepEqual(outside, [], "no stray files next to the temp roots");
 
-// Second install keeps, --force replaces, status tracks edits.
-assert.equal(installSkill("cursor", { projectDir, home }).action, "kept", "existing folder is kept without --force");
+// Second install is idempotent, edits produce a conflict, --force replaces with a backup.
+const cursorDir = targetDir("cursor", { projectDir });
+const before = fs.statSync(path.join(cursorDir, "SKILL.md")).mtimeMs;
+assert.equal(installSkill("cursor", { projectDir, home }).action, "current", "identical folder reports current, no rewrite");
+assert.equal(fs.statSync(path.join(cursorDir, "SKILL.md")).mtimeMs, before, "idempotent install does not touch files");
 assert.equal(statusSkill("cursor", { projectDir, home }).action, "current", "status current after install");
-const cursorSkill = path.join(targetDir("cursor", { projectDir }), "SKILL.md");
+const cursorSkill = path.join(cursorDir, "SKILL.md");
 fs.appendFileSync(cursorSkill, "\n<!-- local edit -->\n");
+const edited = fs.readFileSync(cursorSkill, "utf8");
 assert.equal(statusSkill("cursor", { projectDir, home }).action, "differs", "status differs after a local edit");
-assert.equal(installSkill("cursor", { projectDir, home, force: true }).action, "replaced", "--force replaces");
+const conflict = installSkill("cursor", { projectDir, home });
+assert.equal(conflict.action, "conflict", "differing folder is kept without --force");
+assert.equal(fs.readFileSync(cursorSkill, "utf8"), edited, "conflict leaves the edited file untouched");
+const replaced = installSkill("cursor", { projectDir, home, force: true });
+assert.equal(replaced.action, "replaced", "--force replaces");
+assert.ok(replaced.backup && fs.existsSync(path.join(replaced.backup, "SKILL.md")), "--force keeps a backup folder");
+assert.equal(fs.readFileSync(path.join(replaced.backup, "SKILL.md"), "utf8"), edited, "backup holds the user's edited copy");
 assert.equal(statusSkill("cursor", { projectDir, home }).action, "current", "status current after replace");
+assert.deepEqual(
+  fs.readdirSync(path.dirname(cursorDir)).filter((n) => n.startsWith(".art-director.staging")),
+  [],
+  "no staging folder left behind"
+);
+removeTree(replaced.backup, { boundary: path.dirname(cursorDir) });
 
 // Remove only removes a folder that is a skill.
 assert.equal(removeSkill("kiro", { projectDir, home }).action, "removed", "remove deletes the kiro copy");
@@ -101,7 +117,7 @@ assert.equal(removeSkill("kiro", { projectDir, home }).action, "absent", "second
 assert.equal(statusSkill("kiro", { projectDir, home }).action, "absent", "status absent after remove");
 assert.ok(!fs.existsSync(targetDir("kiro", { projectDir })), "kiro folder is really gone (rmSync silently no-ops on Turkish paths in Node 24 on Windows)");
 const notASkill = targetDir("roocode", { projectDir });
-removeTree(notASkill);
+removeTree(notASkill, { boundary: projectDir });
 fs.mkdirSync(notASkill, { recursive: true });
 fs.writeFileSync(path.join(notASkill, "notes.txt"), "user file");
 assert.equal(removeSkill("roocode", { projectDir, home }).action, "kept", "remove refuses a folder without SKILL.md");
@@ -122,6 +138,11 @@ const status = spawnSync(process.execPath, [cli, "status", "--ai", "codex", "--p
 assert.equal(status.status, 0, "status exit 0 when current");
 assert.match(status.stdout, /^current\s+codex/, "status prints current");
 
+const plan = spawnSync(process.execPath, [cli, "install", "--ai", "kiro", "--project-dir", cliProject, "--dry-run", "--json"], { encoding: "utf8" });
+assert.equal(plan.status, 0, "dry-run exit 0");
+assert.equal(JSON.parse(plan.stdout)[0].action, "would-install", "dry-run reports the plan");
+assert.ok(!fs.existsSync(path.join(cliProject, ".kiro")), "dry-run writes nothing");
+
 const bad = spawnSync(process.execPath, [cli, "install", "--ai", "nope", "--project-dir", cliProject], { encoding: "utf8" });
 assert.equal(bad.status, 1, "unknown assistant exits 1");
 assert.match(bad.stderr, /unknown assistant/, "unknown assistant message");
@@ -130,6 +151,6 @@ const list = spawnSync(process.execPath, [cli, "list"], { encoding: "utf8" });
 assert.equal(list.status, 0, "list exit 0");
 for (const id of ASSISTANT_IDS) assert.ok(list.stdout.includes(`  ${id}`), `list names ${id}`);
 
-removeTree(tmp);
+removeTree(tmp, { boundary: os.tmpdir() });
 assert.ok(!fs.existsSync(tmp), "temp tree removed");
 console.log(`installer targets ok for ${ASSISTANT_IDS.length} assistants (project + global, Turkish/space paths, force/remove/status, cli)`);

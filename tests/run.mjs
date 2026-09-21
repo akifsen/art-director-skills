@@ -172,7 +172,7 @@ assert(pkg.version === data.metadata?.version, "package.json version matches SKI
 assert(pkg.private !== true, "package is publishable (not private)");
 assert(pkg.bin["art-director"] === "./bin/cli.js" && pkg.bin["art-director-skills"] === "./bin/cli.js", "bins art-director and art-director-skills point at bin/cli.js");
 assert(pkg.files.includes("bin/") && pkg.files.includes("skills/art-director/"), "published files include bin/ and the skill folder");
-assert(!pkg.files.some((f) => /^(evals|tests|docs)/.test(f)), "published files exclude evals, tests, docs");
+assert(!pkg.files.some((f) => /^(evals|tests|dist|playwright)/.test(f)), "published files exclude evals, tests, dist, playwright");
 assert(fs.readFileSync(path.join(root, "bin", "cli.js"), "utf8").startsWith("#!/usr/bin/env node"), "bin/cli.js has a node shebang");
 {
   const v = spawnSync(process.execPath, [path.join(root, "bin", "cli.js"), "--version"], { encoding: "utf8" });
@@ -180,42 +180,28 @@ assert(fs.readFileSync(path.join(root, "bin", "cli.js"), "utf8").startsWith("#!/
   const l = spawnSync(process.execPath, [path.join(root, "bin", "cli.js"), "list"], { encoding: "utf8" });
   assert(l.status === 0 && /cursor/.test(l.stdout) && /kilocode/.test(l.stdout), "bin/cli.js list prints the assistant table");
 
-  // Single-file mode: SKILL.md / .cursorrules / CLAUDE.md into cwd.
+  // Safety and packaged-CLI contracts live in tests/install-safety.mjs and
+  // tests/packaged-cli.mjs; here only the source CLI's non-mutating surface.
   const cli = path.join(root, "bin", "cli.js");
-  const work = fs.mkdtempSync(path.join(os.tmpdir(), "ad-single-çalışma alanı-"));
+  const work = fs.mkdtempSync(path.join(os.tmpdir(), "ad-cli-çalışma alanı-"));
   const runCli = (...args) => spawnSync(process.execPath, [cli, ...args], { cwd: work, encoding: "utf8", env: { ...process.env, NO_COLOR: "1" } });
-  const skillSource = fs.readFileSync(path.join(root, "skills", "art-director", "SKILL.md"), "utf8");
-
-  const d = runCli();
-  assert(d.status === 0 && fs.existsSync(path.join(work, "SKILL.md")), "no-arg run writes SKILL.md into cwd");
-  const skillCopy = fs.readFileSync(path.join(work, "SKILL.md"), "utf8");
-  assert(skillCopy.startsWith("---\nname: art-director") || skillCopy.startsWith("---\r\nname: art-director"), "root SKILL.md keeps its frontmatter");
-  assert(!/\]\((references|assets)\//.test(skillCopy), "lone SKILL.md has no dangling relative reference links");
-  assert(/https:\/\/github\.com\/akifsen\/art-director-skills\/blob\/main\/skills\/art-director\/references\/design-method\.md/.test(skillCopy), "relative links rewritten to repository URLs");
-  assert(skillCopy.includes("## Craft bar") && skillCopy.includes("## Four acceptance gates"), "body content intact after link rewrite");
-  assert(/written to/.test(d.stdout) && !/Overwriting/.test(d.stdout), "first write reports success without an overwrite notice");
-
-  const d2 = runCli();
-  assert(d2.status === 0 && /Overwriting existing SKILL\.md/.test(d2.stdout), "second write warns that it overwrites");
-
-  const c = runCli("--cursor");
-  const cursorrules = fs.readFileSync(path.join(work, ".cursorrules"), "utf8");
-  assert(c.status === 0 && !cursorrules.startsWith("---") && cursorrules.includes("# Art Director"), ".cursorrules written without frontmatter");
-  assert(/single-file copy/.test(cursorrules) && /install --ai cursor/.test(cursorrules), ".cursorrules header points at the full install");
-
-  const k = runCli("--claude");
-  const claude = fs.readFileSync(path.join(work, "CLAUDE.md"), "utf8");
-  assert(k.status === 0 && !claude.startsWith("---") && claude.includes("## Choose a mode"), "CLAUDE.md written without frontmatter");
-  const bodyOf = (t) => t.split("\n").filter((line) => !line.startsWith("<!--")).join("\n").trim();
-  assert(bodyOf(claude) === bodyOf(cursorrules), "CLAUDE.md and .cursorrules carry the same body");
-  assert(skillSource.split("\n").length - bodyOf(claude).split("\n").length < 25, "single-file copies are not truncated");
-
-  const bad = runCli("--source", path.join(work, "nope"));
-  assert(bad.status === 1 && /source SKILL\.md not found/.test(bad.stderr), "missing source SKILL.md exits 1 with a clear message");
+  const snapshot = () => fs.readdirSync(work).sort().join(",");
+  const empty = snapshot();
+  const noArg = runCli();
+  assert(noArg.status === 0 && /Usage: art-director-skills/.test(noArg.stdout) && snapshot() === empty, "no-arg run prints usage and writes nothing");
+  for (const flag of ["--cursor", "--claude"]) {
+    const r = runCli(flag);
+    assert(r.status === 1 && /no longer writes/.test(r.stderr) && /install --ai/.test(r.stderr) && snapshot() === empty, `${flag} is retired: stops with a message, writes nothing`);
+  }
   const unk = runCli("--what");
-  assert(unk.status === 1 && /unknown option --what/.test(unk.stderr), "unknown option exits 1 with usage");
-
-  fs.rmSync(work, { recursive: true, force: true });
+  assert(unk.status === 1 && /unknown option --what/.test(unk.stderr) && snapshot() === empty, "unknown option exits 1, writes nothing");
+  fs.rmdirSync(work);
+}
+{
+  const safety = spawnSync(process.execPath, [path.join(root, "tests", "install-safety.mjs")], { encoding: "utf8" });
+  if (safety.stdout) process.stdout.write(safety.stdout);
+  if (safety.stderr) process.stderr.write(safety.stderr);
+  assert(safety.status === 0, "installer safety tests pass (symlinks, junctions, protected roots, rollback)");
 }
 
 const packedHint = fs.readFileSync(path.join(root, "skills", "art-director", "SKILL.md"), "utf8");

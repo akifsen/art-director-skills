@@ -7,7 +7,7 @@ Tema paketi seçmez. MCP sunucusu çalıştırmaz. Kullanmak için Node, API
 anahtarı veya arka plan süreci gerekmez. `skills/art-director/` klasörünü
 host’un skill dizinine kopyalamak yeterlidir.
 
-[English README](README.md) · [Kurulum](docs/installation.md) · [Uyumluluk](docs/compatibility.md) · [Değerlendirme](evals/README.md) · [Geçiş](docs/migration.md)
+[English README](README.md) · [Kurulum](docs/installation.md) · [Uyumluluk](docs/compatibility.md) · [Değerlendirme](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/README.md) · [Geçiş](docs/migration.md)
 
 ## Ne işe yarar
 
@@ -27,18 +27,18 @@ düzeltmeyi yapmadan tasarımı bütün ekranlara yaymaz. Engellenmiş kontrol,
 geçmiş kontrol sayılmaz: tamamlandı / kısmi teslim / tamamlanmadı ayrılır.
 0.9.1: seçili+hover ve focus halkası gibi durum birleşimlerinin tasarlanması,
 halkanın üzerinde durduğu yüzeye göre ölçülmesi, "ilk viewport'u doldur"
-yerine içerikten gelen kap kararı. [0.9.1 kanıt](evals/evidence/state-craft-0.9.1/REPORT.md).
+yerine içerikten gelen kap kararı. [0.9.1 kanıt](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/state-craft-0.9.1/REPORT.md).
 0.9.0: iş türü ayrımı, Palatino/krem varsayılanının kırılması (yerine soğuk
 gri keskin reçete koymadan), Rail Still öğreticisi ve okunur inquire eylemi.
-[0.9.0 kanıt](evals/evidence/craft-finish-0.9.0/REPORT.md);
+[0.9.0 kanıt](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/craft-finish-0.9.0/REPORT.md);
 eylem kontrastı ve fotoğrafçı yeniden koşusu:
-[action-quality](evals/evidence/action-quality-0.9.0/REPORT.md).
+[action-quality](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/action-quality-0.9.0/REPORT.md).
 0.8.0: seefix CI kapısı ve skill/eval ayrımı. Cursor keşfi ayrı bir host
-testidir: [0.8.0 kanıt](evals/evidence/ci-seefix-0.8.0/REPORT.md).
-0.7.0 see-and-correct kaydı: [2026-09-20](evals/evidence/see-and-fix-2026-09-20/REPORT.md).
-Önceki native işçilik kaydı ayrı tutulur: [0.6.0](evals/evidence/native-craft-2026-09-19/REPORT.md).
+testidir: [0.8.0 kanıt](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/ci-seefix-0.8.0/REPORT.md).
+0.7.0 see-and-correct kaydı: [2026-09-20](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/see-and-fix-2026-09-20/REPORT.md).
+Önceki native işçilik kaydı ayrı tutulur: [0.6.0](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/native-craft-2026-09-19/REPORT.md).
 Dosya yoluyla açık skill kullanımı, Cursor'ın doğal keşfi olarak sunulmaz.
-Önceki [0.5.0 karşılaştırması](evals/evidence/2026-09-19/REPORT.md) ayrı tutulur.
+Önceki [0.5.0 karşılaştırması](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/2026-09-19/REPORT.md) ayrı tutulur.
 
 Yalnızca doğru palet yetmez. Kullanıcı wireframe istemediyse ilk iskelet
 teslim değildir. Bilinçli sadeleştirme kusur değildir; işlenmemiş boşluk
@@ -59,47 +59,43 @@ başlatmamalıdır.
 
 Çevrimdışı kopya yeterlidir. Ayrıntı: [docs/installation.md](docs/installation.md).
 
-### Hızlı Kurulum (npx)
+### Hızlı Kurulum (npx, tam skill)
 
-Tek komut; bağımlılık yok, indirme sonrası ağ yok, telemetri yok.
-Bulunduğun çalışma dizinine yazar:
+Önerilen kurulum, **skill'in tamamını** — aynı paket sürümündeki `SKILL.md`,
+`references/`, `assets/` — adını verdiğin asistanın aradığı klasöre kopyalar.
+Asistanı ve kapsamı sen seçersin; seçmeden hiçbir şey yazılmaz. Sürümü
+sabitle:
 
 ```bash
-# Projeye doğrudan eklemek için (proje kökünde SKILL.md):
-npx art-director-skills
-
-# Cursor kuralları (.cursorrules) olarak eklemek için:
-npx art-director-skills --cursor
-
-# Claude Desktop / Projects / Claude Code için (CLAUDE.md):
-npx art-director-skills --claude
+npx art-director-skills@0.10.0 install --ai cursor          # → .cursor/skills/art-director
+npx art-director-skills@0.10.0 install --ai claude,codex    # birden çok asistan
+npx art-director-skills@0.10.0 install --ai cursor --global # proje yerine ~/.cursor/skills
+npx art-director-skills@0.10.0 status  --ai cursor
+npx art-director-skills@0.10.0 --version
 ```
 
-Hedefte dosya varsa "Overwriting existing …" uyarısıyla üzerine yazılır.
-Tek dosya `SKILL.md` gövdesinin tamamını taşır; `references/` bağlantıları
-bu depoya işaret eder. Referanslarıyla birlikte, asistanın skill aradığı
-klasöre kurmak için aşağıdaki tam modu kullan.
+Bağımlılık yok, paket indikten sonra ağ yok, telemetri yok, postinstall yok.
+Argümansız çalıştırma kullanımı yazdırır, dosya yazmaz. Mevcut klasörün
+üzerine sessizce yazılmaz: aynı içerik → `current`, farklı → `conflict`
+(çıkış 2, değişiklik yok); `--force` değiştirir ve önceki klasörü yanında
+`art-director.bak-<zaman>` olarak saklar. Hedefte, üst yolunda veya içinde
+sembolik bağlantı/junction varsa işlem hiçbir şey değiştirmeden reddedilir;
+`--force` bunu aşmaz. `--dry-run` yalnız planı yazar. Ayrıntı ve güvenlik
+modeli: [docs/installation.md](docs/installation.md#bundled-installer).
 
-### Desteklenen tüm asistanlar (paketle gelen yükleyici, ağ yok, telemetri yok)
+**0.10.0'da değişti (güvenlik).** 0.9.1'deki kısayollar — `npx
+art-director-skills` (`SKILL.md` yazardı), `--cursor` (`.cursorrules`),
+`--claude` (`CLAUDE.md`) — mevcut talimat dosyalarının üzerine yazıyor ve
+sembolik bağlantıları takip ediyordu. Artık bir mesajla duruyor, dosya
+yazmıyor. `SKILL.md`, `.cursorrules`, `CLAUDE.md`, `AGENTS.md` dosyalarına
+bu paket dokunmaz. Bkz. [docs/migration.md](docs/migration.md).
 
-Paket bir CLI içerir (`art-director`, eş adı `art-director-skills`);
-`skills/art-director/` klasörünü her asistanın belgelediği skill dizinine
-kopyalar:
+`art-director` ve `art-director-skill`, *kurulu* paketin bin eş adlarıdır
+(`npm i -D art-director-skills` sonrası `npm exec art-director -- --version`).
+`npx art-director` komutunu bu paketin kısayolu sanma: npx nitelenmemiş adı
+registry'de arar ve o ad bu paket değildir.
 
-```sh
-npx art-director-skills install --ai cursor
-npx art-director-skills install --ai claude,codex,copilot
-npx art-director-skills install --ai all --global
-npx art-director-skills status  --ai all
-npx art-director --version
-```
-
-npm'e yayın henüz yapılmadı; o zamana kadar klon veya GitHub kaynağı:
-
-```sh
-node bin/cli.js install --ai cursor                       # klon
-npx --yes -p github:akifsen/art-director-skills art-director-skills install --ai gemini
-```
+Klondan: `node bin/cli.js install --ai cursor`.
 
 | `--ai` | Asistan | Proje yolu | Genel yol (`--global`) |
 |---|---|---|---|

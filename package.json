@@ -37,8 +37,14 @@
     "bin/",
     "skills/art-director/",
     "tooling/install-skill.mjs",
+    "docs/installation.md",
+    "docs/compatibility.md",
+    "docs/migration.md",
+    "docs/sources.md",
+    "CHANGELOG.md",
     "LICENSE",
-    "README.md"
+    "README.md",
+    "README.tr.md"
   ],
   "scripts": {
     "install-skill": "node bin/cli.js",
@@ -49,6 +55,8 @@
     "test:e2e:seefix": "playwright test --project=seefix",
     "test:e2e:visual": "playwright test --project=visual",
     "test:install": "node tests/install-cli.mjs",
+    "test:safety": "node tests/install-safety.mjs",
+    "test:packaged": "node tests/packaged-cli.mjs",
     "example:kiln": "vite --config evals/apps/kiln-queue/vite.config.js",
     "example:desk": "vite --config evals/apps/nadir-desk/vite.config.js",
     "example:rail": "vite --config evals/apps/rail-still/vite.config.js",

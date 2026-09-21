@@ -8,7 +8,7 @@ It does not pick a theme pack. It does not run an MCP server. It does not
 require Node, an API key, or a daemon to use. Copy `skills/art-director/`
 into a host skills directory and the workflow is available.
 
-[Türkçe](README.tr.md) · [Install](docs/installation.md) · [Compatibility](docs/compatibility.md) · [Evals](evals/README.md) · [Migration](docs/migration.md)
+[Türkçe](README.tr.md) · [Install](docs/installation.md) · [Compatibility](docs/compatibility.md) · [Evals](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/README.md) · [Migration](docs/migration.md)
 
 ## What it is for
 
@@ -50,49 +50,44 @@ unstyled leftovers are not.
 
 Manual copy works offline. See [docs/installation.md](docs/installation.md).
 
-### Quick Start (npx)
+### Quick Start (npx, full skill)
 
-One command, no dependencies, no network after the fetch, no telemetry.
-Runs against the current working directory:
+The recommended install copies the **whole skill** — `SKILL.md`,
+`references/`, `assets/` from one package version — into the folder the
+assistant you name discovers. Pick the assistant and the scope yourself;
+nothing is written until you do. Pin the version:
 
 ```bash
-# Add directly to the project (SKILL.md in the project root):
-npx art-director-skills
-
-# As Cursor rules (.cursorrules):
-npx art-director-skills --cursor
-
-# For Claude Desktop / Projects / Claude Code (CLAUDE.md):
-npx art-director-skills --claude
+npx art-director-skills@0.10.0 install --ai cursor          # → .cursor/skills/art-director
+npx art-director-skills@0.10.0 install --ai claude,codex    # several at once
+npx art-director-skills@0.10.0 install --ai cursor --global # ~/.cursor/skills instead of the project
+npx art-director-skills@0.10.0 status  --ai cursor
+npx art-director-skills@0.10.0 --version
 ```
 
-An existing file is overwritten with a notice. The single file carries the
-whole `SKILL.md` body; its links to `references/` point at this repository.
-For the skill *with* its references installed where the assistant discovers
-skills, use the full mode below.
+No dependencies, no network after npm fetches the package, no telemetry,
+no postinstall. Running with no arguments prints usage and writes nothing.
+Existing folders are never overwritten silently: identical → `current`,
+different → `conflict` (exit 2, nothing changed); `--force` replaces and
+keeps the previous folder as `art-director.bak-<time>` beside it. Symbolic
+links and junctions at the target, on its parent path, or inside it are
+refused without changes; `--force` does not bypass that. `--dry-run` prints
+the plan. Details and the safety model: [docs/installation.md](docs/installation.md#bundled-installer).
 
-### Any supported assistant (bundled installer, no network, no telemetry)
+**Changed in 0.10.0 (security).** The 0.9.1 shortcuts `npx art-director-skills`
+(wrote `SKILL.md`), `--cursor` (wrote `.cursorrules`) and `--claude` (wrote
+`CLAUDE.md`) overwrote existing instruction files and followed symlinks.
+They now stop with a message and write nothing. Your `SKILL.md`,
+`.cursorrules`, `CLAUDE.md`, `AGENTS.md` are not touched by this package.
+See [docs/migration.md](docs/migration.md).
 
-The package ships a CLI (`art-director`, alias `art-director-skills`) that
-copies `skills/art-director/` into the skill folder each assistant documents:
+`art-director` and `art-director-skill` are bin aliases of the *installed*
+package (e.g. `npm exec art-director -- --version` after `npm i -D
+art-director-skills`). Do not use `npx art-director` as a shortcut for this
+package: npx resolves an unqualified name against the registry, and that
+name is not this package.
 
-```sh
-npx art-director-skills install --ai cursor
-npx art-director-skills install --ai claude,codex,copilot
-npx art-director-skills install --ai all --global
-npx art-director-skills status  --ai all
-npx art-director --version
-```
-
-Registry publish is pending; until then use a clone or the GitHub spec:
-
-```sh
-node bin/cli.js install --ai cursor                       # clone
-npx --yes -p github:akifsen/art-director-skills art-director-skills install --ai gemini
-```
-
-Verified from the packed tarball on Windows (see
-[docs/installation.md](docs/installation.md#bundled-installer)).
+From a clone: `node bin/cli.js install --ai cursor`.
 
 | `--ai` | Assistant | Project path | Global path (`--global`) |
 |---|---|---|---|
@@ -148,11 +143,11 @@ applied fragments. The v0.7.0 tag still contains independent-host
 wording in `SKILL.md`.
 
 File install and hashes are not Cursor discovery. Explicit `/art-director`
-is not natural selection. See [evals/HOST-TRIAL.md](evals/HOST-TRIAL.md)
-and the [0.8.0 evidence](evals/evidence/ci-seefix-0.8.0/REPORT.md).
-Previous records: [0.7.0 see-and-correct](evals/evidence/see-and-fix-2026-09-20/REPORT.md),
-the [0.6.0 native-craft record](evals/evidence/native-craft-2026-09-19/REPORT.md),
-and [earlier 0.5.0 comparison](evals/evidence/2026-09-19/REPORT.md). Explicit-path
+is not natural selection. See [evals/HOST-TRIAL.md](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/HOST-TRIAL.md)
+and the [0.8.0 evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/ci-seefix-0.8.0/REPORT.md).
+Previous records: [0.7.0 see-and-correct](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/see-and-fix-2026-09-20/REPORT.md),
+the [0.6.0 native-craft record](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/native-craft-2026-09-19/REPORT.md),
+and [earlier 0.5.0 comparison](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/2026-09-19/REPORT.md). Explicit-path
 agent use and CLI installation do not prove automatic Cursor selection.
 
 If you already installed an older version, back up local edits and replace the
@@ -198,17 +193,17 @@ are not a skill runtime.
 ## Status of checks
 
 See [docs/compatibility.md](docs/compatibility.md) and
-[evals/RESULTS.md](evals/RESULTS.md). File tests are not IDE discovery.
+[evals/RESULTS.md](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/RESULTS.md). File tests are not IDE discovery.
 Discovery is not a real-task run. Visual review that did not happen is
 reported as not done. Keyword fixtures in `tests/run.mjs` are not proof
 that a host selected this skill.
 
-Current work is recorded in [0.9.1 state-craft evidence](evals/evidence/state-craft-0.9.1/REPORT.md).
-The 0.9.0 fragment rewrite stays in [craft-finish](evals/evidence/craft-finish-0.9.0/REPORT.md)
-and [action-quality](evals/evidence/action-quality-0.9.0/REPORT.md).
-The previous CI seefix / skill-split run stays in [0.8.0 evidence](evals/evidence/ci-seefix-0.8.0/REPORT.md).
-The previous see-and-correct run stays in [2026-09-20 evidence](evals/evidence/see-and-fix-2026-09-20/REPORT.md).
-The previous native-craft run stays in [2026-09-19 evidence](evals/evidence/native-craft-2026-09-19/REPORT.md).
+Current work is recorded in [0.9.1 state-craft evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/state-craft-0.9.1/REPORT.md).
+The 0.9.0 fragment rewrite stays in [craft-finish](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/craft-finish-0.9.0/REPORT.md)
+and [action-quality](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/action-quality-0.9.0/REPORT.md).
+The previous CI seefix / skill-split run stays in [0.8.0 evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/ci-seefix-0.8.0/REPORT.md).
+The previous see-and-correct run stays in [2026-09-20 evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/see-and-fix-2026-09-20/REPORT.md).
+The previous native-craft run stays in [2026-09-19 evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/native-craft-2026-09-19/REPORT.md).
 Complete means required gates passed. A useful delivery with blocked checks
 is partial; a known significant defect is incomplete. More screenshots or
 longer guidance are not evidence of better design.

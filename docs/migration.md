@@ -1,4 +1,50 @@
-# Migration from Art Director MCP
+# Migration
+
+## From `art-director-skills` 0.9.1 to 0.10.0 (CLI security)
+
+0.9.1's `bin/cli.js` had a single-file mode: no arguments wrote `./SKILL.md`,
+`--cursor` wrote `./.cursorrules`, `--claude` wrote `./CLAUDE.md`. Three
+problems, reproduced against the published 0.9.1 tarball on 2026-09-21:
+
+1. An existing file was overwritten after a notice only — no backup, no
+   separate confirmation.
+2. `writeFileSync` followed a symbolic link at that path, so a linked
+   `.cursorrules` changed the file it pointed to, outside the project.
+3. `remove` and `install --force` recursed into a target that was a
+   symbolic link or junction and deleted the files inside the link's
+   destination (then failed with `ENOTDIR`; the data was already gone).
+   `0.9.1 remove --ai kiro` through a junction deleted the outside
+   `SKILL.md` and `keep.txt` sentinels and printed `removed`.
+
+0.10.0 changes:
+
+| 0.9.1 | 0.10.0 |
+|---|---|
+| `npx art-director-skills` wrote `./SKILL.md` | prints usage; writes nothing |
+| `--cursor` / `--claude` wrote `.cursorrules` / `CLAUDE.md` | stop with a message; write nothing |
+| existing skill folder: `kept` unless `--force`; `--force` deleted then recopied | identical → `current`; different → `conflict` (exit 2); `--force` keeps the old folder as `art-director.bak-<time>` |
+| links followed | links at, above, or inside the target refused before any change; `--force` cannot bypass |
+| `remove` checked for any `SKILL.md` | checks `name: art-director` and the link scan; protected roots refused |
+| — | `--dry-run` |
+
+If you relied on the single-file shortcut, the supported path is the full
+install where your client discovers skills:
+
+```sh
+npx art-director-skills@0.10.0 install --ai cursor    # or claude, codex, …
+```
+
+Your existing `SKILL.md`, `.cursorrules`, `CLAUDE.md`, `AGENTS.md` are not
+read or modified by 0.10.0. A file 0.9.1 wrote for you is a plain copy of
+the 0.9.1 `SKILL.md` with links rewritten to GitHub `main`; delete it or
+keep it as you like — the installer does not manage it.
+
+If a previous copy of the skill folder is a symbolic link you created
+yourself, the installer will refuse to touch it. Remove the link by hand
+(`rmdir` on Windows for a junction; `rm` on POSIX — both remove the link,
+not its target) and run `install` again.
+
+## From Art Director MCP
 
 This repository is a new product. It is not a release of
 `@akifsen/art-director-mcp`, and it does not wrap, symlink, or call that

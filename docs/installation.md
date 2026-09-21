@@ -19,55 +19,92 @@ Two install paths are documented:
 ## Bundled installer
 
 ```sh
-# once published to npm (package name art-director-skills; bins art-director,
-# art-director-skills, art-director-skill all run bin/cli.js):
-npx art-director-skills install --ai <ids|all> [--global] [--force]
-npx art-director-skills status  --ai <ids|all>
-npx art-director-skills remove  --ai <ids|all> [--global]
-npx art-director-skills list
-npx art-director --version
+# npm package art-director-skills (pin the version):
+npx art-director-skills@0.10.0 install --ai <ids|all> [--global] [--force] [--dry-run]
+npx art-director-skills@0.10.0 status  --ai <ids|all>
+npx art-director-skills@0.10.0 remove  --ai <ids|all> [--global]
+npx art-director-skills@0.10.0 list
+npx art-director-skills@0.10.0 --version
 
 # from a clone:
 node bin/cli.js install --ai cursor
 node tooling/install-skill.mjs install --ai cursor   # same code, no wrapper
 npm run install-skill -- install --ai cursor
-
-# without a clone, without npm publish:
-npx --yes -p github:akifsen/art-director-skills art-director-skills install --ai cursor
 ```
 
-`bin/cli.js` also has a **single-file mode** for hosts that read one
-instructions file rather than a skills folder:
+`bin/cli.js` hands every command to `tooling/install-skill.mjs`; the
+installer logic has one code path. The package's bins are
+`art-director-skills`, `art-director`, and `art-director-skill`; the two
+aliases work on the *installed* package (`npm exec art-director -- …`). An
+unqualified `npx art-director` resolves a different registry name — do not
+use it as a shortcut.
 
-```sh
-npx art-director-skills            # ./SKILL.md (frontmatter kept)
-npx art-director-skills --cursor   # ./.cursorrules (frontmatter stripped, header comment added)
-npx art-director-skills --claude   # ./CLAUDE.md   (same body as .cursorrules)
-```
+**Retired in 0.10.0.** The 0.9.1 single-file mode (no arguments →
+`./SKILL.md`, `--cursor` → `./.cursorrules`, `--claude` → `./CLAUDE.md`)
+overwrote an existing file after only printing a notice, wrote through a
+symbolic link at that path, and rewrote skill links to the moving `main`
+branch. No arguments now prints usage; `--cursor` / `--claude` stop with a
+message and write nothing. A project-root `SKILL.md` or a rules file is
+not the same as a client's native skill discovery, so no replacement
+single-file writer was added. See [Migration](migration.md).
 
-It writes into `process.cwd()`, prints `Overwriting existing <file>...`
-when the target exists, rewrites `references/…` and `assets/…` links to
-`https://github.com/akifsen/art-director-skills/blob/main/skills/art-director/…`
-so a lone file has no dead links, and exits 1 with a message if the
-package's `SKILL.md` is missing or an option is unknown. The full mode
-(`install --ai …`) is still the way to get the references on disk.
+### Safety model (0.10.0)
 
-For subcommands `install`, `remove`, `status`, `list`, `bin/cli.js` hands
-off to `tooling/install-skill.mjs`; the installer logic has one code path. `npm pack` runs
-`validate-skill` first and ships only `bin/`, `skills/`,
-`tooling/install-skill.mjs`, `LICENSE`, and `README.md` (71 files, about
-0.7 MB, no dependencies).
+Local threat model: the target path, a parent component under the chosen
+root, or an entry inside an existing target may be a symbolic link or
+Windows junction pointing outside the project; a sibling process may race.
+The installer:
 
-Verified 2026-09-21 on Windows from the packed tarball (`npm pack`, then a
-local `npm install <tgz>` in an empty temp project): `npx art-director
---version` → `0.9.1`; `npx art-director-skills install --ai cursor,claude`
-wrote both folders; `status` reported `current`; `npx art-director-skill
-remove --ai claude` removed one. The package is **not yet published to
-npm**; `npx art-director-skills` against the registry is untested until
-`npm publish` runs. The `npx github:` form was run once earlier from an
-empty temp directory (branch `craft-finish`) and wrote `.kiro/` and
-`.opencode/`. With several bins, pass `-p <spec> <bin>` for `github:` and
-tarball specs; a registry install picks the bin matching the package name.
+- canonicalises only the root you chose (`--project-dir`, default cwd, or
+  home with `--global`) and requires the target to lie below it by path
+  components (not string prefix; drive-aware on Windows);
+- `lstat`s every component below the root and every entry inside an
+  existing target; any symbolic link, junction, or dangling link refuses
+  the whole operation before anything is written or deleted. A dangling
+  link is not "absent"; `--force` does not bypass any of this;
+- refuses when source and target overlap, when the target is the root,
+  home, temp, filesystem root, the package source, or is not named
+  `art-director`;
+- installs by staging: copy into `.art-director.staging-<pid>-<rand>` next
+  to the target (`COPYFILE_EXCL`, links refused in the source too), verify
+  the SHA256 file inventory against the source, re-`lstat` the target,
+  rename the old folder to `art-director.bak-<time>`, rename staging into
+  place, verify again. A failed rename restores the previous folder; the
+  staging folder is removed through the same guarded delete;
+- deletes only after a full link scan, only files and directories it
+  walked itself, and only strictly inside the verified boundary.
+
+Two-step rename is not one atomic operation on every platform; the
+guarantee is "old copy exists or new copy exists, never a half state
+without a backup", and it is what `tests/install-safety.mjs` exercises.
+The re-check narrows a concurrent swap; it cannot eliminate it. Behaviour
+that could not be exercised on a platform is refused, not assumed.
+
+Results: `installed`, `current` (identical, no writes), `conflict` (exit 2,
+kept), `replaced` (+ backup path), `removed`, `absent`, `kept` (folder
+without this skill's `SKILL.md`), `foreign`, `unsupported` (link found;
+exit 2). Refusals exit 1 and change nothing. `--dry-run` returns
+`would-install` / `would-replace` / `would-remove` and writes nothing.
+
+### What is verified
+
+`npm test` runs `tests/install-targets.mjs` (all thirteen targets, Turkish
+and space paths, idempotence, conflict, force + backup, dry-run) and
+`tests/install-safety.mjs` (junction/symlink at target, linked parent,
+dangling link, links inside target, retired flags with a linked
+`.cursorrules`, simulated rename failure with restore, authorised
+replace/remove touching only the target, overlap and boundary refusals).
+`npm run test:packaged` packs the real tarball, checks the inventory
+against the source tree (no fixed file count), installs it offline into an
+empty consumer project and runs the packaged `bin/cli.js` — not the repo's
+scripts — through the same scenarios plus a junction refusal and the bin
+aliases via `npm exec`.
+
+Windows junctions are exercised on any Windows account; NTFS symlinks need
+Developer Mode or admin and are required in CI (`AD_REQUIRE_SYMLINKS=1`),
+skipped visibly elsewhere. Linux symlinks run in CI. macOS is not run.
+The published tarball for a release is re-installed from the registry and
+re-checked after publish; see the CHANGELOG entry for the record.
 
 | `--ai` | Assistant | Project path | Global path | Vendor source |
 |---|---|---|---|---|
@@ -88,16 +125,20 @@ tarball specs; a registry install picks the bin matching the package name.
 
 Behaviour:
 
-- Copies `skills/art-director/` file by file (`mkdirSync` + `copyFileSync`)
-  and verifies the SHA256 of the copied tree against the source before it
-  reports `installed`. No symlinks.
-- An existing `art-director` folder is **kept** unless `--force` is passed;
-  `--force` deletes and recopies it. Back up local edits first.
-- `remove` deletes only a folder that contains `SKILL.md`; anything else
-  at that path is left alone.
-- `status` prints `current`, `differs` (exit code 2), or `absent`.
-- Nothing is written outside the chosen skill directory. No lockfile, no
-  network, no telemetry.
+- Copies `skills/art-director/` file by file (`mkdirSync` + `copyFileSync`
+  with `COPYFILE_EXCL`) into a staging folder, verifies the SHA256 file
+  inventory against the source, then renames it into place. No symlinks are
+  created, followed, or traversed.
+- An existing identical folder is `current` (no writes). A differing folder
+  is a `conflict` (exit 2, kept) unless `--force`, which renames it to
+  `art-director.bak-<time>` beside the target and installs fresh. Delete
+  the backup yourself once you have what you need from it.
+- `remove` deletes only a folder whose `SKILL.md` declares `name:
+  art-director`, and only after a link scan; anything else is left alone.
+- `status` prints `current`, `differs` (exit 2), `absent`, `foreign`, or
+  `unsupported` (link on the path; exit 2). It never writes.
+- Nothing is written outside the target's parent folder (staging and
+  backup live there). No lockfile, no network, no telemetry.
 - `fs.cpSync` and `fs.rmSync` are not used: on this Windows authoring
   machine with Node 24, both returned without doing their job on a path
   that contained Turkish letters (`rmSync` deleted nothing and did not

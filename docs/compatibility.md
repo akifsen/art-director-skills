@@ -34,7 +34,7 @@ machine, not that the host was opened.
 
 | `--ai` | Assistant | Structure verified | Install tested | Client discovered | Used on a task |
 |---|---|---|---|---|---|
-| `cursor` | Cursor | yes | yes | yes — `.cursor/skills` file-path trials, 0.8.0 natural selection on the first brief ([TRIAL](../evals/evidence/ci-seefix-0.8.0/TRIAL.md)) | yes — photographer trials 0.8.0 → 0.9.1 (file-path subagent, not GUI discovery) |
+| `cursor` | Cursor | yes | yes | yes — `.cursor/skills` file-path trials, 0.8.0 natural selection on the first brief ([TRIAL](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/ci-seefix-0.8.0/TRIAL.md)) | yes — photographer trials 0.8.0 → 0.9.1 (file-path subagent, not GUI discovery) |
 | `codex` | Codex CLI / IDE | yes | yes | not run | not run |
 | `claude` | Claude Code | yes | yes | not run | not run |
 | `copilot` | GitHub Copilot (VS Code, CLI, cloud agent) | yes | yes | not run | not run |
@@ -136,10 +136,10 @@ Host tools vary. Missing tools are reported, not simulated.
 | Shoot board selected-filter hover | Fixed in a separate hand-corrected copy `evals/outputs/shoot-board-0.9.0-corrected` (eval output, not the distributed skill). Built and tested in the `seefix` project: selected/hover/focus pairs plus list → detail → edit → error → save → cancel. Original 0.9.0 output kept |
 | State-combination guidance | visual-craft, responsive-interaction, native-mobile (native controls, not CSS/ARIA) |
 | Container decision | SKILL.md and product-ui-system no longer prescribe filling the first viewport; container follows content, task order, comparison need, and screen size |
-| Clean same-brief trial with the frozen 0.9.1 candidate | File-path subagent on the unchanged candidate, no coaching; live inspection at 1280 and 390 with real Tab traversal. See [state-craft evidence](../evals/evidence/state-craft-0.9.1/REPORT.md) |
+| Clean same-brief trial with the frozen 0.9.1 candidate | File-path subagent on the unchanged candidate, no coaching; live inspection at 1280 and 390 with real Tab traversal. See [state-craft evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/state-craft-0.9.1/REPORT.md) |
 | Bundled installer for thirteen assistants | Install tested (`tests/install-targets.mjs`, project + global, Turkish/space paths). Client discovery per host: see [Supported assistants](#supported-assistants) |
 
-See [0.9.1 evidence](../evals/evidence/state-craft-0.9.1/REPORT.md).
+See [0.9.1 evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/state-craft-0.9.1/REPORT.md).
 
 ## Previous evidence (0.9.0, not tagged)
 
@@ -153,13 +153,13 @@ See [0.9.1 evidence](../evals/evidence/state-craft-0.9.1/REPORT.md).
 | ThemeForest catalog (user craft reference) | Not seen: Playwright received Cloudflare 403 ("Bir dakika lütfen..."). No demo pages inspected. No layout copied |
 | Independent skill trial on a new brief | File-path subagent on Willow Bay (clinic board), not Cursor discovery. Inspected 1280/390/dialog. Not Palatino-on-cream. No 0.8.0 same-brief arm |
 | Hand-corrected Fold Playwright (`--project=seefix`) | Unchanged 0.8.0 wiring |
-| Cursor isolated photographer trial | File-path subagent on the frozen photographer brief with 0.9.0 skill copy, plus one focused revision and one author CSS patch. Not a new Cursor GUI chat. See [action-quality](../evals/evidence/action-quality-0.9.0/REPORT.md). Historical 0.8.0 cream ledger stays in [ci-seefix TRIAL](../evals/evidence/ci-seefix-0.8.0/TRIAL.md) and was not edited |
+| Cursor isolated photographer trial | File-path subagent on the frozen photographer brief with 0.9.0 skill copy, plus one focused revision and one author CSS patch. Not a new Cursor GUI chat. See [action-quality](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/action-quality-0.9.0/REPORT.md). Historical 0.8.0 cream ledger stays in [ci-seefix TRIAL](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/ci-seefix-0.8.0/TRIAL.md) and was not edited |
 
-See [0.9.0 evidence](../evals/evidence/craft-finish-0.9.0/REPORT.md) and
-[action-quality](../evals/evidence/action-quality-0.9.0/REPORT.md). Historical
-[0.8.0](../evals/evidence/ci-seefix-0.8.0/REPORT.md),
-[0.7.0](../evals/evidence/see-and-fix-2026-09-20/REPORT.md), and
-[0.6.0](../evals/evidence/native-craft-2026-09-19/REPORT.md) stay as written.
+See [0.9.0 evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/craft-finish-0.9.0/REPORT.md) and
+[action-quality](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/action-quality-0.9.0/REPORT.md). Historical
+[0.8.0](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/ci-seefix-0.8.0/REPORT.md),
+[0.7.0](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/see-and-fix-2026-09-20/REPORT.md), and
+[0.6.0](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/native-craft-2026-09-19/REPORT.md) stay as written.
 
 ## Previous evidence (0.8.0)
 
@@ -174,14 +174,14 @@ See [0.9.0 evidence](../evals/evidence/craft-finish-0.9.0/REPORT.md) and
 | Closeout React Native / Expo example | Actual Android Pixel_9/API37 execution recorded in 0.5.0/0.6.0 evidence; not re-run for this release unless a new native regression appears |
 | Daypack ordinary-brief baseline/candidate | Historical 0.6.0 outputs preserved; the hand-corrected copy is source-checked. Device evidence for that copy is pending |
 | iOS, physical devices, VoiceOver/TalkBack | Not run; accessibility props are source evidence, not a screen-reader audit |
-| Cursor isolated workspace | Isolated photographer trial: natural selection on the first brief; `/art-director` in the same chat. See [TRIAL.md](../evals/evidence/ci-seefix-0.8.0/TRIAL.md). A separate second-chat explicit-only run was not done |
+| Cursor isolated workspace | Isolated photographer trial: natural selection on the first brief; `/art-director` in the same chat. See [TRIAL.md](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/ci-seefix-0.8.0/TRIAL.md). A separate second-chat explicit-only run was not done |
 | Fresh Codex/file-path fallback | Useful and must be labeled separately from Cursor discovery |
 | Expo web as iOS/Android | Not accepted as native verification |
 | Flutter, SwiftUI, Jetpack Compose | Guide: keep the current framework; **not tested** |
 | Commercial third-party themes | Not bundled; eval 10 is an original fixture |
 
-See [0.8.0 evidence](../evals/evidence/ci-seefix-0.8.0/REPORT.md) for that
-release, [see-and-correct evidence](../evals/evidence/see-and-fix-2026-09-20/REPORT.md)
-for 0.7.0, [native craft / normal briefs](../evals/evidence/native-craft-2026-09-19/REPORT.md)
-for 0.6.0 outcomes, and [0.5.0 evidence](../evals/evidence/2026-09-19/REPORT.md)
+See [0.8.0 evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/ci-seefix-0.8.0/REPORT.md) for that
+release, [see-and-correct evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/see-and-fix-2026-09-20/REPORT.md)
+for 0.7.0, [native craft / normal briefs](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/native-craft-2026-09-19/REPORT.md)
+for 0.6.0 outcomes, and [0.5.0 evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/2026-09-19/REPORT.md)
 for the earlier run. Historical results are not relabelled as new tests.
