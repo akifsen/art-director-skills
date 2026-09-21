@@ -1,5 +1,55 @@
 # Changelog
 
+## 0.10.0 — 2026-09-21 (CLI security fix; skill content unchanged)
+
+Fixes three defects in the published `art-director-skills@0.9.1` CLI. The
+design skill (`skills/art-director/`) is byte-identical to 0.9.1 except
+`metadata.version` in `SKILL.md`; 0.9.1 skill tree sha256
+`5c93ba25ba86df96aaf25a81bc48ae2b96e684bf44d10524b0b236e7de4564d1` (65 files).
+
+- **Retire the single-file mode.** `npx art-director-skills` with no
+  arguments wrote `./SKILL.md`; `--cursor` wrote `./.cursorrules`;
+  `--claude` wrote `./CLAUDE.md`. They overwrote an existing file after a
+  notice and wrote through a symbolic link at that path (reproduced against
+  the 0.9.1 tarball: a linked `.cursorrules` changed its outside target).
+  No arguments now prints usage; the two flags stop with a message pointing
+  at `install --ai <id>`; nothing is written. The moving-`main` link rewrite
+  is gone with it. Migration: `docs/migration.md`.
+- **Refuse links everywhere a mutation happens.** 0.9.1's `remove` and
+  `install --force` recursed into a target that was a symbolic link or
+  junction and deleted the files inside the link's destination (reproduced:
+  `remove --ai kiro` through a junction deleted the outside sentinels and
+  printed `removed`). The installer now canonicalises the chosen root only,
+  checks the target lies below it by path components, `lstat`s every
+  component below the root and every entry inside an existing target, and
+  refuses symbolic links, junctions, and dangling links before any write or
+  delete. `--force` does not bypass it. Source trees with links are refused
+  too. Protected locations (root, home, temp, filesystem root, package
+  source, a folder not named `art-director`) are never replace/remove
+  targets.
+- **Stage, verify, swap, keep a backup.** Install copies into
+  `.art-director.staging-<pid>-<rand>` beside the target
+  (`COPYFILE_EXCL`), verifies the SHA256 inventory against the source,
+  re-checks the target, renames the old folder to `art-director.bak-<time>`,
+  renames staging into place, verifies again; a failed rename restores the
+  old folder. Identical existing folder → `current` (no writes); differing
+  → `conflict` (exit 2, kept) unless `--force`. `--dry-run` added.
+- **Tests on the packaged CLI.** `tests/install-safety.mjs` (links at,
+  above, and inside the target; dangling link; retired flags with a linked
+  `.cursorrules`; simulated rename failure; authorised replace/remove
+  touching only the target; overlap and boundary refusals — each asserting
+  file hashes, not just exit codes) and `tests/packaged-cli.mjs` (`npm
+  pack`, inventory vs source tree, offline install into a clean consumer
+  project, the same scenarios through the packaged `bin/cli.js`, junction
+  refusal, bin aliases via `npm exec`). CI requires symlink creation on
+  both runners (`AD_REQUIRE_SYMLINKS=1`).
+- Tarball now ships `CHANGELOG.md` and `docs/{installation,compatibility,
+  migration,sources}.md` so README links resolve; eval links point at the
+  `v0.10.0` tag. No dependencies, no install scripts.
+- Versioning: the retired flags are a breaking CLI change, hence 0.10.0
+  rather than a patch. 0.9.1 stays published; see the deprecation note in
+  the release record below.
+
 ## 0.9.1 — 2026-09-21
 
 - Make the Rail Still focus ring readable: the ring is drawn outside the
@@ -100,7 +150,7 @@
   `tests/install-targets.mjs`; per-host discovery status stays separate in
   `docs/compatibility.md`.
 
-See [dated evidence](evals/evidence/state-craft-0.9.1/REPORT.md).
+See [dated evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/state-craft-0.9.1/REPORT.md).
 
 ## 0.9.0 — 2026-09-20 (not tagged)
 
@@ -121,9 +171,9 @@ See [dated evidence](evals/evidence/state-craft-0.9.1/REPORT.md).
   quality (hierarchy, contrast, family consistency, composition). Visual
   review inspects in-scope actions and states, not only the opening view.
 
-See [dated evidence](evals/evidence/craft-finish-0.9.0/REPORT.md) for the
+See [dated evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/craft-finish-0.9.0/REPORT.md) for the
 fragment rewrite. Action contrast and photographer re-run:
-[action-quality-0.9.0](evals/evidence/action-quality-0.9.0/REPORT.md).
+[action-quality-0.9.0](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/action-quality-0.9.0/REPORT.md).
 
 ## 0.8.0 — 2026-09-20
 
@@ -135,7 +185,7 @@ fragment rewrite. Action contrast and photographer re-run:
   Discovery and natural selection remain pending until a new Cursor chat
   runs that workspace.
 
-See [dated evidence](evals/evidence/ci-seefix-0.8.0/REPORT.md).
+See [dated evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/ci-seefix-0.8.0/REPORT.md).
 
 ## 0.7.0 — 2026-09-20
 
@@ -150,7 +200,7 @@ See [dated evidence](evals/evidence/ci-seefix-0.8.0/REPORT.md).
 - Keep the 0.6.0 Fold/Daypack candidate sources. Record hand-corrected
   copies and a frozen Pier Kettle transfer brief separately.
 
-See [dated evidence](evals/evidence/see-and-fix-2026-09-20/REPORT.md).
+See [dated evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/see-and-fix-2026-09-20/REPORT.md).
 Cursor discovery remains a separate, currently pending host test.
 
 ## 0.6.0 — 2026-09-20
@@ -166,7 +216,7 @@ Cursor discovery remains a separate, currently pending host test.
 - Align compatibility claims with specific Android evidence and untested iOS/
   IDE scope. Retain existing Vite/Playwright and packaging/install gates.
 
-See [dated evidence](evals/evidence/native-craft-2026-09-19/REPORT.md) for
+See [dated evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/native-craft-2026-09-19/REPORT.md) for
 actual outcomes, weak results and the distinction between manual tutorial
 improvement and independent skill outputs.
 

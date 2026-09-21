@@ -15,7 +15,7 @@ description: >-
 license: MIT
 metadata:
   author: akifsen
-  version: "0.9.1"
+  version: "0.10.0"
 ---
 
 # Art Director

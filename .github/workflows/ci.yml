@@ -22,8 +22,14 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: "22"
-      - name: Structure and example-store tests
+      - name: Structure, example-store, installer safety tests (symlinks required)
+        env:
+          AD_REQUIRE_SYMLINKS: "1"
         run: npm test
+      - name: Packaged CLI in a clean consumer project (real tarball, offline)
+        env:
+          AD_REQUIRE_SYMLINKS: "1"
+        run: npm run test:packaged
       - name: Isolated skills CLI install
         env:
           DISABLE_TELEMETRY: "1"
