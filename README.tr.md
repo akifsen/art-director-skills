@@ -50,7 +50,6 @@ başlatmamalıdır.
 
 ## Ne değildir
 
-- `@akifsen/art-director-mcp` paketinin yeni sürümü değildir
 - Hazır site kataloğu değildir
 - Estetik garanti değildir
 - Yeni tarayıcı, görsel model veya ek yetki sağlamaz

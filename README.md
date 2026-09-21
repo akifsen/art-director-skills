@@ -40,7 +40,6 @@ unstyled leftovers are not.
 
 ## What it is not
 
-- Not `@akifsen/art-director-mcp` and not a new version of that package
 - Not a catalog of ready-made sites
 - Not a guarantee of taste; eval scores are subjective and n=1 unless said
 - Not a new browser, vision model, or permission set
