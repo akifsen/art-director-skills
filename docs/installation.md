@@ -19,19 +19,39 @@ Two install paths are documented:
 ## Bundled installer
 
 ```sh
-node tooling/install-skill.mjs install --ai <ids|all> [--global] [--force]
-node tooling/install-skill.mjs status  --ai <ids|all>
-node tooling/install-skill.mjs remove  --ai <ids|all> [--global]
-node tooling/install-skill.mjs list
-npm run install-skill -- install --ai cursor      # same thing through npm
-npx --yes github:akifsen/art-director-skills install --ai cursor   # without a clone
+# once published to npm (package name art-director-skills; bins art-director,
+# art-director-skills, art-director-skill all run bin/cli.js):
+npx art-director-skills install --ai <ids|all> [--global] [--force]
+npx art-director-skills status  --ai <ids|all>
+npx art-director-skills remove  --ai <ids|all> [--global]
+npx art-director-skills list
+npx art-director --version
+
+# from a clone:
+node bin/cli.js install --ai cursor
+node tooling/install-skill.mjs install --ai cursor   # same code, no wrapper
+npm run install-skill -- install --ai cursor
+
+# without a clone, without npm publish:
+npx --yes -p github:akifsen/art-director-skills art-director-skills install --ai cursor
 ```
 
-The `npx github:` form was run once from an empty temp directory on this
-Windows machine (2026-09-21, branch `craft-finish`): it wrote
-`.kiro/skills/art-director` and `.opencode/skills/art-director` and printed
-the Kiro note. It needs network for that fetch and uses npm's cache; it
-is still not an npm-published package.
+`bin/cli.js` is a thin wrapper over `tooling/install-skill.mjs` that adds
+`--version`; the installer logic has one code path. `npm pack` runs
+`validate-skill` first and ships only `bin/`, `skills/`,
+`tooling/install-skill.mjs`, `LICENSE`, and `README.md` (71 files, about
+0.7 MB, no dependencies).
+
+Verified 2026-09-21 on Windows from the packed tarball (`npm pack`, then a
+local `npm install <tgz>` in an empty temp project): `npx art-director
+--version` → `0.9.1`; `npx art-director-skills install --ai cursor,claude`
+wrote both folders; `status` reported `current`; `npx art-director-skill
+remove --ai claude` removed one. The package is **not yet published to
+npm**; `npx art-director-skills` against the registry is untested until
+`npm publish` runs. The `npx github:` form was run once earlier from an
+empty temp directory (branch `craft-finish`) and wrote `.kiro/` and
+`.opencode/`. With several bins, pass `-p <spec> <bin>` for `github:` and
+tarball specs; a registry install picks the bin matching the package name.
 
 | `--ai` | Assistant | Project path | Global path | Vendor source |
 |---|---|---|---|---|

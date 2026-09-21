@@ -165,6 +165,21 @@ assert(themelessApp.includes("Log a hold") || themelessApp.includes("hold"), "th
 assert(!themelessApp.includes("TODO"), "themeless example is not stubbed with TODO");
 assert(!themelessApp.includes("dangerouslySetInnerHTML"), "themeless example is real React");
 
+const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+assert(pkg.name === "art-director-skills" && pkg.type === "module", "package.json is an ESM package named art-director-skills");
+assert(/^\d+\.\d+\.\d+/.test(pkg.version), "package.json has a semver version");
+assert(pkg.version === data.metadata?.version, "package.json version matches SKILL.md metadata.version");
+assert(pkg.private !== true, "package is publishable (not private)");
+assert(pkg.bin["art-director"] === "./bin/cli.js" && pkg.bin["art-director-skills"] === "./bin/cli.js", "bins art-director and art-director-skills point at bin/cli.js");
+assert(pkg.files.includes("bin/") && pkg.files.includes("skills/"), "published files include bin/ and skills/");
+assert(fs.readFileSync(path.join(root, "bin", "cli.js"), "utf8").startsWith("#!/usr/bin/env node"), "bin/cli.js has a node shebang");
+{
+  const v = spawnSync(process.execPath, [path.join(root, "bin", "cli.js"), "--version"], { encoding: "utf8" });
+  assert(v.status === 0 && v.stdout.trim() === pkg.version, "bin/cli.js --version prints the package version");
+  const l = spawnSync(process.execPath, [path.join(root, "bin", "cli.js"), "list"], { encoding: "utf8" });
+  assert(l.status === 0 && /cursor/.test(l.stdout) && /kilocode/.test(l.stdout), "bin/cli.js list prints the assistant table");
+}
+
 const packedHint = fs.readFileSync(path.join(root, "skills", "art-director", "SKILL.md"), "utf8");
 assert(!packedHint.includes("docs/installation.md"), "installed skill does not point at repo docs");
 

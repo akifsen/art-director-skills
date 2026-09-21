@@ -1,19 +1,41 @@
 {
   "name": "art-director-skills",
-  "private": true,
-  "description": "Maintainer tooling for the art-director Agent Skill. Not a published npm package and not required to use the skill.",
+  "version": "0.9.1",
+  "description": "Art Director Agent Skill for frontend UI design, plus a zero-dependency CLI that installs it into Claude Code, Cursor, Copilot, Kiro, Codex, Qoder, Roo Code, Gemini CLI, OpenCode, Continue, CodeBuddy, Droid, and Kilo Code.",
+  "license": "MIT",
+  "author": "akifsen",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akifsen/art-director-skills.git"
+  },
+  "homepage": "https://github.com/akifsen/art-director-skills#readme",
+  "bugs": "https://github.com/akifsen/art-director-skills/issues",
+  "keywords": [
+    "agent-skill",
+    "skills",
+    "art-director",
+    "ui-design",
+    "frontend",
+    "cursor",
+    "claude-code",
+    "codex",
+    "copilot"
+  ],
   "bin": {
-    "art-director-skill": "tooling/install-skill.mjs"
+    "art-director": "./bin/cli.js",
+    "art-director-skills": "./bin/cli.js",
+    "art-director-skill": "./bin/cli.js"
   },
   "files": [
+    "bin/",
     "skills/",
     "tooling/install-skill.mjs",
     "LICENSE",
     "README.md"
   ],
   "scripts": {
-    "install-skill": "node tooling/install-skill.mjs",
+    "install-skill": "node bin/cli.js",
     "test": "node tests/run.mjs",
     "test:examples": "node tests/examples/run.mjs",
     "test:examples:build": "node tests/examples/build.mjs",
@@ -28,7 +50,8 @@
     "example:desk:preview": "node tests/examples/preview.mjs desk",
     "example:rail:preview": "node tests/examples/preview.mjs rail",
     "validate": "node tooling/validate-skill.mjs",
-    "pack-skill": "node tooling/pack-skill.mjs"
+    "pack-skill": "node tooling/pack-skill.mjs",
+    "prepack": "node tooling/validate-skill.mjs"
   },
   "engines": {
     "node": ">=20"

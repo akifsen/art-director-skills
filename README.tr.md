@@ -61,20 +61,23 @@ başlatmamalıdır.
 
 ### Desteklenen tüm asistanlar (paketle gelen yükleyici, ağ yok, telemetri yok)
 
-Yerel klondan `node tooling/install-skill.mjs`, `skills/art-director/`
-klasörünü her asistanın belgelediği skill dizinine kopyalar:
+Paket bir CLI içerir (`art-director`, eş adı `art-director-skills`);
+`skills/art-director/` klasörünü her asistanın belgelediği skill dizinine
+kopyalar:
 
 ```sh
-node tooling/install-skill.mjs install --ai cursor
-node tooling/install-skill.mjs install --ai claude,codex,copilot
-node tooling/install-skill.mjs install --ai all --global
-node tooling/install-skill.mjs status  --ai all
+npx art-director-skills install --ai cursor
+npx art-director-skills install --ai claude,codex,copilot
+npx art-director-skills install --ai all --global
+npx art-director-skills status  --ai all
+npx art-director --version
 ```
 
-Klonlamadan (tek seferlik indirme için ağ gerekir):
+npm'e yayın henüz yapılmadı; o zamana kadar klon veya GitHub kaynağı:
 
 ```sh
-npx --yes github:akifsen/art-director-skills install --ai gemini
+node bin/cli.js install --ai cursor                       # klon
+npx --yes -p github:akifsen/art-director-skills art-director-skills install --ai gemini
 ```
 
 | `--ai` | Asistan | Proje yolu | Genel yol (`--global`) |

@@ -71,6 +71,16 @@
   destination count. Nothing is banned or mandated; a stated reason passes.
   No new runtime dependency to reach the bar. Tests assert the bar and that
   sidebar / palette / scale stay conditional.
+- Make the repo an installable npm package with a CLI: `package.json` is
+  no longer `private`, carries `version` 0.9.1 (matches the skill),
+  `type: module`, repository/license metadata, and `bin` entries
+  `art-director`, `art-director-skills`, and the older `art-director-skill`,
+  all pointing at the new `bin/cli.js` wrapper (adds `--version`) over
+  `tooling/install-skill.mjs`. `npm pack` runs `validate-skill` and ships
+  `bin/`, `skills/`, the installer, `LICENSE`, `README.md`. Verified from
+  the packed tarball in a temp project on Windows (install / status /
+  remove through all three bins). Not yet published; the registry `npx`
+  form is untested until `npm publish`.
 - Add `tooling/install-skill.mjs` (also `npm run install-skill` and the
   `art-director-skill` bin for `npx github:akifsen/art-director-skills`):
   copies the skill folder to the vendor-documented path for Claude Code,

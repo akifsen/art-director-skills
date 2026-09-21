@@ -183,7 +183,8 @@ function parseArgs(argv) {
 
 function usage() {
   return [
-    "Usage: install-skill <install|remove|status|list> --ai <ids|all> [--global] [--force]",
+    "Usage: art-director-skills <install|remove|status|list> --ai <ids|all> [--global] [--force]",
+    "       (also: npx art-director-skills …, node tooling/install-skill.mjs …, --version)",
     "",
     "  --ai, -a       comma-separated assistant ids, or all",
     "  --global, -g   write to the home-directory skills folder instead of the project",

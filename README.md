@@ -52,22 +52,26 @@ Manual copy works offline. See [docs/installation.md](docs/installation.md).
 
 ### Any supported assistant (bundled installer, no network, no telemetry)
 
-From a local clone, `node tooling/install-skill.mjs` copies
-`skills/art-director/` into the skill folder each assistant documents:
+The package ships a CLI (`art-director`, alias `art-director-skills`) that
+copies `skills/art-director/` into the skill folder each assistant documents:
 
 ```sh
-node tooling/install-skill.mjs install --ai cursor
-node tooling/install-skill.mjs install --ai claude,codex,copilot
-node tooling/install-skill.mjs install --ai all --global
-node tooling/install-skill.mjs status  --ai all
+npx art-director-skills install --ai cursor
+npx art-director-skills install --ai claude,codex,copilot
+npx art-director-skills install --ai all --global
+npx art-director-skills status  --ai all
+npx art-director --version
 ```
 
-Or without cloning (needs network for the one-time fetch; `npx` resolves the
-`bin` from this repository):
+Registry publish is pending; until then use a clone or the GitHub spec:
 
 ```sh
-npx --yes github:akifsen/art-director-skills install --ai gemini
+node bin/cli.js install --ai cursor                       # clone
+npx --yes -p github:akifsen/art-director-skills art-director-skills install --ai gemini
 ```
+
+Verified from the packed tarball on Windows (see
+[docs/installation.md](docs/installation.md#bundled-installer)).
 
 | `--ai` | Assistant | Project path | Global path (`--global`) |
 |---|---|---|---|
