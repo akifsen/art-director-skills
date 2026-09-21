@@ -170,7 +170,9 @@ console.log("ok: packaged install/current/conflict/force+backup/remove");
     }
     assert.deepEqual([sha(path.join(outside, "SKILL.md")), sha(path.join(outside, "keep.txt"))], outsideBefore, "outside sentinels intact");
     assert.ok(fs.lstatSync(kiroDest).isSymbolicLink(), "link left in place");
-    fs.rmdirSync(kiroDest);
+    // Remove the link itself (junction needs rmdir on Windows; symlink needs unlink on POSIX), never its target.
+    try { fs.unlinkSync(kiroDest); } catch { fs.rmdirSync(kiroDest); }
+    assert.ok(fs.existsSync(path.join(outside, "keep.txt")), "removing the link did not touch its target");
     console.log(`ok: packaged remove/force-install through ${linked} refused, outside intact`);
   } else {
     console.log("SKIPPED (visible): link creation not permitted here; packaged link refusal not exercised");
