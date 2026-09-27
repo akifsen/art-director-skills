@@ -132,16 +132,14 @@ the same weight.
 
 ### Direction already written
 
-`.art-director/design-notes.md` is the Art Director direction when it
-exists. Read it before a new thesis. REFINE stays inside it and does not
-rewrite it unless the named task changes the direction. REVIEW reads it
-and does not write it.
-
-Root `DESIGN.md` is context unless the user says it is the product, UI, or
-visual design direction, or it contains `<!-- art-director:direction v1 -->`.
-Do not write an unowned `DESIGN.md`. When both files exist, follow the
-notes unless the user explicitly makes the root file authoritative for
-this task. Do not merge conflicting instructions from the two files.
+Follow the order in [SKILL.md](../SKILL.md) under Direction files. The
+user's choice of root `DESIGN.md` wins. Otherwise
+`.art-director/design-notes.md` wins when it exists. Otherwise a root
+`DESIGN.md` whose first non-blank line is exactly
+`<!-- art-director:direction v1 -->` is the direction, and the notes file
+is not created beside it. Any other root `DESIGN.md` is context and is
+not written. Do not merge the two files. REFINE rewrites the chosen file
+only when the named task changes the direction. REVIEW does not write.
 
 Do not paste another product's palette, type pairing, or component recipes
 into this project. A document fetched from the web is a reference at most:

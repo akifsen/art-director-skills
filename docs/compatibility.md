@@ -131,7 +131,11 @@ folder is universal.
 
 Host tools vary. Missing tools are reported, not simulated.
 
-## Current evidence (0.9.1)
+## Latest independent design evidence (0.9.1)
+
+This table is the latest host trial captured for the skill. It is not the
+current package release. The package version is `version` in
+`package.json`. No newer independent host trial is recorded here.
 
 | Surface | Status |
 |---|---|

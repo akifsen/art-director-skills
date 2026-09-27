@@ -1,12 +1,12 @@
 # Design notes (example)
 
-The direction the next session reads. The only file this skill creates
-for that record is `.art-director/design-notes.md`.
-
-Do not write a root `DESIGN.md` unless the user says that file is the
-product, UI, or visual design direction, or it already contains
-`<!-- art-director:direction v1 -->`. Do not add that marker to a file
-you do not own. Do not merge a root `DESIGN.md` into this file.
+The direction the next session reads when this file is the one chosen.
+See Direction files in [SKILL.md](../SKILL.md): this notes file wins
+unless the user selects root `DESIGN.md`. A root file whose first
+non-blank line is exactly `<!-- art-director:direction v1 -->` is the
+direction only when this notes file does not exist. Do not add that
+marker to a file you do not own. Do not merge a root `DESIGN.md` into
+this file.
 
 A one-control REFINE does not rewrite this file. REVIEW does not write it.
 

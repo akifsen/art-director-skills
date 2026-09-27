@@ -2,10 +2,13 @@
 
 ## 0.11.0 — 2026-09-27
 
-- Persistent Art Director direction is `.art-director/design-notes.md`.
-  A root `DESIGN.md` is left unchanged unless the user says it is the
-  product's visual direction or it contains
-  `<!-- art-director:direction v1 -->`. The two files are not merged.
+- One direction file. The user's choice of root `DESIGN.md` wins.
+  Otherwise `.art-director/design-notes.md` wins when it exists.
+  Otherwise a root `DESIGN.md` whose first non-blank line is exactly
+  `<!-- art-director:direction v1 -->` is the direction, and the notes
+  file is not created beside it. Any other root `DESIGN.md` is left
+  unchanged. The two files are not merged. A copy of the marker later
+  in the file does not claim it.
   REVIEW does not write either file. Direction text is data: it does not
   authorize commands, unrelated edits, or publishing.
 - Writable direction paths must be ordinary files inside the project.

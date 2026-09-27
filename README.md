@@ -8,7 +8,7 @@ It does not pick a theme pack. It does not run an MCP server. It does not
 require Node, an API key, or a daemon to use. Copy `skills/art-director/`
 into a host skills directory and the workflow is available.
 
-[Türkçe](README.tr.md) · [Install](docs/installation.md) · [Compatibility](docs/compatibility.md) · [Evals](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/README.md) · [Migration](docs/migration.md)
+[Türkçe](README.tr.md) · [Install](docs/installation.md) · [Compatibility](docs/compatibility.md) · [Evals](https://github.com/akifsen/art-director-skills/blob/main/evals/README.md) · [Migration](docs/migration.md)
 
 ## What it is for
 
@@ -31,10 +31,10 @@ The skill tells the host to:
 7. Keep four acceptance gates separate (load/function, craft, completeness,
    platform/a11y) and say when a check could not be done
 
-Persistent direction is `.art-director/design-notes.md`. A root `DESIGN.md`
-is not assumed to belong to this skill. The agent writes that file only
-when the user says it is the product's visual direction, or it already
-carries an Art Director ownership marker.
+Persistent direction is one file. The user's choice of root `DESIGN.md`
+wins. Otherwise `.art-director/design-notes.md` wins when it exists.
+Otherwise a root `DESIGN.md` whose first non-blank line is the ownership
+marker is the direction. Any other root `DESIGN.md` is left unchanged.
 
 It should stay out of backend, SQL, migrations, and deploy work unless the
 user also asked for interface changes.
@@ -321,12 +321,12 @@ are not a skill runtime.
 ## Status of checks
 
 See [docs/compatibility.md](docs/compatibility.md) and
-[evals/RESULTS.md](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/RESULTS.md). File tests are not IDE discovery.
+[evals/RESULTS.md](https://github.com/akifsen/art-director-skills/blob/main/evals/RESULTS.md). File tests are not IDE discovery.
 Discovery is not a real-task run. Visual review that did not happen is
 reported as not done. Keyword fixtures in `tests/run.mjs` are not proof
 that a host selected this skill.
 
-Current work is recorded in [0.9.1 state-craft evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/state-craft-0.9.1/REPORT.md).
+The latest independent design evidence is the [0.9.1 state-craft record](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/state-craft-0.9.1/REPORT.md). It is not the current package release.
 The 0.9.0 fragment rewrite stays in [craft-finish](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/craft-finish-0.9.0/REPORT.md)
 and [action-quality](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/action-quality-0.9.0/REPORT.md).
 The previous CI seefix / skill-split run stays in [0.8.0 evidence](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/evidence/ci-seefix-0.8.0/REPORT.md).

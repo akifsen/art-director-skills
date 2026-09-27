@@ -22,11 +22,13 @@ Find, as they exist:
 - Form and table stacks
 - Whatever registry, barrel, or config the project already uses
 - Package versions in the lockfile — not a remembered default
-- Art Director direction, if present: `.art-director/design-notes.md`.
-  Root `DESIGN.md` is context unless the user says it is the product's
-  visual direction or it contains `<!-- art-director:direction v1 -->`.
-  Do not write an unowned `DESIGN.md`. Do not replace either file with
-  another product's palette, type, or components.
+- Art Director direction, in the order in
+  [SKILL.md](../SKILL.md) under Direction files: the user's choice of root
+  `DESIGN.md`, otherwise `.art-director/design-notes.md` when that file
+  exists, otherwise a root `DESIGN.md` whose first non-blank line is
+  exactly `<!-- art-director:direction v1 -->`. Any other root
+  `DESIGN.md` is context and is not written. Do not replace either file
+  with another product's palette, type, or components.
 
 Do not edit `node_modules` or caches as a lasting fix.
 

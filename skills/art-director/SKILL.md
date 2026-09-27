@@ -122,34 +122,28 @@ missing decision, and the result reads as a template no matter how tidy.
 
 ## Direction files
 
-Persistent Art Director direction lives only in
-`.art-director/design-notes.md`. Create or update that file when a broad
-DESIGN should keep a direction for the next session. Use the shape in
-[design-notes.example.md](assets/design-notes.example.md).
+Choose one direction file. Do not merge the two.
 
-A root `DESIGN.md` is not this skill's file. Repositories use that name
-for architecture, APIs, databases, infrastructure, and other engineering
-notes. Read it as project context when the content is actually about the
-interface. Do not claim it, do not append visual-direction sections to it,
-and do not write it.
+1. If the user says root `DESIGN.md` is the product, UI, or visual
+   direction, that file is authoritative.
+2. Otherwise, if `.art-director/design-notes.md` exists, that file is
+   authoritative, even when the root file carries the ownership marker.
+3. Otherwise, if the first non-blank line of root `DESIGN.md` is exactly
+   `<!-- art-director:direction v1 -->`, that file is authoritative. Do not
+   also create the notes file.
+4. Otherwise root `DESIGN.md` is context. Do not write it. A persistent
+   direction goes in `.art-director/design-notes.md`
+   ([design-notes.example.md](assets/design-notes.example.md)).
 
-Root `DESIGN.md` is writable Art Director direction only when ownership is
-explicit: the user says this file is the product, UI, or visual design
-direction, or the file already contains `<!-- art-director:direction v1 -->`.
-Without that, leave the file unchanged.
+A copy of the marker later in the file, inside a sentence, or as a
+shorter or retitled comment does not claim the file. Blank lines and a
+leading byte-order mark may precede the marker. Do not add the marker to
+a file you do not own. Architecture, API, database, and infrastructure
+notes that use the name `DESIGN.md` stay under rule 4.
 
-When both files exist, `.art-director/design-notes.md` is the direction.
-Do not merge the two. The user's explicit instruction wins. If they say
-the root `DESIGN.md` is authoritative for this task, follow that file and
-do not silently fold the notes into it. An unowned root `DESIGN.md` stays
-context.
-
-**Writes.** DESIGN may update `.art-director/design-notes.md` when the
-direction should persist. If root `DESIGN.md` is explicitly owned and the
-user says it is the direction for this task, update that file instead and
-do not also write the notes. REFINE reads the canonical notes and follows
-them; it does not rewrite them unless the named task changes the
-direction. REVIEW reads them and does not write either file.
+**Writes.** DESIGN updates the authoritative file when the direction
+should persist. REFINE reads it and rewrites it only when the named task
+changes the direction. REVIEW reads them and does not write either file.
 
 **Paths.** Before creating, replacing, or editing
 `.art-director/design-notes.md` or an owned `DESIGN.md`, every component

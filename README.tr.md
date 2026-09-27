@@ -7,7 +7,7 @@ Tema paketi seçmez. MCP sunucusu çalıştırmaz. Kullanmak için Node, API
 anahtarı veya arka plan süreci gerekmez. `skills/art-director/` klasörünü
 host’un skill dizinine kopyalamak yeterlidir.
 
-[English README](README.md) · [Kurulum](docs/installation.md) · [Uyumluluk](docs/compatibility.md) · [Değerlendirme](https://github.com/akifsen/art-director-skills/blob/v0.10.0/evals/README.md) · [Geçiş](docs/migration.md)
+[English README](README.md) · [Kurulum](docs/installation.md) · [Uyumluluk](docs/compatibility.md) · [Değerlendirme](https://github.com/akifsen/art-director-skills/blob/main/evals/README.md) · [Geçiş](docs/migration.md)
 
 ## Ne işe yarar
 
@@ -22,10 +22,10 @@ kur veya geliştir; istenen ekranları, akışları ve durumları bitir; uygulam
 istendiyse gerçek dosyaları değiştir; dört kabul kapısını (yükleme/işlev,
 işçilik, kapsam, platform/erişilebilirlik) ayır.
 
-Kalıcı yön `.art-director/design-notes.md` dosyasıdır. Kök `DESIGN.md`
-bu skill'in dosyası sayılmaz. Ajan onu ancak kullanıcı o dosyanın ürünün
-görsel yönü olduğunu söylediğinde, ya da dosyada Art Director sahiplik
-işareti varken yazar.
+Kalıcı yön tek dosyadır. Kullanıcının kök `DESIGN.md` seçimi kazanır.
+Aksi halde `.art-director/design-notes.md` varsa o kazanır. O da yoksa,
+ilk boş olmayan satırı sahiplik işareti olan kök `DESIGN.md` yöndür.
+Bunların dışındaki kök `DESIGN.md` değiştirilmez.
 
 Geniş DESIGN işinde ilk gerçek ekranı görsel olarak inceleyip gerekli
 düzeltmeyi yapmadan tasarımı bütün ekranlara yaymaz. Engellenmiş kontrol,

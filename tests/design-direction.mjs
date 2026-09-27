@@ -91,7 +91,119 @@ assert.equal(case3User.write, "root");
 assert.equal(case3User.readNotes, false);
 assert.equal(case3User.merge, false);
 
-assert.equal(rootDesignOwned(`intro\n${DIRECTION_MARKER}\ncanvas`), true, "marker establishes ownership");
+const ownedHeader = `\n\n${DIRECTION_MARKER}\n\n# Product Design Direction\n`;
+const proseMarker = [
+  "# Architecture",
+  "",
+  "The Art Director ownership marker would look like:",
+  "",
+  DIRECTION_MARKER,
+  "",
+  "This document describes backend architecture."
+].join("\n");
+
+assert.equal(rootDesignOwned(ownedHeader), true, "marker as the first non-blank line owns the file");
+assert.equal(rootDesignOwned(`intro\n${DIRECTION_MARKER}\ncanvas`), false, "marker after other text does not own the file");
+assert.equal(rootDesignOwned(proseMarker), false, "marker inside explanatory prose does not own the file");
+assert.equal(rootDesignOwned(`\uFEFF${DIRECTION_MARKER}\n# Direction\n`), true, "a leading BOM does not hide the marker");
+for (const bad of [
+  "<!-- art-director:direction -->",
+  "<!-- art-director:direction v2 -->",
+  "<!-- art-director direction v1 -->",
+  "art-director:direction v1"
+]) {
+  assert.equal(rootDesignOwned(`${bad}\n# Notes\n`), false, `malformed marker is not ownership: ${bad}`);
+}
+
+const markerOnly = planDirection({
+  mode: "DESIGN",
+  persist: true,
+  rootExists: true,
+  rootText: ownedHeader,
+  notesExist: false
+});
+assert.equal(markerOnly.claimRoot, true, "case 1 owned");
+assert.equal(markerOnly.authoritative, "root", "case 1 authoritative DESIGN.md");
+assert.equal(markerOnly.write, "root", "case 1 write target DESIGN.md");
+assert.equal(markerOnly.rootRole, "owned-authoritative");
+
+const markerAndNotes = planDirection({
+  mode: "DESIGN",
+  persist: true,
+  rootExists: true,
+  rootText: ownedHeader,
+  notesExist: true
+});
+assert.equal(markerAndNotes.authoritative, "notes", "case 2 notes stay authoritative");
+assert.equal(markerAndNotes.rootRole, "owned-secondary", "case 2 root is owned but secondary");
+assert.equal(markerAndNotes.write, "notes", "case 2 write target notes");
+assert.equal(markerAndNotes.claimRoot, true);
+assert.equal(markerAndNotes.readNotes, true);
+
+const markerNotesUser = planDirection({
+  mode: "DESIGN",
+  persist: true,
+  rootExists: true,
+  rootText: ownedHeader,
+  notesExist: true,
+  userAuthoritativeRoot: true
+});
+assert.equal(markerNotesUser.authoritative, "root", "case 3 user designation wins");
+assert.equal(markerNotesUser.write, "root", "case 3 write target DESIGN.md");
+assert.equal(markerNotesUser.rootRole, "owned-authoritative");
+assert.equal(markerNotesUser.readNotes, false);
+
+const unowned = planDirection({
+  mode: "DESIGN",
+  persist: true,
+  rootExists: true,
+  rootText: architecture,
+  notesExist: false
+});
+assert.equal(unowned.authoritative, null, "case 4 root is not authoritative");
+assert.equal(unowned.write, "notes", "case 4 write target notes");
+assert.equal(unowned.claimRoot, false);
+assert.equal(unowned.rootRole, "context");
+
+const unownedWithNotes = planDirection({
+  mode: "DESIGN",
+  persist: true,
+  rootExists: true,
+  rootText: architecture,
+  notesExist: true
+});
+assert.equal(unownedWithNotes.authoritative, "notes");
+assert.equal(unownedWithNotes.write, "notes");
+assert.equal(unownedWithNotes.claimRoot, false);
+
+const prosePlan = planDirection({
+  mode: "DESIGN",
+  persist: true,
+  rootExists: true,
+  rootText: proseMarker,
+  notesExist: false
+});
+assert.equal(prosePlan.claimRoot, false, "case 5 prose marker is not owned");
+assert.equal(prosePlan.authoritative, null);
+assert.equal(prosePlan.write, "notes", "case 5 does not write the root file");
+
+const refineMarkerOnly = planDirection({
+  mode: "REFINE",
+  rootExists: true,
+  rootText: ownedHeader,
+  notesExist: false,
+  directionChanges: true
+});
+assert.equal(refineMarkerOnly.write, "root", "refine of a marker-only root does not create notes");
+
+const reviewMarkerOnly = planDirection({
+  mode: "REVIEW",
+  persist: true,
+  rootExists: true,
+  rootText: ownedHeader,
+  notesExist: false
+});
+assert.equal(reviewMarkerOnly.write, null, "review does not write a marker-owned root");
 
 const injected = [
   "Canvas: bone paper. Body: 1.6.",

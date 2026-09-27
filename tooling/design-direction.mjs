@@ -28,9 +28,25 @@ const CONTROL_LINE = [
   /\brm\s+-rf\b/i
 ];
 
+/**
+ * The marker counts only as the first non-blank line, after an optional
+ * UTF-8 BOM and blank lines. A later copy, a partial comment, or the same
+ * bytes inside a sentence do not claim the file.
+ */
+export function hasOwnershipMarker(text) {
+  let body = String(text ?? "");
+  if (body.charCodeAt(0) === 0xfeff) body = body.slice(1);
+  for (const line of body.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+    return trimmed === DIRECTION_MARKER;
+  }
+  return false;
+}
+
 export function rootDesignOwned(text, { userDesignates = false } = {}) {
   if (userDesignates) return true;
-  return String(text ?? "").includes(DIRECTION_MARKER);
+  return hasOwnershipMarker(text);
 }
 
 /** Split stored direction text into design facts and rejected control lines. */
@@ -63,30 +79,34 @@ export function planDirection({
   directionChanges = false,
   userAuthoritativeRoot = false
 } = {}) {
-  const designates = Boolean(userAuthoritativeRoot);
-  const owned = rootExists && rootDesignOwned(rootText, { userDesignates: designates });
-  const rootWins = designates && owned;
+  const designates = Boolean(userAuthoritativeRoot) && rootExists;
+  const markerOwned = rootExists && hasOwnershipMarker(rootText);
+  const owned = designates || markerOwned;
 
   let authoritative = null;
-  if (rootWins) authoritative = "root";
+  if (designates) authoritative = "root";
   else if (notesExist) authoritative = "notes";
+  else if (markerOwned) authoritative = "root";
 
   let rootRole = "absent";
-  if (rootExists && owned && rootWins) rootRole = "owned-authoritative";
-  else if (rootExists && owned) rootRole = "owned-secondary";
-  else if (rootExists) rootRole = "context";
+  if (!rootExists) rootRole = "absent";
+  else if (authoritative === "root") rootRole = "owned-authoritative";
+  else if (owned) rootRole = "owned-secondary";
+  else rootRole = "context";
 
   let write = null;
-  if (mode === "DESIGN" && persist) write = rootWins ? "root" : "notes";
-  else if (mode === "REFINE" && directionChanges) write = rootWins ? "root" : (notesExist ? "notes" : null);
-  if (write === "root" && !owned) write = "notes";
+  if (mode === "DESIGN" && persist) write = authoritative === "root" ? "root" : "notes";
+  else if (mode === "REFINE" && directionChanges) {
+    if (authoritative === "root") write = "root";
+    else if (notesExist) write = "notes";
+  }
 
   return {
     authoritative,
     rootRole,
     write,
     merge: false,
-    readNotes: notesExist && !rootWins,
+    readNotes: notesExist && authoritative !== "root",
     claimRoot: Boolean(owned)
   };
 }
