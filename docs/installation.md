@@ -325,8 +325,9 @@ npx skills add akifsen/art-director-skills --skill art-director --agent cursor -
 ```
 
 or, from a local clone of the new tag, the same `npx skills add <path>`
-form as install. Then confirm the copied `SKILL.md` metadata version is
-`0.9.1`, that `references/native-mobile.md` exists, and that
+form as install. Then confirm that the copied `SKILL.md` metadata version
+matches the release you installed (`0.11.0` for this release), that
+`references/native-mobile.md` exists, and that
 `references/examples/media-portfolio/App.jsx` exists.
 
 Compare file contents too: `Get-FileHash -Algorithm SHA256` on source and

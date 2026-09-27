@@ -172,9 +172,23 @@ assert(pkg.name === "art-director-skills" && pkg.type === "module", "package.jso
 assert(/^\d+\.\d+\.\d+/.test(pkg.version), "package.json has a semver version");
 assert(pkg.version === data.metadata?.version, "package.json version matches SKILL.md metadata.version");
 for (const rel of ["README.md", "README.tr.md", "docs/installation.md"]) {
-  const pins = [...fs.readFileSync(path.join(root, rel), "utf8").matchAll(/art-director-skills@(\d+\.\d+\.\d+)/g)].map((m) => m[1]);
+  const text = fs.readFileSync(path.join(root, rel), "utf8");
+  const pins = [...text.matchAll(/art-director-skills@(\d+\.\d+\.\d+)/g)].map((m) => m[1]);
   assert(pins.length > 0, `${rel} has an active npm install pin`);
   for (const pin of pins) assert(pin === pkg.version, `${rel} install pin ${pin} === package ${pkg.version}`);
+  // Verification prose ("metadata version is 0.9.1") is not an npm pin.
+  // Only that paragraph is checked; older-release notes in the same file stay.
+  const metaChecks = text.split(/\r?\n\r?\n/).filter((paragraph) => /metadata version\b/.test(paragraph));
+  if (rel === "docs/installation.md") {
+    assert(metaChecks.length > 0, `${rel} confirms the copied SKILL.md metadata version`);
+  }
+  for (const check of metaChecks) {
+    const cited = [...check.matchAll(/\bv?(\d+\.\d+\.\d+)\b/g)].map((m) => m[1]);
+    assert(cited.length > 0, `${rel} metadata-version check names the installed release`);
+    for (const citedVersion of cited) {
+      assert(citedVersion === pkg.version, `${rel} metadata-version check ${citedVersion} === package ${pkg.version}`);
+    }
+  }
 }
 {
   const lock = JSON.parse(fs.readFileSync(path.join(root, "package-lock.json"), "utf8"));
