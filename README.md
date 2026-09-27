@@ -31,6 +31,11 @@ The skill tells the host to:
 7. Keep four acceptance gates separate (load/function, craft, completeness,
    platform/a11y) and say when a check could not be done
 
+If the project already has a direction file (`DESIGN.md` at the root, or
+`.art-director/design-notes.md`), the agent reads it and stays inside it.
+A broad DESIGN that covers more than one screen updates that one file so
+the next session can read the same decisions.
+
 It should stay out of backend, SQL, migrations, and deploy work unless the
 user also asked for interface changes.
 
@@ -42,6 +47,7 @@ unstyled leftovers are not.
 
 - Not `@akifsen/art-director-mcp` and not a new version of that package
 - Not a catalog of ready-made sites
+- Not a drop-in of another site's palette, type, or components
 - Not a guarantee of taste; eval scores are subjective and n=1 unless said
 - Not a new browser, vision model, or permission set
 - Not tested as a Cursor Marketplace plugin in this release

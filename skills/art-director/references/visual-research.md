@@ -30,6 +30,10 @@ image the user attached), do not record the source as visually studied.
 If you only have text, you may still note information architecture from
 copy. Label that as **source reading**, not visual research.
 
+A design document fetched as text is source reading. It is not a system to
+install. Do not copy its palette, type, or component recipes into this
+project. Record one principle and leave the tokens behind.
+
 ## Dates
 
 Record **observation date** (when you looked). Do not confuse it with when

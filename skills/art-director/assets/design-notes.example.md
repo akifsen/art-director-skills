@@ -1,10 +1,15 @@
 # Design notes (example)
 
-Optional local file for a large DESIGN task. Put a short copy at
-`.art-director/design-notes.md` in the target project only when a durable
-record helps. This is not a platform standard and not required for REFINE.
+The direction the next session reads. On a broad DESIGN that covers more
+than one screen, put a short copy in the target project. Use one file
+only. If root `DESIGN.md` already exists, update that file and do not
+also create this one. Otherwise write `.art-director/design-notes.md`.
+
+A one-control REFINE does not create a file. REVIEW does not write one.
 
 Replace every section with project facts. Do not keep these sample words.
+Do not paste another product's palette, type, or component recipes.
+Do not add a second direction file beside one that already exists.
 
 ## Keep
 

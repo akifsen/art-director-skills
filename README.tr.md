@@ -22,6 +22,10 @@ kur veya geliştir; istenen ekranları, akışları ve durumları bitir; uygulam
 istendiyse gerçek dosyaları değiştir; dört kabul kapısını (yükleme/işlev,
 işçilik, kapsam, platform/erişilebilirlik) ayır.
 
+Projede yön dosyası varsa (`DESIGN.md` veya `.art-director/design-notes.md`)
+ajan onu okur ve içinde kalır. Birden çok ekranı kapsayan geniş DESIGN,
+sonraki oturumun aynı kararları okuyabilmesi için o tek dosyayı günceller.
+
 Geniş DESIGN işinde ilk gerçek ekranı görsel olarak inceleyip gerekli
 düzeltmeyi yapmadan tasarımı bütün ekranlara yaymaz. Engellenmiş kontrol,
 geçmiş kontrol sayılmaz: tamamlandı / kısmi teslim / tamamlanmadı ayrılır.
@@ -52,6 +56,7 @@ başlatmamalıdır.
 
 - `@akifsen/art-director-mcp` paketinin yeni sürümü değildir
 - Hazır site kataloğu değildir
+- Başka bir sitenin paletini, yazı tipini veya bileşen tarifini taşımaz
 - Estetik garanti değildir
 - Yeni tarayıcı, görsel model veya ek yetki sağlamaz
 

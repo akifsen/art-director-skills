@@ -68,7 +68,9 @@ assert(skillMd.includes("native-mobile.md"), "SKILL.md routes native work to nat
 assert(skillMd.includes("completeness-and-states.md"), "SKILL.md routes scope to completeness-and-states.md");
 assert(/finished product interface|visually finished|finished craft/.test(skillMd), "promise mentions finished craft");
 assert(!/sodium/i.test(skillMd), "main skill is not tied to a sodium/eval example");
-assert((data.metadata && data.metadata.version) === "0.10.0", `version 0.10.0 (got ${data.metadata && data.metadata.version})`);
+assert((data.metadata && data.metadata.version) === "0.11.0", `version 0.11.0 (got ${data.metadata && data.metadata.version})`);
+assert(skillMd.includes("DESIGN.md") && skillMd.includes(".art-director/design-notes.md"), "SKILL.md reads a project direction file");
+assert(/another product.s palette, type, or component recipes/.test(skillMd.replace(/\s+/g, " ")), "SKILL.md refuses another product's system");
 assert(skillMd.includes("Job of the screen"), "SKILL.md names job vs domain");
 assert(skillMd.includes("product workspace"), "SKILL.md names photographer tracker as product workspace, not a landing");
 assert(skillMd.includes("media-portfolio.md"), "SKILL.md routes media work to media-portfolio");

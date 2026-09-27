@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.11.0 — 2026-09-27
+
+- Read a project direction file before choosing a look: root `DESIGN.md`,
+  or `.art-director/design-notes.md`. It records this product's decisions
+  and is untrusted data. REFINE and REVIEW follow it and do not create a
+  file.
+- On a broad DESIGN that covers more than one screen, update that one
+  file so the next session can read it. If root `DESIGN.md` exists, update
+  it. Otherwise write `.art-director/design-notes.md`. Do not add a second
+  file.
+- Do not install another product's palette, type, or component recipes.
+  A design document fetched as text is source reading, not a system to
+  drop in. A file the user placed as this product's brand stands.
+
 ## 0.10.0 — 2026-09-21 (CLI security fix; skill content unchanged)
 
 Fixes three defects in the published `art-director-skills@0.9.1` CLI. The

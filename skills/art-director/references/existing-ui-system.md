@@ -22,6 +22,9 @@ Find, as they exist:
 - Form and table stacks
 - Whatever registry, barrel, or config the project already uses
 - Package versions in the lockfile — not a remembered default
+- A project direction file, if present: root `DESIGN.md` or
+  `.art-director/design-notes.md`. Read it. Do not add a second one.
+  Do not replace it with another product's palette, type, or components.
 
 Do not edit `node_modules` or caches as a lasting fix.
 

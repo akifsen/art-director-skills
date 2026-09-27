@@ -130,6 +130,18 @@ Replace when they block the thesis: generic stock sections, invented social
 proof, decorative assets with no license, and layout that gives every block
 the same weight.
 
+### Direction already written
+
+If root `DESIGN.md` or `.art-director/design-notes.md` exists, it is brand
+in force for this product. Read it before a new thesis. REFINE stays inside
+it. A redesign the user asked for may change that file. Do not open a
+second direction file beside it.
+
+Do not paste another product's palette, type pairing, or component recipes
+into this project. A file the user placed and named as this product's brand
+is the direction. A document fetched from the web is a reference at most:
+take a principle, leave the tokens.
+
 ## Decision examples
 
 ### Studio with unlike offerings

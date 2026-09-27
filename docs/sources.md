@@ -78,6 +78,10 @@ were not imported.
 Eval HTML fixtures are original, fictional, and tiny. They are not customer
 sites and not copies of live brands.
 
+This repository does not ship design systems extracted from third-party
+sites. A direction file in a target project records that project's own
+decisions.
+
 ## Third-party installer
 
 `npx skills` is published by Vercel Labs. It is optional. It may phone
