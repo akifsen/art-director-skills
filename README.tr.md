@@ -54,7 +54,6 @@ başlatmamalıdır.
 
 ## Ne değildir
 
-- `@akifsen/art-director-mcp` paketinin yeni sürümü değildir
 - Hazır site kataloğu değildir
 - Başka bir sitenin paletini, yazı tipini veya bileşen tarifini taşımaz
 - Estetik garanti değildir
@@ -72,11 +71,14 @@ Asistanı ve kapsamı sen seçersin; seçmeden hiçbir şey yazılmaz. Sürümü
 sabitle:
 
 ```bash
-npx art-director-skills@0.10.0 install --ai cursor          # → .cursor/skills/art-director
-npx art-director-skills@0.10.0 install --ai claude,codex    # birden çok asistan
-npx art-director-skills@0.10.0 install --ai cursor --global # proje yerine ~/.cursor/skills
-npx art-director-skills@0.10.0 status  --ai cursor
-npx art-director-skills@0.10.0 --version
+npx --yes art-director-skills@0.10.2 install --ai cursor           # → .cursor/skills/art-director
+npx --yes art-director-skills@0.10.2 install --ai claude,codex     # birden çok asistan
+npx --yes art-director-skills@0.10.2 install --ai cursor --global  # proje yerine ~/.cursor/skills
+npx --yes art-director-skills@0.10.2 install --ai cursor --dry-run # yalnız plan
+npx --yes art-director-skills@0.10.2 status  --ai cursor
+npx --yes art-director-skills@0.10.2 list
+npx --yes art-director-skills@0.10.2 remove  --ai cursor
+npx --yes art-director-skills@0.10.2 --version
 ```
 
 Bağımlılık yok, paket indikten sonra ağ yok, telemetri yok, postinstall yok.
@@ -95,10 +97,10 @@ sembolik bağlantıları takip ediyordu. Artık bir mesajla duruyor, dosya
 yazmıyor. `SKILL.md`, `.cursorrules`, `CLAUDE.md`, `AGENTS.md` dosyalarına
 bu paket dokunmaz. Bkz. [docs/migration.md](docs/migration.md).
 
-`art-director` ve `art-director-skill`, *kurulu* paketin bin eş adlarıdır
-(`npm i -D art-director-skills` sonrası `npm exec art-director -- --version`).
-`npx art-director` komutunu bu paketin kısayolu sanma: npx nitelenmemiş adı
-registry'de arar ve o ad bu paket değildir.
+Yayımlanan ikili yalnızca `art-director-skills`. `npx art-director`
+kullanma: registry’de başka bir pakettir. 0.10.0 o adı bin takma adı
+yapınca Windows `npx art-director-skills` komutu `art-director` çalıştırmaya
+kalkıyordu.
 
 Klondan: `node bin/cli.js install --ai cursor`.
 
@@ -151,12 +153,136 @@ birleştirmeden değiştirin. [docs/installation.md](docs/installation.md#update
 
 ## Kullanım
 
-Cursor’da `/art-director` veya doğal bir arayüz talebi. Codex’te
-`$art-director`. Claude Code, Copilot, Gemini CLI, Kiro, OpenCode, Qoder,
-Roo Code, Kilo Code, Continue, CodeBuddy ve Droid’de skill `art-director`
-adıyla listelenir; açıklamasından seçilir ya da hostun skill komutuyla
-(`/skills`, `/art-director`, `skill` aracı) çağrılır. Ajan, kullanıcının
-diliyle yanıtlar.
+Kullandığınız asistan için kurun, sonra **art-director**’ı o hostta
+çağırın. Kendi dilinizde yazın. Her yerde aynı skill; ekstra komut yok.
+İstek zaten birini ima ediyorsa DESIGN / REFINE / REVIEW yazmayın.
+
+Aşağıdaki çağrı biçimleri her hostun skill belgesinden. Bu skill’in
+oturumda listelendiği kayıt **Cursor** için var; diğerleri kurulum
+yolu olarak test edildi, o hostun burada açıldığı anlamına gelmez.
+Ayrıntı: [docs/compatibility.md](docs/compatibility.md).
+
+### Cursor
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai cursor
+```
+
+Dosyalar: `.cursor/skills/art-director/`. **Agent** sohbetinde:
+
+```text
+/art-director Bu site için rezervasyon akışı tasarla. Mevcut yığını koru.
+```
+
+Ya da doğal isteyin (“ayarlar sayfasını tasarla”); Cursor açıklamadan
+seçebilir. `/art-director` o mesaja skill’i bağlar. Aynı repoda `--ai
+all` ile birlikte kurmayın — Cursor `.agents/skills/` dizinini de okur,
+skill iki kez görünür.
+
+### Gemini CLI
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai gemini
+```
+
+Bu, `.gemini/skills/art-director/` yazar (Gemini’nin kendi ağacı). CLI
+**ayrıca** `.agents/skills/` alias’ını tarar. İkisinin de proje kopyası
+yalnız klasör **güveniliyorsa** yüklenir. `/skills list` boş kaldıysa ve
+`.gemini` → `.agents` deyince göründüyse neden budur (veya yalnız
+alias’ı listeleyen eski CLI). Sonra:
+
+```text
+/trust
+/skills reload
+/skills list
+```
+
+`art-director` görünmeli. Gemini skill’i açmadan onay ister.
+
+Hâlâ boşsa Gemini’nin gördüğü alias’a kurun:
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai codex
+```
+
+Bu `.agents/skills/art-director/` — aynı `SKILL.md` düzeni, ikinci bir
+skill değil. Bu Gemini sürümü ikisini de okuyorsa
+`.gemini/skills/art-director` ile `.agents/skills/art-director` birlikte
+durmasın; iki kez listelenir. `--global` → `~/.gemini/skills/` ve
+workspace güveni aranmaz.
+
+### Claude Code
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai claude
+```
+
+Dosyalar: `.claude/skills/art-director/`. `/art-director` yazın veya
+açıklamayla eşleşen bir arayüz sorusu sorun. `/skills` yüklü skill’leri
+listeler.
+
+### Codex
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai codex
+```
+
+Dosyalar: `.agents/skills/art-director/`. Codex CLI / IDE: `/skills`
+veya `$art-director`. ChatGPT masaüstü: `@` ile skill.
+
+### GitHub Copilot
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai copilot
+```
+
+Dosyalar: `.github/skills/art-director/` (proje) veya `~/.copilot/skills/`
+(`--global`). Copilot CLI’de `/skills reload`, sonra:
+
+```text
+/art-director Gösterge panelini incele. Dosya değiştirme.
+```
+
+Copilot slash olmadan da açıklamadan seçebilir. `/skills list` ve
+`/skills info art-director` yüklendiğini doğrular.
+
+### Kiro
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai kiro
+```
+
+Dosyalar: `.kiro/skills/art-director/`. Sohbette `/art-director` veya
+doğal arayüz isteği. Varsayılan ajan bu klasörü yükler. **Özel** bir
+ajan için `resources` içine `"skill://.kiro/skills/**/SKILL.md"` gerekir.
+
+### OpenCode ve diğerleri
+
+| Host | Kurulum | Klasör | Kullanım |
+|---|---|---|---|
+| OpenCode | `--ai opencode` | `.opencode/skills/` | `skill` aracı: ad `art-director` |
+| Qoder | `--ai qoder` | `.qoder/skills/` | Skill listesi / hostun `/art-director` belgesi |
+| Roo Code | `--ai roocode` | `.roo/skills/` | aynı |
+| Continue | `--ai continue` | `.continue/skills/` | aynı |
+| CodeBuddy | `--ai codebuddy` | `.codebuddy/skills/` | aynı |
+| Droid | `--ai droid` | `.factory/skills/` | aynı |
+| Kilo Code | `--ai kilocode` | `.kilocode/skills/` | aynı |
+
+Tüm projeler için: `--global` (ev dizini skill klasörü). Yollar:
+[docs/installation.md](docs/installation.md#bundled-installer).
+
+```text
+DESIGN — yeni arayüz veya açık yeniden tasarım
+Bu site için bir rezervasyon akışı tasarla. Mevcut yığını koru. Yalnızca
+ilk ekranı değil; liste, detay ve boş durumları da bitir.
+
+REFINE — var olan arayüzün belirli parçası
+640px altında mobil menü kullanılamıyor. Yalnızca onu değiştir.
+
+REVIEW — inceleme
+Gösterge panelini incele: hiyerarşi, tipografi, kontrast ve boş
+durumlar. Dosya değiştirme.
+```
 
 | Mod | Ne zaman | Varsayılan |
 |---|---|---|

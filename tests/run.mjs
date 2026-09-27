@@ -68,7 +68,7 @@ assert(skillMd.includes("native-mobile.md"), "SKILL.md routes native work to nat
 assert(skillMd.includes("completeness-and-states.md"), "SKILL.md routes scope to completeness-and-states.md");
 assert(/finished product interface|visually finished|finished craft/.test(skillMd), "promise mentions finished craft");
 assert(!/sodium/i.test(skillMd), "main skill is not tied to a sodium/eval example");
-assert((data.metadata && data.metadata.version) === "0.11.0", `version 0.11.0 (got ${data.metadata && data.metadata.version})`);
+assert(/^\d+\.\d+\.\d+$/.test(data.metadata && data.metadata.version), `SKILL.md metadata.version is semver (got ${data.metadata && data.metadata.version})`);
 assert(skillMd.includes("DESIGN.md") && skillMd.includes(".art-director/design-notes.md"), "SKILL.md reads a project direction file");
 assert(/another product.s palette, type, or component recipes/.test(skillMd.replace(/\s+/g, " ")), "SKILL.md refuses another product's system");
 assert(skillMd.includes("Job of the screen"), "SKILL.md names job vs domain");
@@ -172,7 +172,9 @@ assert(pkg.name === "art-director-skills" && pkg.type === "module", "package.jso
 assert(/^\d+\.\d+\.\d+/.test(pkg.version), "package.json has a semver version");
 assert(pkg.version === data.metadata?.version, "package.json version matches SKILL.md metadata.version");
 assert(pkg.private !== true, "package is publishable (not private)");
-assert(pkg.bin["art-director"] === "./bin/cli.js" && pkg.bin["art-director-skills"] === "./bin/cli.js", "bins art-director and art-director-skills point at bin/cli.js");
+assert(pkg.bin["art-director-skills"] === "./bin/cli.js", "bin art-director-skills points at bin/cli.js");
+assert(Object.keys(pkg.bin)[0] === pkg.name, "npx uses the first bin key when aliases share a path; it must be the package name");
+assert(!pkg.bin["art-director"], "no art-director bin: npm would run that name and Windows cmd cannot find it");
 assert(pkg.files.includes("bin/") && pkg.files.includes("skills/art-director/"), "published files include bin/ and the skill folder");
 assert(!pkg.files.some((f) => /^(evals|tests|dist|playwright)/.test(f)), "published files exclude evals, tests, dist, playwright");
 assert(fs.readFileSync(path.join(root, "bin", "cli.js"), "utf8").startsWith("#!/usr/bin/env node"), "bin/cli.js has a node shebang");

@@ -55,6 +55,9 @@ known:
 - Kiro custom agents need `skill://.kiro/skills/**/SKILL.md` in
   `resources`; the default agent needs nothing.
 - Gemini CLI loads workspace skills only from a trusted folder.
+  Official trees are `.gemini/skills/` and the `.agents/skills/` alias;
+  some builds list only the alias until `/trust`. User `~/.gemini/skills/`
+  is not gated on trust.
 - OpenCode, Copilot, Gemini CLI, Kilo Code, Codex and Cursor also read
   `.agents/skills/` and/or `.claude/skills/`; installing to several of
   those trees in one project lists the skill more than once.

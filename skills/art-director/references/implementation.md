@@ -59,6 +59,25 @@ Before you treat the design as done, confirm:
 A missing `@import` or a wrong relative CSS path is a failed implementation,
 not a taste problem. See [polish-pass.md](polish-pass.md).
 
+Loading details that decide whether the first paint is the design:
+
+- Every `<img>` carries its intrinsic `width` and `height` (or a CSS
+  `aspect-ratio`) so the layout does not jump when the file arrives. The
+  hero of the current view loads eagerly (`fetchpriority="high"`); images
+  below the fold get `loading="lazy"`. Remove heavy files nothing
+  references, and keep the license record in step.
+- If the site stores a theme choice, apply it from a short inline script
+  in `<head>` before the stylesheets (read storage, fall back to
+  `prefers-color-scheme`, set `data-theme`). A toggle wired only in the
+  deferred bundle flashes the default theme on every load.
+- A remote font `@import` inside a stylesheet is discovered late and
+  blocks render; use `<link>` in the document or self-host the files. Either
+  way, confirm the computed face.
+- Text that users type against data (search, filters) folds case with the
+  document language (`toLocaleLowerCase("tr")` — `İ`/`ı` do not survive a
+  plain `toLowerCase()`), and anything rendered through `innerHTML` is
+  escaped first, including data from your own JSON.
+
 For a starter React app, build a small shared system first
 ([product-ui-system.md](product-ui-system.md),
 [react-web.md](react-web.md)). For an existing theme or local primitives,

@@ -1,5 +1,13 @@
 # Migration
 
+## From `art-director-skills` 0.10.0 to 0.10.1 (npx on Windows)
+
+0.10.0 declared three bin names that all pointed at `bin/cli.js`. npm's
+`npx` then runs the first name. That was `art-director`, which Windows
+`cmd` cannot find. Use `npx art-director-skills@0.10.1 …`, or from a
+clone `node bin/cli.js install --ai cursor`. `npm exec art-director` is
+not this package.
+
 ## From `art-director-skills` 0.9.1 to 0.10.0 (CLI security)
 
 0.9.1's `bin/cli.js` had a single-file mode: no arguments wrote `./SKILL.md`,
@@ -31,7 +39,7 @@ If you relied on the single-file shortcut, the supported path is the full
 install where your client discovers skills:
 
 ```sh
-npx art-director-skills@0.10.0 install --ai cursor    # or claude, codex, …
+npx art-director-skills@0.10.1 install --ai cursor    # or claude, codex, …
 ```
 
 Your existing `SKILL.md`, `.cursorrules`, `CLAUDE.md`, `AGENTS.md` are not

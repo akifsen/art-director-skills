@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * art-director-skills CLI (bins: art-director-skills, art-director, art-director-skill).
+ * art-director-skills CLI (bin: art-director-skills).
  *
  *   npx art-director-skills install --ai cursor            full skill into .cursor/skills/art-director
  *   npx art-director-skills install --ai claude,codex --global

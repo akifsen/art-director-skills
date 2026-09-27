@@ -45,7 +45,6 @@ unstyled leftovers are not.
 
 ## What it is not
 
-- Not `@akifsen/art-director-mcp` and not a new version of that package
 - Not a catalog of ready-made sites
 - Not a drop-in of another site's palette, type, or components
 - Not a guarantee of taste; eval scores are subjective and n=1 unless said
@@ -64,11 +63,14 @@ assistant you name discovers. Pick the assistant and the scope yourself;
 nothing is written until you do. Pin the version:
 
 ```bash
-npx art-director-skills@0.10.0 install --ai cursor          # → .cursor/skills/art-director
-npx art-director-skills@0.10.0 install --ai claude,codex    # several at once
-npx art-director-skills@0.10.0 install --ai cursor --global # ~/.cursor/skills instead of the project
-npx art-director-skills@0.10.0 status  --ai cursor
-npx art-director-skills@0.10.0 --version
+npx --yes art-director-skills@0.10.2 install --ai cursor           # → .cursor/skills/art-director
+npx --yes art-director-skills@0.10.2 install --ai claude,codex     # several at once
+npx --yes art-director-skills@0.10.2 install --ai cursor --global  # ~/.cursor/skills instead of the project
+npx --yes art-director-skills@0.10.2 install --ai cursor --dry-run # plan only
+npx --yes art-director-skills@0.10.2 status  --ai cursor
+npx --yes art-director-skills@0.10.2 list
+npx --yes art-director-skills@0.10.2 remove  --ai cursor
+npx --yes art-director-skills@0.10.2 --version
 ```
 
 No dependencies, no network after npm fetches the package, no telemetry,
@@ -87,11 +89,10 @@ They now stop with a message and write nothing. Your `SKILL.md`,
 `.cursorrules`, `CLAUDE.md`, `AGENTS.md` are not touched by this package.
 See [docs/migration.md](docs/migration.md).
 
-`art-director` and `art-director-skill` are bin aliases of the *installed*
-package (e.g. `npm exec art-director -- --version` after `npm i -D
-art-director-skills`). Do not use `npx art-director` as a shortcut for this
-package: npx resolves an unqualified name against the registry, and that
-name is not this package.
+The published binary is `art-director-skills` only. Do not use
+`npx art-director`: that name is a different registry package, and having
+it as a bin alias made Windows `npx art-director-skills` try to spawn
+`art-director` (npm uses the first alias when they share a path).
 
 From a clone: `node bin/cli.js install --ai cursor`.
 
@@ -164,14 +165,136 @@ makes no network calls and sends nothing.
 
 ## Use
 
-In Cursor, `/art-director` or a natural UI-design request. In Codex,
-`$art-director` or `/skills`. In Claude Code, Copilot, Gemini CLI, Kiro,
-OpenCode, Qoder, Roo Code, Kilo Code, Continue, CodeBuddy and Droid the
-skill is listed under `art-director` and picked from its description or
-via the host's skill command (`/skills`, `/art-director`, or the `skill`
-tool). Speak to the agent in your language; the skill follows that.
+Install for the assistant you actually open, then invoke **art-director**
+in that host. Speak in your language. Same skill everywhere — not extra
+commands. Name the job in the message; do not type DESIGN / REFINE /
+REVIEW if the request already implies one.
 
-Modes (same skill, not extra commands):
+Vendor invocation below is from each host’s skill docs. A recorded
+session that listed or used this skill exists for **Cursor**; the other
+rows are install-tested paths, not a claim that that host was opened
+here. Details: [docs/compatibility.md](docs/compatibility.md).
+
+### Cursor
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai cursor
+```
+
+Files: `.cursor/skills/art-director/`. In **Agent** chat:
+
+```text
+/art-director Design a booking flow for this site. Keep the current stack.
+```
+
+Or ask naturally (“design the settings page”); Cursor may select the
+skill from its description. `/art-director` attaches for that message.
+Do not also install `--ai all` in the same repo — Cursor also reads
+`.agents/skills/` and the skill would appear twice.
+
+### Gemini CLI
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai gemini
+```
+
+That writes `.gemini/skills/art-director/` (Gemini’s own tree). The CLI
+**also** scans `.agents/skills/` as an alias. Workspace copies of either
+tree load only when the folder is **trusted**. If `/skills list` stayed
+empty until you renamed `.gemini` → `.agents`, that is this gate (or an
+older CLI that only listed the alias). Then:
+
+```text
+/trust
+/skills reload
+/skills list
+```
+
+`art-director` should appear. Gemini asks before it activates a skill.
+
+Still empty? Install the alias Gemini actually listed:
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai codex
+```
+
+That is `.agents/skills/art-director/` — same `SKILL.md` layout, not a
+second skill. Do not keep both `.gemini/skills/art-director` and
+`.agents/skills/art-director` if this Gemini build reads both; it would
+show twice. `--global` writes `~/.gemini/skills/` and does not use the
+workspace trust check.
+
+### Claude Code
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai claude
+```
+
+Files: `.claude/skills/art-director/`. Type `/art-director` or ask a UI
+question that matches the description. `/skills` lists what is loaded.
+
+### Codex
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai codex
+```
+
+Files: `.agents/skills/art-director/`. In Codex CLI / IDE: `/skills` or
+`$art-director`. ChatGPT desktop: `@` then the skill.
+
+### GitHub Copilot
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai copilot
+```
+
+Files: `.github/skills/art-director/` (project) or `~/.copilot/skills/`
+(`--global`). In Copilot CLI, `/skills reload`, then:
+
+```text
+/art-director Review the dashboard. Do not edit files.
+```
+
+Copilot also matches the description without a slash. `/skills list` and
+`/skills info art-director` confirm it loaded.
+
+### Kiro
+
+```bash
+npx --yes art-director-skills@0.10.2 install --ai kiro
+```
+
+Files: `.kiro/skills/art-director/`. In chat, `/art-director` or a
+natural UI request. The default agent loads that folder. A **custom**
+agent needs `"skill://.kiro/skills/**/SKILL.md"` in its `resources`.
+
+### OpenCode and the rest
+
+| Host | Install | Where | How to use |
+|---|---|---|---|
+| OpenCode | `--ai opencode` | `.opencode/skills/` | Agent `skill` tool: name `art-director` |
+| Qoder | `--ai qoder` | `.qoder/skills/` | Skill list / `/art-director` as that host documents |
+| Roo Code | `--ai roocode` | `.roo/skills/` | same |
+| Continue | `--ai continue` | `.continue/skills/` | same |
+| CodeBuddy | `--ai codebuddy` | `.codebuddy/skills/` | same |
+| Droid | `--ai droid` | `.factory/skills/` | same |
+| Kilo Code | `--ai kilocode` | `.kilocode/skills/` | same |
+
+Global copies: add `--global` (home-directory skills folder). Paths and
+caveats: [docs/installation.md](docs/installation.md#bundled-installer).
+
+```text
+DESIGN — new UI or explicit redesign
+Design a booking flow for this site. Keep the current stack. Finish
+list, detail, and empty states, not only the first screen.
+
+REFINE — one named part of an existing UI
+The mobile menu is unusable under 640px. Change only that.
+
+REVIEW — inspect / critique
+Review the dashboard: hierarchy, type, contrast, and empty states.
+Do not edit files.
+```
 
 | Mode | User intent | Agent default |
 |---|---|---|

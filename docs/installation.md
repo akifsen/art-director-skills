@@ -20,11 +20,11 @@ Two install paths are documented:
 
 ```sh
 # npm package art-director-skills (pin the version):
-npx art-director-skills@0.10.0 install --ai <ids|all> [--global] [--force] [--dry-run]
-npx art-director-skills@0.10.0 status  --ai <ids|all>
-npx art-director-skills@0.10.0 remove  --ai <ids|all> [--global]
-npx art-director-skills@0.10.0 list
-npx art-director-skills@0.10.0 --version
+npx art-director-skills@0.10.2 install --ai <ids|all> [--global] [--force] [--dry-run]
+npx art-director-skills@0.10.2 status  --ai <ids|all>
+npx art-director-skills@0.10.2 remove  --ai <ids|all> [--global]
+npx art-director-skills@0.10.2 list
+npx art-director-skills@0.10.2 --version
 
 # from a clone:
 node bin/cli.js install --ai cursor
@@ -33,11 +33,10 @@ npm run install-skill -- install --ai cursor
 ```
 
 `bin/cli.js` hands every command to `tooling/install-skill.mjs`; the
-installer logic has one code path. The package's bins are
-`art-director-skills`, `art-director`, and `art-director-skill`; the two
-aliases work on the *installed* package (`npm exec art-director -- …`). An
-unqualified `npx art-director` resolves a different registry name — do not
-use it as a shortcut.
+installer logic has one code path. The published bin is `art-director-skills`
+only. An unqualified `npx art-director` resolves a different registry name —
+do not use it as a shortcut. 0.10.0 listed `art-director` as a bin alias;
+npm then ran that name, which Windows `cmd` does not find.
 
 **Retired in 0.10.0.** The 0.9.1 single-file mode (no arguments →
 `./SKILL.md`, `--cursor` → `./.cursorrules`, `--claude` → `./CLAUDE.md`)
@@ -150,8 +149,11 @@ Notes printed after install:
 
 - Kiro: the default agent loads `.kiro/skills/`; a custom agent needs
   `"skill://.kiro/skills/**/SKILL.md"` in its `resources`.
-- Gemini CLI: workspace skills load only from a trusted folder; run
-  `/skills reload`.
+- Gemini CLI: workspace `.gemini/skills/` and the `.agents/skills/` alias
+  load only from a trusted folder; run `/trust` then `/skills reload`.
+  If `/skills list` is empty, `--ai codex` writes the `.agents/skills`
+  alias (do not keep both copies if this Gemini build reads both).
+  `--global` writes `~/.gemini/skills/` and skips workspace trust.
 
 `--ai all` writes thirteen copies into one project. Cursor, Codex, Copilot,
 Gemini CLI, OpenCode, Kilo Code and Claude-compatible hosts also read

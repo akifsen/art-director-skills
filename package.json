@@ -29,9 +29,7 @@
     "react-native"
   ],
   "bin": {
-    "art-director": "./bin/cli.js",
-    "art-director-skills": "./bin/cli.js",
-    "art-director-skill": "./bin/cli.js"
+    "art-director-skills": "./bin/cli.js"
   },
   "files": [
     "bin/",

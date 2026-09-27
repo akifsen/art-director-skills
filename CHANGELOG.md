@@ -14,6 +14,57 @@
   A design document fetched as text is source reading, not a system to
   drop in. A file the user placed as this product's brand stands.
 
+## 0.10.2 — 2026-09-21 (skill: measured touch, hover guard, first paint)
+
+- Skill: lessons from a two-project comparison (2026-09-21, static local
+  news sites; one built with the skill, one without). The skill-built site
+  passed the surface, type, composition, and honesty bar but was silent on
+  four things the review had to add by hand; the other site *claimed*
+  "strict 44×44" in a CSS comment while rendering 23px chips and a 431px
+  `scrollWidth` at 390. Added:
+  - `responsive-interaction.md`: hover-only presentation behind
+    `@media (hover: hover)`, `:active` as the touch feedback, and hit
+    areas measured from rendered boxes (`getBoundingClientRect`,
+    `scrollWidth` vs `innerWidth`) rather than read from a comment.
+  - `visual-review.md`: "Measure, do not read the comment" — overflow,
+    hit-area list, hover guard, missing `<img>` dimensions, and first-frame
+    theme flash as concrete checks.
+  - `implementation.md`: intrinsic `width`/`height` + lazy/eager split,
+    stored theme applied from an inline `<head>` script, remote font
+    `@import` inside CSS, locale-aware case folding and escaping for
+    search/filter code.
+  - `SKILL.md` craft bar: one sentence each for the hover guard and for
+    measured (not asserted) touch targets.
+- Skill: color regime before hex. A third build of the same brief landed on
+  `#F9F8F5` chalk + `#FFFFFF` cards (1.06 step) in light and a Tailwind
+  slate/emerald/red set in dark. `typography-color-assets.md` gains "Regime
+  before hex": sector → temperament → owned material, a five-regime table
+  (cool technical, editorial/craft, clinical/corporate, kinetic/bold,
+  brand-owned) with starting canvases, a ban on stock framework values,
+  and a visible tone step (~1.08–1.15) between adjacent surfaces. `SKILL.md`
+  "Surface and light" now requires naming the regime and reserves warm
+  paper for subjects that own it. Derived tokens (hairlines, shadows,
+  hover/active) follow the regime as well: ink at low alpha, not slate
+  under warm paper; hover moves toward paper in dark mode.
+- README (EN/TR): CLI examples (`--yes`, `--dry-run`, `list`, `remove`),
+  DESIGN / REFINE / REVIEW chat prompts, and per-host use (Cursor, Gemini
+  CLI including `.agents/skills` when `.gemini/skills` is not listed,
+  Claude Code, Codex, Copilot, Kiro, and the rest).
+
+## 0.10.1 — 2026-09-21 (npx Windows bin)
+
+`npx art-director-skills@0.10.0` on Windows never reached the installer.
+npm's `libnpmexec` picks the **first** `package.json` `bin` key when every
+alias points at the same file. That key was `art-director`, so `npx`
+asked `cmd.exe` to run `art-director`, which is not this package and is
+not on PATH (`'art-director' is not recognized as an internal or
+external command`). Reproduced 2026-09-21 with Node 22 / npm 10.9.3.
+
+The only bin is now `art-director-skills`. Skill documents are unchanged
+except `metadata.version`. 0.10.0 stays on the registry but Windows `npx`
+of that exact version still fails; pin `@0.10.1` or omit the version so
+npm takes latest.
+
 ## 0.10.0 — 2026-09-21 (CLI security fix; skill content unchanged)
 
 Fixes three defects in the published `art-director-skills@0.9.1` CLI. The

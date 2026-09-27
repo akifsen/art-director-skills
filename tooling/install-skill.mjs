@@ -55,7 +55,7 @@ export const ASSISTANTS = {
     label: "Gemini CLI",
     project: ".gemini/skills",
     global: ".gemini/skills",
-    note: "Gemini CLI loads workspace skills only from a trusted folder; run /skills reload after install."
+    note: "Workspace .gemini/skills and .agents/skills load only in a trusted folder; /skills reload after install. If list is empty, use --ai codex (.agents/skills) or --global."
   },
   opencode: { label: "OpenCode", project: ".opencode/skills", global: ".config/opencode/skills" },
   continue: { label: "Continue", project: ".continue/skills", global: ".continue/skills" },
