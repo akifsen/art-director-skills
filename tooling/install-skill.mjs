@@ -414,19 +414,37 @@ export function statusSkill(id, options = {}) {
 
 // ---------------------------------------------------------------- cli
 
-function parseArgs(argv) {
+function takeRequiredValue(argv, index, flag) {
+  const value = argv[index + 1];
+  if (value === undefined || value === "" || String(value).startsWith("-")) {
+    throw new Error(`Missing value for ${flag}`);
+  }
+  return value;
+}
+
+export function parseArgs(argv) {
   const args = { _: [] };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
-    if (arg === "--ai" || arg === "--agent" || arg === "-a") args.ai = argv[++i];
-    else if (arg.startsWith("--ai=")) args.ai = arg.slice(5);
-    else if (arg === "--global" || arg === "-g") args.global = true;
+    if (arg === "--ai" || arg === "--agent" || arg === "-a") {
+      args.ai = takeRequiredValue(argv, i, arg);
+      i += 1;
+    } else if (arg.startsWith("--ai=")) {
+      args.ai = arg.slice("--ai=".length);
+      if (!args.ai || args.ai.startsWith("-")) throw new Error("Missing value for --ai");
+    } else if (arg === "--global" || arg === "-g") args.global = true;
     else if (arg === "--force" || arg === "-f") args.force = true;
     else if (arg === "--dry-run" || arg === "-n") args.dryRun = true;
-    else if (arg === "--project-dir") args.projectDir = argv[++i];
-    else if (arg === "--home") args.home = argv[++i];
-    else if (arg === "--source") args.source = argv[++i];
-    else if (arg === "--json") args.json = true;
+    else if (arg === "--project-dir") {
+      args.projectDir = takeRequiredValue(argv, i, arg);
+      i += 1;
+    } else if (arg === "--home") {
+      args.home = takeRequiredValue(argv, i, arg);
+      i += 1;
+    } else if (arg === "--source") {
+      args.source = takeRequiredValue(argv, i, arg);
+      i += 1;
+    } else if (arg === "--json") args.json = true;
     else if (arg === "--help" || arg === "-h") args.help = true;
     else if (arg.startsWith("-")) throw new Error(`unknown option ${arg}`);
     else args._.push(arg);

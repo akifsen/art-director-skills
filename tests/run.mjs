@@ -171,6 +171,24 @@ const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"))
 assert(pkg.name === "art-director-skills" && pkg.type === "module", "package.json is an ESM package named art-director-skills");
 assert(/^\d+\.\d+\.\d+/.test(pkg.version), "package.json has a semver version");
 assert(pkg.version === data.metadata?.version, "package.json version matches SKILL.md metadata.version");
+for (const rel of ["README.md", "README.tr.md", "docs/installation.md"]) {
+  const pins = [...fs.readFileSync(path.join(root, rel), "utf8").matchAll(/art-director-skills@(\d+\.\d+\.\d+)/g)].map((m) => m[1]);
+  assert(pins.length > 0, `${rel} has an active npm install pin`);
+  for (const pin of pins) assert(pin === pkg.version, `${rel} install pin ${pin} === package ${pkg.version}`);
+}
+{
+  const lock = JSON.parse(fs.readFileSync(path.join(root, "package-lock.json"), "utf8"));
+  const locked = lock.packages?.[""] ?? {};
+  const binPath = (value) => String(value ?? "").replace(/^\.\//, "").replaceAll("\\", "/");
+  assert(locked.version === pkg.version, `package-lock root version ${locked.version} === ${pkg.version}`);
+  assert(locked.license === pkg.license, "package-lock root license matches package.json");
+  assert(binPath(locked.bin?.["art-director-skills"]) === binPath(pkg.bin["art-director-skills"]), "package-lock root bin matches package.json");
+}
+assert(fs.readFileSync(path.join(root, ".gitignore"), "utf8").includes("skills-lock.json"), "skills-lock.json is ignored");
+{
+  const tracked = spawnSync("git", ["ls-files", "--error-unmatch", "skills-lock.json"], { cwd: root, encoding: "utf8" });
+  assert(tracked.status !== 0, "skills-lock.json is not tracked");
+}
 assert(pkg.private !== true, "package is publishable (not private)");
 assert(pkg.bin["art-director-skills"] === "./bin/cli.js", "bin art-director-skills points at bin/cli.js");
 assert(Object.keys(pkg.bin)[0] === pkg.name, "npx uses the first bin key when aliases share a path; it must be the package name");
@@ -299,6 +317,16 @@ const installerTests = spawnSync(process.execPath, [path.join(root, "tests", "in
 process.stdout.write(installerTests.stdout || "");
 process.stderr.write(installerTests.stderr || "");
 assert(installerTests.status === 0, "installer writes the same tree to every supported assistant path");
+
+for (const script of ["cli-args.mjs", "design-direction.mjs"]) {
+  const child = spawnSync(process.execPath, [path.join(root, "tests", script)], {
+    encoding: "utf8",
+    cwd: root
+  });
+  process.stdout.write(child.stdout || "");
+  process.stderr.write(child.stderr || "");
+  assert(child.status === 0, script);
+}
 
 if (failed) {
   console.error(`\n${failed} failure(s)`);

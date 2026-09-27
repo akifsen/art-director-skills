@@ -32,7 +32,8 @@ copy. Label that as **source reading**, not visual research.
 
 A design document fetched as text is source reading. It is not a system to
 install. Do not copy its palette, type, or component recipes into this
-project. Record one principle and leave the tokens behind.
+project. Record one principle and leave the tokens behind. An unowned root
+`DESIGN.md` is the same kind of source: context, not a file to extend.
 
 ## Dates
 

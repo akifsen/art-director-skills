@@ -20,11 +20,11 @@ Two install paths are documented:
 
 ```sh
 # npm package art-director-skills (pin the version):
-npx art-director-skills@0.10.2 install --ai <ids|all> [--global] [--force] [--dry-run]
-npx art-director-skills@0.10.2 status  --ai <ids|all>
-npx art-director-skills@0.10.2 remove  --ai <ids|all> [--global]
-npx art-director-skills@0.10.2 list
-npx art-director-skills@0.10.2 --version
+npx art-director-skills@0.11.0 install --ai <ids|all> [--global] [--force] [--dry-run]
+npx art-director-skills@0.11.0 status  --ai <ids|all>
+npx art-director-skills@0.11.0 remove  --ai <ids|all> [--global]
+npx art-director-skills@0.11.0 list
+npx art-director-skills@0.11.0 --version
 
 # from a clone:
 node bin/cli.js install --ai cursor
@@ -262,7 +262,7 @@ Do not write `akifsen/art-director-skills@v0.4.0` expecting a tag.
 Documented pin: a GitHub tree URL whose path segment is the branch or tag.
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.10.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.11.0 --skill art-director --agent cursor --copy
 ```
 
 Prefer the tag or commit published in [CHANGELOG.md](../CHANGELOG.md). A

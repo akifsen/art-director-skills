@@ -22,9 +22,10 @@ kur veya geliştir; istenen ekranları, akışları ve durumları bitir; uygulam
 istendiyse gerçek dosyaları değiştir; dört kabul kapısını (yükleme/işlev,
 işçilik, kapsam, platform/erişilebilirlik) ayır.
 
-Projede yön dosyası varsa (`DESIGN.md` veya `.art-director/design-notes.md`)
-ajan onu okur ve içinde kalır. Birden çok ekranı kapsayan geniş DESIGN,
-sonraki oturumun aynı kararları okuyabilmesi için o tek dosyayı günceller.
+Kalıcı yön `.art-director/design-notes.md` dosyasıdır. Kök `DESIGN.md`
+bu skill'in dosyası sayılmaz. Ajan onu ancak kullanıcı o dosyanın ürünün
+görsel yönü olduğunu söylediğinde, ya da dosyada Art Director sahiplik
+işareti varken yazar.
 
 Geniş DESIGN işinde ilk gerçek ekranı görsel olarak inceleyip gerekli
 düzeltmeyi yapmadan tasarımı bütün ekranlara yaymaz. Engellenmiş kontrol,
@@ -71,14 +72,14 @@ Asistanı ve kapsamı sen seçersin; seçmeden hiçbir şey yazılmaz. Sürümü
 sabitle:
 
 ```bash
-npx --yes art-director-skills@0.10.2 install --ai cursor           # → .cursor/skills/art-director
-npx --yes art-director-skills@0.10.2 install --ai claude,codex     # birden çok asistan
-npx --yes art-director-skills@0.10.2 install --ai cursor --global  # proje yerine ~/.cursor/skills
-npx --yes art-director-skills@0.10.2 install --ai cursor --dry-run # yalnız plan
-npx --yes art-director-skills@0.10.2 status  --ai cursor
-npx --yes art-director-skills@0.10.2 list
-npx --yes art-director-skills@0.10.2 remove  --ai cursor
-npx --yes art-director-skills@0.10.2 --version
+npx --yes art-director-skills@0.11.0 install --ai cursor           # → .cursor/skills/art-director
+npx --yes art-director-skills@0.11.0 install --ai claude,codex     # birden çok asistan
+npx --yes art-director-skills@0.11.0 install --ai cursor --global  # proje yerine ~/.cursor/skills
+npx --yes art-director-skills@0.11.0 install --ai cursor --dry-run # yalnız plan
+npx --yes art-director-skills@0.11.0 status  --ai cursor
+npx --yes art-director-skills@0.11.0 list
+npx --yes art-director-skills@0.11.0 remove  --ai cursor
+npx --yes art-director-skills@0.11.0 --version
 ```
 
 Bağımlılık yok, paket indikten sonra ağ yok, telemetri yok, postinstall yok.
@@ -165,7 +166,7 @@ Ayrıntı: [docs/compatibility.md](docs/compatibility.md).
 ### Cursor
 
 ```bash
-npx --yes art-director-skills@0.10.2 install --ai cursor
+npx --yes art-director-skills@0.11.0 install --ai cursor
 ```
 
 Dosyalar: `.cursor/skills/art-director/`. **Agent** sohbetinde:
@@ -182,7 +183,7 @@ skill iki kez görünür.
 ### Gemini CLI
 
 ```bash
-npx --yes art-director-skills@0.10.2 install --ai gemini
+npx --yes art-director-skills@0.11.0 install --ai gemini
 ```
 
 Bu, `.gemini/skills/art-director/` yazar (Gemini’nin kendi ağacı). CLI
@@ -202,7 +203,7 @@ alias’ı listeleyen eski CLI). Sonra:
 Hâlâ boşsa Gemini’nin gördüğü alias’a kurun:
 
 ```bash
-npx --yes art-director-skills@0.10.2 install --ai codex
+npx --yes art-director-skills@0.11.0 install --ai codex
 ```
 
 Bu `.agents/skills/art-director/` — aynı `SKILL.md` düzeni, ikinci bir
@@ -214,7 +215,7 @@ workspace güveni aranmaz.
 ### Claude Code
 
 ```bash
-npx --yes art-director-skills@0.10.2 install --ai claude
+npx --yes art-director-skills@0.11.0 install --ai claude
 ```
 
 Dosyalar: `.claude/skills/art-director/`. `/art-director` yazın veya
@@ -224,7 +225,7 @@ listeler.
 ### Codex
 
 ```bash
-npx --yes art-director-skills@0.10.2 install --ai codex
+npx --yes art-director-skills@0.11.0 install --ai codex
 ```
 
 Dosyalar: `.agents/skills/art-director/`. Codex CLI / IDE: `/skills`
@@ -233,7 +234,7 @@ veya `$art-director`. ChatGPT masaüstü: `@` ile skill.
 ### GitHub Copilot
 
 ```bash
-npx --yes art-director-skills@0.10.2 install --ai copilot
+npx --yes art-director-skills@0.11.0 install --ai copilot
 ```
 
 Dosyalar: `.github/skills/art-director/` (proje) veya `~/.copilot/skills/`
@@ -249,7 +250,7 @@ Copilot slash olmadan da açıklamadan seçebilir. `/skills list` ve
 ### Kiro
 
 ```bash
-npx --yes art-director-skills@0.10.2 install --ai kiro
+npx --yes art-director-skills@0.11.0 install --ai kiro
 ```
 
 Dosyalar: `.kiro/skills/art-director/`. Sohbette `/art-director` veya

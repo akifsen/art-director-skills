@@ -12,3 +12,5 @@ Thumbs.db
 playwright-report/
 test-results/
 .playwright-mcp
+# Generated when this repo is used as a skills-CLI consumer. Not package source.
+skills-lock.json

@@ -90,7 +90,7 @@ jobs:
             test-results
           if-no-files-found: ignore
 
-  native-runtime:
+  native-source-checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
