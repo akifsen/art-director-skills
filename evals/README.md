@@ -1,5 +1,10 @@
 # Eval method
 
+The [slim comparison](SLIM-COMPARISON.md) is the open protocol for 0.12:
+no skill vs 0.11.0 vs the slim skill, three runs per arm, blind scoring
+([setup](scripts/slim-setup.mjs), [blind](scripts/slim-blind.mjs),
+[results template](slim-comparison/RESULTS-TEMPLATE.md)).
+
 The [state-craft run](evidence/state-craft-0.9.1/REPORT.md) is the 0.9.1
 record (focus ring vs surrounding surface, selected + hover chip, clean
 same-brief trial with a frozen candidate).

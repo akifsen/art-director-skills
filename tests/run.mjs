@@ -110,6 +110,10 @@ assert(productUi.includes("stretched edge to edge"), "product-ui-system rejects 
 assert(productUi.includes("stretched to fill leftover"), "product-ui-system rejects a stretched primary action");
 assert(/first viewport \*\*is\*\*/.test(productUi) === false, "product-ui-system no longer declares the first viewport must be the workspace");
 assert(!/filling the\s+first viewport/.test(skillMd), "SKILL.md does not prescribe filling the first viewport");
+for (const script of ["slim-setup.mjs", "slim-blind.mjs"]) {
+  const check = spawnSync(process.execPath, ["--check", path.join(root, "evals", "scripts", script)], { encoding: "utf8" });
+  assert(check.status === 0, `evals/scripts/${script} parses`);
+}
 // Context budget: the skill loads into every UI task, so size is a feature.
 // Raise these only with a CHANGELOG reason.
 {

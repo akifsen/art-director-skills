@@ -12,6 +12,11 @@
 - Tests: a context budget. SKILL.md and every reference stay within
   10 KB; the default DESIGN load stays within 40 KB. Raise a ceiling only
   with a reason here.
+- Evals: `evals/SLIM-COMPARISON.md` protocol (no skill vs 0.11.0 vs slim,
+  three runs per arm, pre-stated hypotheses and decision rule), with
+  `evals/scripts/slim-setup.mjs` (isolated run folders, per-arm skill from
+  git, SHA256 manifest; Windows-safe) and `evals/scripts/slim-blind.mjs`
+  (random ids, key kept apart). Not run yet; no results are claimed.
 
 ## 0.12.0 — 2026-09-30 (lighter SKILL.md)
 
