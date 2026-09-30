@@ -110,15 +110,17 @@ assert(productUi.includes("stretched edge to edge"), "product-ui-system rejects 
 assert(productUi.includes("stretched to fill leftover"), "product-ui-system rejects a stretched primary action");
 assert(/first viewport \*\*is\*\*/.test(productUi) === false, "product-ui-system no longer declares the first viewport must be the workspace");
 assert(!/filling the\s+first viewport/.test(skillMd), "SKILL.md does not prescribe filling the first viewport");
+const craftBar = fs.readFileSync(path.join(root, "skills", "art-director", "references", "craft-bar.md"), "utf8");
+assert(skillMd.includes("craft-bar.md"), "SKILL.md routes the craft bar to craft-bar.md");
 assert(skillMd.includes("voice choice, not a quality gain"), "SKILL.md separates palette/serif/radius swaps from quality");
 assert(skillMd.includes("## Craft bar"), "SKILL.md names a craft bar");
 assert(skillMd.includes("unconscious default"), "SKILL.md names the unconscious default as the failure");
-assert(/tabular-nums/.test(skillMd) && /-0\.02em/.test(skillMd), "craft bar gives type starting values");
-assert(/not quotas|not a rule/.test(skillMd), "craft bar values are starting points, not quotas");
+assert(/tabular-nums/.test(craftBar) && /-0\.02em/.test(craftBar), "craft bar gives type starting values");
+assert(/not quotas|not a rule/.test(skillMd) && /not quotas/.test(craftBar), "craft bar values are starting points, not quotas");
 assert(/tone in three words/.test(skillMd), "DESIGN decides tone, regime, then focal anchor");
-assert(/active\/pressed/.test(skillMd) && /skeleton/.test(skillMd), "states include active and loading/skeleton");
-assert(/not defaults/.test(skillMd) && /not a mandatory scale/.test(skillMd), "sidebar/palette/scale stay conditional, not universal");
-assert(!/\bmust use (Inter|Roboto)/i.test(skillMd), "no required font family");
+assert(/active\/pressed/.test(craftBar) && /skeleton/.test(craftBar), "states include active and loading/skeleton");
+assert(/not defaults/.test(craftBar) && /not a mandatory scale/.test(craftBar), "sidebar/palette/scale stay conditional, not universal");
+assert(!/\bmust use (Inter|Roboto)/i.test(skillMd + craftBar), "no required font family");
 
 const craft = fs.readFileSync(path.join(root, "skills", "art-director", "references", "visual-craft.md"), "utf8");
 assert(craft.includes("Design the valid state combinations"), "visual-craft teaches state combinations, not base looks");

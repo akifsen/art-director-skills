@@ -187,6 +187,8 @@ export function validateSkill(root = skillRoot) {
     "references/studies/minimal-vs-unfinished.unfinished.html",
     "references/studies/media-in-composition.md",
     "references/studies/media-in-composition.html",
+    "references/craft-bar.md",
+    "references/direction-files.md",
     "assets/design-notes.example.md"
   ];
   for (const rel of required) {

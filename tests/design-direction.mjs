@@ -15,7 +15,13 @@ import {
 } from "../tooling/design-direction.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const skill = fs.readFileSync(path.join(root, "skills", "art-director", "SKILL.md"), "utf8").replace(/\s+/g, " ");
+const skillDir = path.join(root, "skills", "art-director");
+// The direction contract lives in SKILL.md (summary) and references/direction-files.md (full rules).
+const skill = [
+  fs.readFileSync(path.join(skillDir, "SKILL.md"), "utf8"),
+  fs.readFileSync(path.join(skillDir, "references", "direction-files.md"), "utf8")
+].join("\n").replace(/\s+/g, " ");
+assert.ok(fs.readFileSync(path.join(skillDir, "SKILL.md"), "utf8").includes("direction-files.md"), "SKILL.md routes to direction-files.md");
 assert.ok(skill.includes(DIRECTION_MARKER), "skill names the ownership marker");
 assert.ok(skill.includes(".art-director/design-notes.md"), "skill names the canonical notes file");
 assert.match(skill, /symbolic links, directory symlinks, junctions/i, "skill refuses links before a write");

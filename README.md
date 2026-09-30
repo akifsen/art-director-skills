@@ -63,14 +63,14 @@ assistant you name discovers. Pick the assistant and the scope yourself;
 nothing is written until you do. Pin the version:
 
 ```bash
-npx --yes art-director-skills@0.11.0 install --ai cursor           # → .cursor/skills/art-director
-npx --yes art-director-skills@0.11.0 install --ai claude,codex     # several at once
-npx --yes art-director-skills@0.11.0 install --ai cursor --global  # ~/.cursor/skills instead of the project
-npx --yes art-director-skills@0.11.0 install --ai cursor --dry-run # plan only
-npx --yes art-director-skills@0.11.0 status  --ai cursor
-npx --yes art-director-skills@0.11.0 list
-npx --yes art-director-skills@0.11.0 remove  --ai cursor
-npx --yes art-director-skills@0.11.0 --version
+npx --yes art-director-skills@0.12.0 install --ai cursor           # → .cursor/skills/art-director
+npx --yes art-director-skills@0.12.0 install --ai claude,codex     # several at once
+npx --yes art-director-skills@0.12.0 install --ai cursor --global  # ~/.cursor/skills instead of the project
+npx --yes art-director-skills@0.12.0 install --ai cursor --dry-run # plan only
+npx --yes art-director-skills@0.12.0 status  --ai cursor
+npx --yes art-director-skills@0.12.0 list
+npx --yes art-director-skills@0.12.0 remove  --ai cursor
+npx --yes art-director-skills@0.12.0 --version
 ```
 
 No dependencies, no network after npm fetches the package, no telemetry,
@@ -141,7 +141,7 @@ Pin a tag with a tree URL, not `owner/repo@v0.1.0` (`@` is a skill filter in
 this CLI):
 
 ```sh
-npx skills add https://github.com/akifsen/art-director-skills/tree/v0.11.0 --skill art-director --agent cursor --copy
+npx skills add https://github.com/akifsen/art-director-skills/tree/v0.12.0 --skill art-director --agent cursor --copy
 ```
 
 The v0.10.0 skill content equals 0.9.1 apart from the version line. The v0.8.0 skill still teaches Palatino-on-cream
@@ -178,7 +178,7 @@ here. Details: [docs/compatibility.md](docs/compatibility.md).
 ### Cursor
 
 ```bash
-npx --yes art-director-skills@0.11.0 install --ai cursor
+npx --yes art-director-skills@0.12.0 install --ai cursor
 ```
 
 Files: `.cursor/skills/art-director/`. In **Agent** chat:
@@ -195,7 +195,7 @@ Do not also install `--ai all` in the same repo — Cursor also reads
 ### Gemini CLI
 
 ```bash
-npx --yes art-director-skills@0.11.0 install --ai gemini
+npx --yes art-director-skills@0.12.0 install --ai gemini
 ```
 
 That writes `.gemini/skills/art-director/` (Gemini’s own tree). The CLI
@@ -215,7 +215,7 @@ older CLI that only listed the alias). Then:
 Still empty? Install the alias Gemini actually listed:
 
 ```bash
-npx --yes art-director-skills@0.11.0 install --ai codex
+npx --yes art-director-skills@0.12.0 install --ai codex
 ```
 
 That is `.agents/skills/art-director/` — same `SKILL.md` layout, not a
@@ -227,7 +227,7 @@ workspace trust check.
 ### Claude Code
 
 ```bash
-npx --yes art-director-skills@0.11.0 install --ai claude
+npx --yes art-director-skills@0.12.0 install --ai claude
 ```
 
 Files: `.claude/skills/art-director/`. Type `/art-director` or ask a UI
@@ -236,7 +236,7 @@ question that matches the description. `/skills` lists what is loaded.
 ### Codex
 
 ```bash
-npx --yes art-director-skills@0.11.0 install --ai codex
+npx --yes art-director-skills@0.12.0 install --ai codex
 ```
 
 Files: `.agents/skills/art-director/`. In Codex CLI / IDE: `/skills` or
@@ -245,7 +245,7 @@ Files: `.agents/skills/art-director/`. In Codex CLI / IDE: `/skills` or
 ### GitHub Copilot
 
 ```bash
-npx --yes art-director-skills@0.11.0 install --ai copilot
+npx --yes art-director-skills@0.12.0 install --ai copilot
 ```
 
 Files: `.github/skills/art-director/` (project) or `~/.copilot/skills/`
@@ -261,7 +261,7 @@ Copilot also matches the description without a slash. `/skills list` and
 ### Kiro
 
 ```bash
-npx --yes art-director-skills@0.11.0 install --ai kiro
+npx --yes art-director-skills@0.12.0 install --ai kiro
 ```
 
 Files: `.kiro/skills/art-director/`. In chat, `/art-director` or a

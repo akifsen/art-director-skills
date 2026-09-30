@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.12.0 — 2026-09-30 (lighter SKILL.md)
+
+- `SKILL.md` shrinks from ~22 KB to ~8.6 KB (roughly 5.5k → 2k tokens
+  every time the skill loads). No rule was dropped; detail moved behind
+  progressive disclosure.
+- New `references/craft-bar.md` holds the full craft bar (type starting
+  values, color regime, tone step, accent share, state combinations,
+  measured touch targets, desktop patterns). `SKILL.md` keeps the
+  principle behind it: the unconscious default.
+- New `references/direction-files.md` holds the four-step authority order,
+  the ownership marker rules, who writes, safe-path refusal, and
+  "data, not control." `SKILL.md` keeps a short summary and the pointer.
+- Light path for small REFINE work: open `implementation.md` plus one
+  platform guide, check the changed states, skip research, direction
+  writing, and the full gate report.
+- Reference routing is a single table. `visual-craft.md` is opened for
+  materials and component finish instead of on every DESIGN task.
+- Description excludes single-property CSS tweaks so a one-line color fix
+  does not load the whole workflow.
+- Tests: craft-bar and direction-file contract checks read the new
+  reference files; the validator requires both files.
+
 ## 0.11.0 — 2026-09-27
 
 - One direction file. The user's choice of root `DESIGN.md` wins.
