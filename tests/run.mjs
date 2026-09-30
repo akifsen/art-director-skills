@@ -110,6 +110,20 @@ assert(productUi.includes("stretched edge to edge"), "product-ui-system rejects 
 assert(productUi.includes("stretched to fill leftover"), "product-ui-system rejects a stretched primary action");
 assert(/first viewport \*\*is\*\*/.test(productUi) === false, "product-ui-system no longer declares the first viewport must be the workspace");
 assert(!/filling the\s+first viewport/.test(skillMd), "SKILL.md does not prescribe filling the first viewport");
+// Context budget: the skill loads into every UI task, so size is a feature.
+// Raise these only with a CHANGELOG reason.
+{
+  const skillDir = path.join(root, "skills", "art-director");
+  const size = (rel) => Buffer.byteLength(fs.readFileSync(path.join(skillDir, rel), "utf8").replace(/\r\n/g, "\n"));
+  assert(size("SKILL.md") <= 10 * 1024, `SKILL.md stays within 10 KB (have ${size("SKILL.md")})`);
+  for (const f of fs.readdirSync(path.join(skillDir, "references")).filter((n) => n.endsWith(".md"))) {
+    assert(size(`references/${f}`) <= 10 * 1024, `references/${f} stays within 10 KB (have ${size(`references/${f}`)})`);
+  }
+  const designCore = ["SKILL.md", "references/implementation.md", "references/design-method.md",
+    "references/content-and-composition.md", "references/typography-color-assets.md"];
+  const coreTotal = designCore.reduce((sum, rel) => sum + size(rel), 0);
+  assert(coreTotal <= 40 * 1024, `default DESIGN load stays within 40 KB (have ${coreTotal})`);
+}
 const craftBar = fs.readFileSync(path.join(root, "skills", "art-director", "references", "craft-bar.md"), "utf8");
 assert(skillMd.includes("craft-bar.md"), "SKILL.md routes the craft bar to craft-bar.md");
 assert(skillMd.includes("voice choice, not a quality gain"), "SKILL.md separates palette/serif/radius swaps from quality");

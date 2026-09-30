@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased
+
+- `typography-color-assets.md` 14.0 KB → 8.8 KB and `visual-craft.md`
+  11.7 KB → 7.8 KB. Rules, failure cases, the regime table, the state
+  combination traps, and the Rail Still fragments stay; repeated prose, a
+  second clinic palette, and long decision examples were condensed.
+- The default DESIGN load (SKILL.md, implementation, design-method,
+  content-and-composition, typography-color-assets) is ~36 KB, down from
+  ~68 KB in 0.11.0 (which also loaded visual-craft by default).
+- Tests: a context budget. SKILL.md and every reference stay within
+  10 KB; the default DESIGN load stays within 40 KB. Raise a ceiling only
+  with a reason here.
+
 ## 0.12.0 — 2026-09-30 (lighter SKILL.md)
 
 - `SKILL.md` shrinks from ~22 KB to ~8.6 KB (roughly 5.5k → 2k tokens

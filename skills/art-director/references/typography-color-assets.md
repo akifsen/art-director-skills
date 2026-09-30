@@ -1,72 +1,45 @@
 # Typography, color, and assets
 
 Read this when type, color, imagery, or licenses matter. Skip it for
-structure-only or copy-only edits. For materials, crops, and component
-finish see [visual-craft.md](visual-craft.md).
+structure-only or copy-only edits. Materials, crops, and component finish
+are in [visual-craft.md](visual-craft.md); the short checklist is in
+[craft-bar.md](craft-bar.md).
 
 ## Brand fonts vs leftovers
 
-**When.** You decide whether to keep type already in the files.
+Reuse faces that belong to a real system: tokens, a documented pair, a logo
+lockup, or a webfont the product ships on purpose. Add a face only when a
+role is missing. Not sacred: an unconsidered framework type hierarchy, a
+single Google font dropped by a template, a heading face that never loaded.
 
-**How.** Reuse faces that belong to a real system: tokens, a documented
-pair, a logo lockup, or a webfont the product already ships on purpose.
-Add a face only when a role is missing.
-
-Do not treat the following as sacred brand:
-
-- An unconsidered framework type hierarchy (not a font name by itself)
-- A single Google font dropped by a template
-- A heading face that never loaded (verify rendered faces, not only CSS intent)
-
-On DESIGN / explicit redesign, choose roles first, then faces that can
-render the project's languages. Prefer the project's existing loading
-method. Do not introduce a new CDN because an example used one.
-
-These CSS recipes are for web. Native work uses its platform type metrics,
-font scaling and controls; keeping the system face can be the intended design.
-For custom web fonts, computed family names alone do not establish loading.
-Check font requests/loading and rendered-face information when available.
+On DESIGN, choose roles first, then faces that render the project's
+languages. Prefer the project's existing loading method; do not add a CDN
+because an example used one. Native work uses platform type metrics and
+scaling; keeping the system face can be the design. On the web, computed
+family names do not prove loading — check font requests or rendered faces.
 
 **Failure.** "The file already said `font-family: system-ui`, so I kept it"
 on a blank marketing fixture.
 
 ## Type roles and craft
 
-Assign roles before picking families:
-
-- **Display:** rare, for the lead. Not for every heading.
-- **Heading:** section structure. A clear step down in size and weight.
-- **Body:** reading text. A comfortable measure is often near `60–70`
-  characters for articles; shorter for UI chrome. Starting points only.
-- **Meta:** dates, labels, captions, table headers. Smaller, not weaker
-  in contrast.
-
-Then actually art-direct the role:
-
-- **Character:** what the face is *doing* (grotesque claim, old-style
-  reading, mono for ids). Name the role, not only the file name.
-- **Weight / width:** one display weight is enough on most pages; condensed
-  display is a choice for a poster, not a default.
-- **Fluid size:** `clamp()` (e.g. `clamp(2.4rem, 6vw, 5.5rem)` as a
-  *starting* display range) so the lead scales without jumping. Recheck
-  line breaks at a small width.
-- **Line breaks:** break the display phrase for sense (`<br>` or a narrow
-  max-width in `ch`), not wherever the container wraps.
-- **Tracking:** display often wants slightly tighter tracking; meta labels
-  slightly more open. Body usually stays near `0`.
-- **Leading:** display can go tight (`~0.9–1.05`); body needs air
-  (`~1.45–1.65` as a starting range).
-- **Optical alignment:** hanging punctuation, optical left edge of a large
-  round letter, icon aligned to x-height.
+- **Display:** rare, for the lead. **Heading:** section structure, a clear
+  step down. **Body:** reading text, measure near `60–70` characters for
+  articles, shorter for UI. **Meta:** smaller, not weaker in contrast.
+- **Character:** name what the face is doing (grotesque claim, old-style
+  reading, mono for ids). One display weight is usually enough; condensed
+  display is a poster choice, not a default.
+- **Size and breaks:** fluid `clamp()` (e.g. `clamp(2.4rem, 6vw, 5.5rem)`
+  as a starting display range); break the display phrase for sense, and
+  recheck breaks at a small width.
+- **Tracking and leading:** display slightly tight (`~0.9–1.05` leading),
+  meta slightly open, body near `0` tracking and `~1.45–1.65` leading.
+- **Optics:** hanging punctuation, optical left edge on large round
+  letters, icons aligned to x-height.
 - **Language:** if the UI includes Turkish (`ğüşıöçĞÜŞİÖÇ`) or other marks,
-  verify the face contains them. A fallback that changes x-height mid-word
-  is a defect.
-
-Serif, sans, mono, and display faces are all valid. Do not bind every
-project to condensed grotesques or to the same serif pairing.
-
-If you load a display face, use it in the composition (the lead), not as
-a hidden `font-family` on `body`.
+  verify glyph coverage. A fallback that changes x-height mid-word is a
+  defect.
+- A loaded display face is used in the composition, not hidden on `body`.
 
 **Failure.** One size for `h1`–`h3`; `letter-spacing: 0.2em` on everything;
 Impact on a long article.
@@ -82,22 +55,13 @@ Voice is a choice. Readability and hierarchy are quality.
 | Round, mixed, or sharp corners | One family; related controls; visible focus |
 | Large media or type-led | The object serves the job and sits in the composition on purpose |
 
-Do not treat "16px cards became sharp photographs" as universal progress.
-That swap belongs to a catalog whose proof is the still. A photographer's
-delivery tracker is a product workspace: the job, the filter, the selected
-record, and the save path — not a portfolio landing.
-
-If the skeleton used gray boxes and the finished file uses real stills,
-score two improvements separately: better material, and better composition
-of that material. Do not credit CSS craft for a photograph the skeleton
-did not have.
-
-Do not treat Palatino, tracked small-caps metadata, or cream paper as the
-house finish. Those are valid when the *object* is editorial or ceramic and
-the user asked for that voice. See [kiln-rest.material.html](studies/kiln-rest.material.html).
-Do not replace that voice with a second house look (cool gray, system sans,
-sharp corners) either. Unrelated products should not inherit pairings from
-examples.
+"Soft cards became sharp photographs" is not universal progress; it belongs
+to a catalog whose proof is the still. When a skeleton had gray boxes and
+the finish has real stills, credit better material and better composition
+separately. Palatino, tracked small caps, and cream paper are valid for an
+editorial or ceramic object that asked for that voice
+([kiln-rest.material.html](studies/kiln-rest.material.html)); neither they
+nor cool gray + system sans + sharp corners are a house finish.
 
 **Applied fragment (Rail Still catalog display — this product's voice):**
 
@@ -111,117 +75,68 @@ examples.
   max-width: 7ch;
 }
 .body { font-size: 1.05rem; line-height: 1.5; max-width: 36ch; }
-.meta { font-size: 0.92rem; letter-spacing: 0; text-transform: none; color: var(--muted); }
-.nav { font-size: 0.95rem; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.meta { font-size: 0.92rem; color: var(--muted); }
 ```
 
-**Applied fragment (Nadir-style product chrome — roles for a workspace; pick faces for the product in front of you):**
+**Applied fragment (product chrome — roles for a workspace; pick faces for
+the product in front of you):**
 
 ```css
-.title {
-  font-family: "Segoe UI", "Avenir Next", sans-serif;
-  font-size: 1.5rem;
-  font-weight: 650;
-  letter-spacing: -0.03em;
-}
-.kicker { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.title { font-size: 1.5rem; font-weight: 650; letter-spacing: -0.03em; }
+.kicker { font-size: 0.8125rem; font-weight: 600; }
 .control { font-size: 0.9375rem; min-height: 2.35rem; }
 ```
 
 ## Color and surfaces
 
-**When.** You are choosing more than a single accent on white.
-
 ### Regime before hex
 
 Agents anchor: after two warm-paper projects every canvas turns cream, and
-every dark mode turns into a framework's slate-900/slate-400/emerald-500
-set. Both are overfitting, not taste. Before writing a color, answer three
-questions in DESIGN notes (one line each) and only then open a palette:
-
-1. **Sector and function.** What is this product for and who uses it all
-   day? (a newsroom, a ledger, a clinic intake, a sneaker drop, a plant
-   dashboard)
-2. **Temperament.** Grounded / technical / clinical / kinetic — which one
-   does the content itself carry?
-3. **Owned material.** Is there a real material, place, or craft the brand
-   *owns* (kilim dye, kiln, harbor steel, hospital linen)? If not, do not
-   invent one.
-
-Then pick **one** regime and name it in the tokens comment:
+every dark mode becomes a framework's slate/emerald set. Before any hex,
+answer in one line each: **sector and function** (who uses it all day),
+**temperament** (grounded, technical, clinical, kinetic), **owned material**
+(a real material, place, or craft the brand owns — or none; do not invent
+one). Then name one regime in the tokens comment:
 
 | Regime | Fits | Canvas / surface | Ink | Accent |
 |---|---|---|---|---|
-| **Cool technical** | fintech, developer tools, ops boards, logistics, B2B SaaS | steel `#E6E9ED` → `#F3F5F7`; dark graphite `#121417` → `#1A1E23` | `#14181D` / `#E8EBEF` | one signal: `#0B62BF`, `#0F766E`, `#E4572E` |
-| **Editorial / craft** | print, publishing, food, place, heritage, studios that make things | chalk or bone `#F3F0EA` → `#FDFCFA`; dark umber `#15130F` → `#1E1B16` | `#1A1611` / `#EFE9DF` | a dye or material tone: madder, ochre, pine |
-| **Clinical / corporate** | health, insurance, government, legal, HR | cool white `#EEF1F4` → `#F8FAFB`; dark slate-blue `#0F151C` → `#171F28` | `#16181C` / `#EEF2F6` | a restrained navy or teal, status colors carry words |
-| **Kinetic / bold** | sport, music, fashion drops, youth culture | ice `#F4F6F8` → `#FAFBFC` or obsidian `#0B0D10` → `#14171B` | `#0B0D10` / `#F4F6F8` | one loud signature, large fields allowed |
-| **Brand-owned** | any product that already has a palette | map the roles onto it | as defined | as defined |
+| **Cool technical** | fintech, developer tools, ops, logistics, B2B SaaS | steel `#E6E9ED` → `#F3F5F7`; dark graphite `#121417` → `#1A1E23` | `#14181D` / `#E8EBEF` | one signal: `#0B62BF`, `#0F766E`, `#E4572E` |
+| **Editorial / craft** | print, publishing, food, place, heritage, makers | chalk or bone `#F3F0EA` → `#FDFCFA`; dark umber `#15130F` → `#1E1B16` | `#1A1611` / `#EFE9DF` | a dye or material tone: madder, ochre, pine |
+| **Clinical / corporate** | health, insurance, government, legal, HR | cool white `#EEF1F4` → `#F8FAFB`; dark slate-blue `#0F151C` → `#171F28` | `#16181C` / `#EEF2F6` | restrained navy or teal; status carries words |
+| **Kinetic / bold** | sport, music, fashion drops, youth culture | ice `#F4F6F8` → `#FAFBFC` or obsidian `#0B0D10` → `#14171B` | `#0B0D10` / `#F4F6F8` | one loud signature; large fields allowed |
+| **Brand-owned** | a product with a palette | map the roles onto it | as defined | as defined |
 
-Rules that follow:
+- Warm neutrals are a regime, not a default. A newspaper may sit on chalk;
+  an invoice ledger or deployment console may not, unless the brand says so.
+- Light and dark modes share one regime. Warm paper in light and framework
+  navy in dark is two products.
+- Stock framework values (`#0F172A`, `#64748B`, `#94A3B8`, `#22C55E`,
+  `#EF4444`, `#D97706` and neighbours) are a tell; derive from the regime.
+- Adjacent surfaces step at roughly 1.08–1.15 luminance ratio each.
+  `#F9F8F5` on `#FFFFFF` (1.06) is a shadow dependency, not a step.
+- Check the smallest text on the darkest surface it can land on. AA is
+  4.5:1 for body and 3:1 for ≥ 24px; aim for 4.5:1 on 12–13px meta.
+- Hairlines, borders, and shadows are the regime's ink at low alpha, not a
+  slate `rgba(15, 23, 42, …)` under warm paper. Hover moves toward ink in
+  light mode and toward paper in dark mode.
+- REFINE keeps an inherited palette but names its regime and fixes failing
+  pairs. Changing regime in REFINE needs the user's word.
 
-- Warm neutrals are a *regime*, not a default. A pomegranate-town
-  newspaper may sit on chalk; an invoice ledger or a deployment console may
-  not, unless the brand says so.
-- Light and dark modes belong to the same regime. Warm paper in light and
-  Tailwind navy in dark is two products.
-- Stock utility-framework values (`#0F172A`, `#64748B`, `#94A3B8`,
-  `#22C55E`, `#EF4444`, `#D97706` and their neighbours) are a tell. If they
-  appear in tokens, derive the product's own from the regime instead.
-- Every adjacent surface pair needs a tone step you can see without a
-  shadow: canvas → surface → raised at roughly 1.08–1.15 luminance ratio
-  each. `#F9F8F5` against `#FFFFFF` (1.06) is not a step; it is a shadow
-  dependency.
-- Check the smallest text on the darkest allowed surface it can land on
-  (meta on the tinted grouping background, not only on canvas). AA is
-  4.5:1 for body and 3:1 for ≥ 24px; aim for 4.5 on metadata since it is
-  usually 12–13px.
-- Derived tokens follow the regime too. Hairlines, borders, and shadows are
-  the regime's *ink* at low alpha (warm ink on paper, graphite on steel),
-  not a slate `rgba(15, 23, 42, …)` pasted under a warm palette. Hover and
-  active states move toward the ink in light mode and toward the paper in
-  dark mode — an accent that darkens on hover over a dark canvas disappears.
-- When REFINE inherits a palette, keep it — but still name its regime and
-  fix pairs that fail the two checks above. Changing regime in REFINE needs
-  the user's word.
+### Roles
 
-**Failure.** Third project in a row on `#F9F8F5` chalk with `#B8321E`
-madder; a dark mode assembled from slate-900 / slate-400 / emerald-500 for a
-Mediterranean newspaper; a fintech dashboard on cream because "paper is
-calm".
+Name colors by job, then relate them: canvas; raised surface; an optional
+brand field the brand actually owns; text primary / secondary / inverse;
+separator; interactive; semantic status with a non-color cue. Do not stop
+at one accent, do not equate dark, neon, or glass with quality, and do not
+forbid a color. Justify saturation and light/dark from context: a long
+article wants stable paper, an overnight dispatch board a dim canvas with
+loud overdue rows. If the "palette" is leftover `#222` on white plus a
+purple button, replace it on DESIGN.
 
-**How.** Name colors by job, then relate them:
-
-- **Canvas** — page background
-- **Raised / secondary surface** — panels, header bar, table header
-- **Brand field** — a large area the brand actually owns (a clay field, a
-  material field that belongs to the work, a night ops canvas). Allowed when
-  it fits. Not required.
-- **Text hierarchy** — primary, secondary, inverse on brand fields
-- **Separator** — hairline or tone step
-- **Interactive** — links, filled actions, selected rows
-- **Semantic status** — danger, warning, success, each with a non-color cue
-
-Do not stop at one accent. Do not equate dark canvases, neon, or glass
-with quality. Do not forbid a color. The worked examples' pairings (cool
-catalog stone, clinic navy, kiln oxide paper, night closeout) belong to
-those products; see Choice versus quality above.
-
-Justify saturation and light/dark from context: a warehouse installation
-may want a field of the actual material; a long article may want a stable
-paper; an overnight dispatch board may want a dim canvas with loud overdue
-rows.
-Check contrast on the actual pairing (text on brand field, meta on canvas).
-
-If a brand already defines a palette, map these roles onto it. If the
-"palette" is leftover `#222` on white plus a purple button, replace it
-on DESIGN.
-
-Accent-only status (red vs green with no text or icon) fails for many
-readers. Keep status in words.
-
-**Failure.** `--accent: #7c5cfc` and nothing else; large paragraphs in
-accent color; a new purple careers page on a paper-and-iron site.
+**Failure.** Third project in a row on `#F9F8F5` with madder; a slate/
+emerald dark mode for a Mediterranean newspaper; a fintech dashboard on
+cream because "paper is calm"; `--accent: #7c5cfc` and nothing else;
+paragraphs in accent color.
 
 **Applied fragment (Rail Still catalog surfaces — this product):**
 
@@ -238,66 +153,25 @@ accent color; a new purple careers page on a paper-and-iron site.
 }
 ```
 
-**Applied fragment (Nadir clinic surfaces — this product's jobs, not a paste palette):**
-
-```css
-:root {
-  --canvas: #e8eaee;
-  --surface: #ffffff;
-  --text: #16181c;
-  --text-dim: #5c6570;
-  --hair: #d0d5dc;
-  --action: #1f4e79;
-  --action-ink: #f4f7fb;
-  --danger: #9b2c2c;
-}
-```
-
 ## Imagery and licenses
 
-Choose media the product can actually supply. See
-[visual-craft.md](visual-craft.md) for crop, diagrams, and captions.
-
-Prefer assets already in the project with a known right to use. When adding
-a new external file, prefer CC0 or another license the project can keep, and
-record the license next to the file. Do not copy a competitor's layout,
-brand, or images.
-
-Do not invent screenshots, customer faces, logos, or metrics. If the host
-has no image-generation tool, do not pretend assets were produced.
+Choose media the product can actually supply. Prefer assets already in the
+project with a known right to use; for new files prefer CC0 and record the
+license next to the file. Do not copy a competitor's layout, brand, or
+images. Do not invent screenshots, faces, logos, or metrics, and do not
+claim generated assets without a generation tool.
 
 ## Decision examples
 
-### One form, two coherent surface treatments
-
-A long application form can use a continuous canvas with section headings
-and rules when reading order matters. Separately editable account settings
-can use grouped secondary surfaces, each with its own edit action. Both need
-the same legible labels, hint/error distinction and clear submission result.
-Choose grouping from the save boundaries; do not merely recolor the button.
-
-For either, compare a compact label/body scale with a more generous reading
-scale using the actual longest label and error. Prefer compact when users
-scan repeated known fields; give unfamiliar instructions more measure and
-leading. Font selection alone does not settle that tradeoff.
-
-### Content-led publication
-
-Field Notes Weekly runs 1,200-word reported pieces. Display type on every
-heading and a neon dark theme would fight the reading task. Better: a
-reliable body face with full Turkish glyph coverage, restrained headings,
-and a surface that keeps a stable measure. Color marks section, not mood.
-
-### Existing brand, new section
-
-Marrow & Co already uses a warm off-white, iron text, and a single red for
-actions. A new Careers section should reuse those roles. Introducing a
-separate "modern" purple and a geometric display face would look like a
-second product. Hierarchy can still change: job posts as a list with
-location and type, not a marketing grid of perks.
-
-### Blank fixture, DESIGN
-
-Ada's start files use Arial and a navy hero. That is a leftover, not a
-brand. You may choose a reading serif for the memoir and a mono for tool
-ids, as long as `Kılıç` stays correctly spelled and glyphs exist.
+- **One form, two treatments.** A long application reads on one canvas with
+  section rules; independently saved account settings get grouped surfaces
+  with their own edit actions. Grouping follows save boundaries. Test
+  compact vs generous scale with the longest real label and error.
+- **Content-led publication.** 1,200-word pieces want a reliable body face
+  with full Turkish coverage and a stable measure, not display type on
+  every heading or a neon dark theme.
+- **Existing brand, new section.** A site with warm off-white, iron text,
+  and one red action keeps those roles for Careers; hierarchy may change
+  (a job list with location and type), the voice may not.
+- **Blank fixture.** Arial and a navy hero are leftovers, not brand. A
+  reading serif plus a mono for ids is fine if glyphs like `Kılıç` render.
