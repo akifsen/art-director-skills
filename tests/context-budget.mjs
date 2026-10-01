@@ -200,7 +200,7 @@ assert.ok(summary.perFile["SKILL.md"].tokenProxy >= 1);
 const utf8Skill = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "ad-budget-utf8-")), "art-director");
 fs.mkdirSync(utf8Skill, { recursive: true });
 fs.writeFileSync(path.join(utf8Skill, "SKILL.md"), "é\n", "utf8");
-const utf8Measure = readMeasuredFile(utf8Skill, "SKILL.md");
+const utf8Measure = readMeasuredFile(fs.realpathSync.native(utf8Skill), "SKILL.md");
 assert.ok(utf8Measure.utf8Bytes > utf8Measure.lfChars);
 
 console.log("context-budget tests ok");
