@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Checkout — eval fixture</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Checkout</h1>
+      <form id="pay">
+        <label>Email<input name="email" type="email" autocomplete="email" /></label>
+        <label>Card<input name="card" inputmode="numeric" /></label>
+        <p class="err" hidden>Card declined</p>
+        <button type="submit">Pay</button>
+      </form>
+      <p class="ok" hidden>Paid — thanks!</p>
+    </main>
+    <script src="checkout.js"></script>
+  </body>
+</html>

@@ -61,6 +61,14 @@ For each source you actually saw:
 - Display / heading / body / meta (character, not only family names):
 - Canvas, raised, brand field, text, hairline, interactive, status:
 
+## Implementation handoff (compact)
+
+| Semantic role | Token / component / path | Usage | State / mobile notes |
+|---|---|---|---|
+| | | | |
+
+Replace rows with project facts. Unresolved cells stay honest. No CSS dump.
+
 ## Mobile / native
 
 - Web small viewport (first content, menu, crop):

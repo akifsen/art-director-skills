@@ -1,22 +1,39 @@
 # Changelog
 
-## Unreleased
+## 0.13.0 — 2026-10-01 (bounded context and web review)
 
+- New `references/web-quality.md` (conditional web REVIEW/REFINE depth) and
+  routing from `SKILL.md` / `visual-review.md`. `design-method.md` and
+  direction handoff tables cover brief freedom, motion/density, and redesign
+  diagnosis. Maintainer `tooling/context-budget.mjs` + config enforce LF
+  limits and routing profiles (`npm test`, `npm run validate`).
+- Docs: [docs/context-budget.md](docs/context-budget.md). Host eval protocol
+  and cases 18–19 live under `evals/` in the git repo (not in the npm
+  tarball).
 - `typography-color-assets.md` 14.0 KB → 8.8 KB and `visual-craft.md`
   11.7 KB → 7.8 KB. Rules, failure cases, the regime table, the state
   combination traps, and the Rail Still fragments stay; repeated prose, a
   second clinic palette, and long decision examples were condensed.
-- The default DESIGN load (SKILL.md, implementation, design-method,
-  content-and-composition, typography-color-assets) is ~36 KB, down from
-  ~68 KB in 0.11.0 (which also loaded visual-craft by default).
-- Tests: a context budget. SKILL.md and every reference stay within
-  10 KB; the default DESIGN load stays within 40 KB. Raise a ceiling only
-  with a reason here.
+- DESIGN core now loads SKILL.md, implementation, and design-method:
+  22,565 LF-normalized characters versus 36,786 before this update (~39%
+  less initial text). Composition and typography depth remain available
+  when needed. This is not a measured reduction in whole-session tokens.
+- Tests: reviewed per-file, aggregate, and initial-profile context budgets;
+  CRLF normalization, UTF-8 token proxies, portable-copy validation,
+  path refusal, compact JSON, and meaningful budget failure cases. Legacy
+  10 KB reference and 40 KB expanded-reference checks remain as backstops.
 - Evals: `evals/SLIM-COMPARISON.md` protocol (no skill vs 0.11.0 vs slim,
   three runs per arm, pre-stated hypotheses and decision rule), with
   `evals/scripts/slim-setup.mjs` (isolated run folders, per-arm skill from
   git, SHA256 manifest; Windows-safe) and `evals/scripts/slim-blind.mjs`
-  (random ids, key kept apart). Not run yet; no results are claimed.
+  (random ids, key kept apart). The comparison has not run. A separate
+  read-only agent smoke check found the planted submission issues using
+  three skill files; no production-host token or visual-quality result
+  is claimed.
+- Release checks: `npm test`, `npm run validate`, and
+  `npm run test:packaged`; the packaged CLI was exercised in a clean
+  Windows consumer project. Unavailable file-symlink cases are reported
+  as skipped; a separate Windows junction refusal check passed.
 
 ## 0.12.0 — 2026-09-30 (lighter SKILL.md)
 

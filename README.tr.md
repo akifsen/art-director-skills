@@ -7,9 +7,19 @@ Tema paketi seçmez. MCP sunucusu çalıştırmaz. Kullanmak için Node, API
 anahtarı veya arka plan süreci gerekmez. `skills/art-director/` klasörünü
 host’un skill dizinine kopyalamak yeterlidir.
 
-[English README](README.md) · [Kurulum](docs/installation.md) · [Uyumluluk](docs/compatibility.md) · [Değerlendirme](https://github.com/akifsen/art-director-skills/blob/main/evals/README.md) · [Geçiş](docs/migration.md)
+[English README](README.md) · [Kurulum](docs/installation.md) · [Uyumluluk](docs/compatibility.md) · [Bağlam bütçesi](docs/context-budget.md) · [Değerlendirme](https://github.com/akifsen/art-director-skills/blob/main/evals/README.md) · [Geçiş](docs/migration.md)
+
+Skill, mod başına yalnızca gerekli Markdown’ı açmayı öğretir; tam referans
+dizinini veya örnek çalışmaları varsayılan olarak yüklemez. Depo geliştiricileri
+için LF karakter tavanları `docs/context-budget.md` dosyasında özetlenir (npm
+paketine dahil değildir).
 
 ## Ne işe yarar
+
+0.13 sürümü, kanıta dayalı web incelemesi ve ölçülen bağlam bütçeleri ekler.
+DESIGN, 22.565 karakterlik çekirdekle başlar; kompozisyon ve tipografi
+ayrıntıları ihtiyaç halinde yüklenir. Testler bütçe aşımını reddeder. Bu
+ölçüm toplam agent token tüketiminin garantisi değildir.
 
 Yeni bir sayfa, açık bir yeniden tasarım, sınırlı bir düzeltme (örneğin
 mobil menü) veya görsel inceleme istendiğinde.
@@ -72,14 +82,14 @@ Asistanı ve kapsamı sen seçersin; seçmeden hiçbir şey yazılmaz. Sürümü
 sabitle:
 
 ```bash
-npx --yes art-director-skills@0.12.0 install --ai cursor           # → .cursor/skills/art-director
-npx --yes art-director-skills@0.12.0 install --ai claude,codex     # birden çok asistan
-npx --yes art-director-skills@0.12.0 install --ai cursor --global  # proje yerine ~/.cursor/skills
-npx --yes art-director-skills@0.12.0 install --ai cursor --dry-run # yalnız plan
-npx --yes art-director-skills@0.12.0 status  --ai cursor
-npx --yes art-director-skills@0.12.0 list
-npx --yes art-director-skills@0.12.0 remove  --ai cursor
-npx --yes art-director-skills@0.12.0 --version
+npx --yes art-director-skills@0.13.0 install --ai cursor           # → .cursor/skills/art-director
+npx --yes art-director-skills@0.13.0 install --ai claude,codex     # birden çok asistan
+npx --yes art-director-skills@0.13.0 install --ai cursor --global  # proje yerine ~/.cursor/skills
+npx --yes art-director-skills@0.13.0 install --ai cursor --dry-run # yalnız plan
+npx --yes art-director-skills@0.13.0 status  --ai cursor
+npx --yes art-director-skills@0.13.0 list
+npx --yes art-director-skills@0.13.0 remove  --ai cursor
+npx --yes art-director-skills@0.13.0 --version
 ```
 
 Bağımlılık yok, paket indikten sonra ağ yok, telemetri yok, postinstall yok.
@@ -166,7 +176,7 @@ Ayrıntı: [docs/compatibility.md](docs/compatibility.md).
 ### Cursor
 
 ```bash
-npx --yes art-director-skills@0.12.0 install --ai cursor
+npx --yes art-director-skills@0.13.0 install --ai cursor
 ```
 
 Dosyalar: `.cursor/skills/art-director/`. **Agent** sohbetinde:
@@ -183,7 +193,7 @@ skill iki kez görünür.
 ### Gemini CLI
 
 ```bash
-npx --yes art-director-skills@0.12.0 install --ai gemini
+npx --yes art-director-skills@0.13.0 install --ai gemini
 ```
 
 Bu, `.gemini/skills/art-director/` yazar (Gemini’nin kendi ağacı). CLI
@@ -203,7 +213,7 @@ alias’ı listeleyen eski CLI). Sonra:
 Hâlâ boşsa Gemini’nin gördüğü alias’a kurun:
 
 ```bash
-npx --yes art-director-skills@0.12.0 install --ai codex
+npx --yes art-director-skills@0.13.0 install --ai codex
 ```
 
 Bu `.agents/skills/art-director/` — aynı `SKILL.md` düzeni, ikinci bir
@@ -215,7 +225,7 @@ workspace güveni aranmaz.
 ### Claude Code
 
 ```bash
-npx --yes art-director-skills@0.12.0 install --ai claude
+npx --yes art-director-skills@0.13.0 install --ai claude
 ```
 
 Dosyalar: `.claude/skills/art-director/`. `/art-director` yazın veya
@@ -225,7 +235,7 @@ listeler.
 ### Codex
 
 ```bash
-npx --yes art-director-skills@0.12.0 install --ai codex
+npx --yes art-director-skills@0.13.0 install --ai codex
 ```
 
 Dosyalar: `.agents/skills/art-director/`. Codex CLI / IDE: `/skills`
@@ -234,7 +244,7 @@ veya `$art-director`. ChatGPT masaüstü: `@` ile skill.
 ### GitHub Copilot
 
 ```bash
-npx --yes art-director-skills@0.12.0 install --ai copilot
+npx --yes art-director-skills@0.13.0 install --ai copilot
 ```
 
 Dosyalar: `.github/skills/art-director/` (proje) veya `~/.copilot/skills/`
@@ -250,7 +260,7 @@ Copilot slash olmadan da açıklamadan seçebilir. `/skills list` ve
 ### Kiro
 
 ```bash
-npx --yes art-director-skills@0.12.0 install --ai kiro
+npx --yes art-director-skills@0.13.0 install --ai kiro
 ```
 
 Dosyalar: `.kiro/skills/art-director/`. Sohbette `/art-director` veya

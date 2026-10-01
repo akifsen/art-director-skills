@@ -1,5 +1,9 @@
 # Eval method
 
+The [context-cost protocol](context-cost/PROTOCOL.md) records reference
+loads for read-only web audit and tiny REFINE cases (18–19); it does not
+run in CI.
+
 The [slim comparison](SLIM-COMPARISON.md) is the open protocol for 0.12:
 no skill vs 0.11.0 vs the slim skill, three runs per arm, blind scoring
 ([setup](scripts/slim-setup.mjs), [blind](scripts/slim-blind.mjs),
@@ -61,6 +65,8 @@ an old-skill arm.
 | `15-weekend-workshops` | Fold studio reservation (ordinary web brief) | DESIGN |
 | `16-daypack` | Outing packing list (ordinary native brief) | DESIGN |
 | `17-pier-kettle` | Harbor tea-steep board (frozen transfer brief) | DESIGN |
+| `18-readonly-web-audit` | Static checkout audit | REVIEW |
+| `19-refine-submit-busy` | Submit busy state only | REFINE |
 
 Each case has a `brief.md`, a `start/` tree, and `expected.md` (scope plus
 gates, not a pixel template).

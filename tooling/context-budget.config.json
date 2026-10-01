@@ -1,0 +1,146 @@
+{
+  "skillRoot": "skills/art-director",
+  "aggregateInstructionalMarkdownMax": 121873,
+  "perFileMaxLfChars": {
+    "SKILL.md": 8625,
+    "assets/design-notes.example.md": 2771,
+    "references/completeness-and-states.md": 4761,
+    "references/content-and-composition.md": 5906,
+    "references/craft-bar.md": 3561,
+    "references/design-method.md": 9025,
+    "references/direction-files.md": 2615,
+    "references/examples/component-system.md": 1401,
+    "references/examples/media-portfolio.md": 1837,
+    "references/examples/media-portfolio/ASSETS.md": 475,
+    "references/examples/native-mobile-example.md": 1397,
+    "references/examples/themeless-react.md": 2311,
+    "references/existing-ui-system.md": 4182,
+    "references/implementation.md": 4969,
+    "references/native-mobile.md": 7341,
+    "references/polish-pass.md": 4299,
+    "references/product-ui-system.md": 5285,
+    "references/react-web.md": 2744,
+    "references/responsive-interaction.md": 7441,
+    "references/studies/media-in-composition.md": 1607,
+    "references/studies/minimal-vs-unfinished.md": 1642,
+    "references/studies/two-readings.md": 1646,
+    "references/studies/wireframe-to-finish.md": 3149,
+    "references/typography-color-assets.md": 8774,
+    "references/visual-craft.md": 7794,
+    "references/visual-research.md": 6900,
+    "references/visual-review.md": 5805,
+    "references/web-quality.md": 3613
+  },
+  "corpus": {
+    "studies": {
+      "files": [
+        "references/studies/media-in-composition.md",
+        "references/studies/minimal-vs-unfinished.md",
+        "references/studies/two-readings.md",
+        "references/studies/wireframe-to-finish.md"
+      ],
+      "maxLfChars": 8044
+    },
+    "examples": {
+      "files": [
+        "references/examples/component-system.md",
+        "references/examples/media-portfolio.md",
+        "references/examples/media-portfolio/ASSETS.md",
+        "references/examples/native-mobile-example.md",
+        "references/examples/themeless-react.md"
+      ],
+      "maxLfChars": 7421
+    },
+    "template": {
+      "files": [
+        "assets/design-notes.example.md"
+      ],
+      "maxLfChars": 2771
+    }
+  },
+  "profiles": {
+    "design-web": {
+      "files": [
+        "SKILL.md",
+        "references/implementation.md",
+        "references/design-method.md"
+      ],
+      "maxLfChars": 22616
+    },
+    "design-web-starter": {
+      "files": [
+        "SKILL.md",
+        "references/implementation.md",
+        "references/design-method.md",
+        "references/product-ui-system.md"
+      ],
+      "maxLfChars": 27901
+    },
+    "design-web-existing": {
+      "files": [
+        "SKILL.md",
+        "references/implementation.md",
+        "references/design-method.md",
+        "references/existing-ui-system.md"
+      ],
+      "maxLfChars": 26798
+    },
+    "design-native": {
+      "files": [
+        "SKILL.md",
+        "references/implementation.md",
+        "references/design-method.md",
+        "references/native-mobile.md"
+      ],
+      "maxLfChars": 29957
+    },
+    "design-web-responsive": {
+      "files": [
+        "SKILL.md",
+        "references/implementation.md",
+        "references/design-method.md",
+        "references/responsive-interaction.md"
+      ],
+      "maxLfChars": 30057
+    },
+    "refine-web-light": {
+      "files": [
+        "SKILL.md",
+        "references/implementation.md",
+        "references/responsive-interaction.md"
+      ],
+      "maxLfChars": 21032
+    },
+    "refine-web-react": {
+      "files": [
+        "SKILL.md",
+        "references/implementation.md",
+        "references/react-web.md"
+      ],
+      "maxLfChars": 16335
+    },
+    "refine-native-light": {
+      "files": [
+        "SKILL.md",
+        "references/implementation.md",
+        "references/native-mobile.md"
+      ],
+      "maxLfChars": 20932
+    },
+    "review-web": {
+      "files": [
+        "SKILL.md",
+        "references/visual-review.md",
+        "references/web-quality.md"
+      ],
+      "maxLfChars": 18040
+    },
+    "review-native": {
+      "files": [
+        "SKILL.md",
+        "references/visual-review.md"
+      ],
+      "maxLfChars": 14427
+    }
+  }
+}

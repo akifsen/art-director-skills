@@ -1,0 +1,5 @@
+body { font-family: system-ui, sans-serif; margin: 2rem; }
+label { display: block; margin: 0.5rem 0; }
+button { margin-top: 1rem; padding: 0.5rem 1rem; }
+.err { color: #a00; }
+.ok { color: #060; }

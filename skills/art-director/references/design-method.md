@@ -37,6 +37,13 @@ force. Do not assume preferences the brief did not give.
 
 A REFINE of one control does not authorize a new identity for the whole app.
 
+## Brief freedom, motion, and density
+
+Structure follows the brief and content, not quotas (cards, hero, library,
+font, palette, or asset pack). Motion orients, confirms, or relates — or
+stays off (zero motion is valid); keep it reducible. Density serves
+comparison or sequence, not a fixed row count or viewport-fill rule.
+
 ## Design direction
 
 On a broad DESIGN, write a short direction as decisions to implement — not
@@ -87,6 +94,12 @@ copy while the work sits in section three.
 is a poster. Finish the artifact: a crop, a diagram, a working surface, a
 caption — something a visitor could point at. Do not "fix" this by adding
 numbered filler cards under the poster.
+
+## Redesign
+
+Diagnose the observed render or source failure (load, hierarchy, state,
+clip, flow) before visual upgrades. Keep working copy, routes, and data
+unless the user changes them.
 
 ## Two readings, not a catalog
 

@@ -66,6 +66,8 @@ assert(skillMd.includes("existing-ui-system.md"), "SKILL.md routes existing syst
 assert(skillMd.includes("react-web.md"), "SKILL.md routes React web to react-web.md");
 assert(skillMd.includes("native-mobile.md"), "SKILL.md routes native work to native-mobile.md");
 assert(skillMd.includes("completeness-and-states.md"), "SKILL.md routes scope to completeness-and-states.md");
+assert(skillMd.includes("web-quality.md"), "SKILL.md routes web REVIEW/REFINE to web-quality.md");
+assert(skillMd.includes("No recursive links"), "SKILL.md forbids recursive reference loading");
 assert(/finished product interface|visually finished|finished craft/.test(skillMd), "promise mentions finished craft");
 assert(!/sodium/i.test(skillMd), "main skill is not tied to a sodium/eval example");
 assert(/^\d+\.\d+\.\d+$/.test(data.metadata && data.metadata.version), `SKILL.md metadata.version is semver (got ${data.metadata && data.metadata.version})`);
@@ -99,6 +101,8 @@ const method = fs.readFileSync(path.join(root, "skills", "art-director", "refere
 assert(method.includes("Job vs domain"), "design-method separates job from domain");
 assert(method.includes("First look"), "design-method lists concrete art-direction decisions");
 assert(method.includes("cool-gray sharp"), "design-method does not treat cool-gray sharp chrome as universal finish");
+assert(/zero motion is valid/i.test(method), "design-method allows zero motion");
+assert(method.includes("Diagnose the observed render"), "design-method diagnoses before redesign upgrades");
 
 const research = fs.readFileSync(path.join(root, "skills", "art-director", "references", "visual-research.md"), "utf8");
 assert(/Do not copy layout, assets, or brand/i.test(research), "visual-research forbids copying layout/assets/brand");
@@ -126,7 +130,7 @@ for (const script of ["slim-setup.mjs", "slim-blind.mjs"]) {
   const designCore = ["SKILL.md", "references/implementation.md", "references/design-method.md",
     "references/content-and-composition.md", "references/typography-color-assets.md"];
   const coreTotal = designCore.reduce((sum, rel) => sum + size(rel), 0);
-  assert(coreTotal <= 40 * 1024, `default DESIGN load stays within 40 KB (have ${coreTotal})`);
+  assert(coreTotal <= 40 * 1024, `expanded DESIGN reference set stays within 40 KB (have ${coreTotal})`);
 }
 const craftBar = fs.readFileSync(path.join(root, "skills", "art-director", "references", "craft-bar.md"), "utf8");
 assert(skillMd.includes("craft-bar.md"), "SKILL.md routes the craft bar to craft-bar.md");
@@ -154,6 +158,7 @@ assert(polish.includes("Gate A") && polish.includes("Gate C") && polish.includes
 assert(!/Two reasoned passes after the first slice is enough/i.test(polish), "polish-pass does not stop on tour count");
 
 const visualReview = fs.readFileSync(path.join(root, "skills", "art-director", "references", "visual-review.md"), "utf8");
+assert(visualReview.includes("web-quality.md"), "visual-review routes web depth to web-quality.md");
 assert(visualReview.includes("In-scope actions and states"), "visual-review inspects actions and states, not only the opening view");
 assert(visualReview.includes("sized as a control"), "visual-review rejects a control stretched into leftover space");
 assert(visualReview.includes("toBeVisible"), "visual-review does not treat presence as readable type");
@@ -275,6 +280,8 @@ assert(caseDirs.includes("10-template-adapt"), "eval 10 template adapt");
 assert(caseDirs.includes("11-native-expo"), "eval 11 native Expo");
 assert(caseDirs.includes("12-holdout-lumen-cart"), "eval 12 Lumen Cart holdout");
 assert(caseDirs.includes("17-pier-kettle"), "eval 17 Pier Kettle transfer brief");
+assert(caseDirs.includes("18-readonly-web-audit"), "eval 18 read-only web audit");
+assert(caseDirs.includes("19-refine-submit-busy"), "eval 19 submit busy REFINE");
 assert(fs.existsSync(path.join(root, "evals", "cases", "09-component-system", "start", "ORIGIN.txt")), "component-system fixture has provenance note");
 assert(fs.existsSync(path.join(root, "evals", "cases", "10-template-adapt", "start", "ORIGIN.txt")), "template fixture has provenance note");
 for (const name of caseDirs) {
@@ -302,6 +309,15 @@ if (process.platform === "win32") {
 assert(fs.existsSync(path.join(dest, "SKILL.md")), `copied SKILL.md into ${dest}`);
 const copied = validateSkill(dest);
 assert(copied.problems.length === 0, copied.problems.length ? copied.problems.join("; ") : "copy under Turkish/space parent path");
+
+const skillMdCopy = path.join(dest, "SKILL.md");
+fs.appendFileSync(skillMdCopy, "x".repeat(10_000), "utf8");
+const copiedOver = validateSkill(dest);
+assert(
+  copiedOver.problems.some((p) => p.includes("context budget")),
+  "portable copy with bloated SKILL.md must fail context budget checks"
+);
+fs.writeFileSync(skillMdCopy, fs.readFileSync(path.join(src, "SKILL.md"), "utf8"), "utf8");
 assert(
   fs.existsSync(path.join(dest, "references", "examples", "media-portfolio", "App.jsx")),
   "copied media-portfolio lands in the portable skill folder"
@@ -352,7 +368,7 @@ process.stdout.write(installerTests.stdout || "");
 process.stderr.write(installerTests.stderr || "");
 assert(installerTests.status === 0, "installer writes the same tree to every supported assistant path");
 
-for (const script of ["cli-args.mjs", "design-direction.mjs"]) {
+for (const script of ["cli-args.mjs", "design-direction.mjs", "context-budget.mjs"]) {
   const child = spawnSync(process.execPath, [path.join(root, "tests", script)], {
     encoding: "utf8",
     cwd: root

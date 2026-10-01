@@ -6,6 +6,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { checkContextBudget } from "./context-budget.mjs";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const skillRoot = path.join(repoRoot, "skills", "art-director");
@@ -189,6 +190,7 @@ export function validateSkill(root = skillRoot) {
     "references/studies/media-in-composition.html",
     "references/craft-bar.md",
     "references/direction-files.md",
+    "references/web-quality.md",
     "assets/design-notes.example.md"
   ];
   for (const rel of required) {
@@ -223,7 +225,28 @@ export function validateSkill(root = skillRoot) {
     problems.push("description should say when not to use the skill (backend/sql/deploy)");
   }
 
+  try {
+    const budget = checkContextBudget({ repoRoot, skillRoot: root });
+    for (const noteLine of formatBudgetNotes(budget)) notes.push(noteLine);
+    for (const v of budget.violations) problems.push(`context budget: ${v}`);
+  } catch (err) {
+    problems.push(`context budget: ${err.message}`);
+  }
+
   return { problems, notes, data, lineCount: lines.length, charCount: text.length, relativeFromSkill };
+}
+
+function formatBudgetNotes(budget) {
+  const entry = budget.measurements["SKILL.md"];
+  const out = [
+    `context budget aggregate LF chars=${budget.aggregateLfChars} limit=${budget.aggregateMaxLfChars}`
+  ];
+  if (entry) {
+    out.push(
+      `SKILL.md LF chars=${entry.lfChars} UTF-8 bytes=${entry.utf8Bytes} tokenProxy~${entry.tokenProxy}`
+    );
+  }
+  return out;
 }
 
 export function repoRootPath() {

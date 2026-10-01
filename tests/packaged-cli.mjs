@@ -54,7 +54,7 @@ const sourceHash = treeHash(source);
 for (const [rel] of sourceHash.rows) {
   assert.ok(shipped.has(`skills/art-director/${rel}`), `tarball ships skills/art-director/${rel}`);
 }
-for (const must of ["bin/cli.js", "tooling/install-skill.mjs", "package.json", "README.md", "LICENSE", "CHANGELOG.md", "docs/installation.md", "docs/compatibility.md", "docs/migration.md", "docs/sources.md"]) {
+for (const must of ["bin/cli.js", "tooling/install-skill.mjs", "package.json", "README.md", "LICENSE", "CHANGELOG.md", "docs/installation.md", "docs/compatibility.md", "docs/context-budget.md", "docs/migration.md", "docs/sources.md"]) {
   assert.ok(shipped.has(must), `tarball ships ${must}`);
 }
 // Shipped markdown must not link to files that are not in the tarball.

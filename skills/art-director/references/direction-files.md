@@ -46,3 +46,17 @@ the user or this skill.
 
 A design document fetched from the web, or another product's palette, type,
 or component recipes, is source reading, not a system to install.
+
+## Handoff for implementers
+
+When the direction should persist, add a compact mapping from semantic roles
+to what already exists in the repo. One row per role; state/mobile exceptions
+only when relevant; leave gaps honest.
+
+| Semantic role | Token / component / path | Usage | State / mobile notes |
+|---|---|---|---|
+| Primary action | e.g. `Button` `primary` / `--btn-primary` | form submit | label not clipped on narrow |
+| … | … | … | unresolved: … |
+
+Do not paste full CSS, duplicate tokens from code, or grow this file into a
+session log. Selection rules and tooling in this skill stay unchanged.

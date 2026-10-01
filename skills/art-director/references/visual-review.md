@@ -1,6 +1,8 @@
 # Visual review
 
 Read this in REVIEW mode, and when checking work after DESIGN or REFINE.
+Web actions, forms, URLs, hydration, motion, or lists in scope: also
+[web-quality.md](web-quality.md). Native: [native-mobile.md](native-mobile.md).
 
 ## Default to read-only
 
